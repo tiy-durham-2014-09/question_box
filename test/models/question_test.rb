@@ -17,9 +17,9 @@ class QuestionTest < ActiveSupport::TestCase
     check_presence(@question, :user)
   end
 
-  #test "should have tags" do
-
-  #end
+  test "should have tag" do
+    check_presence(@question, :tag)
+  end
 
   test "should know if it has a chosen answer" do
     question = questions(:one)
