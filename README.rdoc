@@ -1,6 +1,8 @@
 #### **Homework - 15 Oct 2014**
 
-Your homework tonight is to fork the repository we were working on in class -- [https://github.com/tiy-durham-2014-09/question_box](https://github.com/tiy-durham-2014-09/question_box) -- and finish its models, according to the specifications below.
+Your homework tonight is to fork the repository we were working on in class
+-- [https://github.com/tiy-durham-2014-09/question_box](https://github.com/tiy-durham-2014-09/question_box) --
+and finish its models, according to the specifications below.
 
 All the following require tests, and tests should be written first. Making frequent commits will help you with this.
 
