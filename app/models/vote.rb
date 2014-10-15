@@ -6,9 +6,9 @@ class Vote < ActiveRecord::Base
   validates :value, inclusion: { in: [1, -1] }
   validates :user, presence: true
 
-  before_save :give_points_to_recieving_user
+  before_save :adjust_points
 
-  def give_points_to_recieving_user
+  def adjust_points
     if value == 1
       self.voteable.user.score += 10
       self.voteable.user.save
@@ -20,6 +20,8 @@ class Vote < ActiveRecord::Base
         self.voteable.user.score -= self.voteable.user.score
         self.voteable.user.save
       end
+      user.score -= 1
+      user.save
     end
   end
 

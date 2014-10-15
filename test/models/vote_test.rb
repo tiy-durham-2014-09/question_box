@@ -44,15 +44,15 @@ class VoteTest < ActiveSupport::TestCase
   end
 
 
-  # test "should subtract 1 point for voting negative" do
-  #   user = users(:one)
-  #   voter = users(:two)
-  #   question = questions(:one)
-  #   previous_score = voter.score
-  #   vote = question.votes.create!(:value => -1, :user => user)
-  #
-  #   assert_equal -5, user.score - previous_score
-  #
-  # end
+  test "should subtract 1 point for voting negative" do
+    user = users(:one)
+    voter = users(:two)
+    question = questions(:one)
+    previous_score = user.score
+    vote = question.votes.create!(:value => -1, :user => user)
+
+    assert_equal -1, user.score - previous_score
+
+  end
 
 end
