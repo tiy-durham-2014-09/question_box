@@ -11,7 +11,7 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   test "should belong to user" do
-  check_presence(@comment, :user)
+    check_presence(@comment, :user)
   end
 
 end

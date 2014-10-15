@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :comments
+  has_many :votes
+
   validates :email,
             presence: true,
             uniqueness: { case_sensitive: false },
@@ -9,6 +12,8 @@ class User < ActiveRecord::Base
   validates :score,
             presence: true,
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
+
 
   has_secure_password
 end
