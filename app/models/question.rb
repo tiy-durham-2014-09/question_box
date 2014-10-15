@@ -14,7 +14,7 @@ class Question < ActiveRecord::Base
     answers.where(chosen: true).count > 0
   end
 
-  def score_total
+  def question_score_total
     #ADD STUFF HERE
   end
 end
