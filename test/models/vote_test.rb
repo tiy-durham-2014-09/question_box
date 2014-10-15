@@ -21,14 +21,38 @@ class VoteTest < ActiveSupport::TestCase
       assert_not_empty @vote.errors[:value]
   end
 
-  test "should award 10 points to user object" do
-    user = users(:one)
+  test "should award 10 points to user object if positive" do
+    reciever = users(:one)
+    voter = users(:two)
     question = questions(:one)
-    previous_score = user.score
-    vote = question.votes.create!(:value => 1, :user => user)
+    previous_score = reciever.score
+    vote = question.votes.create!(:value => 1, :user => voter)
+    reciever.reload
 
-    assert_equal 10, user.score - previous_score
-
+    assert_equal 10, reciever.score - previous_score
   end
+
+  test "should subtract 5 points to user object if negative" do
+    reciever = users(:one)
+    voter = users(:two)
+    question = questions(:one)
+    previous_score = reciever.score
+    vote = question.votes.create!(:value => -1, :user => voter)
+    reciever.reload
+
+    assert_equal -5, reciever.score - previous_score
+  end
+
+
+  # test "should subtract 1 point for voting negative" do
+  #   user = users(:one)
+  #   voter = users(:two)
+  #   question = questions(:one)
+  #   previous_score = voter.score
+  #   vote = question.votes.create!(:value => -1, :user => user)
+  #
+  #   assert_equal -5, user.score - previous_score
+  #
+  # end
 
 end
