@@ -3,9 +3,11 @@
 one:
   date: 2014-10-15 14:54:47
   text: MyText
-  user_id: 
+  user_id: 1
+  commentable_id: 1
 
 two:
   date: 2014-10-15 14:54:47
   text: MyText
-  user_id: 
+  user_id: 2
+  commentable_id: 2
