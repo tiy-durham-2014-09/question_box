@@ -9,4 +9,7 @@ class Question < ActiveRecord::Base
   def has_chosen_answer?
     answers.where(chosen: true).count > 0
   end
+
+  has_many :comments, as: :commentable
+
 end

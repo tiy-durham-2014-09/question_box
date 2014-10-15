@@ -24,4 +24,7 @@ class Answer < ActiveRecord::Base
       user.save
     end
   end
+
+  has_many :comments, as: :commentable
+
 end
