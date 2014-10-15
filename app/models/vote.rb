@@ -1,0 +1,13 @@
+class Vote < ActiveRecord::Base
+  belongs_to :user
+  belongs_to :voteable, polymorphic: true
+
+  def positive?
+    return self.is_positive
+  end
+
+  def flip!
+    self.is_positive = !self.is_positive
+  end
+
+end

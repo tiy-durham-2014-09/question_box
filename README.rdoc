@@ -8,9 +8,9 @@ All the following require tests, and tests should be written first. Making frequ
 
 Make a pull request when complete.
 
-**Model: Comment **
-- belongs to a user
-- belongs to a "commentable" (polymorphic association)
+√**Model: Comment **
+√- belongs to a user
+√- belongs to a "commentable" (polymorphic association)
 
 
 **Model: Vote **
