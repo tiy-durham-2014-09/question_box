@@ -6,4 +6,11 @@ class Vote < ActiveRecord::Base
 	validates :user, presence: true
 	validates :voteable_id, presence: true
 	validates :voteable_type, presence: true
+  #
+  # def award_user_points
+	 #  if up_changed?(to: true)
+		#   user.score += 10
+		#   user.save
+	 #  end
+  # end
 end

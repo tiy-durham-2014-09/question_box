@@ -1,13 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user_id: 
-  voteable_id: 
-  voteable_type: Voteable
+one_vote_for_user_one_question:
+  user_id: 1
+  voteable_id: 1
+  voteable_type: "Question"
+  up: true
+
+one_vote_for_user_one_answer:
+  user_id: 1
+  voteable_id: 1
+  voteable_type: "Question"
   up: false
 
-two:
-  user_id: 
-  voteable_id: 
-  voteable_type: Voteable
+one_vote_for_user_two_question:
+  user_id: 1
+  voteable_id: 1
+  voteable_type: "Answer"
+  up: true
+
+one_down_vote_for_user_one_answer:
+  user_id: 2
+  voteable_id:
+  voteable_type: "Answer"
   up: false
