@@ -11,5 +11,5 @@ class Question < ActiveRecord::Base
   end
 
   has_many :comments, as: :commentable
-
+  has_many :votes, as: :voteable
 end

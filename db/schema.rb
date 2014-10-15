@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015180440) do
+ActiveRecord::Schema.define(version: 20141015195930) do
 
   create_table "answers", force: true do |t|
     t.text     "text"
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 20141015180440) do
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id"
 
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.integer  "tagable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags", ["tagable_id"], name: "index_tags_on_tagable_id"
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.integer  "score"
@@ -54,5 +63,16 @@ ActiveRecord::Schema.define(version: 20141015180440) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "votes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "voteable_id"
+    t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id"
+  add_index "votes", ["voteable_id"], name: "index_votes_on_voteable_id"
 
 end
