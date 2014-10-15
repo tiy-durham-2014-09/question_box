@@ -13,5 +13,10 @@ class Question < ActiveRecord::Base
     answers.where(chosen: true).count > 0
   end
 
-
+  def score
+    score = 0
+    votes.each do |v|
+      score += v.value
+    end
+  end
 end

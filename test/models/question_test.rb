@@ -25,6 +25,20 @@ class QuestionTest < ActiveSupport::TestCase
     question.answers.first.update(chosen: true)
     assert question.has_chosen_answer?, "has_chosen_answer? should be true"
   end
+
+  test "should be able to tally its votes and give a score" do
+    new_question = questions(:one)
+    new_question.votes.build(value: 1, user: users(:one))
+    assert new_question.score == 1
+    #
+    # @question.votes.build(value: 1, user: users(:one))
+    # assert @questions.score == 2
+    #
+    # @question.votes.build(value: -1, user: users(:one))
+    # @question.votes.build(value: -1, user: users(:one))
+    # @question.votes.build(value: -1, user: users(:one))
+    # assert @questions.score == -1
+  end
 end
 
 

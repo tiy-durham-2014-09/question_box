@@ -57,4 +57,6 @@ class AnswerTest < ActiveSupport::TestCase
       answer.update(chosen: true)
     end
   end
+
+  # test "should be able to tally its votes and give a score"
 end
