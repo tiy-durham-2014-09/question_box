@@ -26,10 +26,3 @@ class QuestionTest < ActiveSupport::TestCase
     assert question.has_chosen_answer?, "has_chosen_answer? should be true"
   end
 end
-
-
-
-
-
-
-
