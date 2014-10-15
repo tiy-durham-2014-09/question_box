@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  tagable_id: 
+  question_id: 
 
 two:
-  name: MyOtherString
-  tagable_id: 
+  name: MyString
+  question_id: 

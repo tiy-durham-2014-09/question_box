@@ -1,3 +1,7 @@
 class Tag < ActiveRecord::Base
-  belongs_to :tagable
+  has_and_belongs_to_many :question
+
+  validates :name, presence: true,
+            uniqueness: { case_sensitive: false }
+  validates :question_id, presence: true
 end
