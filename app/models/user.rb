@@ -11,4 +11,5 @@ class User < ActiveRecord::Base
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   has_secure_password
+  has_many :comments, as: :commentable
 end
