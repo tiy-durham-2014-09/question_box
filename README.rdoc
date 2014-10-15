@@ -1,28 +1,43 @@
-== README
+#### **Homework - 15 Oct 2014**
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Your homework tonight is to fork the repository we were working on in class -- [https://github.com/tiy-durham-2014-09/question_box](https://github.com/tiy-durham-2014-09/question_box) -- and finish its models, according to the specifications below.
 
-Things you may want to cover:
+All the following require tests, and tests should be written first. Making frequent commits will help you with this.
 
-* Ruby version
+Make a pull request when complete.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+**Model: Comment **
+- belongs to a user
+- belongs to a "commentable" (polymorphic association)
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+**Model: Vote **
+- belongs to a user
+- belongs to a "voteable" (polymorphic association)
+- is positive or negative (+1 or -1)
+- when a positive vote is given to something a user created (question or answer), +10 points to that user
+- when a negative vote is given to something a user created (question or answer), -5 points to that user
+- when a user makes a negative vote, -1 points to that user
+
+
+**Model: User (new features) **
+- has many comments
+- has many votes
+
+
+**Model: Question (new features) **
+- has many comments (polymorphic association)
+- has many votes (polymorphic association)
+- knows its total score (determined by votes)
+- has and belongs to many tags (tags being short phrases that show the topics of the question)
+
+
+**Model: Tag **
+- has a name
+- has and belongs to many questions
+
+
+**Model: Answer (new features) **
+- has many comments (polymorphic association)
+- has many votes (polymorphic association)
+- knows its total score (determined by votes)
