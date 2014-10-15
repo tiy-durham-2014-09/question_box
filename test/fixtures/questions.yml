@@ -4,8 +4,10 @@ one:
   title: MyString
   text: MyText
   user: one
+  tag_id:1
 
 two:
   title: MyString
   text: MyText
   user: chet
+  tag_id:2
