@@ -34,9 +34,9 @@ Make a pull request when complete.
 - has and belongs to many tags (tags being short phrases that show the topics of the question)
 
 
-**Model: Tag **
-- has a name
-- has and belongs to many questions
+√**Model: Tag **
+√- has a name
+√- has and belongs to many questions
 
 
 **Model: Answer (new features) **

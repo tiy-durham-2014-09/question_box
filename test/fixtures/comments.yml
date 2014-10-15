@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  text: RTFM
+  user_id: 1
+
+two:
+  text: GTFO
+  user_id: 2
