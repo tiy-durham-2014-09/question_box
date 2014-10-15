@@ -7,4 +7,9 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  def check_presence(model, field)
+    assert model.invalid?, "#{model.class} without #{field} should not be valid"
+    assert_not_empty model.errors[field]
+  end
 end
