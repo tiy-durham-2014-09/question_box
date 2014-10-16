@@ -6,6 +6,7 @@ one_for_question_one:
   user_id: 1
   question: one
   chosen: false
+  vote_count: 0
 
 two_for_question_one:
   text: MyText
@@ -13,3 +14,4 @@ two_for_question_one:
   user_id: 2
   question: one
   chosen: false
+  vote_count: 0

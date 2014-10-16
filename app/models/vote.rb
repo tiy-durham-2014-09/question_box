@@ -31,13 +31,18 @@ class Vote < ActiveRecord::Base
   end
 
   def adjust_vote_count
-    question = Question.find(self.voteable_id)
-    if self.up == true
-      question.vote_count += 1
-    else
-      question.vote_count -= 1
+    if self.voteable_type == "Question"
+      model = Question.find(self.voteable_id)
+    elsif self.voteable_type == "Answer"
+      model = Answer.find(self.voteable_id)
     end
 
-    question.save
+    if self.up == true
+      model.vote_count += 1
+    else
+      model.vote_count -= 1
+    end
+
+    model.save
   end
 end

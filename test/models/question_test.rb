@@ -26,10 +26,6 @@ class QuestionTest < ActiveSupport::TestCase
     assert question.has_chosen_answer?, "has_chosen_answer? should be true"
   end
 
-  test "should have a vote count" do
-    check_presence(@question, :vote_count)
-  end
-
   test "should increment vote count by 1 after up vote" do
     question = questions(:one)
     voter = users(:two)
