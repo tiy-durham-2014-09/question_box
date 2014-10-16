@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :comments
   has_many :votes
+  has_many :questions
 
   validates :email,
             presence: true,

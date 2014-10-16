@@ -5,6 +5,9 @@ class Vote < ActiveRecord::Base
   validates :user, presence: true
   validates :value, :inclusion => {:in => [true, false]}
 
+  after_create :add_ten_points
+  after_create :subtract_five_points
+
   def current_user
     @current_user = current_user
   end

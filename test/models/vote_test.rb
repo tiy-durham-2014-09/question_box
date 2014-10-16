@@ -19,15 +19,23 @@ class VoteTest < ActiveSupport::TestCase
     refute vote.value?
   end
 
-#   test "should add 10 for true value" do
-#     # vote = Vote.new(value: true)
-#     # vote.save
-#     Vote.where(value: true)
-#     votes(:one).score += 10
-#
-#
-#     assert votes(:one).score, 11
-#   end
+  test "should add 10 points from user of question when voted positive" do
+    question = questions(:one)
+     previous_score = question.user.score
+     question.votes.create(value: true, user: users(:one))
+     question.user.reload
+     assert_equal 10, question.user.score - previous_score
+   end
+
+
+  test "should subtract 5 points from user of question when voted negative" do
+    question = questions(:one)
+     previous_score = question.user.score
+     question.votes.create(value: false, user: users(:one))
+     question.user.reload
+     assert_equal (-4), previous_score - question.user.score
+   end
+
 #
 #   test "should subtract 5 points from user of question/answer when voted negative" do
 #   vote = votes(:one)
@@ -43,8 +51,3 @@ class VoteTest < ActiveSupport::TestCase
 #   end
 #
 end
-
-
-# question = questions(:one)
-# answer = question.answers.first
-# refute answer.chosen?
