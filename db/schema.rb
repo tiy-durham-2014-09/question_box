@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141016032254) do
+ActiveRecord::Schema.define(version: 20141016034512) do
 
   create_table "answers", force: true do |t|
     t.text     "text"
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(version: 20141016032254) do
   end
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id"
+
+  create_table "questions_tags", id: false, force: true do |t|
+    t.integer  "question_id"
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "questions_tags", ["question_id"], name: "index_questions_tags_on_question_id"
+  add_index "questions_tags", ["tag_id"], name: "index_questions_tags_on_tag_id"
 
   create_table "tags", force: true do |t|
     t.string   "name"
