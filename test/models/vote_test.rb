@@ -23,8 +23,8 @@ class VoteTest < ActiveSupport::TestCase
     user = question.user
 
 		assert_difference 'user.score', 10 do
-      vote = Vote.new(voteable_id:question.id, voteable_type:"Question")
-		end
+      vote = Vote.create!(voteable_id:question.id, voteable_type:"Question",user: user,up:true)
+    end
 	end
 
 end
