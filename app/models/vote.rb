@@ -1,15 +1,38 @@
 class Vote < ActiveRecord::Base
-  belongs_to :user
   belongs_to :voteable, polymorphic: true
+  belongs_to :user
 
+  validates :value,
+            presence: true,
+            inclusion: { in: [1, -1], message: "Vote must be 1 or -1" }
   validates :user, presence: true
-  validates :voteable_id, presence: true
-  validates :voteable_type, presence: true
-  validates :value, numericality: { only_integer: true }
 
-  # if a question or answer that a user created receives a positive vote, the creating user's score increases by 10 points (value of vote is 10)
+  validate :check_against_self_voting
 
-  # if a question or answer that a user created receives a negative vote, the creating user's score decreases by 5 points (value of vote is -5)
+  before_save :adjust_points
 
-  #	when a user makes a negative vote, -1 points to that user (the voter, not the creator of the content that was voted on)
+  def check_against_self_voting
+    return unless voteable.respond_to?(:user) && voteable.user
+
+    if voteable.user == user
+      errors.add(:user, "cannot vote on their own content")
+    end
+  end
+
+  def adjust_points
+    if value > 0
+      voteable.user.increment!(:score, 10)
+    elsif value < 0
+      if voteable.user.score >= 5
+        voteable.user.decrement!(:score, 5)
+      else
+        voteable.user.update_attribute(:score, 0)
+      end
+
+      user.decrement!(:score)
+    end
+
+    voteable.user.save
+  end
+
 end
