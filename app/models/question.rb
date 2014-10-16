@@ -9,7 +9,14 @@ class Question < ActiveRecord::Base
   validates :text, presence: true
   validates :user, presence: true
 
+  validates :votevalue, presence: true
+
+
   def has_chosen_answer?
     answers.where(chosen: true).count > 0
   end
+
+	# def total_votevalue
+	#
+	# end
 end

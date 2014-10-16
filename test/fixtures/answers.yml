@@ -5,9 +5,11 @@ one_for_question_one:
   user: two
   question: one
   chosen: false
+  votevalue: 1
 
 two_for_question_one:
   text: MyText
   user: chet
   question: one
   chosen: false
+  votevalue: 1
