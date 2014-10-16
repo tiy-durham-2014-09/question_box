@@ -1,7 +1,15 @@
 require 'test_helper'
 
 class TagTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    @tag = Tag.new
+  end
+
+  test "should have a name" do
+    check_presence(@tag, :name)
+  end
+
+  test "should have and belong to a question" do
+    check_presence(@tag, :question)
+  end
 end
