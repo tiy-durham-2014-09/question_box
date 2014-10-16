@@ -19,4 +19,5 @@ class UserTest < ActiveSupport::TestCase
 
   should have_many(:questions)
   should have_many(:answers)
+  should have_many(:votes)
 end
