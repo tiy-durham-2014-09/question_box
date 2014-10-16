@@ -26,7 +26,9 @@ class Answer < ActiveRecord::Base
   end
 
   #	has many comments (polymorphic association)
+
   #	has many votes (polymorphic association)
+
   #	knows its total score (determined by votes)
 
 end

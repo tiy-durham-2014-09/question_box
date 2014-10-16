@@ -11,8 +11,11 @@ class Question < ActiveRecord::Base
   end
 
   #	has many comments (polymorphic association)
+
   #	has many votes (polymorphic association)
+
   #	knows its total score (determined by votes)
+
   #	has and belongs to many tags (tags being short phrases that show the topics of the question)
 
 end

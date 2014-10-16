@@ -4,5 +4,6 @@ class Comment < ActiveRecord::Base
   belongs_to :commentable, polymorphic: true
 
   #	belongs to a user
+
   #	belongs to a "commentable" (polymorphic association)
 end
