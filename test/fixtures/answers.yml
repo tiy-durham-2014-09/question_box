@@ -2,12 +2,14 @@
 
 one_for_question_one:
   text: MyText
-  user: two
+  user: one
+  user_id: 1
   question: one
   chosen: false
 
 two_for_question_one:
   text: MyText
   user: chet
+  user_id: 2
   question: one
   chosen: false
