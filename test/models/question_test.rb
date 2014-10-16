@@ -12,7 +12,7 @@ class QuestionTest < ActiveSupport::TestCase
   test "should have text" do
     check_presence(@question, :text)
   end
-
+  
   test "should belong to a user" do
     check_presence(@question, :user)
   end
@@ -26,10 +26,3 @@ class QuestionTest < ActiveSupport::TestCase
     assert question.has_chosen_answer?, "has_chosen_answer? should be true"
   end
 end
-
-
-
-
-
-
-
