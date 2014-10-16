@@ -27,4 +27,9 @@ class Answer < ActiveRecord::Base
       user.save
     end
   end
+
+	answer.votes.build(:votevalue, |n|)
+
+
+
 end

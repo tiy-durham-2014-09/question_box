@@ -62,15 +62,15 @@ class AnswerTest < ActiveSupport::TestCase
 	  check_presence(@answer, :votevalue)
   end
 
-	test "should know its votevalue" do
-		answer.votes.all
-		answer = answers(:one_for_question_one)
-		answer1 = answer.votes.build(votevalue: 1)
-		answer = answers(:two_for_question_one)
-		answer2 = answer.votes.build(votevalue: 1)
-		@votevalue = answer1.add(answer2)
-		@votevalue = 3
-		assert_not_equal 2, message: "this votevalue is incorrect"
-	end
+	# test "should know its votevalue" do
+	# 	votevalue = answer.votes.all.flatten.sum
+	# 	answer = answers(:one_for_question_one)
+	# 	answer1 = answer.votes.build(votevalue: 1)
+	# 	answer = answers(:two_for_question_one)
+	# 	answer2 = answer.votes.build(votevalue: 1)
+	# 	@votevalue = answer1.add(answer2)
+	# 	@votevalue = 3
+	# 	assert_not_equal 2, message: "this votevalue is incorrect"
+	# end
 
 end

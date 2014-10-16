@@ -16,10 +16,14 @@ class VoteTest < ActiveSupport::TestCase
 		assert_not_empty @vote.errors[:value]
 	end
 
-	# test "should add 10 pts to user score when user answer or question is voted up" do
-	# 	current_score = @user.score
-	#
-	# end
+	test "should add 10 pts to user score when user answer or question is voted up" do
+		current_user = user(:one)
+		current_score = current_user.score
+		votevalue =
+		current_score = current_score + 10
+
+
+	end
 
 	# test "should subtract 5 pts from user score when user answer or question is voted down" do
 	#
