@@ -12,4 +12,9 @@ class Question < ActiveRecord::Base
   def has_chosen_answer?
     answers.where(chosen: true).count > 0
   end
+
+  def score
+    votes.sum(:value)
+  end
+
 end
