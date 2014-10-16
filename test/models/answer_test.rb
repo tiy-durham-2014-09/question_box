@@ -57,4 +57,11 @@ class AnswerTest < ActiveSupport::TestCase
       answer.update(chosen: true)
     end
   end
+
+  # my tests
+
+  # not sure how to write this
+
+  #test "should know its total score" do
+  #end
 end

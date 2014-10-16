@@ -13,7 +13,9 @@ class CommentTest < ActiveSupport::TestCase
     check_presence(@comment, :user)
   end
 
-  #I am not sure how to properly test a polymorphic association
+  # polymorphic association
   test "should belong to a commentable" do
+    check_presence(@comment, :commentable_id)
+    check_presence(@comment, :commentable_type)
   end
 end

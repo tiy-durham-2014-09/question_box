@@ -1,9 +1,10 @@
 class Vote < ActiveRecord::Base
   belongs_to :user
+  belongs_to :voteable, polymorphic: true
 
-  #	belongs to a user
-
-  #	belongs to a "voteable" (polymorphic association)
+  validates :user, presence: true
+  validates :voteable_id, presence: true
+  validates :voteable_type, presence: true
 
   #	is positive or negative (+1 or -1)
 

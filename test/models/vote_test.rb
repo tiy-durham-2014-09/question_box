@@ -9,8 +9,10 @@ class VoteTest < ActiveSupport::TestCase
     check_presence(@vote, :user)
   end
 
-  #I am not sure how to properly test a polymorphic association
-  test "should belong to a commentable" do
+  # a polymorphic association
+  test "should belong to a voteable" do
+    check_presence(@vote, :voteable_id)
+    check_presence(@vote, :voteable_type)
   end
 
   test "should have a positive or negative integer for a value" do
@@ -20,14 +22,14 @@ class VoteTest < ActiveSupport::TestCase
   end
 
   #Not sure how to do this mathy test
-  test "should be worth +10 points to a user when something (a question or answer) they created is given a positive vote" do
-  end
+  #test "should be worth +10 points to a user when something (a question or answer) they created is given a positive vote" do
+  #end
 
   #Not sure how to do this mathy test
-  test "should be worth -5 points to a user when something (a question or answer) they created is given a negative vote" do
-  end
+  #test "should be worth -5 points to a user when something (a question or answer) they created is given a negative vote" do
+  #end
 
   #Not sure how to do this mathy test
-  test "should be worth -1 points to a user when they make a negative vote" do
-  end
+  #test "should be worth -1 points to a user when they make a negative vote" do
+  #end
 end
