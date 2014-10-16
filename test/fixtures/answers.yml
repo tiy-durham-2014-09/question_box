@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one_for_question_one:
+one:
   text: MyText
   user: one
   user_id: 1
@@ -8,7 +8,7 @@ one_for_question_one:
   chosen: false
   vote_count: 0
 
-two_for_question_one:
+two:
   text: MyText
   user: chet
   user_id: 2
