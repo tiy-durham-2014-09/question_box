@@ -9,6 +9,14 @@ class Question < ActiveRecord::Base
   validates :text, presence: true
   validates :user, presence: true
 
+  def score
+    score = 0
+    votes.each do |s|
+      score += s.value
+    end
+    score
+  end
+
   def has_chosen_answer?
     answers.where(chosen: true).count > 0
   end

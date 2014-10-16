@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_id: 
-  voteable_id: 
+  user: one
+  voteable_id:
+  value: true
 
 two:
-  user_id: 
-  voteable_id: 
+  user: two
+  voteable_id:
+  value: false

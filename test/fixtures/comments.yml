@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_id: 
-  commentable_id: 
+  user: one
+  text: HERE IS TEXT
+  commentable_id:
 
 two:
-  user_id: 
-  commentable_id: 
+  user: two
+  text: TEXT IS HERE
+  commentable_id:

@@ -12,6 +12,14 @@ class Answer < ActiveRecord::Base
 
   after_save :award_user_points
 
+  def score
+    score = 0
+    votes.each do |s|
+      score += s.value
+    end
+    score
+  end
+
   def check_one_chosen_answer_per_question
     return unless question.present?
 
