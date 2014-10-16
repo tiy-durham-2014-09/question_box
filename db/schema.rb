@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141016002640) do
+ActiveRecord::Schema.define(version: 20141016023506) do
 
   create_table "answers", force: true do |t|
     t.text     "text"
@@ -64,7 +64,12 @@ ActiveRecord::Schema.define(version: 20141016002640) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "comment_id"
+    t.integer  "vote_id"
   end
+
+  add_index "users", ["comment_id"], name: "index_users_on_comment_id"
+  add_index "users", ["vote_id"], name: "index_users_on_vote_id"
 
   create_table "votes", force: true do |t|
     t.integer  "user_id"

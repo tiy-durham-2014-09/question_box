@@ -9,7 +9,7 @@ class TagTest < ActiveSupport::TestCase
     check_presence(@tag, :name)
   end
 
-  test "should have and belong to a question" do
+  test "should belong to a question" do
     check_presence(@tag, :question)
   end
 end

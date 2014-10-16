@@ -24,4 +24,9 @@ class Answer < ActiveRecord::Base
       user.save
     end
   end
+
+  #	has many comments (polymorphic association)
+  #	has many votes (polymorphic association)
+  #	knows its total score (determined by votes)
+
 end

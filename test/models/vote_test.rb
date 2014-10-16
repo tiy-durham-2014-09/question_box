@@ -13,8 +13,10 @@ class VoteTest < ActiveSupport::TestCase
   test "should belong to a commentable" do
   end
 
-  #Not sure how to do this mathy test
-  test "should have a positive or negative integer for a score" do
+  test "should have a positive or negative integer for a value" do
+    @vote.value = 1.23
+    assert @vote.invalid?, "Vote should have an integer value"
+    assert_not_empty @vote.errors[:value]
   end
 
   #Not sure how to do this mathy test
