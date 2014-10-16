@@ -4,10 +4,10 @@ one:
   user: one
   voteable_id:
   voteable_type: Voteable
-  value: true
+  value: -1
 
 two:
   user: one
   voteable_id:
   voteable_type: Voteable
-  value: false
+  value: -1

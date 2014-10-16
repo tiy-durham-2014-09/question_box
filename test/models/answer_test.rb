@@ -14,7 +14,7 @@ class AnswerTest < ActiveSupport::TestCase
   end
 
   test "should have a question" do
-    check_presence(@answer, :user)
+    check_presence(@answer, :question)
   end
 
   test "should only allow one chosen answer per question" do
