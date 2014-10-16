@@ -25,11 +25,22 @@ class QuestionTest < ActiveSupport::TestCase
     question.answers.first.update(chosen: true)
     assert question.has_chosen_answer?, "has_chosen_answer? should be true"
   end
+
+  test "should have many comments" do
+    check_presence(@question, :comments)
+  end
+
+  test "should have many votes" do
+    check_presence(@question, :votes)
+  end
+
+  # test "should have a value from votes" do
+  #   check_presence(@question, :value)
+  # end
+  #
+  # test "should have an integer for value" do
+  #   @question.value = 3.14
+  #   assert @question.invalid?, "Question should have an integer for value"
+  #   assert_not_empty @user.errors[:score]
+  # end
 end
-
-
-
-
-
-
-
