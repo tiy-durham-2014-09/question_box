@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20141015202023) do
+=======
+ActiveRecord::Schema.define(version: 20141016173750) do
+>>>>>>> 4e14ee86f08850174ea95e735c3cc01ea453a7c1
 
   create_table "answers", force: true do |t|
     t.text     "text"
@@ -44,6 +48,7 @@ ActiveRecord::Schema.define(version: 20141015202023) do
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id"
 
+<<<<<<< HEAD
   create_table "tags", force: true do |t|
     t.string   "name"
     t.integer  "question_id"
@@ -52,10 +57,20 @@ ActiveRecord::Schema.define(version: 20141015202023) do
   end
 
   add_index "tags", ["question_id"], name: "index_tags_on_question_id"
+=======
+  create_table "questions_tags", id: false, force: true do |t|
+    t.integer "question_id", null: false
+    t.integer "tag_id",      null: false
+  end
+
+  create_table "tags", force: true do |t|
+    t.string "name"
+  end
+>>>>>>> 4e14ee86f08850174ea95e735c3cc01ea453a7c1
 
   create_table "users", force: true do |t|
     t.string   "name"
-    t.integer  "score"
+    t.integer  "score",           default: 1
     t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at"
@@ -63,12 +78,22 @@ ActiveRecord::Schema.define(version: 20141015202023) do
   end
 
   create_table "votes", force: true do |t|
+<<<<<<< HEAD
     t.boolean  "is_positive"
     t.integer  "user_id"
+=======
+    t.integer  "user_id"
+    t.integer  "value"
+    t.integer  "voteable_id"
+    t.string   "voteable_type"
+>>>>>>> 4e14ee86f08850174ea95e735c3cc01ea453a7c1
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
   add_index "votes", ["user_id"], name: "index_votes_on_user_id"
 
+=======
+>>>>>>> 4e14ee86f08850174ea95e735c3cc01ea453a7c1
 end

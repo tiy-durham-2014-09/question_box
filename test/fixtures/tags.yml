@@ -1,9 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: ruby
-  question_id: 1
+  name: TagOne
 
 two:
-  name: rails
-  question_id: 2
+  name: TagTwo
+
