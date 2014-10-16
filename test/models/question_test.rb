@@ -25,6 +25,13 @@ class QuestionTest < ActiveSupport::TestCase
     question.answers.first.update(chosen: true)
     assert question.has_chosen_answer?, "has_chosen_answer? should be true"
   end
+
+  test "should have a votevalue" do
+	  check_presence(@question, :votevalue)
+  end
+
+
+
 end
 
 

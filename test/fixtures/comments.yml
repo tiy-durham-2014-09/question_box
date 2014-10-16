@@ -1,16 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
+  date: 2014-10-15 14:54:47
   text: MyText
-  user: one
-  tag_id: 1
-  votevalue: 1
-
+  user_id: 1
+  commentable_id: 1
 
 two:
-  title: MyString
+  date: 2014-10-15 14:54:47
   text: MyText
-  user: chet
-  tag_id: 2
-  votevalue: 1
+  user_id: 2
+  commentable_id: 2
