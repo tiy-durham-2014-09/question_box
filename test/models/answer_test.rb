@@ -58,5 +58,17 @@ class AnswerTest < ActiveSupport::TestCase
     end
   end
 
-  # test "should be able to tally its votes and give a score"
+  test "should be able to tally its votes and give a score" do
+    new_answer = answers(:one_for_question_one)
+    new_answer.votes.build(value: 1, user: users(:one))
+    assert new_answer.score == 1, "score should get value of votes"
+
+    new_answer.votes.build(value: 1, user: users(:one))
+    assert new_answer.score == 2, "score should equal sum value of votes"
+
+    new_answer.votes.build(value: -1, user: users(:one))
+    new_answer.votes.build(value: -1, user: users(:one))
+    new_answer.votes.build(value: -1, user: users(:one))
+    assert new_answer.score == -1, "score should equal sum value of votes even when negative"
+  end
 end

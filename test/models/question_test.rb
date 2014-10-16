@@ -29,15 +29,15 @@ class QuestionTest < ActiveSupport::TestCase
   test "should be able to tally its votes and give a score" do
     new_question = questions(:one)
     new_question.votes.build(value: 1, user: users(:one))
-    assert new_question.score == 1
-    #
-    # @question.votes.build(value: 1, user: users(:one))
-    # assert @questions.score == 2
-    #
-    # @question.votes.build(value: -1, user: users(:one))
-    # @question.votes.build(value: -1, user: users(:one))
-    # @question.votes.build(value: -1, user: users(:one))
-    # assert @questions.score == -1
+    assert new_question.score == 1, "score should get value of votes"
+
+    new_question.votes.build(value: 1, user: users(:one))
+    assert new_question.score == 2, "score should equal sum value of votes"
+
+    new_question.votes.build(value: -1, user: users(:one))
+    new_question.votes.build(value: -1, user: users(:one))
+    new_question.votes.build(value: -1, user: users(:one))
+    assert new_question.score == -1, "score should equal sum value of votes even when negative"
   end
 end
 

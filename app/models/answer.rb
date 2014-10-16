@@ -27,4 +27,12 @@ class Answer < ActiveRecord::Base
 
   has_many :comments, as: :commentable
   has_many :votes, as: :voteable
+
+  def score
+    score = 0
+    votes.each do |v|
+      score += v.value
+    end
+    score
+  end
 end

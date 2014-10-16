@@ -18,5 +18,6 @@ class Question < ActiveRecord::Base
     votes.each do |v|
       score += v.value
     end
+    score
   end
 end
