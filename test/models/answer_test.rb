@@ -18,18 +18,9 @@ class AnswerTest < ActiveSupport::TestCase
   end
 
   test "should only allow one chosen answer per question" do
-    # In order to make sure only one answer can be chosen per question
-    # I need to set a current answer for a question to be chosen.
-    # I am using an answer from the fixtures.
     chosen_answer = answers(:one_for_question_one)
     chosen_answer.update(chosen: true)
-
-    # I need to set my answer model under test to have the same question
-    # as the answer from the fixtures, so that I can test that two answers
-    # for the same question cannot be chosen.
     @answer.question = chosen_answer.question
-
-    # Choose a second answer for the question.
     @answer.chosen = true
 
     assert @answer.invalid?, "Only one answer can be chosen per question"
@@ -48,13 +39,11 @@ class AnswerTest < ActiveSupport::TestCase
     question = questions(:one)
     answer = question.answers.first
     refute answer.chosen?
-
-    # previous_score = answer.user.score
-    # answer.update(chosen: true)
-    # assert_equal 100, user.score - previous_score
-
     assert_difference 'answer.user.score', 100 do
       answer.update(chosen: true)
     end
   end
+
+  # test
+
 end
