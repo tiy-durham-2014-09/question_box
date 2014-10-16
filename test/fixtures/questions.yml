@@ -4,8 +4,10 @@ one:
   title: MyString
   text: MyText
   user: one
+  vote_count: 0
 
 two:
   title: MyString
   text: MyText
   user: chet
+  vote_count: 0

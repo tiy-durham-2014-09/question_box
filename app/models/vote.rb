@@ -7,6 +7,7 @@ class Vote < ActiveRecord::Base
 	validates :voteable_type, presence: true
 
   after_create :award_user_points
+  after_create :increase_vote_count
 
   def award_user_points
     if self.voteable_type == "Question"
@@ -26,6 +27,14 @@ class Vote < ActiveRecord::Base
 
       self.user.score -= 1
       self.user.save
+    end
+  end
+
+  def increase_vote_count
+    if self.voteable_type == "Question"
+      question = Question.find(self.voteable_id)
+      question.vote_count += 1
+      question.save
     end
   end
 end

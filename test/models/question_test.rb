@@ -25,6 +25,22 @@ class QuestionTest < ActiveSupport::TestCase
     question.answers.first.update(chosen: true)
     assert question.has_chosen_answer?, "has_chosen_answer? should be true"
   end
+
+  test "should have a vote count" do
+    check_presence(@question, :vote_count)
+  end
+
+  test "should increment vote count by 1 after up vote" do
+    question = questions(:one)
+    voter = users(:two)
+
+    Vote.create!(up: true, voteable_id: question.id, voteable_type: "Question", user: voter)
+
+    question1 = Question.find(question.id)
+    print question1.inspect
+    assert_equal 1, question1.vote_count
+  end
+
 end
 
 

@@ -35,7 +35,7 @@ class VoteTest < ActiveSupport::TestCase
 
     assert_equal 995, creator1.score
     assert_equal 0, voter_post.score
-
   end
+
 
 end

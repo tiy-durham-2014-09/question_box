@@ -1,8 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-down_vote_for_user_one_question:
+up_vote_for_user_one_question:
   user_id: 1
   user: one
   voteable_id: 1
   voteable_type: "Question"
-  up: true
+  up: false
