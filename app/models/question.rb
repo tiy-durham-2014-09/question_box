@@ -18,4 +18,8 @@ class Question < ActiveRecord::Base
   def question_score_total
     #ADD STUFF HERE
   end
+  def has_positive_vote?
+    votes.where(value:true).count > 0
+  end
+
 end
