@@ -7,6 +7,7 @@ class Vote < ActiveRecord::Base
 
   after_create :add_ten_points
   after_create :subtract_five_points
+  after_create :subtract_one_point
 
   def current_user
     @current_user = current_user
@@ -23,6 +24,13 @@ class Vote < ActiveRecord::Base
     if value == false
       voteable.user.score -= 5
       voteable.user.save
+    end
+  end
+
+  def subtract_one_point
+    if value == false
+      self.user.score -= 1
+      self.user.save
     end
   end
 
