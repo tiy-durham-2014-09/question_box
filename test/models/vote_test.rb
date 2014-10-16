@@ -1,62 +1,88 @@
 require 'test_helper'
 
 class VoteTest < ActiveSupport::TestCase
-  setup do
-    @vote = Vote.new
-  end
-  test "is associated to a user" do
-    check_presence(@vote, :user)
-  end
-  # test "belongs to voteable" do
-  #   check_presence(@vote, :voteable_id)
-  #   check_presence(@vote, :voteable_type)
-  # end
-  test "has a positive value" do
-    vote = votes(:one)
-    vote.update(value:-1)
-    refute vote.is_positive?, "is_positive? should be false"
+  should belong_to(:user)
+  should belong_to(:voteable)
 
-    vote.update(value:1)
-    assert vote.is_positive?, "is_positive? should be true"
-  end
-  test "has a negative value" do
-    vote = votes(:one)
-    vote.update(value: 1)
-    refute vote.is_negative?, "is_negative? should be false"
+  should validate_presence_of(:user)
+  should validate_presence_of(:value)
+  should validate_inclusion_of(:value).in_array([-1, 1])
 
-    vote.update(value:-1)
-    assert vote.is_negative?, "is_negative? should be true"
- end
-  test "has a valid value" do
-    vote = votes(:one)
-    vote.update(value: "A")
-    refute vote.value_is_valid, "value should not be valid"
+  context "a vote" do
+    setup do
+      @voter = users(:voter)
+      @vote = Vote.new(user: @voter)
+    end
 
-    vote.update(value: 1)
-    assert vote.value_is_valid, "1 should be valid"
+    should "not be on your own stuff" do
+      @vote.voteable = Question.new(user: @voter)
 
-    vote.update(value:-1)
-    assert vote.value_is_valid, "-1 should be valid"
-  end
-  test "10 points given to user who authored if vote is positive" do
-    question = questions(:one)
-    previous_score = question.user.score # = 0
-    question.votes.create(user: users(:one), value: 1) #question now has a vote value of 1
-    question.user.reload
-    assert_equal 10,  question.user.score - previous_score
-  end
-  test "5 points taken from user who authored if vote is negative" do
-    question = questions(:one)
-    previous_score = question.user.score # = 0
-    question.votes.create(user: users(:one), value: -1) #question now has a vote value of -1
-    puts "question score #{question.user.score}"
-    question.user.reload
-    y = question.user.score
-    puts "question score #{question.user.score}"
-    # puts self.user.score
-    assert_equal (5),  previous_score - y
-  end
-  test "1 point is taken from user casting vote if vote is negative" do
+      assert @vote.invalid?, "Cannot vote on your own stuff"
+      assert_not_empty @vote.errors[:user]
+    end
 
+    context "that is positive" do
+      should "award 10 points to a question's owner" do
+        question = questions(:one)
+        receiver = question.user
+
+        assert_difference "receiver.score", 10 do
+          question.votes.create!(:value => 1, :user => @voter)
+          receiver.reload
+        end
+      end
+
+      should "award 10 points to an answer's owner" do
+        answer = answers(:one_for_question_one)
+        receiver = answer.user
+
+        assert_difference "receiver.score", 10 do
+          answer.votes.create!(:value => 1, :user => @voter)
+          receiver.reload
+        end
+      end
+    end
+
+    context "that is negative" do
+      should "subtract 5 points from a question's owner if negative" do
+        question = questions(:one)
+        receiver = question.user
+
+        assert_difference "receiver.score", -5 do
+          question.votes.create!(:value => -1, :user => @voter)
+          receiver.reload
+        end
+      end
+
+      should "subtract 5 points from an answer's owner if score >= 5" do
+        answer = answers(:one_for_question_one)
+        receiver = answer.user
+        receiver.update(score: 10)
+
+        assert_difference "receiver.score", -5 do
+          answer.votes.create!(:value => -1, :user => @voter)
+          receiver.reload
+        end
+      end
+
+      should "subtract all points from an answer's owner if score < 5" do
+        answer = answers(:one_for_question_one)
+        receiver = answer.user
+        receiver.update(score: 2)
+
+        answer.votes.create!(:value => -1, :user => @voter)
+        answer.user.reload
+
+        assert_equal 0, receiver.score
+      end
+
+      should "subtract 1 point for voting negative" do
+        question = questions(:one)
+
+        assert_difference "@voter.score", -1 do
+          question.votes.create!(:value => -1, :user => @voter)
+        end
+      end
+    end
   end
 end

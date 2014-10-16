@@ -1,36 +1,38 @@
 class Vote < ActiveRecord::Base
-  belongs_to :user
   belongs_to :voteable, polymorphic: true
+  belongs_to :user
 
+  validates :value,
+            presence: true,
+            inclusion: { in: [1, -1], message: "Vote must be 1 or -1" }
   validates :user, presence: true
-  # validates :voteable_id, presence: true
-  # validates :voteable_type, presence: true
-  validates :value, { presence: true,
-                      if: "value_is_valid" }
 
-  after_create :scoring
+  validate :check_against_self_voting
 
-  def is_positive?
-    self.value == 1
-  end
+  before_save :adjust_points
 
-  def is_negative?
-    self.value == -1
-  end
+  def check_against_self_voting
+    return unless voteable.respond_to?(:user) && voteable.user
 
-  def value_is_valid
-    self.value == 1 || self.value == -1
-  end
-
-  def scoring
-    if value == 1
-      user.score += 10
-      user.save
-    elsif value == -1
-      user.score -= 5
-      user.save
-      # self.user.score -= 1
-      # self.user.save
+    if voteable.user == user
+      errors.add(:user, "cannot vote on their own content")
     end
   end
+
+  def adjust_points
+    if value > 0
+      voteable.user.increment!(:score, 10)
+    elsif value < 0
+      if voteable.user.score >= 5
+        voteable.user.decrement!(:score, 5)
+      else
+        voteable.user.update_attribute(:score, 0)
+      end
+
+      user.decrement!(:score)
+    end
+
+    voteable.user.save
+  end
+
 end

@@ -1,7 +1,6 @@
 class Answer < ActiveRecord::Base
   belongs_to :user
   belongs_to :question
-  has_many :comments, as: :commentable
   has_many :votes, as: :voteable
 
   validates :text, presence: true
@@ -26,7 +25,9 @@ class Answer < ActiveRecord::Base
       user.save
     end
   end
-  def answer_score_total
-    #ADD STUFF HERE
+
+  def score
+    votes.sum(:value)
   end
+
 end
