@@ -19,7 +19,7 @@ class VoteTest < ActiveSupport::TestCase
 		@vote = Vote.new
 	end
 
-	test "should has a user" do
+	test "should have a user" do
 		check_presence(@vote, :user)
 	end
 
