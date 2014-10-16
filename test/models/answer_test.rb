@@ -55,8 +55,7 @@ class AnswerTest < ActiveSupport::TestCase
     vote1 = answer.votes.create!(:value => 1, :user => voter1)
     vote2 = answer.votes.create!(:value => 1, :user => voter2)
 
-    assert_equal 2, answer.total_score
-
+    assert_equal 2, answer.score
   end
 
 end

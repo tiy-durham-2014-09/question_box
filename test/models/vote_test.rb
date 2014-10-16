@@ -43,7 +43,7 @@ class VoteTest < ActiveSupport::TestCase
     assert_equal 10, reciever.score - previous_score
   end
 
-  test "should subtract 5 points to a question's owner if negative" do
+  test "should subtract 5 points from a question's owner if negative" do
     voter = users(:two)
     question = questions(:one)
     reciever = question.user
@@ -54,7 +54,7 @@ class VoteTest < ActiveSupport::TestCase
     assert_equal -5, reciever.score - previous_score
   end
 
-  test "should subtract 5 points to an answer's owner if negative" do
+  test "should subtract 5 points from an answer's owner if negative" do
     voter = users(:one)
     answer = answers(:one_for_question_one)
     reciever = answer.user
