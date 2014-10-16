@@ -58,10 +58,7 @@ class AnswerTest < ActiveSupport::TestCase
     end
   end
 
-  # my tests
-
-  # not sure how to write this
-
-  #test "should know its total score" do
+  #test "should know its total score (determined by votes)" do
+    # something related to the previous test? should there be a test?
   #end
 end

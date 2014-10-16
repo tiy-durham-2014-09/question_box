@@ -5,12 +5,11 @@ class Vote < ActiveRecord::Base
   validates :user, presence: true
   validates :voteable_id, presence: true
   validates :voteable_type, presence: true
+  validates :value, numericality: { only_integer: true }
 
-  #	is positive or negative (+1 or -1)
+  # if a question or answer that a user created receives a positive vote, the creating user's score increases by 10 points (value of vote is 10)
 
-  #	when a positive vote is given to something a user created (question or answer), +10 points to that user
+  # if a question or answer that a user created receives a negative vote, the creating user's score decreases by 5 points (value of vote is -5)
 
-  #	when a negative vote is given to something a user created (question or answer), -5 points to that user
-
-  #	when a user makes a negative vote, -1 points to that user
+  #	when a user makes a negative vote, -1 points to that user (the voter, not the creator of the content that was voted on)
 end

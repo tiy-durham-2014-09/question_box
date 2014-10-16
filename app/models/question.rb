@@ -13,12 +13,6 @@ class Question < ActiveRecord::Base
     answers.where(chosen: true).count > 0
   end
 
-  #	has many comments (polymorphic association)
-
-  #	has many votes (polymorphic association)
-
   #	knows its total score (determined by votes)
-
-  #	has and belongs to many tags (tags being short phrases that show the topics of the question)
 
 end

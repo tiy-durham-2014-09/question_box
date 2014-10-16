@@ -26,11 +26,10 @@ class QuestionTest < ActiveSupport::TestCase
     assert question.has_chosen_answer?, "has_chosen_answer? should be true"
   end
 
-  # my tests
-
-  # not sure how to write this (determined by votes)
-  #test "should know its total score" do
+  # not sure how to write this test
+  #test "should know its total score (determined by votes)" do
   #end
+
 end
 
 

@@ -21,15 +21,15 @@ class VoteTest < ActiveSupport::TestCase
     assert_not_empty @vote.errors[:value]
   end
 
-  #Not sure how to do this mathy test
+  #Not sure how to do this test
   #test "should be worth +10 points to a user when something (a question or answer) they created is given a positive vote" do
   #end
 
-  #Not sure how to do this mathy test
+  #Not sure how to do this test
   #test "should be worth -5 points to a user when something (a question or answer) they created is given a negative vote" do
   #end
 
-  #Not sure how to do this mathy test
+  #Not sure how to do this test
   #test "should be worth -1 points to a user when they make a negative vote" do
   #end
 end
