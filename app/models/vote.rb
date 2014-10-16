@@ -6,10 +6,25 @@ class Vote < ActiveRecord::Base
   validates :voteable, presence: true
   validates :value, numericality: { only_integer: true, less_than: 2, greater_than: -2 }
 
-  after_save :decreases_voters_score
+  after_save :subtract_voter_points
+  after_save :award_author_points
 
-  def decreases_voters_score
-    user.score -= 1
+  def subtract_voter_points
+    if value == -1
+      unless user.score == 0
+        user.score -= 1
+        user.save
+      end
+    end
+  end
+
+  def award_author_points
+    if value == 1
+      puts "vote is positive"
+      voteable.user.score += 10
+      puts "added 10 points to #{voteable.user.name}, whose score is now #{voteable.user.score}"
+      voteable.user.save
+    end
   end
 
 end

@@ -32,14 +32,26 @@ class VoteTest < ActiveSupport::TestCase
   end
 
   test "should decrease user's score by 1 when created as negative" do
-    user = users(:one)
+    voter = users(:one)
     question = questions(:two)
-    assert_difference 'user.score', -1 do
-      question.votes.create!(value: -1, user: user )
+    assert_difference 'voter.score', -1 do
+      question.votes.create!(value: -1, user: voter)
+    end
+
+    assert_no_difference 'voter.score', do
+      question.votes.create!(value: 1, user: voter)
     end
   end
 
-  # test "should increase voteable's user's score by 10 when created as positive"
+  test "should increase voteable's user's score by 10 when created as positive" do
+    question = questions(:two)
+    voter = users(:one)
+    author = users(:chet)
+    assert_difference 'author.score', 10 do
+      question.votes.create!(value: 1, user: voter)
+    end
+  end
+
   # test "should decrease voteable's user's score by 5 when created as negative"
   # test "should not be created a second time for the same user on the same voteable"
 
