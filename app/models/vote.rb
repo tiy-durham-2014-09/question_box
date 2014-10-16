@@ -7,7 +7,7 @@ class Vote < ActiveRecord::Base
   validates :value, numericality: { only_integer: true, less_than: 2, greater_than: -2 }
 
   after_save :subtract_voter_points
-  after_save :award_author_points
+  after_create :award_author_points
 
   def subtract_voter_points
     if value == -1
