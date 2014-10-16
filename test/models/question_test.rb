@@ -13,7 +13,7 @@ class QuestionTest < ActiveSupport::TestCase
     check_presence(@question, :text)
   end
 
-  test "should belong to a user" do
+  test "should have a user" do
     check_presence(@question, :user)
   end
 

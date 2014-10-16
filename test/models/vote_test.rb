@@ -1,6 +1,23 @@
 require 'test_helper'
 
 class VoteTest < ActiveSupport::TestCase
+  # def vote (up,model)
+  #   if model == "Question"
+  #     model = questions(:one)
+  #   elsif model == "Answer"
+  #     model = answers(:one)
+  #   end
+  #
+  #   voter = users(:two)
+  #
+  #   Vote.create_vo
+  #   Vote.create!(up: true, voteable_id: question.id, voteable_type: "Question", user: voter)
+  #
+  #
+  #   creator1 = question.user
+  # end
+  #
+  # end
 	setup do
 		@vote = Vote.new
 	end
@@ -20,8 +37,8 @@ class VoteTest < ActiveSupport::TestCase
 
     Vote.create!(up: true, voteable_id: question.id, voteable_type: "Question", user: voter)
 
-    creator = question.user
-    assert_equal 11, creator.score
+    creator1 = question.user
+    assert_equal 11, creator1.score
   end
 
   test "should deduct 5 pts from ques/answer creator for a down vote" do
