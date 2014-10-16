@@ -1,0 +1,27 @@
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <% if logged_in? %>
+        <a href="/"><h1 class="top_h1">QuestionBox</h1></a>
+      <% else %>
+        <a href="/login/new"><h1 class="top_h1">QuestionBox</h1></a>
+      <% end %>
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <% if logged_in? %>
+      <li class="has-dropdown">
+        <a href="/"><%= current_user.name %>'s Account</a>
+        <ul class="dropdown">
+            <li><%= link_to "Logout", "/login", :method => :delete %></li>
+        </ul>
+      </li>
+      <% end %>
+    </ul>
+  </section>
+</nav>

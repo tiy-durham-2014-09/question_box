@@ -47,3 +47,5 @@ group :development, :test do
   gem "pry-rails"
   gem "shoulda"
 end
+
+gem 'foundation-rails'
