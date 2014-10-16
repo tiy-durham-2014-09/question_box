@@ -2,8 +2,6 @@
 
 one:
   name: MyString
-  question_id: 
 
 two:
-  name: MyString
-  question_id: 
+  name: MyOtherString

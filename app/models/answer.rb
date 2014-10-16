@@ -1,6 +1,7 @@
 class Answer < ActiveRecord::Base
   belongs_to :user
   belongs_to :question
+  has_many :votes, as: :voteable
 
   validates :text, presence: true
   validates :user, presence: true
@@ -25,14 +26,9 @@ class Answer < ActiveRecord::Base
     end
   end
 
-  has_many :comments, as: :commentable
-  has_many :votes, as: :voteable
 
   def score
-    score = 0
-    votes.each do |v|
-      score += v.value
-    end
-    score
+    votes.sum(:value)
   end
+
 end
