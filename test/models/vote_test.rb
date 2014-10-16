@@ -19,11 +19,11 @@ class VoteTest < ActiveSupport::TestCase
 		@vote = Vote.new
 	end
 
-	test "should belong to a user" do
+	test "should has a user" do
 		check_presence(@vote, :user)
 	end
 
-	test "should belong to voteable" do
+	test "should be voteable" do
 		check_presence(@vote, :voteable_id)
 		check_presence(@vote, :voteable_type)
   end
