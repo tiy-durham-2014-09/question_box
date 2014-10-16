@@ -13,5 +13,7 @@ class VoteTest < ActiveSupport::TestCase
     assert v.positive? != orig, "all votes must be changable to the opposite"
   end
 
-  
+  test "when a positive vote is given to something a user created (question or answer), +10 points to that user"
+
+  end
 end
