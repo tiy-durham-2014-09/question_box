@@ -22,17 +22,25 @@ class VoteTest < ActiveSupport::TestCase
 
   test "should have only a positive or negative 1 for value" do
     @vote.value = -2
-    assert @vote.invalid?, "Vote should have 1 or -1 as value"
+    assert @vote.invalid?, "Vote should not be less than -1"
     assert_not_empty @vote.errors[:value]
 
     @vote.value = 7
-    assert @vote.invalid?, "Vote should have 1 or -1 as value"
+    assert @vote.invalid?, "Vote should be more than 1"
     assert_not_empty @vote.errors[:value]
+
   end
 
-  # test "should decrease user's score by 1 when negative"
-  # test "should increase voteable's user's score by 10 when positive"
-  # test "should decrease voteable's user's score by 5 when negative"
+  test "should decrease user's score by 1 when created as negative" do
+    user = users(:one)
+    question = questions(:two)
+    assert_difference 'user.score', -1 do
+      question.votes.create!(value: -1, user: user )
+    end
+  end
 
+  # test "should increase voteable's user's score by 10 when created as positive"
+  # test "should decrease voteable's user's score by 5 when created as negative"
+  # test "should not be created a second time for the same user on the same voteable"
 
 end

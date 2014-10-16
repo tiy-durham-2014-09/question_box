@@ -4,6 +4,12 @@ class Vote < ActiveRecord::Base
 
   validates :user, presence: true
   validates :voteable, presence: true
-  validates :value, numericality: { only_integer: true }
-  validates :value, inclusion: { in: %w(1, -1) }
+  validates :value, numericality: { only_integer: true, less_than: 2, greater_than: -2 }
+
+  after_save :decreases_voters_score
+
+  def decreases_voters_score
+    user.score -= 1
+  end
+
 end
