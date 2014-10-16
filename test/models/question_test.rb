@@ -28,10 +28,6 @@ class QuestionTest < ActiveSupport::TestCase
 
   # my tests
 
-  test "should belong to a tag" do
-    check_presence(@question, :tag)
-  end
-
   # not sure how to write this (determined by votes)
   #test "should know its total score" do
   #end
