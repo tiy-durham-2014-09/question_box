@@ -27,4 +27,17 @@ class Answer < ActiveRecord::Base
       user.save
     end
   end
+
+  def total_score
+    score = 0
+    self.votes.each do |vote|
+      if vote.value == 1
+        score += 1
+      else
+        score -= 1
+      end
+    end
+    score
+  end
+
 end

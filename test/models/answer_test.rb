@@ -57,4 +57,16 @@ class AnswerTest < ActiveSupport::TestCase
       answer.update(chosen: true)
     end
   end
+
+  test "should know its own score" do
+    answer = answers(:one_for_question_one)
+    voter1 = users(:two)
+    voter2 = users(:one)
+    vote1 = answer.votes.create!(:value => 1, :user => voter1)
+    vote2 = answer.votes.create!(:value => 1, :user => voter2)
+
+    assert_equal 2, answer.total_score
+
+  end
+
 end

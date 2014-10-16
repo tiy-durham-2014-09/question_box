@@ -17,6 +17,10 @@ class QuestionTest < ActiveSupport::TestCase
     check_presence(@question, :user)
   end
 
+  test "should belong to a tag" do
+    check_presence(@question, :tag)
+  end
+
   test "should know if it has a chosen answer" do
     question = questions(:one)
     question.answers.update_all(chosen: false)

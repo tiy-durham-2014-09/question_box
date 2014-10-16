@@ -46,4 +46,6 @@ class UserTest < ActiveSupport::TestCase
     assert @user.invalid?, "User should have a positive score"
     assert_not_empty @user.errors[:score]
   end
+
+
 end

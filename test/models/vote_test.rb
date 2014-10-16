@@ -14,7 +14,7 @@ class VoteTest < ActiveSupport::TestCase
   end
 
 
-  test "Should be positive or negative one" do
+  test "should be positive or negative 1" do
       @vote.value = -2
 
       assert @vote.invalid?, "Vote should be 1 or -1"
