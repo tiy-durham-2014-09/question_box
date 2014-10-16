@@ -12,33 +12,30 @@ class VoteTest < ActiveSupport::TestCase
 	test "should belong to voteable" do
 		check_presence(@vote, :voteable_id)
 		check_presence(@vote, :voteable_type)
-	end
-
-	test "should award 10 points for an up vote to the user who created ques/ans" do
-    question = questions(:one)
-    user = question.user
-
-    assert_difference 'user.score', 10 do
-      Vote.create!(up: true, voteable_id: question.id, voteable_type: "Question",user: user)
-    end
   end
 
-  test "should deduct 5 points for a down vote to the user who created ques/ans" do
+  test "should award 10 pts to ques/answer creator for an up vote" do
     question = questions(:one)
-    user = question.user
+    voter = users(:two)
 
-    assert_difference 'user.score', -5 do
-      Vote.create!(voteable_id: question.id, voteable_type: "Question",user: user)
-    end
+    Vote.create!(up: true, voteable_id: question.id, voteable_type: "Question", user: voter)
+
+    creator = question.user
+    assert_equal 11, creator.score
   end
 
-  test "should deduct 1 point for user that down votes" do
-    user = users(:one)
-    question = questions(:one)
+  test "should deduct 5 pts to ques/answer creator and 1 pt to voter for a down vote" do
+    question1 = questions(:two)
+    voter1 = users(:two)
 
-    assert_difference 'user.score', -1 do
-      Vote.create!(voteable_id: question.id, voteable_type: "Question", user: user)
-    end
+    Vote.create!(voteable_id: question1.id, voteable_type: "Question", user: voter1)
+
+    creator1 = question1.user
+    voter_post = users(:two)
+
+    assert_equal 995, creator1.score
+    assert_equal 0, voter_post.score
+
   end
 
 end
