@@ -38,7 +38,7 @@ This Rails application provides much of the same functionality as Stack Overflow
     * is positive or negative (+1 or -1)
     * when a positive vote is given to something a user created (question or answer), +10 points to that user
     * when a negative vote is given to something a user created (question or answer), -5 points to that user
-    * when a user makes a negative vote, -1 points to that user (yes, it costs from your score to vote something down)
+    * when a user makes a negative vote, -1 points to that user (yes, it costs from your score to vote something down) 
 * Tag
     * has a name
     * has and belongs to many questions
