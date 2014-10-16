@@ -7,5 +7,12 @@ class Vote < ActiveRecord::Base
 	validates :voteable_id, presence: true
 	validates :voteable_type, presence: true
 
+  after_create :award_user_points
 
+  def award_user_points
+    if self.up = true
+      user.score += 10
+      user.save
+    end
+  end
 end
