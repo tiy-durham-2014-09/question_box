@@ -2,8 +2,10 @@
 
 one:
   name: MyString
-  question_id: 
+  tag_id: 1
+  tag_type: MyString
 
 two:
   name: MyString
-  question_id: 
+  tag_id: 1
+  tag_type: MyString
