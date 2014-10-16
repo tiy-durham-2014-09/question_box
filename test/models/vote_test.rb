@@ -19,16 +19,25 @@ class VoteTest < ActiveSupport::TestCase
     user = question.user
 
     assert_difference 'user.score', 10 do
-      vote = Vote.create!(up: true, voteable_id: question.id, voteable_type: "Question",user: user)
+      Vote.create!(up: true, voteable_id: question.id, voteable_type: "Question",user: user)
     end
   end
 
-  test "should deduct points for a down vote to the user who created ques/ans" do
+  test "should deduct 5 points for a down vote to the user who created ques/ans" do
     question = questions(:one)
     user = question.user
 
     assert_difference 'user.score', -5 do
-      vote = Vote.create!(voteable_id: question.id, voteable_type: "Question",user: user)
+      Vote.create!(voteable_id: question.id, voteable_type: "Question",user: user)
+    end
+  end
+
+  test "should deduct 1 point for user that down votes" do
+    user = users(:one)
+    question = questions(:one)
+
+    assert_difference 'user.score', -1 do
+      Vote.create!(voteable_id: question.id, voteable_type: "Question", user: user)
     end
   end
 
