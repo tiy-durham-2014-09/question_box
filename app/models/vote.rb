@@ -10,34 +10,24 @@ class Vote < ActiveRecord::Base
   after_create :adjust_vote_count
 
   def award_user_points
-    if self.voteable_type == "Question"
-      question = Question.find(self.voteable_id)
-      user = question.user
-    elsif self.voteable_type == "Answer"
-      answer = Answer.find(self.voteable_id)
-      user = answer.user
-    end
+    creator = voteable.user
 
-    if self.up == true
-      user.score += 10
-      user.save
+    if up == true
+      creator.score += 10
+      creator.save
     else
-      user.score -= 5
-      user.save
+      creator.score -= 5
+      creator.save
 
-      self.user.score -= 1
-      self.user.save
+      user.score -= 1
+      user.save
     end
   end
 
   def adjust_vote_count
-    if self.voteable_type == "Question"
-      model = Question.find(self.voteable_id)
-    elsif self.voteable_type == "Answer"
-      model = Answer.find(self.voteable_id)
-    end
+		model = voteable
 
-    if self.up == true
+    if up == true
       model.vote_count += 1
     else
       model.vote_count -= 1
