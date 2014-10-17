@@ -31,5 +31,12 @@ class LoginsControllerTest < ActionController::TestCase
 				assert_redirected_to root_path "Should redirect to root"
 			end
 		end
+
+		context "if I am logged in" do
+			should "set current user" do
+				user = current_user
+				assert_equal user, User.find_by(email: assigns["user"].email), "should set current user variable to logged in user"
+			end
+		end
 	end
 end
