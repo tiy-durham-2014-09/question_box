@@ -6,11 +6,12 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      # TODO redirect
-      render nothing: true, status: :created
+			session[:current_user_id] = @user.id
+      redirect_to root_path
     else
       render :new
     end
+
   end
 
   private

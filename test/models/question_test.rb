@@ -1,17 +1,7 @@
 require 'test_helper'
 
 class QuestionTest < ActiveSupport::TestCase
-  # test "should have a title" do
-  #   check_presence(@question, :title)
-  # end
-  #
-  # test "should have text" do
-  #   check_presence(@question, :text)
-  # end
-  #
-  # test "should have a user" do
-  #   check_presence(@question, :user)
-  # end
+
 
   should validate_presence_of(:title)
   should validate_presence_of(:text)
