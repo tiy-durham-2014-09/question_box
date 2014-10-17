@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   #LOGIN
     get 'login/new'
-    get 'login/create'
+    post 'login/create'
     get 'login/destroy'
 
   #REGISTER
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get 'users/new'
 
   resources :users
+  resources :login
 
   root 'users#new'
   # resources :users, only => [:create,:new]
