@@ -9,8 +9,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      # TODO redirect
-      render nothing: true, status: :created
+      redirect_to homepage_index_path, notice: 'User was successfully created.'
+      # render nothing: true, status: :created
     else
       render :new
     end
