@@ -1,2 +1,13 @@
 <h1>I AM YOUR ALL QUESTIONS INDEX</h1>
-<p>Find me in app/views/all_questions/index.html.erb</p>
+<table>
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.title %></td>
+        <td><%= question.user_id %></td>
+        <td><%= question.text %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>

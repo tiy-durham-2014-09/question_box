@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'all_questions/index'
 
   #LOGIN
-    get 'login/new'
+    post 'login/new'
     post 'login/create'
     get 'login/destroy'
 
@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :login
+  resources :all_questions
 
   root 'users#new'
   # resources :users, only => [:create,:new]
