@@ -7,8 +7,8 @@ class Vote < ActiveRecord::Base
 	validates :voteable_type, presence: true
   validates :value, presence: true, inclusion { [-1, 1] }
 
-  after_create :award_user_points
-  after_create :adjust_vote_count
+  # after_create :award_user_points
+  # after_create :adjust_vote_count
 
   # def award_user_points
   #   creator = voteable.user
