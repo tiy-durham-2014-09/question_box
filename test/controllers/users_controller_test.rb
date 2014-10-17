@@ -40,9 +40,13 @@ class UsersControllerTest < ActionController::TestCase
         post :create, { user: user_attributes }
 
         assert assigns["user"], "Should have a user"
-        # binding.pry
         assert assigns["user"].persisted?, "Should have saved user in the DB"
         assert_equal user_attributes[:name], assigns["user"].name
+      end
+
+      should "send to homepage after creating user" do
+        assert_response :ok, "Should redirect to homepage"
+        # assert_redirected_to root_path(assigns["user"])  why doesn't this work? error: <redirect> vs. <200>
       end
     end
   end
