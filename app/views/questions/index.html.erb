@@ -1,0 +1,11 @@
+<table>
+  <tbody>
+    <% Question.all.each do |question| %>
+      <tr>
+        <td><%= question.title %></td>
+        <td><%= question.text %></td>
+        <td><%= question.id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

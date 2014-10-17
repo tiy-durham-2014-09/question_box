@@ -16,24 +16,21 @@ class QuestionsControllerTest < ActionController::TestCase
       setup { post :create, { question: invalid_question_attributes } }
 
       should "re-render the form" do
-        assert_template :create
+        redirect_to(root_path)
       end
 
-      should "instantiate an invalid question object" do
-        assert assigns["question"], "Should have a question"
-        assert assigns["question"].invalid?, "Should have an invalid question"
-      end
     end
 
     context "when I send valid information" do
       should "create a question" do
         question_attributes = valid_question_attributes
-        post :create, { question: question_attributes }
+        puts question_attributes
+        puts post :create, { question: question_attributes }
 
         assert assigns["question"], "Should have a question"
-        # binding.pry
+
         assert assigns["question"].persisted?, "Should have saved question in the DB"
-        assert_equal question_attributes[:name], assigns["question"].name
+        assert_equal question_attributes[:title], assigns["question"].title
       end
     end
   end

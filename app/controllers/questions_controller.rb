@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :authenticate
+  before_action :set_question, only: [:show]
 
   def new
 
@@ -20,10 +21,14 @@ class QuestionsController < ApplicationController
   end
 
   def show
-
+    
   end
 
   private
+
+  def set_question
+      @question = Question.find(params[:id])
+    end
 
   def question_params
     params.require(:question).permit(:title, :text, :user_id, :questions_tags)

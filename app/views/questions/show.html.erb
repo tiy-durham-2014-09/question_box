@@ -1,0 +1,26 @@
+<br>
+<h1><%= @question.title %></h1>
+<br>
+<p><%= @question.text %></p>
+<p>Asked by <%= @question.user.name %></p>
+<h3>Answers</h3>
+<table>
+  <tbody>
+    <% @question.answers.each do |answer| %>
+      <tr>
+        <td><%= answer.text %></td>
+        <td><%= answer.user.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>Add your Answer</h3>
+
+<%= form_tag answers_path, :method => :post do %>
+    <%= label_tag :text %>
+    <%= text_field_tag "answer[text]" %>
+    <%= hidden_field_tag "answer[user_id]", current_user.id %>
+    <%= hidden_field_tag "answer[question_id]", @question.id %>
+    <%= button_tag "Ask", :class => "small radius" %>
+<% end %>

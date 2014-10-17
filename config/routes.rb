@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   resource :login
   resource :questions do
     get 'index'
+    get '/:id' => 'questions#show'
   end
   resource :homepages
+  resource :answers
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

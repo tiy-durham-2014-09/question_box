@@ -1,20 +1,38 @@
-homepage index
+<h3>What's your question?</h3>
 
 <%= form_tag "/questions", :method => :post do %>
     <%= label_tag :title %>
     <%= text_field_tag "question[title]" %>
     <%= label_tag :text %>
     <%= text_field_tag "question[text]" %>
-    <%= button_tag "Login", :class => "small radius" %>
+    <%= button_tag "Ask", :class => "small radius" %>
 <% end %>
 
+<br>
+<h3>Unanswered Questions</h3>
 <table>
   <tbody>
     <% Question.all.each do |question| %>
+      <% unless question.has_chosen_answer? %>
       <tr>
         <td><%= question.title %></td>
         <td><%= question.text %></td>
       </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<h3>Answered Questions</h3>
+<table>
+  <tbody>
+    <% Question.all.each do |question| %>
+      <% if question.has_chosen_answer? %>
+      <tr>
+        <td><%= question.title %></td>
+        <td><%= question.text %></td>
+      </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
