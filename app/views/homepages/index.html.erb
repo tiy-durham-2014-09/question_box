@@ -1,1 +1,20 @@
 homepage index
+
+<%= form_tag "/questions", :method => :post do %>
+    <%= label_tag :title %>
+    <%= text_field_tag "question[title]" %>
+    <%= label_tag :text %>
+    <%= text_field_tag "question[text]" %>
+    <%= button_tag "Login", :class => "small radius" %>
+<% end %>
+
+<table>
+  <tbody>
+    <% Question.all.each do |question| %>
+      <tr>
+        <td><%= question.title %></td>
+        <td><%= question.text %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

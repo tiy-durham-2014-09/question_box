@@ -3,6 +3,8 @@ class HomepagesController < ApplicationController
 
   def index
     @user = current_user
+    @question = Question.new
+
   end
 
   private
