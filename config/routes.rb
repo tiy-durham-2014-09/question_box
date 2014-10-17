@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resource :login
   resource :questions do
     get 'index'
-    get '/:id' => 'questions#show'
+    get '/:id' => 'questions#show', as: 'show'
   end
   resource :homepages
   resource :answers

@@ -9,7 +9,9 @@
     <% @question.answers.each do |answer| %>
       <tr>
         <td><%= answer.text %></td>
-        <td><%= answer.user.name %></td>
+      </tr>
+      <tr>
+        <td>Answered by <%= answer.user.name %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,5 +24,5 @@
     <%= text_field_tag "answer[text]" %>
     <%= hidden_field_tag "answer[user_id]", current_user.id %>
     <%= hidden_field_tag "answer[question_id]", @question.id %>
-    <%= button_tag "Ask", :class => "small radius" %>
+    <%= button_tag "Answer", :class => "small radius" %>
 <% end %>

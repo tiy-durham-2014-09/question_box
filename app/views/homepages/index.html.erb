@@ -15,8 +15,7 @@
     <% Question.all.each do |question| %>
       <% unless question.has_chosen_answer? %>
       <tr>
-        <td><%= question.title %></td>
-        <td><%= question.text %></td>
+        <td><%= link_to question.title, show_questions_path(question) %></td>
       </tr>
       <% end %>
     <% end %>
