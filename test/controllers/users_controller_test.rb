@@ -15,18 +15,18 @@ class UsersControllerTest < ActionController::TestCase
      password_confirmation: ""}
   end
 
-  test "should get new" do
-    get :new
-    assert_response :ok
+  context "GET :new" do
+    setup { get :new}
+
+    should respond_with(:ok)
+    should render_template(:new)
   end
 
   context "POST :create" do
     context "when I send invalid information" do
       setup { post :create, { user: invalid_user_attributes } }
 
-      should "re-render the form" do
-        assert_template :new
-      end
+      should render_template(:new)
 
       should "instantiate an invalid user object" do
         assert assigns["user"], "Should have a user"
