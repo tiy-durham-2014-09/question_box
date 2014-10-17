@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  #HOMEPAGE
+  get 'homepage/create'
+  get 'homepage/index'
+
+  #QUESTIONS AND ANSWERS
+  get 'question_and_answers/show'
+  get 'question_and_answers/create'
+
   #ALL QUESTIONS
   get 'all_questions/index'
 
@@ -11,9 +19,14 @@ Rails.application.routes.draw do
     get 'register/new'
     get 'register/create'
 
+  #USERS
+  get 'users/create'
+  get 'users/new'
 
+  resources :users
 
-
+  root 'users#new'
+  # resources :users, only => [:create,:new]
 
 
 
