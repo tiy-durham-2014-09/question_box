@@ -23,17 +23,10 @@ class AnswerTest < ActiveSupport::TestCase
       new_answer = Answer.new
       new_answer.question = chosen_answer.question
 
-<<<<<<< HEAD
-  test "should only allow one chosen answer per question" do
-    # In order to make sure only one answer can be chosen per question
-    # I need to set a current answer for a question to be chosen.
-    # I am using an answer from the fixtures.
-    chosen_answer = answers(:one)
-    chosen_answer.update(chosen: true)
-=======
+
       # Choose a second answer for the question.
       new_answer.chosen = true
->>>>>>> upstream/master
+
 
       assert new_answer.invalid?, "Only one answer can be chosen per question"
       assert_not_empty new_answer.errors[:chosen]
@@ -67,29 +60,4 @@ class AnswerTest < ActiveSupport::TestCase
       assert_equal 2, answer.score
     end
   end
-
-<<<<<<< HEAD
-  test "should increment vote count by 1 after up vote" do
-    answer = answers(:one)
-    voter = users(:two)
-
-    Vote.create!(up: true, voteable_id: answer.id, voteable_type: "Answer", user: voter)
-
-    answer1 = Answer.find(answer.id)
-    assert_equal 1, answer1.vote_count
-  end
-
-  test "should decrement vote count by 1 after down vote" do
-    answer = answers(:one)
-    voter = users(:two)
-
-    Vote.create!(voteable_id: answer.id, voteable_type: "Answer", user: voter)
-
-    answer1 = Answer.find(answer.id)
-    assert_equal -1, answer1.vote_count
-  end
-=======
-
-
->>>>>>> upstream/master
 end

@@ -1,10 +1,8 @@
 class User < ActiveRecord::Base
-<<<<<<< HEAD
-=======
+
   has_many :questions
   has_many :answers
 
->>>>>>> upstream/master
   has_many :comments
   has_many :votes
 

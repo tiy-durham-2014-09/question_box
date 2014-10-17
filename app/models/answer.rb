@@ -1,10 +1,6 @@
 class Answer < ActiveRecord::Base
   belongs_to :user
   belongs_to :question
-<<<<<<< HEAD
-  has_many :comments, as: :commentable
-=======
->>>>>>> upstream/master
   has_many :votes, as: :voteable
 
   validates :text, presence: true
