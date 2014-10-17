@@ -14,7 +14,7 @@ class AnswerTest < ActiveSupport::TestCase
       # In order to make sure only one answer can be chosen per question
       # I need to set a current answer for a question to be chosen.
       # I am using an answer from the fixtures.
-      chosen_answer = answers(:one_for_question_one)
+      chosen_answer = answers(:one)
       chosen_answer.update(chosen: true)
 
       # I need to set my answer model under test to have the same question
@@ -49,7 +49,7 @@ class AnswerTest < ActiveSupport::TestCase
     end
 
     should "know its own score" do
-      answer = answers(:one_for_question_one)
+      answer = answers(:one)
       voter1 = users(:chet)
       voter2 = users(:voter)
       answer.votes.create!(:value => 1, :user => voter1)
@@ -58,23 +58,24 @@ class AnswerTest < ActiveSupport::TestCase
       assert_equal 2, answer.score
     end
   end
-
-  test "should increment vote count by 1 after up vote" do
-    answer = answers(:one)
-    voter = users(:two)
-
-    Vote.create!(up: true, voteable_id: answer.id, voteable_type: "Answer", user: voter)
-
-    answer1 = Answer.find(answer.id)
-    assert_equal 1, answer1.vote_count
-  end
-
-  test "should decrement vote count by 1 after down vote" do
-    answer = answers(:one)
-    voter = users(:two)
-
-    Vote.create!(voteable_id: answer.id, voteable_type: "Answer", user: voter)
-
-    answer1 = Answer.find(answer.id)
-    assert_equal -1, answer1.vote_count
-  end
+  #
+  # test "should increment vote count by 1 after up vote" do
+  #   answer = answers(:one)
+  #   voter = users(:two)
+  #
+  #   Vote.create!(up: true, voteable_id: answer.id, voteable_type: "Answer", user: voter)
+  #
+  #   answer1 = Answer.find(answer.id)
+  #   assert_equal 1, answer1.vote_count
+  # end
+  #
+  # test "should decrement vote count by 1 after down vote" do
+  #   answer = answers(:one)
+  #   voter = users(:two)
+  #
+  #   Vote.create!(voteable_id: answer.id, voteable_type: "Answer", user: voter)
+  #
+  #   answer1 = Answer.find(answer.id)
+  #   assert_equal -1, answer1.vote_count
+  # end
+end

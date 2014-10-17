@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20141016034512) do
-=======
 ActiveRecord::Schema.define(version: 20141016173750) do
->>>>>>> upstream/master
 
   create_table "answers", force: true do |t|
     t.text     "text"
@@ -54,28 +50,12 @@ ActiveRecord::Schema.define(version: 20141016173750) do
   add_index "questions", ["user_id"], name: "index_questions_on_user_id"
 
   create_table "questions_tags", id: false, force: true do |t|
-<<<<<<< HEAD
-    t.integer  "question_id"
-    t.integer  "tag_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "questions_tags", ["question_id"], name: "index_questions_tags_on_question_id"
-  add_index "questions_tags", ["tag_id"], name: "index_questions_tags_on_tag_id"
-
-  create_table "tags", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-=======
     t.integer "question_id", null: false
     t.integer "tag_id",      null: false
   end
 
   create_table "tags", force: true do |t|
     t.string "name"
->>>>>>> upstream/master
   end
 
   create_table "users", force: true do |t|
@@ -89,23 +69,11 @@ ActiveRecord::Schema.define(version: 20141016173750) do
 
   create_table "votes", force: true do |t|
     t.integer  "user_id"
-<<<<<<< HEAD
-    t.integer  "voteable_id"
-    t.string   "voteable_type"
-    t.boolean  "up"
-=======
     t.integer  "value"
     t.integer  "voteable_id"
     t.string   "voteable_type"
->>>>>>> upstream/master
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-<<<<<<< HEAD
-  add_index "votes", ["user_id"], name: "index_votes_on_user_id"
-  add_index "votes", ["voteable_id", "voteable_type"], name: "index_votes_on_voteable_id_and_voteable_type"
-
-=======
->>>>>>> upstream/master
 end
