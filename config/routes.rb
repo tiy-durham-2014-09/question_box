@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'logins/new'
+
+  get 'logins/create'
+
+  get 'logins/destroy'
+
   resources :users, :only => [:new, :create]
 
   # The priority is based upon order of creation: first created -> highest priority.

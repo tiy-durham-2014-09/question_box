@@ -24,9 +24,7 @@ class UsersControllerTest < ActionController::TestCase
     context "when I send invalid information" do
       setup { post :create, { user: invalid_user_attributes } }
 
-      should "re-render the form" do
-        assert_template :new
-      end
+      should render_template(:new)
 
       should "instantiate an invalid user object" do
         assert assigns["user"], "Should have a user"
