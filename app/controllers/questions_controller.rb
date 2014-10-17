@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate
 
   def index
 
@@ -7,5 +8,5 @@ class QuestionsController < ApplicationController
   def show
 
   end
-  
+
 end

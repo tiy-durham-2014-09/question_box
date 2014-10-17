@@ -4,7 +4,7 @@
       <% if logged_in? %>
         <a href="/"><h1 class="top_h1">QuestionBox</h1></a>
       <% else %>
-        <a href="/login/new"><h1 class="top_h1">QuestionBox</h1></a>
+        <a href="/login/new"><h1 class="top_h1">QuestionBoxx</h1></a>
       <% end %>
     </li>
      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
@@ -13,6 +13,11 @@
 
   <section class="top-bar-section">
     <!-- Right Nav Section -->
+    <ul class="left">
+      <li class="name">
+        <a href="<%= questions_path %>"><h1 class="top_h1">All Questions</h1></a>
+      </li>
+    </ul>
     <ul class="right">
       <% if logged_in? %>
       <li class="has-dropdown">

@@ -2,8 +2,8 @@ require 'test_helper'
 
 class LoginsControllerTest < ActionController::TestCase
   def valid_user_attributes
-    {email: Faker::Internet.email,
-     password: "password"}
+    {email: users(:one).email,
+     password: users(:one).password}
   end
 
   def invalid_user_attributes
@@ -26,14 +26,11 @@ class LoginsControllerTest < ActionController::TestCase
 
     end
 
-    # context "when I send valid information" do
-    #   should "create a user" do
-    #     user_attributes = valid_user_attributes
-    #     post :create, { user: user_attributes }
-    #
-    #     assert assigns["user"], "Should have a user"
-    #   end
-    # end
+    context "when I send valid information" do
+      should "login" do
+        flunk "I'll get back to this"
+      end
+    end
   end
 
 end
