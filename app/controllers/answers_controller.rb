@@ -20,11 +20,18 @@ class AnswersController < ApplicationController
 
   end
 
+  def vote
+    value = params[:value]
+    user = User.find_by(id: params[:user])
+    answer = Answer.find_by(id: params[:answer_id])
+    answer.votes.create!(:value => value, :user => user)
+    redirect_to :back
+  end
 
   private
 
   def answer_params
-    params.require(:answer).permit(:title, :text, :user_id, :question_id)
+    params.require(:answer).permit(:title, :text, :user, :value, :user_id, :question_id)
   end
 
 end

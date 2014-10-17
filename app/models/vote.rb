@@ -7,7 +7,7 @@ class Vote < ActiveRecord::Base
             inclusion: { in: [1, -1], message: "Vote must be 1 or -1" }
   validates :user, presence: true
 
-  validate :check_against_self_voting
+  # validate :check_against_self_voting
 
   before_save :adjust_points
 

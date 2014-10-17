@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     get '/:id' => 'questions#show', as: 'show'
   end
   resource :homepages
-  resource :answers
+  resource :answers do
+    get '/:id/vote' => 'answers#vote', as: 'vote'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

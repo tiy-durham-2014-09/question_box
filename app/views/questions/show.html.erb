@@ -4,19 +4,21 @@
 <p><%= @question.text %></p>
 <p>Asked by <%= @question.user.name %></p>
 <h3>Answers</h3>
+<% @question.answers.each do |answer| %>
 <table>
   <tbody>
-    <% @question.answers.each do |answer| %>
       <tr>
         <td><%= answer.text %></td>
       </tr>
       <tr>
         <td>Answered by <%= answer.user.name %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
+    </tbody>
+  </table>
+  <h3><%= answer.score %> Votes</h3>
+  <%= link_to '<i class="fa fa-thumbs-up"></i>'.html_safe, vote_answers_path(:value => 1, :user => answer.user, :answer_id => answer.id) %>
+  <%= link_to '<i class="fa fa-thumbs-down"></i>'.html_safe, vote_answers_path(:value => -1, :user => answer.user, :answer_id => answer.id) %>
+<% end %>
 <h3>Add your Answer</h3>
 
 <%= form_tag answers_path, :method => :post do %>
