@@ -22,7 +22,7 @@ class UsersControllerTest < ActionController::TestCase
 
   context "POST :create" do
     context "when I send invalid information" do
-      setup { post :create, { user: invalid_user_attributes } }
+      setup { post :create, { user: invalid_user_attributes }, { 'current_user_id' => users(:one).id } }
 
       should "re-render the form" do
         assert_template :new

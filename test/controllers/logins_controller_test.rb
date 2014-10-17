@@ -27,10 +27,13 @@ class LoginsControllerTest < ActionController::TestCase
     end
 
     context "when I send valid information" do
+      setup { post :create, { login: valid_user_attributes }, { 'current_user_id' => users(:one).id } }
+
       should "login" do
-        flunk "I'll get back to this"
+        redirect_to root_path
       end
     end
+
   end
 
 end
