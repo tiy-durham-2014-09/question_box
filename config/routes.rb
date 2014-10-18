@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :login
   resources :all_questions
 
-  root 'users#new'
+  root 'all_questions#index'
   # resources :users, only => [:create,:new]
 
 
