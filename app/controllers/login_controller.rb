@@ -6,7 +6,7 @@ class LoginController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
       session[:current_user_id] = @user.id
-      redirect_to root_path, notice: "it worked"
+      redirect_to new_question_path, notice: "it worked"
     else
       flash.now[:error] = "Your email or password was WRONG BIATCH."
       render :new

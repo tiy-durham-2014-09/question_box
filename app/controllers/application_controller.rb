@@ -3,9 +3,14 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  helper_method :current_user, :logged_in?
 
   def current_user
   @current_user ||= User.find_by(id: session[:current_user_id])
+  end
+
+  def logged_in?
+  current_user
   end
 
   def authenticate
@@ -13,5 +18,9 @@ class ApplicationController < ActionController::Base
     unless current_user_id
       redirect_to login_new_path, notice: "SAWEE"
     end
+  end
+
+  def all_questions_params
+    params.require(:questions).permit(:title, :text, :user)
   end
 end

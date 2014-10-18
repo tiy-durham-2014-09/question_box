@@ -1,0 +1,17 @@
+<h1>HERE'S A BUNCH OF MUTHAFAKIN QUESTIONS</h1>
+
+<table>
+  <tbody>
+    <% @question.each do |question| %>
+      <tr>
+          <td><%= link_to question.title, question_path(question) %>&nbsp &nbsp &nbsp<%= question.votes.count %>&nbsp votes &nbsp &nbsp<%= question.answers.count %>&nbsp answers<br>
+
+
+        <%= question.user.to_s %><br><br></td>
+      </tr>
+    <% end %>
+  </tbody>
+<%= link_to "Ask a Question", new_question_path %><%= link_to "Sign Up", new_user_path %>
+<%= link_to "Login", new_login_path %>
+
+</table>

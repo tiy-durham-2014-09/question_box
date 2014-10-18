@@ -1,0 +1,6 @@
+<%= form_for @question, :url => question_create_path do |f| %>
+  <%= f.text_field :title, placeholder: "Question Title" %>
+  <%= f.text_area :text, placeholder: "Question Body" %>
+  <%= f.text_area :user_id, placeholder: "User" %>
+  <%= f.button :submit, class: "btn btn-large btn-success" %>
+<% end %>

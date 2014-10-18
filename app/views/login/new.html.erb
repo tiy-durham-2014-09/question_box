@@ -1,6 +1,6 @@
 <div class="row">
   <div class='headings'><h4 class="large-12 columns">Login</h4></div>
-  <%= form_tag login_create_path, :method => :post do %>
+  <%= form_tag login_index_path, :method => :post do %>
     <div class="large-6 columns">
       <%= label_tag :email, nil, class: 'post_label' %>
       <%= text_field_tag :email, nil, class: 'text_field' %>
@@ -13,6 +13,7 @@
       <%= button_tag "Login", :class => "small radius" %>
     </div>
   <% end %>
-<%= link_to "Home", root_path %>
+<%= link_to "Home", root_path %><%= link_to "Sign Up", new_user_path %>
+
 
 </div>

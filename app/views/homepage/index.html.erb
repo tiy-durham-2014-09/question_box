@@ -1,1 +1,26 @@
-<h1>THIS IS THE HOMEPAGE MUTHAFAKERS</h1>
+<div class="row">
+  <h4 class="large-12 columns">Add a question</h4>
+
+  <div class="row">
+    <%= form_tag homepage_create_path, :method => :post do %>
+      <div class="large-6 columns">
+        <%= label_tag :title, nil, class: 'post_label' %>
+        <%= text_field_tag :title, nil, class: 'text_field' %>
+      </div>
+      <div class="large-6 columns">
+        <%= label_tag :text, nil, class: 'post_label' %>
+        <%= text_area_tag :text, nil, class: 'text_field'%>
+      </div>
+      <div class="large-6 columns">
+        <%= label_tag :user_id, nil, class: 'post_label' %>
+        <%= text_area_tag :user_id, nil, class: 'text_field'%>
+      </div>
+      <div class="large-12 columns">
+        <%= button_tag "Add", :class => "small radius" %>
+      </div>
+    <% end %>
+
+  </div>
+
+
+</div>

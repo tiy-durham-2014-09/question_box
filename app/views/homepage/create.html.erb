@@ -1,2 +1,16 @@
-<h1>Homepage#create</h1>
-<p>Find me in app/views/homepage/create.html.erb</p>
+<div class="row">
+  <%= form_tag homepage_create_path, :method => :post do %>
+    <div class="large-6 columns">
+      <%= label_tag :title, nil, class: 'post_label' %>
+      <%= text_field_tag :title, nil, class: 'text_field' %>
+    </div>
+    <div class="large-6 columns">
+      <%= label_tag :text, nil, class: 'post_label' %>
+      <%= text_area_tag :text, nil, class: 'text_field'%>
+    </div>
+    <div class="large-12 columns">
+      <%= button_tag "Add", :class => "small radius" %>
+    </div>
+  <% end %>
+
+</div>
