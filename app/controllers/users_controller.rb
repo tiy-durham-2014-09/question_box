@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def new
+    @user = User.new
   end
 
   def create
@@ -7,9 +8,9 @@ class UsersController < ApplicationController
 
     if @user.save
       # TODO redirect
-      render nothing: true, status: :created
+      redirect_to root_path, status: :created
     else
-      render :new
+      redirect_to new_user_path, notice: "Invalid registration information."
     end
   end
 

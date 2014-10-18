@@ -18,21 +18,16 @@ class LoginsControllerTest < ActionController::TestCase
     end
 
     context "with invalid login info" do
-
       setup { post :create, {email: @user.email, password: ""} }
-
       should "re-render the form" do
-        assert_template :new
+        assert_redirected_to new_login_path
       end
     end
 
     context "with valid login info" do
-
       setup { post :create, {email: @user.email, password: @user.password} }
       should "create a session" do
-
         assert session[:current_user_id], "Should have a session"
-
       end
       should "redirect to homepage" do
         assert_redirected_to root_path
@@ -57,7 +52,7 @@ class LoginsControllerTest < ActionController::TestCase
         refute session[:current_user_id]
       end
       should "and render the login page" do
-        assert_template :new
+        assert_redirected_to new_login_path
       end
     end
   end

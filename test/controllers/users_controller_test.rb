@@ -25,7 +25,7 @@ class UsersControllerTest < ActionController::TestCase
       setup { post :create, { user: invalid_user_attributes } }
 
       should "re-render the form" do
-        assert_template :new
+        assert_redirected_to new_user_path
       end
 
       should "instantiate an invalid user object" do
