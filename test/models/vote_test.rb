@@ -1,35 +1,89 @@
 require 'test_helper'
 
 class VoteTest < ActiveSupport::TestCase
+  should belong_to(:user)
+  should belong_to(:voteable)
 
-	setup do
-		@vote = Vote.new
-	end
+  should validate_presence_of(:user)
+  should validate_presence_of(:value)
+  should validate_inclusion_of(:value).in_array([-1, 1])
 
-	test "vote has a value" do
-		check_presence(@vote, :value)
-	end
+  context "a vote" do
+    setup do
+      @voter = users(:voter)
+      @vote = Vote.new(user: @voter)
+    end
 
-	test "should include only 1 or -1" do
-		@vote.value = 2
-		assert @vote.invalid?, "Votes are up or down"
-		assert_not_empty @vote.errors[:value]
-	end
+    should "not be on your own stuff" do
+      @vote.voteable = Question.new(user: @voter)
 
-	test "should add 10 pts to user score when user answer or question is voted up" do
-		current_user = user(:one)
-		current_score = current_user.score
-		votevalue =
-		current_score = current_score + 10
+      assert @vote.invalid?, "Cannot vote on your own stuff"
+      assert_not_empty @vote.errors[:user]
+    end
 
+    context "that is positive" do
+      should "award 10 points to a question's owner" do
+        question = questions(:one)
+        receiver = question.user
 
-	end
+        assert_difference "receiver.score", 10 do
+          question.votes.create!(:value => 1, :user => @voter)
+          receiver.reload
+        end
+      end
 
-	# test "should subtract 5 pts from user score when user answer or question is voted down" do
-	#
-	# end
-	#
-	# test "should subtract 1 pt from user score when user votes down other_user answer or question" do
-	#
-	# end
+      should "award 10 points to an answer's owner" do
+        answer = answers(:one_for_question_one)
+        receiver = answer.user
+
+        assert_difference "receiver.score", 10 do
+          answer.votes.create!(:value => 1, :user => @voter)
+          receiver.reload
+        end
+      end
+    end
+
+    context "that is negative" do
+      should "subtract 5 points from a question's owner if negative" do
+        question = questions(:one)
+        receiver = question.user
+
+        assert_difference "receiver.score", -5 do
+          question.votes.create!(:value => -1, :user => @voter)
+          receiver.reload
+        end
+      end
+
+      should "subtract 5 points from an answer's owner if score >= 5" do
+        answer = answers(:one_for_question_one)
+        receiver = answer.user
+        receiver.update(score: 10)
+
+        assert_difference "receiver.score", -5 do
+          answer.votes.create!(:value => -1, :user => @voter)
+          receiver.reload
+        end
+      end
+
+      should "subtract all points from an answer's owner if score < 5" do
+        answer = answers(:one_for_question_one)
+        receiver = answer.user
+        receiver.update(score: 2)
+
+        answer.votes.create!(:value => -1, :user => @voter)
+        answer.user.reload
+
+        assert_equal 0, receiver.score
+      end
+
+      should "subtract 1 point for voting negative" do
+        question = questions(:one)
+
+        assert_difference "@voter.score", -1 do
+          question.votes.create!(:value => -1, :user => @voter)
+        end
+      end
+    end
+  end
 end
+

@@ -1,8 +1,13 @@
 class User < ActiveRecord::Base
-  has_many :votes, as: :voteable
-  has_many :comments, as: :commentable
 
-	validates :email,
+  has_many :questions
+  has_many :answers
+
+  has_many :comments
+  has_many :votes
+
+  validates :email,
+
             presence: true,
             uniqueness: { case_sensitive: false },
             format: { with: /\A[\w\-\.]+@[\w\-\.]+\Z/, message: "must be a valid email address" }
