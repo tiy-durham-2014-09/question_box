@@ -8,15 +8,23 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-		@current_user ||= User.find(session[:current_user_id])
+		@current_user ||= User.find(session[:user_id])
+  end
+
+  def logged_in?
+    current_user
+  end
+
+  def log_out
+    session[:user_id] = nil
+    @current_user = nil
+    redirect_to new_login_path
   end
 
   def authenticate
 	  @user = User.find_by_email(params[:email])
-	  if @user.password == params[:password]
-		  current_user = session[:current_user_id]
-	  else
-		  redirect_to home_url
+	  if @user.password != params[:password]
+		  redirect_to new_login_path, notice: "Please sign in."
 	  end
   end
 end

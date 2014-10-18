@@ -7,7 +7,7 @@ class LoginsController < ApplicationController
 		@user = User.find_by(email: user_params[:email])
 
 		if @user && @user.authenticate(user_params[:password])
-			session[:current_user_id] = @user.id
+			session[:user_id] = @user.id
 			redirect_to root_path
 		else
 			render :new
@@ -15,7 +15,7 @@ class LoginsController < ApplicationController
 	end
 
 	def destroy
-
+    log_out
 	end
 
 	def user_params

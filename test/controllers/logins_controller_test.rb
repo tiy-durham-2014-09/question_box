@@ -24,19 +24,35 @@ class LoginsControllerTest < ActionController::TestCase
 			setup { post :create, { user: valid_login_attributes } }
 
 			should "create new session with user id" do
-				assert_equal session[:current_user_id], User.find_by(email: assigns["user"].email).id, "Should set session user_id to new user id"
-			end
+				assert_equal session[:user_id], User.find_by(email: assigns["user"].email).id, "should set session user_id to new user id"
+      end
+
+      should "set current user" do
+        user = @controller.send(:current_user)
+        assert_equal user, assigns["user"], "should set current user variable to logged in user"
+      end
+
+      should "know if I am logged in" do
+        assert_not_nil @controller.send(:logged_in?), "should know if I am logged in"
+      end
 
 			should "redirect to homepage" do
-				assert_redirected_to root_path "Should redirect to root"
+				assert_redirected_to root_path "should redirect to root"
 			end
 		end
+  end
 
-		context "if I am logged in" do
-			should "set current user" do
-				user = current_user
-				assert_equal user, User.find_by(email: assigns["user"].email), "should set current user variable to logged in user"
-			end
-		end
-	end
+  context "DELETE" do
+    context "when I log out" do
+      setup { delete :destroy, id: users(:one).id }
+
+      should "set clear out session" do
+        assert_nil session[:user_id], "should have no session user id"
+      end
+
+      should "send to login page" do
+        assert_redirected_to new_login_path, "should send to login page"
+      end
+    end
+  end
 end
