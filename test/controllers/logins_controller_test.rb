@@ -2,16 +2,6 @@ require 'test_helper'
 
 class LoginsControllerTest < ActionController::TestCase
 
-  # def invalid_login_attributes
-  #   {email: users(:one).email,
-  #    password: "",}
-  # end
-  #
-  # def valid_login_attributes
-  #   {email: users(:one).email,
-  #    password: users(:one).password}
-  # end
-
   context "GET :new" do
     setup { get :new }
     should respond_with(:ok)
@@ -51,10 +41,24 @@ class LoginsControllerTest < ActionController::TestCase
 
   end
 
-  # context "DELETE :destroy" do
-  #   setup { delete :destroy { ??? }}
-  #   should "delete the login" do
-  #     refute ???
-  #   end
-  # end
+  context "DELETE :destroy" do
+    setup do
+      @user = User.new(name: Faker::Name.name,
+                       email: Faker::Internet.email,
+                       password: "password",
+                       password_confirmation: "password")
+      @user.save
+      post :create, {email: @user.email, password: @user.password}
+    end
+
+    context "on an active session" do
+      setup { delete :destroy }
+      should "delete the session" do
+        refute session[:current_user_id]
+      end
+      should "and render the login page" do
+        assert_template :new
+      end
+    end
+  end
 end

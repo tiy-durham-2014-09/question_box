@@ -12,4 +12,9 @@ class LoginsController < ApplicationController
       render :new, notice: "Incorrect username and/or password."
     end
   end
+
+  def destroy
+    session[:current_user_id] = nil
+    render :new, notice: "Logged out successfully."
+  end
 end
