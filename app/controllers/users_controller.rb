@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def new
+    @user = User.new
   end
 
   def create
@@ -7,7 +8,8 @@ class UsersController < ApplicationController
 
     if @user.save
       # TODO redirect
-      render nothing: true, status: :created
+      #render nothing: true, status: :created
+      redirect_to root_url, :notice => "Signed Up!"
     else
       render :new
     end
