@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Question.delete_all
+Vote.delete_all
 
-Question.create(title: "What is this", text: "hi", user_id: 1)
-Question.create(title: "Where do I go", text: "whachu wan", user_id: 4)
+Question.create(title: "Oi sir, what are you doing?", text: "Uh... trudging. You know, trudging? To trudge: the slow, weary, depressing yet determined walk of a man who has nothing left in life except the impulse to simply soldier on.", user_id: 4)
+Question.create(title: "Sir Ulrick. What are you wearing to the ball tonight?", text: "Er... nothing...", user_id: 5)
+Vote.create(user_id: 4, value: -1,voteable_id: 1, voteable_type: "string")

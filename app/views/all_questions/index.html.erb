@@ -3,10 +3,10 @@
   <tbody>
     <% @questions.each do |question| %>
       <tr>
-        <td><%= question.title %></td>
-        <td><%= question.user_id %></td>
-        <td><%= question.text %></td>
+        <td><%= question.title %>&nbsp &nbsp &nbsp<%= question.votes.count %>&nbsp votes &nbsp &nbsp<%= question.answers.count %>&nbsp answers<br>
 
+
+        <%= question.user.to_s %><br><br></td>
       </tr>
     <% end %>
   </tbody>
