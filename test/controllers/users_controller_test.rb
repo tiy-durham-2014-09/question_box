@@ -15,7 +15,7 @@ class UsersControllerTest < ActionController::TestCase
       password_confirmation: "" }
   end
 
-  context "GET :new" do
+  context "GET users#new" do
     setup { get :new }
 
     should respond_with(:ok)
@@ -26,8 +26,8 @@ class UsersControllerTest < ActionController::TestCase
     end
   end
 
-  context "POST :create" do
-    context "when I send invalid information" do
+  context "POST users#create" do
+    context "when I send invalid info" do
       setup { post :create, { user: invalid_user_attributes } }
 
       should render_template(:new)
@@ -38,7 +38,7 @@ class UsersControllerTest < ActionController::TestCase
       end
     end
 
-    context "when I send valid information" do
+    context "when I send valid info" do
       setup { post :create, { user: valid_user_attributes } }
 
       should "create a user" do
@@ -49,6 +49,8 @@ class UsersControllerTest < ActionController::TestCase
       should "log in" do
         assert_equal assigns[:user].id, session[:current_user_id]
       end
+
+      should_eventually "redirect to home"
     end
   end
 end

@@ -8,6 +8,10 @@ class LoginTest < ActiveSupport::TestCase
       refute subject.authenticated?
     end
 
+    should "be invalid" do
+      assert subject.invalid?
+    end
+
     should "not have a user" do
       assert_nil subject.user
     end
@@ -20,6 +24,10 @@ class LoginTest < ActiveSupport::TestCase
       refute subject.authenticated?
     end
 
+    should "be invalid" do
+      assert subject.invalid?
+    end
+
     should "have a user" do
       assert_equal users(:one), subject.user
     end
@@ -30,6 +38,10 @@ class LoginTest < ActiveSupport::TestCase
 
     should "be authenticated" do
       assert subject.authenticated?
+    end
+
+    should "be valid" do
+      assert subject.valid?
     end
 
     should "have a user" do
