@@ -36,7 +36,9 @@ class LoginsControllerTest < ActionController::TestCase
         assert_equal assigns[:login].user.id, session[:current_user_id]
       end
 
-      should_eventually "redirect to home"
+      should "redirect to home" do
+        assert_redirected_to root_path
+      end
     end
   end
 end

@@ -8,8 +8,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:current_user_id] = @user.id
-      # TODO redirect
-      render nothing: true, status: :created
+      redirect_to root_path
     else
       render :new
     end

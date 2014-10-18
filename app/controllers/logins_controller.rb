@@ -8,8 +8,7 @@ class LoginsController < ApplicationController
 
     if @login.valid? && @login.authenticated?
       session[:current_user_id] = @login.user.id
-      # TODO redirect
-      render nothing: true, status: :created
+      redirect_to root_path
     else
       render :show
     end
