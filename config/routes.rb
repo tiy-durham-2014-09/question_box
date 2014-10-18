@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resource :login, :only => [:show, :create]
   resources :users, :only => [:new, :create]
-  resources :questions, :only => [:index, :new, :create]
+  resources :questions, :only => [:index, :new, :create, :show]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
