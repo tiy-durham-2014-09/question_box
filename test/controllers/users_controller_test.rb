@@ -15,16 +15,11 @@ class UsersControllerTest < ActionController::TestCase
      password_confirmation: ""}
   end
 
-  # test "should get new" do
-  #   get :new
-  #   assert_response :ok
-  # end
-
-  # context "GET :new" do
-	 #  setup { get :new }
-	 #  should respond_with(:ok)
-	 #  should render_template(:new)
-  # end
+  context "GET :new" do
+	  setup { get :new }
+	  should respond_with(:ok)
+	  should render_template(:new)
+  end
 
   context "POST :create" do
     context "when I send invalid information" do
@@ -38,6 +33,8 @@ class UsersControllerTest < ActionController::TestCase
         assert assigns["user"], "Should have a user"
         assert assigns["user"].invalid?, "Should have an invalid user"
       end
+
+
     end
 
     context "when I send valid information" do
@@ -48,6 +45,10 @@ class UsersControllerTest < ActionController::TestCase
         assert assigns["user"], "Should have a user"
         assert assigns["user"].persisted?, "Should have saved user in the DB"
         assert_equal user_attributes[:name], assigns["user"].name
+
+	        # should "send user to homepage" do
+		       #  redirect_to { homepage (questions_index) }
+	        # end
       end
     end
 
