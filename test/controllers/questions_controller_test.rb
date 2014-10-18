@@ -37,6 +37,21 @@ class QuestionsControllerTest < ActionController::TestCase
     end
   end
 
+  context "GET questions#show" do
+    setup { get :show, :id => questions(:one) }
+
+    should render_template("show")
+    should respond_with(:success)
+
+    should "load question" do
+      assert_equal questions(:one), assigns[:question]
+    end
+
+    should "instantiate answer" do
+      assert assigns[:answer], "Should have a blank answer"
+    end
+  end
+
   context "GET questions#new" do
     context "when not logged in" do
       setup { get :new }
