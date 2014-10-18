@@ -2,15 +2,13 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'faker'
+require_relative 'support/test_password_helper'
 
 class ActiveSupport::TestCase
+  include TestPasswordHelper
+
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
-
-  # Add more helper methods to be used by all tests here...
-
-  def check_presence(model, field)
-    assert model.invalid?, "#{model.class} without #{field} should not be valid"
-    assert_not_empty model.errors[field]
-  end
 end
+
+ActiveRecord::FixtureSet.context_class.send :include, TestPasswordHelper
