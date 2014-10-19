@@ -1,11 +1,4 @@
-<p>
-  this is the homepage . . . under construction
-</p>
-
-  <div class="btn btn-primary">
-  <%= link_to "Log In", new_login_path %>
-  <%= link_to "Log Out", login_path, method: :delete %>
-  </div>
+<h1>All Questions</h1>
 
 <table>
   <tr>
@@ -19,7 +12,7 @@
   <% @questions.each do |question| %>
       <tr>
         <td><%= question.title %></td>
-        <td><%= question.text %></td>
+        <td><%= question.content %></td>
         <td><%= link_to "Show", question %></td>
         <td><%= link_to "Edit", edit_question_path(question) %></td>
         <td><%= link_to "Remove", question, method: :delete, data: { confirm: "Are you sure?" } %></td>
@@ -30,6 +23,3 @@
 <br>
 
 <%= link_to "New question", new_question_path %>
-
-
-

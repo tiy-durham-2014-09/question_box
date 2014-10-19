@@ -7,7 +7,7 @@ class LoginsController < ApplicationController
 	 @user = User.find_by(email: params[:email])
 	 if @user && @user.authenticate(params[:password])
 		  session[:current_user_id] = @user.id
-		  redirect_to root_path #notice: "You have successfully logged in."
+		  redirect_to root_path, :notice => "Logged in as #{current_user.name}!"
 	 else
 		  flash.now[:error] = "Your email or password was incorrect."
 		  render :new

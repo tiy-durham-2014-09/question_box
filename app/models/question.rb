@@ -14,6 +14,11 @@ class Question < ActiveRecord::Base
 
   validates :votevalue, presence: true
 
+  before_save :default_vote_count
+
+  def default_vote_count
+	  self.votes ||= 0
+  end
 
   def has_chosen_answer?
     answers.where(chosen: true).count > 0
@@ -21,6 +26,10 @@ class Question < ActiveRecord::Base
 
   def score
     votes.sum(:value)
+  end
+
+  def upvote
+	  self.votes += 1
   end
 
 end

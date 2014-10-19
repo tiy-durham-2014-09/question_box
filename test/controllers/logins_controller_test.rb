@@ -61,9 +61,5 @@ class LoginsControllerTest < ActionController::TestCase
 	  end
   end
 
-  # test "should get destroy" do
-  #   get :destroy
-  #   assert_response :success
-  # end
 
 end
