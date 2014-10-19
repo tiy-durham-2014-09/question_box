@@ -32,6 +32,12 @@ class LoginsControllerTest < ActionController::TestCase
       should "redirect to homepage" do
         assert_redirected_to root_path
       end
+
+      # context "calling current_user" do
+      #   should "give ID" do
+      #     assert @controller.current_user == @user
+      #   end
+      # end
     end
 
   end

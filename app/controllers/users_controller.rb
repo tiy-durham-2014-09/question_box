@@ -8,7 +8,8 @@ class UsersController < ApplicationController
 
     if @user.save
       # TODO redirect
-      redirect_to root_path, status: :created
+      # session[:current_user_id] = @user.id
+      redirect_to root_path, status: :created, notice: "Created new user and logged in successfully."
     else
       redirect_to new_user_path, notice: "Invalid registration information."
     end

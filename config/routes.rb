@@ -1,16 +1,13 @@
 Rails.application.routes.draw do
   get 'questions/index'
-
   get 'questions/home'
-
   get 'questions/new'
-
   get 'questions/create'
-
   get 'questions/show'
 
   resources :users, :only => [:new, :create]
   resource :login, :only => [:new, :create, :destroy]
+  # resources :questions, :only => [:index, :new, :create, :show, :home]
 
   root 'questions#home'
 

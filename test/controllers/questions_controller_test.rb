@@ -1,14 +1,16 @@
 require 'test_helper'
 
 class QuestionsControllerTest < ActionController::TestCase
+
   test "should get index" do
     get :index
     assert_response :success
   end
 
-  test "should get home" do
-    get :home
-    assert_response :success
+  context "GET :home" do
+    setup { get :home }
+    should respond_with(:ok)
+    should render_template(:home)
   end
 
   test "should get new" do

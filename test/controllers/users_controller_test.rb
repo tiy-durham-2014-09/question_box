@@ -43,6 +43,10 @@ class UsersControllerTest < ActionController::TestCase
         assert assigns["user"].persisted?, "Should have saved user in the DB"
         assert_equal user_attributes[:name], assigns["user"].name
       end
+
+      # should "log in" do
+      # assert session[:current_user_id], "Should have a session"
+      # end
     end
   end
 end

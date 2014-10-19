@@ -1,3 +1,8 @@
-<h1>QuestionBox</h1>
-<p><%= link_to 'Register', new_user_path %> or <%= link_to 'Log In', new_login_path %></p>
-<p><%= link_to 'Log Out', login_path, :method => :delete %></p>
+<p>
+  <% if logged_in? %>
+    You're logged in, so we display the New Question Form
+  <% else %>
+    <%= link_to 'Log In', new_login_path %> to ask a question!
+  <% end %>
+</p>
+<p>list of recent questions | list of recent answers</p>
