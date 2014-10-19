@@ -32,7 +32,7 @@ post 'question/create'
   resources :login, :only => [:new,:create, :destroy]
   resources :homepage
   resources :answers, :only => [:new, :create, :show]
-  resources :question, :only => [:new, :edit,:create, :update, :destroy, :show]
+  resources :question, :only => [ :index,:edit, :update, :destroy, :show]
 
   root 'question#index'
   # resources :users, only => [:create,:new]
