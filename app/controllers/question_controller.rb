@@ -3,7 +3,7 @@ before_action :set_question, only: [:show, :edit, :update, :destroy]
 before_action :authenticate
 
   def index
-    @question = Question.all
+    @question = Question.paginate(page: params[:page], per_page: 10)
     @questions = Question.new
   end
   def new

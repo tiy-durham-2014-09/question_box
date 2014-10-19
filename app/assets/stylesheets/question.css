@@ -3,6 +3,11 @@ background-image: url('http://i.imgur.com/BjwPMVK.png');
 margin: 0 auto;
 text-align: center;
 }
-table {
-margin: 0 auto;
+table, tbody {
+float: left;
+}
+.unanswered_questions {
+float: left;
+margin-bottom: 20px;
+padding-bottom: 20px;
 }

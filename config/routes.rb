@@ -26,7 +26,6 @@ post 'question/create'
 
   resources :users, :only => [:create, :new]
   resources :login, :only => [:new,:create, :destroy]
-  resources :all_questions, :only => [:index]
   resources :homepage
   resources :question, :only => [:new, :edit,:create, :update, :destroy, :show]
 
