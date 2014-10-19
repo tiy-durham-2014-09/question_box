@@ -17,7 +17,7 @@ post 'question/create'
   # #LOGIN
   #   post 'login/new'
   #   post 'login/create'
-  #   get 'login/destroy'
+    delete 'login/destroy'
   #
   #
   # #USERS
@@ -29,6 +29,7 @@ post 'question/create'
   resources :all_questions, :only => [:index]
   resources :homepage
   resources :question, :only => [:new, :edit,:create, :update, :destroy, :show]
+
   root 'question#index'
   # resources :users, only => [:create,:new]
 

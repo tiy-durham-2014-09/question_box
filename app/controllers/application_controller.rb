@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   def authenticate
     current_user_id = session[:current_user_id]
     unless current_user_id
-      redirect_to login_new_path, notice: "SAWEE"
+      redirect_to new_login_path, notice: "sorry, you can't do that"
     end
   end
 

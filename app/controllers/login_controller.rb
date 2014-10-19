@@ -14,9 +14,8 @@ class LoginController < ApplicationController
   end
 
   def destroy
-    if session[:current_user_id] = nil
-    redirect_to homepage_index_path, notice: "DON'T GO AHHHH"
-    end
+    session[:current_user_id] = nil
+    redirect_to new_question_path, notice: "DON'T GO AHHHH"
   end
 
 

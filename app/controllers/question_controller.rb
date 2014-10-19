@@ -9,6 +9,7 @@ before_action :authenticate
     @question = Question.new
   end
 
+
   def create
     if current_user
       @question = Question.new(question_params)
