@@ -21,4 +21,5 @@ class QuestionsController < ApplicationController
   def question_params
     params.require(:question).permit(:title, :text, :vote_count, :user_id)
   end
+
 end

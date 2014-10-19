@@ -47,14 +47,14 @@ class UsersControllerTest < ActionController::TestCase
 
     context "when I send valid information" do
 	    setup do
-		    @user_attributes = valid_user_attributes
-		    post :create, { user: @user_attributes }
+		    @answer = valid_user_attributes
+		    post :create, { user: @answer }
 	    end
 
       should "create a user" do
         assert assigns["user"], "Should have a user"
         assert assigns["user"].persisted?, "Should have saved user in the DB"
-        assert_equal @user_attributes[:name], assigns["user"].name
+        assert_equal @answer[:name], assigns["user"].name
       end
 
       should "create new session" do
