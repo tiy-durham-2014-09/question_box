@@ -13,6 +13,11 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def destroy
+    Question.find(params["id"]).destroy
+    redirect_to root_path
+  end
+
   def question_params
     params.require(:question).permit(:title, :text, :vote_count, :user_id)
   end

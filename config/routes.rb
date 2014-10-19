@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :users, :only => [:new, :create]
-  resources :questions, :only => [:new, :create, :show]
+  resources :questions, :only => [:new, :create, :show, :destroy]
   resources :logins, :only => [:new, :create, :destroy]
   get "questions/homepage" => 'questions#homepage'
 

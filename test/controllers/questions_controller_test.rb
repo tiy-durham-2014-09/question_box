@@ -50,5 +50,23 @@ class QuestionsControllerTest < ActionController::TestCase
       end
     end
 
+    context "DELETE" do
+      context "when I delete a question" do
+
+        should "user should be removed from database" do
+          assert_raise ActiveRecord::RecordNotFound do
+            question_id = questions(:one).id
+            delete :destroy, id: question_id
+            Question.find(question_id)
+          end
+        end
+
+        should "send to homepage" do
+          delete :destroy, id: questions(:one).id
+          assert_redirected_to root_path, "should send to homepage"
+        end
+      end
+    end
+
   end
 end
