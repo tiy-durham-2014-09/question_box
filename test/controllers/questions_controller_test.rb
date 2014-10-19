@@ -30,17 +30,24 @@ class QuestionsControllerTest < ActionController::TestCase
   # end
 
   context "POST :create" do
+    setup do
+      @user = users(:one)
+      # @user.save
+    end
     context "When I send invalid info" do
       setup do
-        @user = User.new(name: Faker::Name.name,
-                         email: Faker::Internet.email,
-                         password: "password",
-                         password_confirmation: "password")
-        @user.save
         post :create, { question: { title: "", text: "", user_id: @user.id } }, { current_user_id: @user.id }
       end
       should "reload home" do
         assert_redirected_to root_path
+      end
+    end
+    context "When I send valid info" do
+      setup do
+        post :create, { question: { title: "wat", text: "how do i even", user_id: @user.id } }, { current_user_id: @user.id }
+      end
+      should "show question" do
+        assert_redirected_to question_path(@user.questions.last)
       end
     end
   end

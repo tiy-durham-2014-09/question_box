@@ -5,3 +5,37 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+User.delete_all
+Question.delete_all
+
+@users = []
+5.times do
+  user = User.create(
+      name: Faker::Name.name,
+      email: Faker::Internet.email,
+      password: "password",
+      password_confirmation: "password"
+  )
+  @users << user
+end
+
+@questions = []
+@users.each do |u|
+  rand(0..2).times do
+    question = Question.create(
+        title: "How do I " + Faker::Company.bs + "?",
+        text: Faker::Lorem.paragraph.to_s.chomp + "?",
+        user_id: u.id
+    )
+    @questions << question
+  end
+  rand(0..2).times do
+    question = Question.create(
+        title: 'What does "' + Faker::Company.bs + '" even mean?',
+        text: Faker::Lorem.paragraph.to_s.chomp + "?",
+        user_id: u.id
+    )
+    @questions << question
+  end
+end
