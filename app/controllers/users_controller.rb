@@ -7,9 +7,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash[:success] = "Welcome to the Sample App!"
-      redirect_to @users
-      render nothing: true, status: :created
+      flash[:success] = "User Created"
+      redirect_to login_path
     else
       render :new
     end

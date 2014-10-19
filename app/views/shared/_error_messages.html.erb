@@ -1,6 +1,6 @@
 <% if @user.errors.any? %>
     <div id="error_explanation">
-      <div class="error_alert">
+      <div class="flash_error">
         You have <%= pluralize(@user.errors.count, "error") %> in this form.
       </div>
       <ul>

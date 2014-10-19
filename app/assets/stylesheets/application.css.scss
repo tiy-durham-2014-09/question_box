@@ -16,7 +16,7 @@
 @import "base/base";
 @import "neat";
 
-.error_alert {
+.flash_error {
   @extend %flash-error;
 }
 

@@ -2,6 +2,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'faker'
+require 'capybara/rails'
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
@@ -13,4 +14,9 @@ class ActiveSupport::TestCase
     assert model.invalid?, "#{model.class} without #{field} should not be valid"
     assert_not_empty model.errors[field]
   end
+end
+
+class ActionDispatch::IntegrationTest
+  # Make the Capybara DSL available in all integration tests
+  include Capybara::DSL
 end

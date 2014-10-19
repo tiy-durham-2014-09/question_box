@@ -40,7 +40,6 @@ class UsersControllerTest < ActionController::TestCase
         post :create, { user: user_attributes }
 
         assert assigns["user"], "Should have a user"
-        # binding.pry
         assert assigns["user"].persisted?, "Should have saved user in the DB"
         assert_equal user_attributes[:name], assigns["user"].name
       end

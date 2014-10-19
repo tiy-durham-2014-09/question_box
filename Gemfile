@@ -49,4 +49,5 @@ group :development, :test do
   gem 'bourbon'
   gem 'neat'
   gem 'bitters'
+  gem 'capybara'
 end
