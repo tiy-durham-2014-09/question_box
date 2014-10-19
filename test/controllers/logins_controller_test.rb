@@ -41,4 +41,16 @@ class LoginsControllerTest < ActionController::TestCase
       end
     end
   end
+
+  context "DELETE logins#destroy" do
+    setup { delete :destroy, {}, logged_in_session }
+
+    should "redirect to home" do
+      assert_redirected_to root_path
+    end
+
+    should "log out" do
+      assert_nil session[:current_user_id]
+    end
+  end
 end
