@@ -4,6 +4,7 @@ before_action :authenticate
 
   def index
     @question = Question.all
+    @questions = Question.new
   end
   def new
     @question = Question.new
