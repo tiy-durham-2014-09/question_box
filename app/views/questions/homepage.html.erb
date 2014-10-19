@@ -1,1 +1,51 @@
-On homepage
+<h1>What's your question?</h1>
+
+<% if logged_in? %>
+	<%= form_for @question do |f| %>
+
+	    <%= f.label :title %>
+	    <%= f.text_field :title %><br>
+
+	    <%= f.label :text %>
+	    <%= f.text_area :text %>
+
+	  <%= button_tag 'Ask' %>
+	<% end %>
+<% else %>
+	<%= link_to 'Login to ask question', new_login_path %>
+<% end %>
+
+<br><br>
+
+<% answered_questions = Array.new %>
+<% unanswered_questions = Array.new %>
+<% max_display = 5 %>
+
+<% @questions.reverse_order.each do |question| %>
+	<% if question.answer_count == 0 %>
+		<% unless unanswered_questions.count == max_display %>
+			<% unanswered_questions << question %>
+		<% end %>
+	<% else %>
+		<% unless answered_questions.count == max_display %>
+			<% answered_questions << question %>
+		<% end %>
+	<% end %>
+<% end %>
+
+Unanswered questions<br><br>
+
+<% unanswered_questions.each do |ques| %>
+
+  <%= link_to ques.title, question_path(ques) %> | Votes <%= ques.vote_count %> | Answers <%= ques.answer_count %><br>
+<% end %>
+
+<br><br>
+
+Answered questions<br><br>
+
+<% answered_questions.each do |ques| %>
+
+  <%= link_to ques.title, question_path(ques) %> | Votes <%= ques.vote_count %> | Answers <%= ques.answer_count %><br>
+<% end %>
+

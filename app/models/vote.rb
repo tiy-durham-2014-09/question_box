@@ -10,7 +10,7 @@ class Vote < ActiveRecord::Base
 
   validate :check_against_self_voting
 
-  before_save :adjust_points
+  before_save :adjust_points, :adjust_vote_count
 
   def check_against_self_voting
     return unless voteable.respond_to?(:user) && voteable.user
@@ -34,6 +34,16 @@ class Vote < ActiveRecord::Base
     end
 
     voteable.user.save
+  end
+
+  def adjust_vote_count
+    if value > 0
+      voteable.increment!(:vote_count, 1)
+    elsif value < 0
+      voteable.decrement!(:vote_count, 1)
+    end
+
+    voteable.save
   end
 
 end

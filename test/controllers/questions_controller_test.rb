@@ -11,14 +11,13 @@ class QuestionsControllerTest < ActionController::TestCase
     questions(:one).attributes
   end
 
-  test "should get new" do
-    get :new
-    assert_response :ok
-  end
-
   context "POST :create" do
     context "when I send invalid information" do
-      setup { post :create, { question: invalid_question_attributes } }
+      setup do
+        session[:user_id] = users(:one).id
+        @controller.send(:current_user)
+        post :create, { question: invalid_question_attributes }
+      end
 
       should "re-render the form" do
         assert_template :new
@@ -32,8 +31,11 @@ class QuestionsControllerTest < ActionController::TestCase
 
     context "when I send valid information" do
       setup do
+        session[:user_id] = users(:one).id
+        @controller.send(:current_user)
         @question_attributes = valid_question_attributes
         post :create, { question: @question_attributes }
+        session[:user_id] = users(:one).id
       end
 
       should "create a question" do
@@ -50,23 +52,29 @@ class QuestionsControllerTest < ActionController::TestCase
       end
     end
 
-    context "DELETE" do
-      context "when I delete a question" do
+  end
 
-        should "user should be removed from database" do
-          assert_raise ActiveRecord::RecordNotFound do
-            question_id = questions(:one).id
-            delete :destroy, id: question_id
-            Question.find(question_id)
-          end
-        end
+  context "DELETE" do
+    context "when I delete a question" do
+      setup do
+        session[:user_id] = users(:one).id
+        @controller.send(:current_user)
+      end
 
-        should "send to homepage" do
-          delete :destroy, id: questions(:one).id
-          assert_redirected_to root_path, "should send to homepage"
+      should "user should be removed from database" do
+        assert_raise ActiveRecord::RecordNotFound do
+          question_id = questions(:one).id
+          delete :destroy, { id: question_id }
+          Question.find(question_id)
         end
       end
-    end
 
+      should "send to homepage" do
+        question_id = questions(:one).id
+        delete :destroy, { id: question_id }
+        assert_redirected_to root_path, "should send to homepage"
+      end
+    end
   end
+
 end

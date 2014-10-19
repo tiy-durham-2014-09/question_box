@@ -16,4 +16,7 @@ class Question < ActiveRecord::Base
     votes.sum(:value)
   end
 
+  def answer_count
+    answers.count
+  end
 end

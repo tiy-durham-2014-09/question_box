@@ -1,0 +1,31 @@
+<%= @question.title %>
+<%= @question.text %>
+
+| Votes <%= @question.vote_count %><br>
+
+<p><%= link_to "Vote Up", question_votes_path(@question), :method => :create %></p>
+
+<br><br>
+<h1>Answers</h1>
+
+<% @answers.each do |answer| %>
+	<p>
+	  Answer: <%= answer.text %> | <%= answer.vote_count %>
+	</p>
+<% end %>
+
+<% if logged_in? %>
+  <%= form_for([@question, @question.answers.build]) do |f| %>
+
+    <%= f.label :text %>
+    <%= f.text_area :text %><br>
+
+    <%= button_tag 'Answer' %>
+  <% end %>
+<% else %>
+  <%= link_to 'Login to answer', new_login_path %>
+<% end %>
+
+<p>
+	<%= link_to "Back to home", root_path %>
+</p>

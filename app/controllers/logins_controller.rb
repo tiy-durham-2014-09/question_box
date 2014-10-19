@@ -1,12 +1,11 @@
 class LoginsController < ApplicationController
 	def new
-
 	end
 
 	def create
-		@user = User.find_by(email: user_params[:email])
+		@user = User.find_by(email: params[:email])
 
-		if @user && @user.authenticate(user_params[:password])
+		if @user && @user.authenticate(params[:password])
 			session[:user_id] = @user.id
 			redirect_to root_path
 		else
@@ -15,10 +14,7 @@ class LoginsController < ApplicationController
 	end
 
 	def destroy
-    log_out
-	end
-
-	def user_params
-		params.require(:user).permit(:email, :password)
+    session[:user_id] = nil
+    redirect_to root_path, notice: "You have been logged out."
 	end
 end

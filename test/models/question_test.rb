@@ -33,6 +33,15 @@ class QuestionTest < ActiveSupport::TestCase
 
       assert_equal 2, @question.score
     end
+
+    should "know its answer count" do
+      question = Question.new
+      assert_equal 0, question.answer_count, "answer count should be zero for new question"
+
+      question = questions(:one)
+      assert_equal 3, question.answer_count, "answer count should equal number of related answers"
+    end
+
   end
   #
   # test "should increment vote count by 1 after up vote" do

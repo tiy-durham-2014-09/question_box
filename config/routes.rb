@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
+  get 'votes/new'
+
+  get 'votes/create'
+
+  get 'votes/destroy'
+
   resources :users, :only => [:new, :create]
-  resources :questions, :only => [:new, :create, :show, :destroy]
-  resources :answers, :only => [:create, :show, :destroy]
-  resources :logins, :only => [:new, :create, :destroy]
+  resources :questions, :only => [:index, :new, :create, :show, :homepage, :destroy] do
+    resources :answers, :only => [:create, :show, :destroy]
+    resources :votes, :only => [:create]
+  end
+
+  resource :login, :only => [:new, :create, :destroy]
   get "questions/homepage" => 'questions#homepage'
 
 

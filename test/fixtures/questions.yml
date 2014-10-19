@@ -11,3 +11,9 @@ two:
   text: MyText
   user: chet
   vote_count: 0
+
+three:
+  title: MyString - second question by chet
+  text: MyText
+  user: chet
+  vote_count: 0

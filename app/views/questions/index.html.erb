@@ -1,0 +1,3 @@
+<% @questions.each do |ques| %>
+	<p><%= link_to ques.title, question_path(ques) %> | Votes <%= ques.vote_count %> | Answers <%= ques.answer_count %><br></p>
+<% end %>
