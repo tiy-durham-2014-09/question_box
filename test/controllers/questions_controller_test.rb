@@ -2,9 +2,10 @@ require 'test_helper'
 
 class QuestionsControllerTest < ActionController::TestCase
 
-  test "should get index" do
-    get :index
-    assert_response :success
+  context "GET :index" do
+    setup { get :index }
+    should respond_with(:ok)
+    should render_template(:index)
   end
 
   context "GET :home" do
@@ -13,19 +14,20 @@ class QuestionsControllerTest < ActionController::TestCase
     should render_template(:home)
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
+  # context "GET :new" do
+  #   setup { get :new }
+  #   should respond_with(:ok)
+  #   should render_template(:new)
+  # end
+
+  context "POST :create" do
+    # ???
   end
 
-  test "should get create" do
-    get :create
-    assert_response :success
-  end
-
-  test "should get show" do
-    get :show
-    assert_response :success
+  context "GET show" do
+    setup { get :show }
+    should respond_with(:ok)
+    should render_template(:show)
   end
 
 end

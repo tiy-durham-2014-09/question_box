@@ -1,17 +1,13 @@
-<h1>Register or <%= link_to 'Log In', new_login_path %></h1>
+<h1>Register or <%= link_to 'Log in', new_login_path %></h1>
 
 <%= form_for(@user) do |f| %>
 
-  <%= f.label :name %>
   <%= f.text_field :name, placeholder: "Username" %>
   <br>
-  <%= f.label :email %>
   <%= f.text_field :email, placeholder: "Email" %>
   <br>
-  <%= f.label :password %>
   <%= f.password_field :password, placeholder: "Password" %>
   <br>
-  <%= f.label :password_confirmation%>
   <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
   <br>
   <%= f.submit "Register" %>

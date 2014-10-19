@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'questions/index'
   get 'questions/home'
-  get 'questions/new'
+  # get 'questions/new'
   get 'questions/create'
   get 'questions/show'
 
