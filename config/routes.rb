@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
 
 
-post 'question/create'
+
 
   #HOMEPAGE
   post 'homepage/create'
@@ -30,9 +30,8 @@ post 'question/create'
 
   resources :users, :only => [:create, :new]
   resources :login, :only => [:new,:create, :destroy]
-  resources :homepage
-  resources :answers, :only => [:new, :create, :show]
-  resources :question, :only => [ :index,:edit, :update, :destroy, :show]
+  resources :answers, :only => [:create, :new]
+  resources :question, :only => [ :new, :edit, :update, :destroy, :show, :create]
 
   root 'question#index'
   # resources :users, only => [:create,:new]

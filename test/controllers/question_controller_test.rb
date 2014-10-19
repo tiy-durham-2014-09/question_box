@@ -1,29 +1,35 @@
 require 'test_helper'
 
 class QuestionControllerTest < ActionController::TestCase
-  test "should get new" do
-    get :new
-    assert_response :success
+  def valid_question_attributes
+    {title: "title",
+     text: "text",
+     user_id: 1
+     }
   end
 
-  test "should get create" do
-    get :create
-    assert_response :success
+  def invalid_question_attributes
+    {title: 4,
+     text: 3,
+     user_id: 1}
   end
 
-  test "should get edit" do
-    get :edit
-    assert_response :success
+context "POST :create" do
+  context "when I send invalid information" do
+    setup { post :create, { user: invalid_question_attributes } }
+
+    should "render new" do
+      assert_redirected_to root_path
+    end
+
   end
 
-  test "should get update" do
-    get :update
-    assert_response :success
-  end
+  context "when I send valid information" do
+    should "create a user" do
+      question_attributes = valid_question_attributes
+      post :create, { user: question_attributes }
 
-  test "should get destroy" do
-    get :destroy
-    assert_response :success
+    end
   end
-
+end
 end

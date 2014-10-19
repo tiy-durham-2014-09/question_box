@@ -5,6 +5,7 @@ before_action :authenticate
   def index
     @question = Question.paginate(page: params[:page], per_page: 10)
     @questions = Question.new
+    @answer = Answer.new
   end
   def new
     @question = Question.new
@@ -19,7 +20,7 @@ before_action :authenticate
       if @question.save
         format.html { redirect_to root_path, notice: 'Post was successfully created.' }
       else
-        format.html { render :new }
+        format.html { redirect_to root_path, notice: "sorry!"}
       end
     end
   end

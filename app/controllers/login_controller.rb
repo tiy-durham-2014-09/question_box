@@ -1,4 +1,5 @@
 class LoginController < ApplicationController
+
   def new
   end
 
@@ -14,8 +15,9 @@ class LoginController < ApplicationController
   end
 
   def destroy
-    session[:current_user_id] = nil
+     session[:current_user_id] = nil
     redirect_to root_path, notice: "DON'T GO AHHHH"
+    
   end
 
 

@@ -1,2 +1,9 @@
-<h1>Answers#create</h1>
-<p>Find me in app/views/answers/create.html.erb</p>
+
+<div class="new_question">
+<%= form_for @answers, :url => new_answer_path do |f| %>
+  <%= f.text_field :title, placeholder: "Question Title" %><br>
+  <%= f.text_area :text, placeholder: "Question Body" %><br>
+  <%= f.text_area :user_id, placeholder: "User" %><br>
+  <%= f.button :submit, class: "btn btn-large btn-success" %>
+<% end %>
+</div>

@@ -6,7 +6,7 @@ class Question < ActiveRecord::Base
 
   validates :title, presence: true
   validates :text, presence: true
-  validates :user_id, presence: true
+  validates :user, presence: true
 
   def has_chosen_answer?
     answers.where(chosen: true).count > 0

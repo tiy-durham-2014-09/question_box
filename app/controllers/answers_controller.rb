@@ -1,6 +1,8 @@
 class AnswersController < ApplicationController
   def show
+    @answer = Answer.find(params[:id])
   end
+
 
   def create
     if current_user
@@ -8,7 +10,7 @@ class AnswersController < ApplicationController
     end
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to root_path, notice: 'Answer was successfully  posted.' }
+        format.html { redirect_to root_path, notice: 'Answer was successfully posted.' }
       else
         format.html { render :new }
       end
