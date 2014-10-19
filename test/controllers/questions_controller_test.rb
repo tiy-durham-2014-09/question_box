@@ -34,7 +34,7 @@ class QuestionsControllerTest < ActionController::TestCase
 
     context "when I send valid information" do
       should "create a question" do
-        question_attributes = valid_user_attributes
+        question_attributes = valid_question_attributes
         post :create, { question: question_attributes }
 
         assert assigns["question"], "Should have a question"
