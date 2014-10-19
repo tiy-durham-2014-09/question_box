@@ -50,4 +50,5 @@ group :development, :test do
   gem 'neat'
   gem 'bitters'
   gem 'capybara'
+  gem 'will_paginate', '~> 3.0'
 end

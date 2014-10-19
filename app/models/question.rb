@@ -3,6 +3,8 @@ class Question < ActiveRecord::Base
   has_many :answers
   has_and_belongs_to_many :tags
   has_many :votes, as: :voteable
+  default_scope -> { order('created_at DESC') }
+  self.per_page = 10
 
   validates :title, presence: true
   validates :text, presence: true

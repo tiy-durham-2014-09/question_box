@@ -1,11 +1,15 @@
 <header>
-  <div class="container">
-    <%= link_to "QuestionBox", '#' %>
-    <nav>
-      <ul class="nav navbar-nav pull-right">
-        <li><%= link_to "All Questions", '#' %></li>
-        <li><%= link_to "Login", '#' %></li>
-      </ul>
-    </nav>
-  </div>
+    <ul class="main_nav">
+      <div class="logo"><%= link_to "QuestionBox", 'root_path' %></div>
+        <li><%= link_to "All Questions", 'questions_path' %></li>
+    </ul>
+    <ul class="user_nav">
+        <% if logged_in? %>
+          <li><%= link_to "Logged in as #{current_user.name}" %></li>
+          <li><%= link_to "Logout", logout_path, method: "delete" %></li>
+        <% else %>
+          <li><%= link_to "Login", login_path %></li>
+        <% end %>
+    </ul>
+
 </header>

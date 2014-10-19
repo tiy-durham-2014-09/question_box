@@ -1,0 +1,21 @@
+
+<h2><%= @question.title %></h2>
+<p><%= @question.text %></p>
+<p>Asked by <%= @question.user.name %></p>
+
+<% if @question.answers.count == 0 %>
+  <h2>No Answers Yet</h2>
+<% else %>
+  <h2>Answers</h2>
+  <% @question.answers.each do |answer| %>
+  <p><%= answer.text %></p>
+  <p>Answered by <%= answer.user.name %></p>
+  <% end %>
+<% end %>
+<h3>Answer This Question</h3>
+<% if logged_in? %>
+  <p>I'm going to be an answer form!</p>
+<% else %>
+  <p>You must <%= link_to "Login", login_path %> to answer.</p>
+<% end %>
+

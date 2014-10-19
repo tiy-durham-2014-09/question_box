@@ -16,6 +16,30 @@
 @import "base/base";
 @import "neat";
 
+$max-width: em(900);
+
+body {
+  @include outer-container;
+  border: solid 1px black;
+}
+
+header {
+  border-bottom: solid 2px black;
+  margin: 0 20px 0 20px;
+
+    ul {
+      display: inline;
+
+      .main_nav {
+        float: left;
+      }
+
+      .user_nav {
+        float: right;
+      }
+    }
+}
+
 .flash_error {
   @extend %flash-error;
 }
