@@ -5,6 +5,7 @@ class QuestionsController < ApplicationController
   end
 
   def home
+    @question = Question.new
   end
 
   def new

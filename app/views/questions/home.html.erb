@@ -1,6 +1,5 @@
 <p>
   <% if logged_in? %>
-    Display New Question Form
     <%= render 'new' %>
   <% else %>
     <%= link_to 'Log in', new_login_path %> to ask a question!

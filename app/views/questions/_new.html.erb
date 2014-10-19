@@ -1,2 +1,10 @@
-<h1>Ask a Question</h1>
-<p>Find me in app/views/questions/new.html.erb</p>
+<h2>Ask a Question</h2>
+<%= form_for @question do |f| %>
+
+  <%= f.text_field :title, placeholder: "Question title" %>
+  <br>
+  <%= f.text_area :text, rows: 5, placeholder: "What do you want to know?" %>
+  <br>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit "Ask" %>
+<% end %>

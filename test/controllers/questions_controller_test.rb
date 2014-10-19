@@ -19,7 +19,7 @@ class QuestionsControllerTest < ActionController::TestCase
       setup { get :home, {current_user_id: users(:one).id} }
       should respond_with(:ok)
       should render_template(:home)
-      # should render_template(partial: 'new')
+      should render_template(partial: 'new')
     end
   end
 
@@ -32,11 +32,11 @@ class QuestionsControllerTest < ActionController::TestCase
   context "POST :create" do
     setup do
       @user = users(:one)
-      # @user.save
     end
     context "When I send invalid info" do
       setup do
-        post :create, { question: { title: "", text: "", user_id: @user.id } }, { current_user_id: @user.id }
+        post :create, { question: { title: "", text: "", user_id: @user.id } },
+             { current_user_id: @user.id }
       end
       should "reload home" do
         assert_redirected_to root_path
@@ -44,10 +44,12 @@ class QuestionsControllerTest < ActionController::TestCase
     end
     context "When I send valid info" do
       setup do
-        post :create, { question: { title: "wat", text: "how do i even", user_id: @user.id } }, { current_user_id: @user.id }
+        post :create, { question: { title: "wat", text: "how do i even", user_id: @user.id } },
+             { current_user_id: @user.id }
       end
+
       should "show question" do
-        assert_redirected_to question_path(@user.questions.last)
+        assert_redirected_to question_path(assigns(:question))
       end
     end
   end
