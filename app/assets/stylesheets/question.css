@@ -4,10 +4,13 @@ margin: 0 auto;
 text-align: center;
 }
 table, tbody {
-float: left;
+margin-top: 40px;
 }
 .unanswered_questions {
 float: left;
-margin-bottom: 20px;
-padding-bottom: 20px;
+font-weight: bold;
+font-size: 30px;
+}
+.main {
+float: left;
 }

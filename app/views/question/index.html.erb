@@ -7,6 +7,7 @@
   <%= f.button :submit, class: "btn btn-large btn-success" %>
 <% end %>
 </div>
+<div class="main">
 <table>
   <tbody><div class="unanswered_questions">Unanswered Questions</div>
     <% @question.each do |question| %>
@@ -19,4 +20,5 @@
     <% end %>
   </tbody>
 </table>
-<%= will_paginate @question %>
+
+<%= will_paginate @question %></div>

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+
+
+
 post 'question/create'
 
   #HOMEPAGE
@@ -27,6 +31,7 @@ post 'question/create'
   resources :users, :only => [:create, :new]
   resources :login, :only => [:new,:create, :destroy]
   resources :homepage
+  resources :answers, :only => [:new, :create, :show]
   resources :question, :only => [:new, :edit,:create, :update, :destroy, :show]
 
   root 'question#index'
