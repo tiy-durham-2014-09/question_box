@@ -2,6 +2,12 @@
 <h2><%= @question.title %></h2>
 <p><%= @question.text %></p>
 <p>Asked by <%= @question.user.name %></p>
+<p> <%= pluralize(@question.votes.count, "Vote") %>
+  <% if logged_in? %>
+    <%= link_to "up", '#' %>
+    <%= link_to "down", '#' %>
+  <% end %>
+</p>
 
 <% if @question.answers.count == 0 %>
   <h2>No Answers Yet</h2>
@@ -10,6 +16,13 @@
   <% @question.answers.each do |answer| %>
   <p><%= answer.text %></p>
   <p>Answered by <%= answer.user.name %></p>
+  <p><%= pluralize(answer.votes.count, "Vote") %>
+    <% if logged_in? %>
+      <%= link_to "up", '#' %>
+      <%= link_to "down", '#' %>
+    <% end %>
+  </p>
+
   <% end %>
 <% end %>
 <h3>Answer This Question</h3>
