@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 20141016173750) do
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
   add_index "answers", ["user_id"], name: "index_answers_on_user_id"
 
+  create_table "comments", force: true do |t|
+    t.string   "text"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
   create_table "questions", force: true do |t|
     t.string   "title"
     t.text     "text"

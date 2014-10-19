@@ -4,6 +4,7 @@ class Question < ActiveRecord::Base
   has_and_belongs_to_many :tags
   has_many :votes, as: :voteable
 
+
   validates :title, presence: true
   validates :text, presence: true
   validates :user, presence: true
