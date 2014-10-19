@@ -1,0 +1,14 @@
+<h4><%= @question.title %></h4>
+<p><%= @question.text %></p>
+<p><%= @question.user.to_s %></p>
+<div class="row">
+  <div class='headings'><h4 class="large-12 columns">Answer</h4></div>
+  <%= form_tag answers_path :method => :post do %>
+    <div class="large-12 columns">
+      <%= text_field_tag :text, nil, class: 'text_field' %>
+    </div>
+    <div class="large-12 columns">
+      <%= button_tag "Answer", :class => "small radius" %>
+    </div>
+  <% end %>
+</div>

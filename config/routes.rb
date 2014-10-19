@@ -1,5 +1,42 @@
 Rails.application.routes.draw do
-  resources :users, :only => [:new, :create]
+
+
+
+
+
+
+  #HOMEPAGE
+  post 'homepage/create'
+
+
+  # get 'homepage/index'
+  # #
+  # #QUESTIONS AND ANSWERS
+  # get 'question_and_answers/show'
+  # get 'question_and_answers/create'
+  #
+  # #ALL QUESTIONS
+  # get 'all_questions/index'
+  #
+  # #LOGIN
+  #   post 'login/new'
+  #   post 'login/create'
+    delete 'login/destroy'
+  #
+  #
+  # #USERS
+  # get 'users/create'
+  # get 'users/new'
+
+  resources :users, :only => [:create, :new]
+  resources :login, :only => [:new,:create, :destroy]
+  resources :answers, :only => [:create, :new]
+  resources :question, :only => [ :new, :edit, :update, :destroy, :show, :create]
+
+  root 'question#index'
+  # resources :users, only => [:create,:new]
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

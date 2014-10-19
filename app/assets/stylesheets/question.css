@@ -1,0 +1,16 @@
+body {
+background-image: url('http://i.imgur.com/BjwPMVK.png');
+margin: 0 auto;
+text-align: center;
+}
+table, tbody {
+margin-top: 50px;
+}
+.unanswered_questions {
+float: left;
+font-weight: bold;
+font-size: 30px;
+}
+.main {
+float: left;
+}
