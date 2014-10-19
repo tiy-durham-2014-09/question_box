@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:current_user_id] = @user.id
-      redirect_to root_path
+      redirect_to root_path, success: "You are successfully registered."
     else
       render :new
     end

@@ -8,7 +8,7 @@ class LoginsController < ApplicationController
 
     if @login.valid? && @login.authenticated?
       session[:current_user_id] = @login.user.id
-      redirect_to root_path
+      redirect_to root_path, success: "You are successfully logged in."
     else
       render :show
     end
