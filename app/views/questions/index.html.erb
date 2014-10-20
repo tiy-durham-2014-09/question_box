@@ -1,0 +1,24 @@
+<h1>Your Questions</h1>
+
+<table>
+<tbody>
+  <% @questions1.order(created_at: :desc).each do |question| %>
+    <tr>
+      <td>
+      <h3><%= question.title %></h3>
+
+      <p><%= question.text %></p>
+      <p><%= link_to 'Show', question %>
+      <%= link_to 'Edit', edit_question_path(question) %>
+      <%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+    </td>
+  </tr>
+  <% end %>
+</tbody>
+
+</table>
+
+<br>
+
+<%= link_to 'New Question', new_question_path %>

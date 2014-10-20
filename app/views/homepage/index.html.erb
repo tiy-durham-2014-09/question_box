@@ -1,0 +1,19 @@
+<h1>Homepage#index</h1>
+<p>Find me in app/views/homepage/index.html.erb</p>
+
+<table>
+<tbody>
+  <% @questions.order(updated_at: :desc).each do |question| %>
+    <tr>
+      <td>
+      <h3><%= question.title %></h3>
+
+      <p><%= question.text %></p>
+     <p><%= link_to 'Show', question %></p>
+    </td>
+
+  </tr>
+  <% end %>
+</tbody>
+
+</table>

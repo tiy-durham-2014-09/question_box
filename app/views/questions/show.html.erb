@@ -1,0 +1,26 @@
+<div class="blog1">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @question.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @question.text %>
+</p>
+
+<p>
+  <strong>Written by:</strong>
+  <%= @question.user %>
+  <strong>Date:</strong>
+  <%= @question.created_at %>
+</p>
+
+
+
+
+
+
+<%= link_to 'Back', :back %>

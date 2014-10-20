@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
-has_many :comments, as: :commentable
-has_many :votes, as: :voteable
+  has_many :questions
+  has_many :answers
+
+  has_many :comments
+  has_many :votes
 
   validates :email,
             presence: true,
@@ -13,7 +16,17 @@ has_many :votes, as: :voteable
             presence: true,
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-  validates_associated :comments
-
   has_secure_password
+
+  def to_s
+    name
+  end
+
+  # Returns the hash digest of the given string.
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
 end
