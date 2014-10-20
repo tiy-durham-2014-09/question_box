@@ -1,0 +1,7 @@
+<h2>Answer This Question:</h2>
+<%= form_for @answer, :url => answers_path, :html => { :method => :post } do |f| %>
+    <%= f.text_area :text, placeholder: "Your answer..." %>
+    <%= f.hidden_field :user_id, value: "current_user.id" %>
+    <%= f.hidden_field :question_id, value: "question.id" %>
+    <%= f.submit "Answer"%>
+<% end %>

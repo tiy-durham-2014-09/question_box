@@ -1,0 +1,13 @@
+
+<% @questions.each do |question| %>
+  <ul>
+    <li><%= link_to question.title, question_path(question.id) %></li>
+    <li><%= pluralize(question.score, "Vote") %></li>
+    <li><%= pluralize(question.answers.count, "Answers") %></li>
+    <%= p question.created_at %>
+  </ul>
+  <p>Asked by <%= question.user.name %></p>
+<% end %>
+
+<%= will_paginate %>
+

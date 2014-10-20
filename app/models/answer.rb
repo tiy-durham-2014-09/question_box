@@ -4,8 +4,8 @@ class Answer < ActiveRecord::Base
   has_many :votes, as: :voteable
 
   validates :text, presence: true
-  validates :user, presence: true
-  validates :question, presence: true
+  validates :user_id, presence: true
+  validates :question_id, presence: true
 
   validate :check_one_chosen_answer_per_question
 

@@ -46,4 +46,9 @@ group :development, :test do
   gem "faker"
   gem "pry-rails"
   gem "shoulda"
+  gem 'bourbon'
+  gem 'neat'
+  gem 'bitters'
+  gem 'capybara'
+  gem 'will_paginate', '~> 3.0'
 end
