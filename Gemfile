@@ -38,6 +38,12 @@ gem 'bcrypt', '~> 3.1.7'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'simple_form'
+
+gem 'timeliness'
+
+gem 'jc-validates_timeliness', '~> 3.1.1'
+
 gem "quiet_assets", group: :development
 
 group :development, :test do

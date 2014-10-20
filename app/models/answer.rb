@@ -1,6 +1,9 @@
 class Answer < ActiveRecord::Base
   belongs_to :user
   belongs_to :question
+
+  has_many :comments, as: :commentable
+
   has_many :votes, as: :voteable
 
   validates :text, presence: true
@@ -8,8 +11,9 @@ class Answer < ActiveRecord::Base
   validates :question, presence: true
 
   validate :check_one_chosen_answer_per_question
-
   after_save :award_user_points
+
+  validates :votevalue, presence: true
 
   def check_one_chosen_answer_per_question
     return unless question.present?
