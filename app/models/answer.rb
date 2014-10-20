@@ -1,7 +1,6 @@
 class Answer < ActiveRecord::Base
   belongs_to :user
   belongs_to :question
-  has_many :comments, as: :commentable
   has_many :votes, as: :voteable
 
   validates :text, presence: true
@@ -11,14 +10,6 @@ class Answer < ActiveRecord::Base
   validate :check_one_chosen_answer_per_question
 
   after_save :award_user_points
-
-  def score
-    score = 0
-    votes.each do |s|
-      score += s.value
-    end
-    score
-  end
 
   def check_one_chosen_answer_per_question
     return unless question.present?
@@ -34,4 +25,9 @@ class Answer < ActiveRecord::Base
       user.save
     end
   end
+
+  def score
+    votes.sum(:value)
+  end
+
 end

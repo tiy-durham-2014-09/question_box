@@ -1,7 +1,12 @@
 class User < ActiveRecord::Base
+
+  has_secure_password
+
+  has_many :questions
+  has_many :answers
+
   has_many :comments
   has_many :votes
-  has_many :questions
 
   validates :email,
             presence: true,
@@ -13,8 +18,4 @@ class User < ActiveRecord::Base
   validates :score,
             presence: true,
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-
-
-
-  has_secure_password
 end

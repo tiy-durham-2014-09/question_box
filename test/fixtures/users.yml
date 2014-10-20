@@ -2,7 +2,7 @@
 
 one:
   name: User One
-  score: 50
+  score: 15
   email: one@example.org
   password_digest: MyString
 
@@ -17,3 +17,10 @@ chet:
   score: 1000
   email: chet@example.org
   password_digest: whoooo
+
+voter:
+  name: Voter Person
+  score: 1000
+  email: voter@example.org
+  password_digest: whoooo
+
