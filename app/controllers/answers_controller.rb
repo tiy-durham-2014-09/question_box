@@ -1,17 +1,14 @@
 class AnswersController < ApplicationController
-  def show
-    @question = Question.find(params[:id])
-    @answer = @question.answers.new
-    @answers = @question.answers.all
-  end
 
   def create
     @answer = Answer.new(answer_params)
 
     if @answer.save
       flash.now[:success] = "Answered!"
+      redirect_to question_path
     else
       flash.now[:error] = "Your answer is invalid."
+      redirect_to question_path
     end
   end
 
