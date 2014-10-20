@@ -26,7 +26,8 @@ end
     question = Question.create(
         title: "How do I " + Faker::Company.bs + "?",
         text: Faker::Lorem.paragraph.to_s.chomp + "?",
-        user_id: u.id
+        user_id: u.id,
+        created_at: Faker::Time.between(30.days.ago, Time.now, :all)
     )
     @questions << question
   end
@@ -34,7 +35,9 @@ end
     question = Question.create(
         title: 'What does "' + Faker::Company.bs + '" even mean?',
         text: Faker::Lorem.paragraph.to_s.chomp + "?",
-        user_id: u.id
+        user_id: u.id,
+        created_at: Faker::Time.between(30.days.ago, Time.now, :all)
+
     )
     @questions << question
   end
