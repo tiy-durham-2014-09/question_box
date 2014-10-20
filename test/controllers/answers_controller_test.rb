@@ -46,4 +46,44 @@ class AnswersControllerTest < ActionController::TestCase
       end
     end
   end
+
+  context "POST answers#vote" do
+    context "when not logged in" do
+      setup { post :vote, id: answers(:one_for_question_one) }
+
+      should "redirect to login" do
+        assert_redirected_to login_path
+      end
+    end
+
+    context "when logged in" do
+      context "with invalid data" do
+        setup do
+          post :vote, { id: answers(:one_for_question_one), vote: { value: 0 } }, logged_in_session
+        end
+
+        should "instantiate an invalid vote object" do
+          assert_invalid_model(:vote)
+        end
+
+        should "redirect to question" do
+          assert_redirected_to question_path(assigns[:answer].question)
+        end
+      end
+
+      context "with valid data" do
+        setup do
+          post :vote, { id: answers(:one_for_question_one), vote: { value: 1 } }, logged_in_session
+        end
+
+        should "create a vote" do
+          assert_saved_model(:vote)
+        end
+
+        should "redirect to question" do
+          assert_redirected_to question_path(assigns[:answer].question)
+        end
+      end
+    end
+  end
 end

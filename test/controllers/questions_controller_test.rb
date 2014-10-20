@@ -3,12 +3,12 @@ require 'test_helper'
 class QuestionsControllerTest < ActionController::TestCase
   def valid_question_data
     { question: { title: "How do I #{Faker::Hacker.verb} #{Faker::Hacker.noun}?",
-                  text: Faker::Lorem.paragraph } }
+                  text:  Faker::Lorem.paragraph } }
   end
 
   def invalid_question_data
     { question: { title: "",
-                  text: "" } }
+                  text:  "" } }
   end
 
   context "GET questions#home" do
@@ -106,7 +106,47 @@ class QuestionsControllerTest < ActionController::TestCase
           assert_saved_model(:question)
         end
 
-        should "redirect to index" do
+        should "redirect to question" do
+          assert_redirected_to question_path(assigns[:question])
+        end
+      end
+    end
+  end
+
+  context "POST questions#vote" do
+    context "when not logged in" do
+      setup { post :vote, id: questions(:one) }
+
+      should "redirect to login" do
+        assert_redirected_to login_path
+      end
+    end
+
+    context "when logged in" do
+      context "with invalid data" do
+        setup do
+          post :vote, { id: questions(:one), vote: { value: 0 } }, logged_in_session
+        end
+
+        should "instantiate an invalid vote object" do
+          assert_invalid_model(:vote)
+        end
+
+        should "redirect to question" do
+          assert_redirected_to question_path(assigns[:question])
+        end
+      end
+
+      context "with valid data" do
+        setup do
+          post :vote, { id: questions(:one), vote: { value: 1 } }, logged_in_session
+        end
+
+        should "create a vote" do
+          assert_saved_model(:vote)
+        end
+
+        should "redirect to question" do
           assert_redirected_to question_path(assigns[:question])
         end
       end

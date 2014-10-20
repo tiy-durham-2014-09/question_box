@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   resource :login, :only => [:show, :create, :destroy]
   resources :users, :only => [:new, :create]
   resources :questions, :only => [:index, :new, :create, :show] do
+    post :vote, on: :member
     resources :answers, :only => [:create]
+  end
+  resources :answers, :only => [] do
+    post :vote, on: :member
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
