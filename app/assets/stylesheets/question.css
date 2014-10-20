@@ -11,6 +11,17 @@ float: left;
 font-weight: bold;
 font-size: 30px;
 }
+.answered_questions {
+/*float:right;*/
+font-weight: bold;
+font-size: 30px;
+}
 .main {
 float: left;
+}
+.main_2 {
+float: right;
+}
+.paginate {
+margin: 0 auto;
 }

@@ -9,7 +9,7 @@ class LoginController < ApplicationController
       session[:current_user_id] = @user.id
       redirect_to root_path, notice: "it worked"
     else
-      flash.now[:error] = "Your email or password was WRONG BIATCH."
+      flash.now[:error] = "Your email or password was WRONG."
       render :new
     end
   end
@@ -17,7 +17,7 @@ class LoginController < ApplicationController
   def destroy
      session[:current_user_id] = nil
     redirect_to root_path, notice: "DON'T GO AHHHH"
-    
+
   end
 
 

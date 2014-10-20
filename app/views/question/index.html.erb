@@ -1,24 +1,37 @@
 <h1>What's your question?</h1>
 <div class="new_question">
-<%= form_for @questions, :url => question_index_path do |f| %>
+  <%= form_for @questions, :url => question_index_path do |f| %>
   <%= f.text_field :title, placeholder: "Question Title" %><br>
   <%= f.text_area :text, placeholder: "Question Body" %><br>
   <%= f.text_area :user_id, placeholder: "User" %><br>
   <%= f.button :submit, class: "btn btn-large btn-success" %>
-<% end %>
+  <% end %>
 </div>
 <div class="main">
-<table>
-  <tbody><div class="unanswered_questions">Unanswered Questions</div>
-    <% @question.each do |question| %>
+  <table>
+    <tbody><div class="unanswered_questions">Unanswered Questions</div>
+      <% @question.each do |question| %>
       <tr>
-          <td><%= link_to question.title, question_path(question) %>&nbsp &nbsp &nbsp<%= question.votes.count %>&nbsp votes &nbsp &nbsp<%= question.answers.count %>&nbsp answers<br>
+        <td><%= link_to question.title, question_path(question) %>&nbsp &nbsp &nbsp<%= question.votes.count %>&nbsp votes &nbsp &nbsp<%= question.answers.count %>&nbsp answers<br>
 
 
-      Asked by  <%= question.user.to_s %><br><br></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          Asked by  <%= question.user.to_s %><br><br></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table></div>
+    <div class= "main_2">
+      <table>
+        <tbody><div class="answered_questions">Recently Answered</div>
+        <div class="table_2">  <% @question.each do |question| %>
+          <tr>
+            <td><%= link_to question.title, question_path(question) %>&nbsp &nbsp &nbsp<%= question.votes.count %>&nbsp votes &nbsp &nbsp<%= question.answers.count %>&nbsp answers<br>
 
-<%= will_paginate @question %></div>
+
+              Asked by  <%= question.user.to_s %><br><br></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </div></div>
+
+      </table><div class="paginate"><%= will_paginate @question %></div>
