@@ -1,15 +1,10 @@
 Rails.application.routes.draw do
-  # get 'questions/index'
-  # get 'questions/new'
-  # get 'questions/create'
-  # get 'questions/show'
-  # get 'questions/home'
 
   root 'questions#home'
 
   resources :users, :only => [:new, :create]
   resource :login, :only => [:new, :create, :destroy]
-  resources :questions, :only => [:index, :new, :create, :show, :home]
+  resources :questions, :only => [:index, :create, :show, :home]
 
 
   # The priority is based upon order of creation: first created -> highest priority.

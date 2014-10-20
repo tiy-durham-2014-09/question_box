@@ -10,7 +10,7 @@ User.delete_all
 Question.delete_all
 
 @users = []
-5.times do
+15.times do
   user = User.create(
       name: Faker::Name.name,
       email: Faker::Internet.email,
@@ -22,9 +22,9 @@ end
 
 @questions = []
 @users.each do |u|
-  rand(0..2).times do
+  rand(1..5).times do
     question = Question.create(
-        title: "How do I " + Faker::Company.bs + "?",
+        title: ["How do I even ", "Why would I ever ", "Don't you hate it when you can't ", "Bro, do you even ", "Why can't I " ].sample + Faker::Company.bs + "?",
         text: Faker::Lorem.paragraph.to_s.chomp + "?",
         user_id: u.id,
         created_at: Faker::Time.between(30.days.ago, Time.now, :all)
@@ -37,7 +37,6 @@ end
         text: Faker::Lorem.paragraph.to_s.chomp + "?",
         user_id: u.id,
         created_at: Faker::Time.between(30.days.ago, Time.now, :all)
-
     )
     @questions << question
   end

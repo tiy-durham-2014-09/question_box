@@ -23,12 +23,6 @@ class QuestionsControllerTest < ActionController::TestCase
     end
   end
 
-  # context "GET :new" do
-  #   setup { get :new }
-  #   should respond_with(:ok)
-  #   should render_template(partial: 'new')
-  # end
-
   context "POST :create" do
     setup do
       @user = users(:one)
