@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   before_save :encrypt_password
-#last added down 
+#last added down
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
 
@@ -38,4 +38,8 @@ class User < ActiveRecord::Base
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   has_secure_password
+
+  def to_s
+    name
+  end
 end
