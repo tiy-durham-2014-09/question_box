@@ -12,7 +12,7 @@
 	</div>
 	<% end %>
 
-	<div class="reansw">
+	<div class="reask">
 		<h1 class="q"> What's your question? </h1>
 	<div class="field">
 		<%= f.label :title %><br>
@@ -34,18 +34,34 @@
 </div>
 </div>
 	<% end %>
-	<% else %>
-	<%= link_to "Please log in to ask questions", new_login_path %>
+	<% else %><h3 class="asklogin">
+	<%= link_to "Please log in to ask questions", new_login_path %></h3>
 	<% end %>
 
 <table>
-	<tbody>
-		<% @questions.order(updated_at: :desc).each do |question| %>
-			<tr>
-			<td>	<h4><%= question.title %></h4>
-				<p><%= question.text %></p>
-				<p><%= link_to 'Show', question %></p></td>
-			</tr>
-		<% end %>
-	</tbody>
+  <tbody>
+    <% @questions.order(updated_at: :desc).each do |question| %>
+      <tr>
+      <td><div class="reansw"><h2> Unanswered Questions </h2>
+        <h4><%= question.title %></h4>
+        <p><%= question.text %></p>
+        <p><%= link_to 'Show more', question %></p></td>
+      </tr>
+    <% end %>
+  </div>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <% @questions.order(updated_at: :desc).each do |question| %>
+      <tr>
+      <td><div class="unansw"><h2> Unanswered Questions </h2>
+        <h4><%= question.title %></h4>
+        <p><%= question.text %></p>
+        <p><%= link_to 'Show more', question %></p></td>
+      </tr>
+    <% end %>
+  </div>
+  </tbody>
 </table>

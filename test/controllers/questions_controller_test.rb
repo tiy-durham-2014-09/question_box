@@ -5,4 +5,7 @@ class QuestionsControllerTest < ActionController::TestCase
     get :new
     assert_response :found
   end
+
+  
+
 end

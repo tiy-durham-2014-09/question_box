@@ -17,13 +17,15 @@
     <li class="name">
       <h1><%= link_to "Question Box", root_path %></h1>
     </li>
-     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+
+
     <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
   </ul>
 
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
+      <li class="active"><%= link_to "All Questions", questions_path %> </li>
       <% if @current_user %>
         <li class="active"><%= link_to 'Ask a new question', new_question_path %></li>
         <li class="active"><%= link_to @current_user.name, questions_path %></li>
