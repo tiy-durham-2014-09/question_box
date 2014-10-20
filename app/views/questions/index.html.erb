@@ -1,2 +1,5 @@
-<h1>Questions#index</h1>
-<p>Find me in app/views/questions/index.html.erb</p>
+<h2>All Questions</h2>
+<% @questions.each do |q| %>
+  <%= link_to q.title, question_path(q.id) %> | <%= q.user.name %> | <%= q.created_at.to_date %>
+  <br>
+<% end %>
