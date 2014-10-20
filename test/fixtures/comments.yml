@@ -2,11 +2,10 @@
 
 one:
   user: one
-  voteable_id: 
-  value: 1
+  text: MyText
+  commentable_id:
 
 two:
   user: two
-  voteable_id: 
-  value: -1
-
+  text: MyText
+  commentable_id:

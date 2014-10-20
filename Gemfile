@@ -45,5 +45,6 @@ group :development, :test do
   gem "binding_of_caller"
   gem "faker"
   gem "pry-rails"
+  gem "pry-byebug"
   gem "shoulda"
 end

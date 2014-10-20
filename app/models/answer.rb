@@ -26,6 +26,7 @@ class Answer < ActiveRecord::Base
     end
   end
 
+
   def score
     votes.sum(:value)
   end

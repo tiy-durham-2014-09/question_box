@@ -32,6 +32,8 @@ class QuestionTest < ActiveSupport::TestCase
       assert_equal 2, @question.score
     end
   end
+
+
 end
 
 

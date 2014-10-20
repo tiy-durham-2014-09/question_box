@@ -25,7 +25,7 @@ class UsersControllerTest < ActionController::TestCase
       setup { post :create, { user: invalid_user_attributes } }
 
       should "re-render the form" do
-        assert_template :new
+        assert_redirected_to new_user_path
       end
 
       should "instantiate an invalid user object" do
@@ -40,10 +40,13 @@ class UsersControllerTest < ActionController::TestCase
         post :create, { user: user_attributes }
 
         assert assigns["user"], "Should have a user"
-        # binding.pry
         assert assigns["user"].persisted?, "Should have saved user in the DB"
         assert_equal user_attributes[:name], assigns["user"].name
       end
+
+      # should "log in" do
+      # assert session[:current_user_id], "Should have a session"
+      # end
     end
   end
 end

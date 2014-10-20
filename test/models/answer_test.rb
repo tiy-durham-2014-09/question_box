@@ -59,6 +59,4 @@ class AnswerTest < ActiveSupport::TestCase
     end
   end
 
-
-
 end

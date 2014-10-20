@@ -1,0 +1,9 @@
+<p>
+  <% if logged_in? %>
+    <%= render 'new' %>
+  <% else %>
+  <h2>QuestionBox</h2>
+  <%= link_to 'Log in', new_login_path %> to ask a question!
+  <% end %>
+</p>
+<p>list of recent questions | list of recent answers</p>
