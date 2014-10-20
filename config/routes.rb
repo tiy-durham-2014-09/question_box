@@ -1,5 +1,20 @@
 Rails.application.routes.draw do
+
+  root 'questions#home'
+
   resources :users, :only => [:new, :create]
+  resource :login, :only => [:show, :create, :destroy]
+
+
+  resources :questions, :only => [:index, :new, :create, :show] do
+    post :vote, on: :member
+    resources :answers, :only => [:create], :shallow => true do
+      post :vote, on: :member
+    end
+  end
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -48,11 +63,4 @@ Rails.application.routes.draw do
   #   end
   #   resources :posts, concerns: :toggleable
   #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end

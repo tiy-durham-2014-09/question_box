@@ -35,6 +35,8 @@ class UsersControllerTest < ActionController::TestCase
     end
 
     context "when I send valid information" do
+      setup { post :create, user: valid_user_attributes }
+
       should "create a user" do
         user_attributes = valid_user_attributes
         post :create, { user: user_attributes }
