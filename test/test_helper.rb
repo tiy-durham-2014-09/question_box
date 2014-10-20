@@ -8,7 +8,7 @@ require 'faker'
 require 'capybara/rails'
 require_relative 'support/test_password_helper'
 
-# Capybara.default_driver = :selenium
+Capybara.default_driver = :selenium
 
 class ActiveSupport::TestCase
   include TestPasswordHelper
