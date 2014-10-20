@@ -11,14 +11,16 @@ class QuestionsController < ApplicationController
   end
 
   def show
+	  @question = Question.find(params[:id])
     @answers = @question.answers
     # @answer = Answer.new
-    # @question = Question.find(params[:id])
+
   end
 
   def homepage
-    index
-    new
+		@question = Question.new
+		@recently_answered_questions = Question.includes(:answers).where.not( :answers => { :question_id => nil } ).order(created_at: :desc).limit(5)
+		@recently_unanswered_questions = Question.includes(:answers).where( :answers => { :question_id => nil } ).order(created_at: :desc).limit(5)
   end
 
   def create

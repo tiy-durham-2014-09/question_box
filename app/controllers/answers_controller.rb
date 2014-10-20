@@ -24,6 +24,7 @@ class AnswersController < ApplicationController
 
   def update
     answer = Answer.find(params["id"])
+    # answer.update(answer_params)
     answer.toggle(:chosen)
     answer.save
     redirect_to question_path(answer.question)

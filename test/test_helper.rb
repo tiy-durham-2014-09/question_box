@@ -13,4 +13,10 @@ class ActiveSupport::TestCase
     assert model.invalid?, "#{model.class} without #{field} should not be valid"
     assert_not_empty model.errors[field]
   end
+
+	def logged_in_session
+
+
+
+	end
 end

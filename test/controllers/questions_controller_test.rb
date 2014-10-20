@@ -11,7 +11,53 @@ class QuestionsControllerTest < ActionController::TestCase
     questions(:one).attributes
   end
 
-  context "POST :create" do
+  context "GET questions#homepage" do
+	  setup { get :homepage }
+
+	  should render_template("homepage")
+	  should respond_with(:ok) #difference between "ok" and "success"?
+
+	  should "instantiate a question object" do
+		  assert assigns[:question], "should load question"
+	  end
+
+	  should "set answered questions" do
+		  assert assigns[:recently_answered_questions], "should load recently answered questions"
+	  end
+
+	  should "set unanswered questions" do
+		  assert assigns[:recently_unanswered_questions], "should load recently unanswered questions"
+	  end
+  end
+
+  context "GET questions#index" do
+    setup { get :index }
+
+    should render_template("index")
+    should respond_with(:ok)
+
+		should "instantiate questions object" do
+      assert assigns["questions"], "should load questions"
+		end
+  end
+
+  context "GET questions#show" do
+	  setup { get :show, id: questions(:one) }
+
+	  should render_template("show")
+	  should respond_with(:ok)
+
+	  should "instantiate question object" do
+		  assert assigns["question"], "should load questions"
+	  end
+
+	  should "instantiate load answers" do
+		  assert assigns["answers"], "should load questions"
+	  end
+
+  end
+
+  context "POST#create" do
     context "when I send invalid information" do
       setup do
         session[:user_id] = users(:one).id
