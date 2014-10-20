@@ -25,10 +25,9 @@
 
   <% end %>
 <% end %>
-<h3>Answer This Question</h3>
 <% if logged_in? %>
-  <p>I'm going to be an answer form!</p>
+  <%= render 'answers/form' %>
 <% else %>
-  <p>You must <%= link_to "Login", login_path %> to answer.</p>
+  <p>You must be <%= link_to "Logged In", login_path %> to answer this question.</p>
 <% end %>
 

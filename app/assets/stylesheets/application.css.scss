@@ -21,6 +21,7 @@ $max-width: em(900);
 body {
   @include outer-container;
   border: solid 1px black;
+  padding: 20px;
 }
 
 header {

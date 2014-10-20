@@ -1,0 +1,10 @@
+<h2>Ask a Question:</h2>
+<%= form_for @question do |f| %>
+  <%= f.text_area :title, placeholder: "Title..." %>
+  <%= f.text_area :text, placeholder: "Question..." %>
+    <%= f.hidden_field :user_id, value: @current_user.id %>
+  <%= f.submit "Ask"%>
+<% end %>
+
+
+

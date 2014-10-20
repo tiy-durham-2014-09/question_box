@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   resources :users, :only => [:new, :create]
-  resources :questions
+  resources :questions do
+    collection do
+      get 'home' => 'questions#home'
+      post 'home' => 'questions#create'
+    end
+  end
   resources :answers
   resources :votes, :only => [:new, :create]
 
@@ -12,7 +17,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'questions#index'
+  root 'questions#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

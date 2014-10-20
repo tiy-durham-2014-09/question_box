@@ -1,0 +1,11 @@
+<% if logged_in? %>
+  <%= render 'form' %>
+<% else %>
+  <p><%= link_to "Login ", login_path %>
+         or <%=link_to "Register ", new_user_path %>
+         to ask or answer a question!</p>
+<% end %>
+
+<h3>Unanswered Questions</h3>
+
+<h3>Recently Answered Questions</h3>
