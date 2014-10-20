@@ -1,31 +1,96 @@
-<%= @question.title %>
-<%= @question.text %>
 
-| Votes <%= @question.vote_count %><br>
+<div class="row">
 
-<p><%= link_to "Vote Up", question_votes_path(@question), :method => :create %></p>
+	<div class="small-8 small-offset-1 columns">
 
-<br><br>
-<h1>Answers</h1>
+		<%= current_user.inspect %>
+
+		<h1><%= @question.title %></h1>
+		<p><%= @question.text %></p>
+
+		<p>Asked by: <%= @question.user.name %></p>
+
+	</div>
+	<div class="small-2 columns end">
+			<div class="custom_center">
+			  <h4><%= @question.vote_count %><br>votes</h4>
+
+			  <p>
+			    <%= link_to '<i class="fa fa-thumbs-up fa-lg"></i>'.html_safe, {:controller => "votes", :action => "create", :vote => {value: 1, voteable_id: @question.id, voteable_type: "Question", user: current_user } } %>
+			    <%= link_to '<i class="fa fa-thumbs-down fa-lg"></i>'.html_safe, {:controller => "votes", :action => "create", :vote => {value: -1, voteable_id: @question.id, voteable_type: "Question", user: current_user } } %>
+			  </p>
+
+				</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="custom_divider"></div>
+</div>
+
+<div class="row">
+	<div class="small-10 small-offset-1 columns">
+
+	<h3>Answers</h3>
+
+  <% if @answers.count == 0 %>
+    <p>
+      No answers yet.
+    </p>
+  <% end %>
+
+	</div>
+</div>
 
 <% @answers.each do |answer| %>
-	<p>
-	  Answer: <%= answer.text %> | <%= answer.vote_count %>
-	</p>
+
+  <div class="row">
+	  <div class="small-8 small-offset-1 columns">
+      <p><%= answer.text %></p>
+		  <p>Answered by <%= answer.user.name %></p>
+
+		</div>
+    <div class="small-2 columns end">
+	    <div class="custom_center">
+	      <h4><%= answer.vote_count %><br>votes</h4>
+
+	      <p>
+		      <% if @question.user == current_user %>
+			      <% if answer.chosen? %>
+	            <%= link_to '<i class="fa fa-check-circle fa-lg"></i>'.html_safe, root_path, :class => "ans_chosen" %>
+				    <% else %>
+	            <%= link_to '<i class="fa fa-check-circle fa-lg"></i>'.html_safe, root_path, :class => "not_ans_chosen" %>
+				    <% end %>
+			    <% end %>
+	        <%= link_to '<i class="fa fa-thumbs-up fa-lg"></i>'.html_safe, {:controller => "votes", :action => "create", :vote => {value: 1, voteable_id: answer.id, voteable_type: "Answer", user: current_user } } %>
+	        <%= link_to '<i class="fa fa-thumbs-down fa-lg"></i>'.html_safe, {:controller => "votes", :action => "create", :vote => {value: -1, voteable_id: answer.id, voteable_type: "Answer", user: current_user } } %>
+	      </p>
+	    </div>
+
+    </div>
+
+	</div>
 <% end %>
 
-<% if logged_in? %>
-  <%= form_for([@question, @question.answers.build]) do |f| %>
+<div class="row">
+	<div class="small-10 small-offset-1 columns">
+	<% if logged_in? %>
+	  <%= form_for([@question, @question.answers.build]) do |f| %>
+			<fieldset>
 
-    <%= f.label :text %>
-    <%= f.text_area :text %><br>
+			<legend>Add your answer</legend>
 
-    <%= button_tag 'Answer' %>
-  <% end %>
-<% else %>
-  <%= link_to 'Login to answer', new_login_path %>
-<% end %>
+	    <%= f.label :text %>
+	    <%= f.text_area :text %>
 
-<p>
-	<%= link_to "Back to home", root_path %>
-</p>
+	    <%= button_tag 'Answer' %>
+
+			</fieldset>
+	  <% end %>
+	<% else %>
+	  <%= link_to 'Login to answer', new_login_path %>
+	<% end %>
+
+	</div>
+
+</div>

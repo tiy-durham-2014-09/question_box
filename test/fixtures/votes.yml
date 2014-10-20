@@ -11,13 +11,17 @@ one:
   value: 1
 
 
-# column: value
-#
-two:
+one_for_question:
   user: chet
   value: -1
+  voteable_type: "Question"
+  voteable_id: 5
+
+one_for_answer:
+  user: chet
+  value: -1
+  voteable_type: "Answer"
 
 
-#  column: value
 
 

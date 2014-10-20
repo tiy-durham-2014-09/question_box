@@ -1,8 +1,6 @@
 class AnswersController < ApplicationController
-  # before_action :set_question
 
   def new
-    # @question = Question.find(params["answer"]["question_id"])
   end
 
   def create
@@ -24,14 +22,15 @@ class AnswersController < ApplicationController
     end
   end
 
+  def update
+    answer = Answer.find(params["id"])
+    answer.update(answer_params)
+  end
+
   private
 
-  # def set_question
-  #   @question = Question.find(params[:id])
-  # end
-
   def answer_params
-    params.require(:answer).permit(:text)
+    params.require(:answer).permit(:text, :chosen)
   end
 
 end

@@ -1,21 +1,30 @@
-<h1>What's your question?</h1>
 
-<% if logged_in? %>
-	<%= form_for @question do |f| %>
+<div class="row">
+		<div class="small-10 small-offset-1 columns">
 
-	    <%= f.label :title %>
-	    <%= f.text_field :title %><br>
+    <% if logged_in? %>
+      <%= form_for @question do |f| %>
 
-	    <%= f.label :text %>
-	    <%= f.text_area :text %>
+        <fieldset>
+          <legend>What's your question?</legend>
 
-	  <%= button_tag 'Ask' %>
-	<% end %>
-<% else %>
-	<%= link_to 'Login to ask question', new_login_path %>
-<% end %>
+	        <%= f.label :title %>
+	        <%= f.text_field :title %>
 
-<br><br>
+	        <%= f.label :text %>
+	        <%= f.text_area :text %>
+
+	        <%= button_tag 'Ask' %>
+        </fieldset>
+
+      <% end %>
+    <% else %>
+		  <p><%= link_to 'Login to ask question', new_login_path %></p>
+
+    <% end %>
+
+		</div>
+</div>
 
 <% answered_questions = Array.new %>
 <% unanswered_questions = Array.new %>
@@ -33,19 +42,47 @@
 	<% end %>
 <% end %>
 
-Unanswered questions<br><br>
+<div class="row">
 
-<% unanswered_questions.each do |ques| %>
+<div class="small-5 small-offset-1 columns">
 
-  <%= link_to ques.title, question_path(ques) %> | Votes <%= ques.vote_count %> | Answers <%= ques.answer_count %><br>
-<% end %>
+ <h4>Unanswered questions</h4>
 
-<br><br>
+  <% if unanswered_questions.count == 0 %>
+    No unanswered questions
+  <% else %>
+    <% unanswered_questions.each do |ques| %>
+      <div class="row">
+        <div class="small-9 columns">
+          <%= link_to ques.title, question_path(ques) %>
+        </div>
+        <div class="small-3 columns">
+          <%= ques.vote_count %> votes
+        </div>
+      </div>
+    <% end %>
+	<% end %>
+</div>
 
-Answered questions<br><br>
+<div class="small-5 columns end">
 
-<% answered_questions.each do |ques| %>
+<h4>Answered questions</h4>
 
-  <%= link_to ques.title, question_path(ques) %> | Votes <%= ques.vote_count %> | Answers <%= ques.answer_count %><br>
-<% end %>
+  <% if answered_questions.count == 0 %>
+    No answered questions
+  <% else %>
+		<% answered_questions.each do |ques| %>
+			<div class="row">
+			  <div class="small-9 columns">
+			    <%= link_to ques.title, question_path(ques) %>
+			  </div>
+			  <div class="small-3 columns">
+			    <%= ques.vote_count %> votes
+			  </div>
+			</div>
 
+		<% end %>
+	<% end %>
+</div>
+
+</div>

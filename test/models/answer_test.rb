@@ -51,18 +51,15 @@ class AnswerTest < ActiveSupport::TestCase
         answer.update(chosen: true)
       end
     end
-
-    should "know its own score" do
-
-      answer = answers(:one_for_question_one)
-
-      voter1 = users(:chet)
-      voter2 = users(:voter)
-      answer.votes.create!(:value => 1, :user => voter1)
-      answer.votes.create!(:value => 1, :user => voter2)
-
-      assert_equal 2, answer.score
-    end
+    #
+    # should "know its own vote count" do
+    #
+    #   answer = answers(:one_for_question_one)
+    #   voter2 = users(:voter2)
+    #   answer.votes.create!(:value => 1, :user => voter2)
+    #
+    #   assert_equal 1, answer.vote_count
+    # end
   end
   #
   # test "should increment vote count by 1 after up vote" do

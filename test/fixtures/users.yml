@@ -24,3 +24,15 @@ voter:
   email: voter@example.org
   password_digest: <%= BCrypt::Password.create("password", cost: 10) %>
 
+voter2:
+  name: Voter Person 2
+  score: 1000
+  email: voter2@example.org
+  password_digest: <%= BCrypt::Password.create("password", cost: 10) %>
+
+voter3:
+  name: Voter Person 3
+  score: 1000
+  email: voter3@example.org
+  password_digest: <%= BCrypt::Password.create("password", cost: 10) %>
+

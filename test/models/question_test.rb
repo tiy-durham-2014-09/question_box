@@ -24,15 +24,13 @@ class QuestionTest < ActiveSupport::TestCase
       @question.answers.first.update(chosen: true)
       assert @question.has_chosen_answer?, "has_chosen_answer? should be true"
     end
-
-    should "know its own score" do
-      voter1 = users(:chet)
-      voter2 = users(:voter)
-      @question.votes.create!(:value => 1, :user => voter1)
-      @question.votes.create!(:value => 1, :user => voter2)
-
-      assert_equal 2, @question.score
-    end
+    #
+    # should "know its own vote_count" do
+    #   voter3 = users(:voter3)
+    #   @question.votes.create!(:value => 1, :user => voter3)
+    #
+    #   assert_equal 1, @question.vote_count
+    # end
 
     should "know its answer count" do
       question = Question.new

@@ -17,3 +17,4 @@ three:
   text: MyText
   user: chet
   vote_count: 0
+  id: 3
