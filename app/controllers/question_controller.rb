@@ -2,27 +2,29 @@ class QuestionController < ApplicationController
 before_action :set_question, only: [:show, :edit, :update, :destroy]
 before_action :authenticate
 
+
   def index
     @question = Question.paginate(page: params[:page], per_page: 10)
     @questions = Question.new
     @answer = Answer.new
   end
+  
   def new
     @question = Question.new
   end
-
+  
+	def home
+		@question = Question.new
+		@recent_questions = Question.order(created_at :desc).limit(10)
+	end
 
   def create
-    if current_user
-      @question = Question.new(question_params)
-    end
-    respond_to do |format|
+    @question = current_user.questions.build(question_params)
       if @question.save
-        format.html { redirect_to root_path, notice: 'Post was successfully created.' }
+      	redirect_to @question
       else
-        format.html { redirect_to root_path, notice: "sorry!"}
+        render :new
       end
-    end
   end
 
   def update
@@ -39,6 +41,6 @@ before_action :authenticate
     @question = Question.find(params[:id])
   end
   def question_params
-    params.require(:question).permit(:title, :text, :user_id)
+    params.require(:question).permit(:title, :text)  
   end
 end

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
 
   #HOMEPAGE
-  post 'homepage/create'
+  # post 'homepage/create'
 
 
   # get 'homepage/index'
