@@ -14,7 +14,7 @@ class LoginsControllerTest < ActionController::TestCase
 
   context "POST logins#create" do
     context "when I send invalid info" do
-      setup { post :create, { login: { email: users(:one).email, password: "" } } }
+      setup { post :create, login: { email: users(:one).email, password: "" } }
 
       should render_template(:show)
 
@@ -25,7 +25,7 @@ class LoginsControllerTest < ActionController::TestCase
     end
 
     context "when I send valid info" do
-      setup { post :create, { login: { email: users(:one).email, password: default_password } } }
+      setup { post :create, login: { email: users(:one).email, password: default_password } }
 
       should "create a login" do
         assert assigns["login"], "Should have a login"

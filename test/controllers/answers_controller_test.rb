@@ -11,7 +11,7 @@ class AnswersControllerTest < ActionController::TestCase
 
   context "POST answers#create" do
     context "when not logged in" do
-      setup { post :create, { question_id: questions(:one).id, answer: {} } }
+      setup { post :create, question_id: questions(:one).id, answer: {} }
 
       should "redirect to login" do
         assert_redirected_to login_path

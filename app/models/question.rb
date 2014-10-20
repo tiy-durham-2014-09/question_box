@@ -15,5 +15,4 @@ class Question < ActiveRecord::Base
   def score
     votes.sum(:value)
   end
-
 end

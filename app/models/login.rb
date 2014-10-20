@@ -3,8 +3,8 @@ class Login
 
   attr_accessor :email, :password
   attr_reader :user
-  validates :email, :presence => true
-  validates :password, :presence => true
+  validates :email, presence: true
+  validates :password, presence: true
   validate :validate_authentication
 
   def initialize(attrs = {})

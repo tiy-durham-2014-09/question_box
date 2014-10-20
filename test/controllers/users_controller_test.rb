@@ -28,7 +28,7 @@ class UsersControllerTest < ActionController::TestCase
 
   context "POST users#create" do
     context "when I send invalid info" do
-      setup { post :create, { user: invalid_user_attributes } }
+      setup { post :create, user: invalid_user_attributes }
 
       should render_template(:new)
 
@@ -39,7 +39,7 @@ class UsersControllerTest < ActionController::TestCase
     end
 
     context "when I send valid info" do
-      setup { post :create, { user: valid_user_attributes } }
+      setup { post :create, user: valid_user_attributes }
 
       should "create a user" do
         assert assigns["user"], "Should have a user"

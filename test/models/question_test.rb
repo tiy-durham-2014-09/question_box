@@ -26,17 +26,10 @@ class QuestionTest < ActiveSupport::TestCase
     should "know its own score" do
       voter1 = users(:one)
       voter2 = users(:voter)
-      @question.votes.create!(:value => 1, :user => voter1)
-      @question.votes.create!(:value => 1, :user => voter2)
+      @question.votes.create!(value: 1, user: voter1)
+      @question.votes.create!(value: 1, user: voter2)
 
       assert_equal 2, @question.score
     end
   end
 end
-
-
-
-
-
-
-

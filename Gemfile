@@ -23,5 +23,9 @@ group :development, :test do
   gem "launchy"
   gem "pry-rails"
   gem "quiet_assets"
+  gem "rails_best_practices"
+  gem "rubocop"
   gem "shoulda"
 end
+
+gem 'simplecov', :require => false, :group => :test

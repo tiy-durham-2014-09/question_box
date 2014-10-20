@@ -38,7 +38,7 @@ class QuestionsControllerTest < ActionController::TestCase
   end
 
   context "GET questions#show" do
-    setup { get :show, :id => questions(:one) }
+    setup { get :show, id: questions(:one) }
 
     should render_template("show")
     should respond_with(:success)
