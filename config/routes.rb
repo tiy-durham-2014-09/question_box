@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resource :homepages
   resource :answers do
     get '/:id/vote' => 'answers#vote', as: 'vote'
+    get '/:id/choose' => 'answers#choose', as: 'choose'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

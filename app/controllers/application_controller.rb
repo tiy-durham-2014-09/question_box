@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
   def authenticate
     current_user_id = session[:current_user_id]
     unless current_user_id
+      puts "please login"
       redirect_to new_login_path, notice: "You must be logged in to see that."
     end
   end

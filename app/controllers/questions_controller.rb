@@ -12,7 +12,7 @@ class QuestionsController < ApplicationController
       if @question.save
         format.html { redirect_to root_path, notice: 'Question was successfully created.' }
       else
-        format.html { render :new }
+        format.html { redirect_to root_path }
       end
     end
   end
@@ -21,7 +21,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    
+
   end
 
   private

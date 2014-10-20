@@ -13,11 +13,15 @@
       <tr>
         <td>Answered by <%= answer.user.name %></td>
       </tr>
+      <tr>
+        <td>Chosen? <%= answer.chosen %></td>
+      </tr>
     </tbody>
   </table>
   <h3><%= answer.score %> Votes</h3>
   <%= link_to '<i class="fa fa-thumbs-up"></i>'.html_safe, vote_answers_path(:value => 1, :user => answer.user, :answer_id => answer.id) %>
   <%= link_to '<i class="fa fa-thumbs-down"></i>'.html_safe, vote_answers_path(:value => -1, :user => answer.user, :answer_id => answer.id) %>
+  <%= link_to '<i class="fa fa-check-circle"></i>'.html_safe, choose_answers_path(:chosen => true, :user => answer.user, :answer_id => answer.id) %>
 <% end %>
 <h3>Add your Answer</h3>
 
