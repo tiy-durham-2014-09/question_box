@@ -49,6 +49,7 @@ class VotesControllerTest < ActionController::TestCase
 
       context "when I up vote" do
         setup do
+          @request.env['HTTP_REFERER'] = question_url(questions(:one))
           @vote_attributes["value"] = 1
           post :create, { :voteable_id => @voteable_id, vote: @vote_attributes }
         end
@@ -65,6 +66,7 @@ class VotesControllerTest < ActionController::TestCase
 
       context "when I down vote" do
         setup do
+          @request.env['HTTP_REFERER'] = question_url(questions(:one))
           @vote_attributes["value"] = -1
           post :create, { :voteable_id => @voteable_id, vote: @vote_attributes }
         end
@@ -77,11 +79,11 @@ class VotesControllerTest < ActionController::TestCase
           assert_equal @voteable_id, assigns["vote"].voteable_id, "Should have a voteable id"
           assert_equal @voteable_type, assigns["vote"].voteable_type, "Should have a voteable type"
         end
-      end
 
-      should "show redirect back to question path" do
-        post :create, { :voteable_id => @voteable_id, vote: @vote_attributes }
-        assert_redirected_to question_path(assigns["vote"].voteable_id), "Should redirect to show question"
+        should "show redirect back to question path" do
+          post :create, { :voteable_id => @voteable_id, vote: @vote_attributes }
+          assert_redirected_to :back, "Should redirect to show question"
+        end
       end
     end
 

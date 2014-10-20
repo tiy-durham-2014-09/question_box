@@ -14,9 +14,17 @@ one_for_question_one:
     chosen: false
     vote_count: 0
 
+one_for_chosen_attributes:
+    text: MyText
+    user: two
+    question: one
+    chosen: false
+    vote_count: 0
+
 two:
   text: MyText
   user: chet
   question: one
   chosen: false
   vote_count: 0
+

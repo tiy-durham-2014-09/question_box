@@ -14,6 +14,12 @@ class AnswersControllerTest < ActionController::TestCase
     answers(:one_for_question_one).attributes
   end
 
+  def chosen_answer_attributes
+    question_id = questions(:one).id
+    {text: "MyText",
+     chosen: true}
+  end
+
   context "POST :create" do
     context "when I send invalid information" do
       setup do
@@ -63,7 +69,7 @@ class AnswersControllerTest < ActionController::TestCase
           @voteable_id = @answer.question
         end
 
-        should "user should be removed from database" do
+        should "question should be removed from database" do
           assert_raise ActiveRecord::RecordNotFound do
             delete :destroy, { question_id: @voteable_id, id: @answer_id }
             Answer.find(@answer_id)
@@ -78,17 +84,16 @@ class AnswersControllerTest < ActionController::TestCase
     end
 
     context "PATCH :update" do
-      context "when a question creator selects as chosen" do
+      context "when a question creator chooses answer" do
         setup do
-          @question_id = questions(:one).id
+          @question = questions(:one)
           @answer = answers(:one_for_question_one)
-          @answer_id = @answer.id
+          @chosen_answer = chosen_answer_attributes
         end
 
         should "change chosen to true" do
-          patch :update, :question_id => :question_id, :answer_id => @answer_id, answer: { id: @answer_id, chosen: true }
-          @answer.reload
-          assert_equal true, @answer.chosen?, "should change boolean"
+          patch :update, { question_id: @question.id, id: @answer.id }
+          assert_equal true, @answer.reload.chosen, "should change boolean"
         end
       end
     end

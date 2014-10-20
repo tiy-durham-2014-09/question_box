@@ -46,6 +46,7 @@ group :development, :test do
   gem "faker"
   gem "pry-rails"
   gem "shoulda"
+  gem "faker"
 end
 
 gem 'foundation-rails'

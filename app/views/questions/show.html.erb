@@ -3,12 +3,10 @@
 
 	<div class="small-8 small-offset-1 columns">
 
-		<%= current_user.inspect %>
-
 		<h1><%= @question.title %></h1>
 		<p><%= @question.text %></p>
 
-		<p>Asked by: <%= @question.user.name %></p>
+		<p>Asked by <%= @question.user.name %></p>
 
 	</div>
 	<div class="small-2 columns end">
@@ -57,9 +55,9 @@
 	      <p>
 		      <% if @question.user == current_user %>
 			      <% if answer.chosen? %>
-	            <%= link_to '<i class="fa fa-check-circle fa-lg"></i>'.html_safe, root_path, :class => "ans_chosen" %>
+	            <%= link_to '<i class="fa fa-check-circle fa-lg"></i>'.html_safe, question_answer_path(@question, answer), :method => :update, :controller => "answers", :class => "ans_chosen" %>
 				    <% else %>
-	            <%= link_to '<i class="fa fa-check-circle fa-lg"></i>'.html_safe, root_path, :class => "not_ans_chosen" %>
+	            <%= link_to '<i class="fa fa-check-circle fa-lg"></i>'.html_safe, question_answer_path(@question, answer), :method => :update, :controller => "answers", :class => "not_ans_chosen" %>
 				    <% end %>
 			    <% end %>
 	        <%= link_to '<i class="fa fa-thumbs-up fa-lg"></i>'.html_safe, {:controller => "votes", :action => "create", :vote => {value: 1, voteable_id: answer.id, voteable_type: "Answer", user: current_user } } %>

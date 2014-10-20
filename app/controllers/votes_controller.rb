@@ -5,13 +5,17 @@ class VotesController < ApplicationController
   def create
     @voteable = get_voteable(vote_params["voteable_id"],vote_params["voteable_type"])
 
-    if @voteable &&
-      @vote = @voteable.votes.create(vote_params)
-      @vote.user_id = current_user.id
+    if @voteable
+      if check_double_vote
+        update
+      else
+        @vote = @voteable.votes.create(vote_params)
+        @vote.user_id = current_user.id
 
-      @vote.save
+        @vote.save
 
-      redirect_to :back
+        redirect_to :back
+      end
     end
 
   end
@@ -25,8 +29,11 @@ class VotesController < ApplicationController
   end
 
   def update
-    existing_vote = Vote.find_by(user_id: vote_params["user_id"], voteable_type: vote_params["voteable_type"], voteable_id: vote_params["voteable_id")
-    existing_vote.update(vote_params)
+    binding.pry
+    existing_vote = Vote.find_by(user_id: vote_params["user_id"], voteable_type: vote_params["voteable_type"], voteable_id: vote_params["voteable_id"])
+    updated_vote = existing_vote.update(vote_params)
+    updated_vote.update(vote_params)
+    binding.pry
   end
 
   def vote_params
@@ -47,10 +54,6 @@ class VotesController < ApplicationController
   end
 
   def check_double_vote
-    existing_vote = Vote.find_by(user_id: vote_params["user_id"], voteable_type: vote_params["voteable_type"], voteable_id: vote_params["voteable_id")
-
-    if existing_vote
-      update
-    end
+    existing_vote = Vote.find_by(user_id: vote_params["user_id"], voteable_type: vote_params["voteable_type"], voteable_id: vote_params["voteable_id"])
   end
 end

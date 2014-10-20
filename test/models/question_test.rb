@@ -37,7 +37,7 @@ class QuestionTest < ActiveSupport::TestCase
       assert_equal 0, question.answer_count, "answer count should be zero for new question"
 
       question = questions(:one)
-      assert_equal 3, question.answer_count, "answer count should equal number of related answers"
+      assert_equal 4, question.answer_count, "answer count should equal number of related answers"
     end
 
   end
