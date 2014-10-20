@@ -1,18 +1,27 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+
 # This model initially had no columns defined.  If you add columns to the
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
+
 one:
   user: one
   value: 1
 
 
-# column: value
-#
-two:
+one_for_question:
   user: chet
   value: -1
+  voteable_type: "Question"
+  voteable_id: 5
 
-#  column: value
+one_for_answer:
+  user: chet
+  value: -1
+  voteable_type: "Answer"
+
+
+
+

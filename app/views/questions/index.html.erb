@@ -1,0 +1,50 @@
+<% if @questions.count == 0 %>
+	<div class="row">
+	  <div class="custom_center">
+	    No questions asked.
+		</div>
+	</div>
+
+<% end %>
+
+
+<% @questions.reverse.each do |ques| %>
+
+	<div class="row">
+
+		<div class="small-8 small-offset-1 columns">
+
+		<div class="custom_padding">
+
+			<p><%= link_to ques.title, question_path(ques) %></p>
+			<p>Asked by <%= ques.user.name %></p>
+
+		</div>
+
+		</div>
+
+		<div class="small-1 columns">
+
+			<div class="custom_padding">
+			  <div class="custom_center">
+			    <%= ques.vote_count %><br>
+			    votes
+			  </div>
+			</div>
+
+		</div>
+
+	  <div class="small-1 columns end">
+
+		  <div class="custom_center">
+		    <%= ques.answer_count %><br>
+		    answers
+		  </div>
+
+
+	  </div>
+
+	</div>
+
+<% end %>
+

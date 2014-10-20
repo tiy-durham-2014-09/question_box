@@ -1,6 +1,17 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
+	include BCrypt
+
+	def password
+		@password ||= Password.new(password_hash)
+	end
+
+	def password=(new_password)
+		@password = Password.create(new_password)
+		self.password_hash = @password
+	end
+
   def valid_user_attributes
     {name: Faker::Name.name,
      email: Faker::Internet.email,
@@ -35,15 +46,25 @@ class UsersControllerTest < ActionController::TestCase
     end
 
     context "when I send valid information" do
-      should "create a user" do
-        user_attributes = valid_user_attributes
-        post :create, { user: user_attributes }
+	    setup do
+		    @answer = valid_user_attributes
+		    post :create, { user: @answer }
+	    end
 
+      should "create a user" do
         assert assigns["user"], "Should have a user"
-        # binding.pry
         assert assigns["user"].persisted?, "Should have saved user in the DB"
-        assert_equal user_attributes[:name], assigns["user"].name
+        assert_equal @answer[:name], assigns["user"].name
       end
-    end
+
+      should "create new session" do
+	      assert_equal session[:user_id], assigns["user"].id, "Should set session user_id to new user id"
+      end
+
+      should "send to homepage after creating user" do
+        assert_redirected_to root_path, "Should redirect to root"
+      end
+		end
   end
 end
+

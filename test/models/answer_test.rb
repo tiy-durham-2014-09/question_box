@@ -14,7 +14,9 @@ class AnswerTest < ActiveSupport::TestCase
       # In order to make sure only one answer can be chosen per question
       # I need to set a current answer for a question to be chosen.
       # I am using an answer from the fixtures.
+
       chosen_answer = answers(:one_for_question_one)
+
       chosen_answer.update(chosen: true)
 
       # I need to set my answer model under test to have the same question
@@ -22,6 +24,8 @@ class AnswerTest < ActiveSupport::TestCase
       # for the same question cannot be chosen.
       new_answer = Answer.new
       new_answer.question = chosen_answer.question
+
+
 
       # Choose a second answer for the question.
       new_answer.chosen = true
@@ -47,18 +51,34 @@ class AnswerTest < ActiveSupport::TestCase
         answer.update(chosen: true)
       end
     end
-
-    should "know its own score" do
-      answer = answers(:one_for_question_one)
-      voter1 = users(:chet)
-      voter2 = users(:voter)
-      answer.votes.create!(:value => 1, :user => voter1)
-      answer.votes.create!(:value => 1, :user => voter2)
-
-      assert_equal 2, answer.score
-    end
+    #
+    # should "know its own vote count" do
+    #
+    #   answer = answers(:one_for_question_one)
+    #   voter2 = users(:voter2)
+    #   answer.votes.create!(:value => 1, :user => voter2)
+    #
+    #   assert_equal 1, answer.vote_count
+    # end
   end
-
-
-
+  #
+  # test "should increment vote count by 1 after up vote" do
+  #   answer = answers(:one)
+  #   voter = users(:two)
+  #
+  #   Vote.create!(up: true, voteable_id: answer.id, voteable_type: "Answer", user: voter)
+  #
+  #   answer1 = Answer.find(answer.id)
+  #   assert_equal 1, answer1.vote_count
+  # end
+  #
+  # test "should decrement vote count by 1 after down vote" do
+  #   answer = answers(:one)
+  #   voter = users(:two)
+  #
+  #   Vote.create!(voteable_id: answer.id, voteable_type: "Answer", user: voter)
+  #
+  #   answer1 = Answer.find(answer.id)
+  #   assert_equal -1, answer1.vote_count
+  # end
 end

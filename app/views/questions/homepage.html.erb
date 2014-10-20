@@ -1,0 +1,88 @@
+
+<div class="row">
+		<div class="small-10 small-offset-1 columns">
+
+    <% if logged_in? %>
+      <%= form_for @question do |f| %>
+
+        <fieldset>
+          <legend>What's your question?</legend>
+
+	        <%= f.label :title %>
+	        <%= f.text_field :title %>
+
+	        <%= f.label :text %>
+	        <%= f.text_area :text %>
+
+	        <%= button_tag 'Ask' %>
+        </fieldset>
+
+      <% end %>
+    <% else %>
+		  <p><%= link_to 'Login to ask question', new_login_path %></p>
+
+    <% end %>
+
+		</div>
+</div>
+
+<% answered_questions = Array.new %>
+<% unanswered_questions = Array.new %>
+<% max_display = 5 %>
+
+<% @questions.reverse_order.each do |question| %>
+	<% if question.answer_count == 0 %>
+		<% unless unanswered_questions.count == max_display %>
+			<% unanswered_questions << question %>
+		<% end %>
+	<% else %>
+		<% unless answered_questions.count == max_display %>
+			<% answered_questions << question %>
+		<% end %>
+	<% end %>
+<% end %>
+
+<div class="row">
+
+<div class="small-5 small-offset-1 columns">
+
+ <h4>Unanswered questions</h4>
+
+  <% if unanswered_questions.count == 0 %>
+    No unanswered questions
+  <% else %>
+    <% unanswered_questions.each do |ques| %>
+      <div class="row">
+        <div class="small-9 columns">
+          <%= link_to ques.title, question_path(ques) %>
+        </div>
+        <div class="small-3 columns">
+          <%= ques.vote_count %> votes
+        </div>
+      </div>
+    <% end %>
+	<% end %>
+</div>
+
+<div class="small-5 columns end">
+
+<h4>Answered questions</h4>
+
+  <% if answered_questions.count == 0 %>
+    No answered questions
+  <% else %>
+		<% answered_questions.each do |ques| %>
+			<div class="row">
+			  <div class="small-9 columns">
+			    <%= link_to ques.title, question_path(ques) %>
+			  </div>
+			  <div class="small-3 columns">
+			    <%= ques.vote_count %> votes
+			  </div>
+			</div>
+
+		<% end %>
+	<% end %>
+</div>
+
+</div>

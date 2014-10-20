@@ -4,8 +4,17 @@ one:
   title: MyString
   text: MyText
   user: one
+  vote_count: 0
 
 two:
   title: MyString
   text: MyText
   user: chet
+  vote_count: 0
+
+three:
+  title: MyString - second question by chet
+  text: MyText
+  user: chet
+  vote_count: 0
+  id: 3

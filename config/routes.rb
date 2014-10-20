@@ -1,11 +1,25 @@
 Rails.application.routes.draw do
+  get 'votes/new'
+
+  get 'votes/create'
+
+  get 'votes/destroy'
+
   resources :users, :only => [:new, :create]
+  resources :questions, :only => [:index, :new, :create, :show, :homepage, :destroy] do
+    resources :answers, :only => [:new, :create, :show, :destroy, :update]
+    resources :votes, :only => [:new, :create, :destroy]
+  end
+
+  resource :login, :only => [:new, :create, :destroy]
+  get "questions/homepage" => 'questions#homepage'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'questions#homepage'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

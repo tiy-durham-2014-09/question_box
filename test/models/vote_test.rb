@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class VoteTest < ActiveSupport::TestCase
+
   should belong_to(:user)
   should belong_to(:voteable)
 
@@ -21,24 +22,53 @@ class VoteTest < ActiveSupport::TestCase
       assert_not_empty @vote.errors[:user]
     end
 
+    should "not allow double vote" do
+      vote1 = Vote.create(votes(:one).attributes)
+
+      assert vote1.invalid?, "Cannot double vote"
+      assert_not_empty vote1.errors[:user]
+    end
+
     context "that is positive" do
-      should "award 10 points to a question's owner" do
-        question = questions(:one)
-        receiver = question.user
+      context "if it is a question" do
+        should "award 10 points to a question's owner" do
+          question = questions(:one)
+          receiver = question.user
 
-        assert_difference "receiver.score", 10 do
-          question.votes.create!(:value => 1, :user => @voter)
-          receiver.reload
+          assert_difference "receiver.score", 10 do
+            question.votes.create!(:value => 1, :user => @voter)
+            receiver.reload
+          end
         end
-      end
 
+        should "increase question vote count by 1" do
+          question = questions(:one)
+
+          assert_difference "question.vote_count", 1 do
+            question.votes.create!(:value => 1, :user => @voter)
+            question.reload
+          end
+        end
+
+      end
       should "award 10 points to an answer's owner" do
+
         answer = answers(:one_for_question_one)
+
         receiver = answer.user
 
         assert_difference "receiver.score", 10 do
           answer.votes.create!(:value => 1, :user => @voter)
           receiver.reload
+        end
+      end
+
+      should "increase answer vote count by 1" do
+        answer = answers(:one_for_question_one)
+
+        assert_difference "answer.vote_count", 1 do
+          answer.votes.create!(:value => 1, :user => @voter)
+          answer.reload
         end
       end
     end
@@ -54,8 +84,19 @@ class VoteTest < ActiveSupport::TestCase
         end
       end
 
+      should "decrease question vote count by 1" do
+        question = questions(:one)
+
+        assert_difference "question.vote_count", -1 do
+          question.votes.create!(:value => -1, :user => @voter)
+          question.reload
+        end
+      end
+
       should "subtract 5 points from an answer's owner if score >= 5" do
+
         answer = answers(:one_for_question_one)
+
         receiver = answer.user
         receiver.update(score: 10)
 
@@ -66,7 +107,9 @@ class VoteTest < ActiveSupport::TestCase
       end
 
       should "subtract all points from an answer's owner if score < 5" do
+
         answer = answers(:one_for_question_one)
+
         receiver = answer.user
         receiver.update(score: 2)
 
@@ -74,6 +117,15 @@ class VoteTest < ActiveSupport::TestCase
         answer.user.reload
 
         assert_equal 0, receiver.score
+      end
+
+      should "decrease answer vote count by 1" do
+        answer = answers(:one_for_question_one)
+
+        assert_difference "answer.vote_count", -1 do
+          answer.votes.create!(:value => -1, :user => @voter)
+          answer.reload
+        end
       end
 
       should "subtract 1 point for voting negative" do
@@ -86,3 +138,4 @@ class VoteTest < ActiveSupport::TestCase
     end
   end
 end
+

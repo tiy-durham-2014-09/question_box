@@ -1,4 +1,5 @@
 class Vote < ActiveRecord::Base
+
   belongs_to :voteable, polymorphic: true
   belongs_to :user
 
@@ -8,14 +9,25 @@ class Vote < ActiveRecord::Base
   validates :user, presence: true
 
   validate :check_against_self_voting
+  validate :check_against_double_vote
 
-  before_save :adjust_points
+  after_save :adjust_points, :adjust_vote_count
 
   def check_against_self_voting
     return unless voteable.respond_to?(:user) && voteable.user
 
     if voteable.user == user
       errors.add(:user, "cannot vote on their own content")
+    end
+  end
+
+  ## need test
+  def check_against_double_vote
+    existing_vote = Vote.find_by(user_id: user_id, voteable_type: voteable_type, voteable_id: voteable_id)
+    return unless existing_vote
+
+    if existing_vote
+      errors.add(:user, "cannot vote twice")
     end
   end
 
@@ -33,6 +45,18 @@ class Vote < ActiveRecord::Base
     end
 
     voteable.user.save
+  end
+
+  #Need test
+  def adjust_vote_count
+    values = Vote.where(voteable_id: voteable_id, voteable_type: voteable_type).pluck(value)
+    voteable.vote_count = values.reduce(:+)
+    voteable.save
+  end
+
+  # Need test
+  def get_question(voteable_id)
+    @voteable = Question.find(voteable_id)
   end
 
 end
