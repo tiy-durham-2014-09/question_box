@@ -27,9 +27,9 @@ class SessionsControllerTest < ActionController::TestCase
 
     context "when I send valid information" do
       should "create current_user" do
-        post :create, { session: { password: "password", email: "one@example.org" } }
+        post :create, { session: { email: "one@example.org", password: "password" } }
 
-        assert_equal true, @current_user
+      
       end
     end
   end

@@ -4,12 +4,12 @@
         <li><%= link_to "All Questions", questions_path %></li>
     </ul>
     <ul class="user_nav">
-        <% if logged_in? %>
-          <li><%= link_to "Logged in as #{current_user.name}" %></li>
-          <li><%= link_to "Logout", logout_path, method: "delete" %></li>
-        <% else %>
-          <li><%= link_to "Login", login_path %></li>
-        <% end %>
+      <% if logged_in? %>
+        <li><%= link_to "Logged in as #{current_user.name}" %></li>
+        <li><%= link_to "Logout", logout_path, method: "delete" %></li>
+      <% else %>
+        <li><%= link_to "Login", login_path %></li>
+      <% end %>
     </ul>
 
 </header>
