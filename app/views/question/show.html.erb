@@ -2,13 +2,23 @@
 <p><%= @question.text %></p>
 <p><%= @question.user.to_s %></p>
 <div class="row">
-  <div class='headings'><h4 class="large-12 columns">Answer</h4></div>
-  <%= form_tag answers_path :method => :post do %>
-    <div class="large-12 columns">
-      <%= text_field_tag :text, nil, class: 'text_field' %>
-    </div>
-    <div class="large-12 columns">
-      <%= button_tag "Answer", :class => "small radius" %>
-    </div>
-  <% end %>
-</div>
+  <div class='headings'><h4 class="large-12 columns">Answers</h4></div>
+  <% if @answers.count == 0 %>
+	<h3>This question hasn't been answered yet.</h3>
+	<% end %>
+	
+	<% @answers.each do |answer| %>
+		<p><%= answer.text %></p>
+		<p>Answered by <%= answer.user.name %></p>
+	<% end %>
+	
+	<% if logged_in? %>
+		<%= form_for([@question, @question.answers.build]) do |f| %>
+		<h3>Answer</h3>
+		<%= f.label :text %>
+		<%= f.text_area :text %>
+		<%= button_tag 'Answer' %>
+		<% end %>
+	<% else %>
+			<%= link_to 'Login to answer this question', new_login_path %>
+	<% end %>		

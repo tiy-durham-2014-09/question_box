@@ -1,9 +1,12 @@
 <h1>What's your question?</h1>
-<div class="new_question">
+<div class="new_question"><% if logged_in? %>
   <%= form_for @questions, :url => question_index_path do |f| %>
   <%= f.text_field :title, placeholder: "Question Title" %><br>
   <%= f.text_area :text, placeholder: "Question Body" %><br>
   <%= f.button :submit, class: "btn btn-large btn-success" %>
+  <% end %>
+  <% else %>
+  	<h1><%= link_to "Login to ask", new_login_path %>
   <% end %>
 </div>
 <div class="main">

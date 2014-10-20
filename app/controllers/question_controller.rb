@@ -1,12 +1,11 @@
 class QuestionController < ApplicationController
-before_action :set_question, only: [:show, :edit, :update, :destroy]
-before_action :authenticate
+before_action :set_question, only: [:show, :vote]
+before_action :authenticate, only: [:new, :create, :vote]
 
 
   def index
     @question = Question.paginate(page: params[:page], per_page: 10)
     @questions = Question.new
-    @answer = Answer.new
   end
   
   def new
@@ -34,6 +33,7 @@ before_action :authenticate
   end
   def show
     @question = Question.find(params[:id])
+    @answers = @question.answers
   end
   private
 

@@ -1,35 +1,34 @@
 class AnswersController < ApplicationController
-  def show
-    @answer = Answer.find(params[:id])
-  end
-
-
-  def create
-    if current_user
-      @answer = Answer.new(answer_params)
-    end
-    respond_to do |format|
-      if @answer.save
-        format.html { redirect_to root_path, notice: 'Answer was successfully posted.' }
-      else
-        format.html { render :new }
-      end
-    end
-  end
-
+  before_action :authenticate
+  
   def new
-    @answer = Answer.new
+    @answers = Answer.new
+  end 
+ 
+  def create
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.build(answer_params)
+    @answer.user = current_user    
+    if @answer.save
+      redirect_to @question
+    else
+      render 'questions/show'
+    end
   end
-
-  def edit
-  end
-
-  def delete
+  
+  def vote
+    @answer = Answer.find(params[:id])
+    @vote = @answer.votes.build(user: current_user, value: params[:vote][:value])
+    if @vote.save
+      redirect_to @answer.question, success: "Your vote was recorded."
+    else
+      redirect_to @answer.question, error: "There was a problem saving your vote."
+    end
   end
 
   private
 
   def answer_params
-    params.permit(:text, :user_id, :question_id, :chosen)
+    params.require(:answer).permit(:text)
   end
 end

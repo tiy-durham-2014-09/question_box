@@ -1,0 +1,12 @@
+<h4><%= @question.title %></h4>
+<p><%= @question.text %></p>
+<p><%= @question.user.to_s %></p>
+<div class="row">
+  <div class='headings'><h4 class="large-12 columns">Answer</h4></div>
+   
+   
+	
+	<%= simple_form_for current_user do |f| %>
+	  <%= f.input :text %>
+	  <%= f.button :submit %>
+	<% end %>

@@ -1,39 +1,18 @@
 Rails.application.routes.draw do
-
-
-
-
-
-
-  #HOMEPAGE
-  # post 'homepage/create'
-
-
-  # get 'homepage/index'
-  # #
-  # #QUESTIONS AND ANSWERS
-  # get 'question_and_answers/show'
-  # get 'question_and_answers/create'
-  #
-  # #ALL QUESTIONS
-  # get 'all_questions/index'
-  #
-  # #LOGIN
-  #   post 'login/new'
-  #   post 'login/create'
-    delete 'login/destroy'
-  #
-  #
-  # #USERS
-  # get 'users/create'
-  # get 'users/new'
+  root 'question#index'
+  
 
   resources :users, :only => [:create, :new]
-  resources :login, :only => [:new,:create, :destroy]
-  resources :answers, :only => [:create, :new]
-  resources :question, :only => [ :new, :edit, :update, :destroy, :show, :create]
+  resources :login, :only => [:show,:create, :destroy, :new]
+  resources :question, :only => [ :new, :show, :create, :index] do
+    post :vote, on: :member
+    resources :answers, :only => [:create], :shallow => true do
+      post :vote, on: :member
+    end
+  end
+  
+  delete 'login/destroy'
 
-  root 'question#index'
   # resources :users, only => [:create,:new]
 
 
