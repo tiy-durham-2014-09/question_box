@@ -28,11 +28,6 @@ group :development, :test do
   gem "rubocop"
   gem "selenium-webdriver"
   gem "shoulda"
-
-  # Guard
-  gem 'guard'
-  gem 'guard-rake'
-  gem 'rb-fsevent' if `uname` =~ /Darwin/
 end
 
 gem 'simplecov', :require => false, :group => :test
