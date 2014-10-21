@@ -19,6 +19,11 @@ class UsersControllerTest < ActionController::TestCase
 	  setup { get :new }
 	  should respond_with(:ok)
 	  should render_template(:new)
+
+	  should "instantiate a user" do
+		  assert assigns[:user], "Should have a user"
+	  end
+
   end
 
   context "POST :create" do
@@ -45,11 +50,16 @@ class UsersControllerTest < ActionController::TestCase
         assert assigns["user"], "Should have a user"
         assert assigns["user"].persisted?, "Should have saved user in the DB"
         assert_equal user_attributes[:name], assigns["user"].name
-
-	        # should "send user to homepage" do
-		       #  redirect_to { homepage (questions_index) }
-	        # end
       end
+
+			should "log in" do
+				set_session(:user)
+			end
+
+	    should "send to homepage" do
+				redirect_to root_path
+	    end
+
     end
 
   end

@@ -2,15 +2,15 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
 	resource	:login, only: [:new, :create, :destroy]
-  resources :questions do
-	  resources :answers
+  resources :questions, only: [:index, :new, :create, :destroy] do
+	  post :vote, on: :member
+	  resources :answers, only: :create, shallow: true do
+		  post :vote, on: :member
+	  end
   end
 
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
   root 'questions#home'
 
   # Example of regular route:

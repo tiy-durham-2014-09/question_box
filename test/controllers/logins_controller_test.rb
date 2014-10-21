@@ -6,6 +6,8 @@ class LoginsControllerTest < ActionController::TestCase
 		setup { get :new }
 		should respond_with(:ok)
 		should render_template(:new)
+
+		should set_session(:login)
 	end
 
   context "POST :create" do

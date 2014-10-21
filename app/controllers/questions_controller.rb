@@ -1,10 +1,9 @@
 class QuestionsController < ApplicationController
-	# before_action :authenticate
-	# before_action :set_question, only: [:show, :edit, :update, :destroy]
-	# after_filter :set_previous_url, only: [:new]
+	before_action :authenticate, only: [:new, :create, :vote]
+	before_action :set_question, only: [:show, :vote]
 
 	def index
-		@questions = Question.all
+		@questions = Question.all.reverse_order.page params[:page]
 	end
 
 	def new
@@ -12,8 +11,7 @@ class QuestionsController < ApplicationController
 	end
 
 	def create
-		@question = Question.new(question_params)
-
+		@question = current_user.questions.build(question_params)
 		if @question.save
 			redirect_to "show"
 		else
@@ -22,14 +20,31 @@ class QuestionsController < ApplicationController
 	end
 
 	def home
-		@questions = Question.all
+		@question = Question.new
+		@questions = Question.all.reverse_order.limit(5)
 	end
 
+	def show
+		@answer = @question.answers.build
+	end
+
+	def vote
+		@vote = @question.votes.build(user: current_user, value: params[:vote][:value])
+		if @vote.save
+			redirect_to @question, success: "Your vote was recorded."
+		else
+			redirect_to @question, error: "There was a problem saving your vote."
+		end
+	end
 
 	private
 
 	def question_params
 		params.require(:question).permit(:title, :text, :user_id, :votevalue)
+	end
+
+	def set_question
+		@question = Question.find(params[:id])
 	end
 
 end

@@ -2,18 +2,16 @@
 
 <table>
   <tr>
-    <th>Question</th>
-    <th>Description</th>
+    <th>Unanswered Question</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-  <% @questions.each do |question| %>
+  <% @questions.reverse_order.each do |question| %>
       <tr>
         <td><%= question.title %></td>
-        <td><%= question.content %></td>
-        <td><%= link_to "Show", question %></td>
+        <td></td>
         <td><%= link_to "Edit", edit_question_path(question) %></td>
         <td><%= link_to "Remove", question, method: :delete, data: { confirm: "Are you sure?" } %></td>
       </tr>

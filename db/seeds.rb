@@ -26,7 +26,7 @@ Question.delete_all
 
 	3.times do
 	Question.create!(user: user,
-									 title: Faker::Lorem.sentence(1).chomp('?'),
+									 title: "#{['In Rails, can I', 'How do you', 'Why would you'].sample} #{Faker::Company.bs}?",
 	                 text: Faker::Lorem.sentence(3),
 	                 created_at: rand(1.year).ago,
 									 votevalue: 4
