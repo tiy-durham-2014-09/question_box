@@ -1,4 +1,7 @@
+require 'SecureRandom'
+
 class User < ActiveRecord::Base
+  
   has_many :questions
   has_many :answers
 
@@ -17,10 +20,16 @@ class User < ActiveRecord::Base
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   has_secure_password
+  
+  after_create :set_token
 
   def to_s
     name
   end
   def vote_total
+  end
+  
+  def set_token
+   SecureRandom.urlsafe_base64
   end
 end
