@@ -18,9 +18,11 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
     @vote = @answer.votes.build(user: current_user, value: params[:value])
     if @vote.save
+      binding.pry
       flash.now[:notice] = "You're vote has been cast."
-      redirect_to question_path(@question)
+      redirect_to question_path(@question.id)
     else
+      binding.pry
       flash.now[:notice] = "Something went wrong with your vote."
       redirect_to root_path
     end

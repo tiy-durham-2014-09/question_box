@@ -17,7 +17,7 @@
   <% @question.answers.each do |answer| %>
   <p><%= answer.text %></p>
   <p>Answered by <%= answer.user.name%></p>
-  <p><%= pluralize score(@answer), "Vote" %>
+  <p><%= pluralize score(answer), "Vote" %>
     <% if logged_in? %>
       <%= link_to "up", vote_answer_path(value: 1, user_id: @current_user.id), method: :post %>
       <%= link_to "down", vote_answer_path(value: -1, user_id: @current_user.id), method: :post %>
