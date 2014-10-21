@@ -31,15 +31,28 @@ before_action :authenticate, only: [:new, :create, :vote]
 
   def destroy
   end
+
   def show
     @question = Question.find(params[:id])
     @answers = @question.answers
   end
+
+
+  def vote
+    @vote = @question.votes.build(user: current_user, value: params[:vote][:value])
+    if @vote.save
+      redirect_to @question, success: "Your vote was recorded."
+    else
+      redirect_to @question, error: "There was a problem saving your vote."
+    end
+  end
+
   private
 
   def set_question
     @question = Question.find(params[:id])
   end
+
   def question_params
     params.require(:question).permit(:title, :text)  
   end

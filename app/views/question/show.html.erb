@@ -1,8 +1,21 @@
 <h4><%= @question.title %></h4>
 <p><%= @question.text %></p>
 <p><%= @question.user.to_s %></p>
+
+<div class="vote">
+  <p>
+    <h4><%= pluralize(@question.votes.count, "vote") %></h4>
+  </p>
+  <%= link_to '<i class="fa fa-thumbs-up fa-2x"></i>'.html_safe, vote_question_path(:value => 1, :user => @question.user, :question_id => @question.id) %>
+  &nbsp;
+  <%= link_to '<i class="fa fa-thumbs-down fa-2x"></i>'.html_safe, vote_question_path(:value => -1, :user => @question.user, :question_id => @question.id) %>
+</div>
+
+<br>
+
 <div class="row">
   <div class='headings'><h4 class="large-12 columns">Answers</h4></div>
+</div>
   <% if @answers.count == 0 %>
 	<h3>This question hasn't been answered yet.</h3>
 	<% end %>
@@ -18,7 +31,7 @@
 		<%= f.label :text %>
 		<%= f.text_area :text, :placeholder => "add your answer here" %>
 		<%= button_tag 'Answer' %>
-		<% end %>
+  <% end %>
 	<% else %>
 			<%= link_to 'Login to answer this question', new_login_path %>
-	<% end %>		
+	<% end %>
