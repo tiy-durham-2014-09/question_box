@@ -11,11 +11,14 @@ Question.delete_all
 
 @users = []
 15.times do
+  password = Faker::Internet.password
   user = User.create(
       name: Faker::Name.name,
       email: Faker::Internet.email,
-      password: "password",
-      password_confirmation: "password"
+      password: password,
+      password_confirmation: password,
+      created_at: Faker::Time.between(60.days.ago, Time.now, :all)
+
   )
   @users << user
 end
@@ -27,7 +30,7 @@ end
         title: ["How do I even ", "Why would I ever ", "Don't you hate it when you can't ", "Bro, do you even ", "Why can't I " ].sample + Faker::Company.bs + "?",
         text: Faker::Lorem.paragraph.to_s.chomp + "?",
         user_id: u.id,
-        created_at: Faker::Time.between(30.days.ago, Time.now, :all)
+        created_at: Faker::Time.between(u.created_at, Time.now, :all)
     )
     @questions << question
   end
@@ -36,7 +39,7 @@ end
         title: 'What does "' + Faker::Company.bs + '" even mean?',
         text: Faker::Lorem.paragraph.to_s.chomp + "?",
         user_id: u.id,
-        created_at: Faker::Time.between(30.days.ago, Time.now, :all)
+        created_at: Faker::Time.between(u.created_at, Time.now, :all)
     )
     @questions << question
   end
@@ -50,7 +53,6 @@ end
         user_id: @users.sample.id,
         question_id: q.id,
         created_at: Faker::Time.between(q.created_at, Time.now, :all)
-
     )
     @answers << answer
   end
