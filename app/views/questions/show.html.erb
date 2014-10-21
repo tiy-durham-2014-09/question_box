@@ -18,6 +18,26 @@
   <%= @question.created_at %>
 </p>
 
+<h2>Answers</h2>
+<% @question.answers.each do |answer| %>
+
+
+  <p>
+    <strong><%=  answer.user %></strong><br>
+    <%= answer.text %>
+  </p>
+<% end %>
+
+<h2>Answer this question:</h2>
+<%= form_for([@question, @question.answers.build]) do |f| %>
+  <%= f.hidden_field :user, value: @current_user  %>
+  <p>
+    <%= f.text_area :text %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
 
 
 

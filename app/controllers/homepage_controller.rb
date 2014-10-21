@@ -1,5 +1,6 @@
 class HomepageController < ApplicationController
   def index
-    @questions = Question.all
+    @question = Question.all
+    @questions1 = Question.all
   end
 end

@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
+  get 'questions/index'
   get 'homepage/index'
 
   post 'login/new'
 
   resources :users, :only => [:new, :create]
   resource :login, :only => [:new, :create]
-  resources :questions
-
+  resources :questions do
+    post :vote, on: :member
+    resources :answers, :shallow => true do
+      post :vote, on: :member
+  end
+end
   get 'logout' => 'logins#destroy'
 
 
@@ -15,10 +20,10 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'homepage#index'
+  root 'questions#index'
 
   # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+    get 'products/:id' => 'catalog#view'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

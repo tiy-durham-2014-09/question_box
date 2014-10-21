@@ -4,6 +4,7 @@ require 'rails/test_help'
 require 'faker'
 
 class ActiveSupport::TestCase
+
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
@@ -12,5 +13,10 @@ class ActiveSupport::TestCase
   def check_presence(model, field)
     assert model.invalid?, "#{model.class} without #{field} should not be valid"
     assert_not_empty model.errors[field]
+  end
+
+
+  def logged_in_session
+    { current_user_id: users(:one).id }
   end
 end

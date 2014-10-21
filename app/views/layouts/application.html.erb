@@ -27,7 +27,7 @@
       <% if logged_in? %>
 
       <li><%= link_to "Logged in as #{current_user}", "#" %></li>
-          <li><%= link_to "Your Questions", questions_path %></li>
+          <li><%= link_to "Your Questions", homepage_index_path %></li>
        <li><%= link_to "Logout", logout_path %></li>
     <% else %>
             <li><%= link_to "Login", login_new_path %></li>

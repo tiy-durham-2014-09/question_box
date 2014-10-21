@@ -15,7 +15,6 @@ end
     if @user.save
       flash[:success] = "Welcome to the Question Box!"
       # TODO redirect
-      render nothing: true, status: :created
        redirect_to login_new_path
     else
       render :new

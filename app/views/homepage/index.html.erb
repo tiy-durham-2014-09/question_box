@@ -1,15 +1,20 @@
-<h1>Homepage#index</h1>
-<p>Find me in app/views/homepage/index.html.erb</p>
+<h1>Your Questions</h1>
+
+
 
 <table>
 <tbody>
-  <% @questions.order(updated_at: :desc).each do |question| %>
+  <% @questions1.order(updated_at: :desc).each do |question| %>
     <tr>
       <td>
       <h3><%= question.title %></h3>
 
       <p><%= question.text %></p>
-     <p><%= link_to 'Show', question %></p>
+      <p><%= link_to 'Show', question %>
+      <%= link_to 'Edit', edit_question_path(question) %>
+      <%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+
     </td>
 
   </tr>

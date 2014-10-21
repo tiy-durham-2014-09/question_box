@@ -1,8 +1,13 @@
-<%= form_for @question do |f| %>
+<div class="row">
+  <div class="large-10 columns">
+    <%= form_for @question do |f| %>
   <%= f.text_field :title, placeholder: "Question title" %>
   <%= f. text_area :text, placeholder: "Question body" %>
   <%= f.hidden_field :user, :value => @current_user %>
 
 
+
+
   <%= f.button :submit, class: "btn btn-large btn-success" %>
   <% end %>
+</div>

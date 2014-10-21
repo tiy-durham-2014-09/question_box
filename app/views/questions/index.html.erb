@@ -1,24 +1,60 @@
-<h1>Your Questions</h1>
-
+<div class="row">
+  <div class="large-10 columns">
 <table>
 <tbody>
-  <% @questions1.order(created_at: :desc).each do |question| %>
+  <tr>
+      <td>
+<h1>Whats Your Question</h1>
+<%= form_for Question.new do |f| %>
+  <%= f.text_field :title, placeholder: "Question title" %>
+  <%= f. text_area :text, placeholder: "Question body" %>
+  <%= f.hidden_field :user, :value => @current_user %>
+
+
+  <%= f.button :submit, class: "btn btn-large btn-success" %>
+  <% end %>
+</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div class="large-3 columns">
+<table>
+<tbody>
+  <h3>Unanswered Questions</h3>
+  <% @questions.order(created_at: :desc).each do |question| %>
     <tr>
       <td>
-      <h3><%= question.title %></h3>
+      <h5><%= question.title %></h5>
 
       <p><%= question.text %></p>
-      <p><%= link_to 'Show', question %>
-      <%= link_to 'Edit', edit_question_path(question) %>
-      <%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </p>
+      <p><%= link_to 'Answer this Question', question %></p>
     </td>
   </tr>
   <% end %>
 </tbody>
 
 </table>
+</div>
+<div class="large-3 columns">
+<table>
+<tbody>
+  <h3>Answered Questions</h3>
+  <% @questions.order(created_at: :desc).each do |question| %>
+    <tr>
+      <td>
+      <h5><%= question.title %></h5>
 
-<br>
-
-<%= link_to 'New Question', new_question_path %>
+      <p><%= question.text %></p>
+      <p><%= link_to 'Show Answer', question %></p>
+    </td>
+  </tr>
+  <% end %>
+</tbody>
+</table>
+</div>
+</div>

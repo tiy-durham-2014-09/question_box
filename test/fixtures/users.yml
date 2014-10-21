@@ -2,8 +2,9 @@
 
 michael:
   name: Mike
+  score: 20
   email: mike23@mike.com
-  password_digest: <%= User.digest('password') %>
+  password_digest: MyString
 
 one:
   name: User One
@@ -21,10 +22,10 @@ chet:
   name: Chet Corey
   score: 1000
   email: chet@example.org
-  password_digest: whoooo
+  password_digest: MyString
 
 voter:
   name: Voter Person
   score: 1000
   email: voter@example.org
-  password_digest: whoooo
+  password_digest: MyString

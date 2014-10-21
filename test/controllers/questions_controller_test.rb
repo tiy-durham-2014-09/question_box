@@ -1,7 +1,15 @@
 require 'test_helper'
 
 class QuestionsControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+
+
+# context "GET questions#index" do
+#   setup { get :index}
+#   should render_template("index")
+#   should respond_with(:success)
+# end
+
+
+
 end

@@ -3,13 +3,14 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   def index
-    @questions = Question.all
+    @questions = Question.all.page params[:page]
     @questions1 = current_user.questions
+
 
   end
 
   def show
-    @question = Question.find(params[:id])
+    @answer = @question.answers.build
   end
 
   # GET /questions/new
@@ -53,6 +54,17 @@ class QuestionsController < ApplicationController
       format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
     end
   end
+  def vote
+    @vote = @question.votes.build(user: current_user, value: params[:vote][:value])
+    if @vote.save
+      redirect_to @question
+    else
+      redirect_to @question
+    end
+  end
+
+
+
 
 
   private
