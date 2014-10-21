@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate, only: [:create, :destroy]
-  before_action :set_question, only: [:show, :edit, :destroy]
+  before_action :authenticate, only: [:new, :create, :destroy]
+  before_action :set_question, only: [:show, :edit, :destroy, :vote]
 
   def index
     @questions = Question.all
@@ -13,12 +13,10 @@ class QuestionsController < ApplicationController
   def show
 	  @question = Question.find(params[:id])
     @answers = @question.answers
-    # @answer = Answer.new
-
   end
 
   def homepage
-		@question = Question.new
+    @question = Question.new
 		@recently_answered_questions = Question.includes(:answers).where.not( :answers => { :question_id => nil } ).order(created_at: :desc).limit(5)
 		@recently_unanswered_questions = Question.includes(:answers).where( :answers => { :question_id => nil } ).order(created_at: :desc).limit(5)
   end
@@ -45,6 +43,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:title, :text, :vote_count, :user_id)
+    params.require(:question).permit(:title, :text)
   end
 end

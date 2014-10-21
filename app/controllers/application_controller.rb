@@ -8,18 +8,15 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-    unless session[:user_id] == nil
-		  @current_user ||= User.find(session[:user_id])
-    end
+    @current_user ||= User.find_by(id: session[:current_user_id])
   end
 
   def logged_in?
-    current_user
+    !!current_user
   end
 
   def authenticate
-    current_user_id = session[:user_id]
-    unless current_user_id
+    unless logged_in?
 		  redirect_to new_login_path, notice: "Please sign in."
 	  end
   end

@@ -3,12 +3,13 @@ require 'test_helper'
 class QuestionsControllerTest < ActionController::TestCase
 
   def invalid_question_attributes
-    {title: "",
-     text: ""}
+    { question: { title: "",
+                  text: "" } }
   end
 
   def valid_question_attributes
-    questions(:one).attributes
+    { question: { title: "How do I?",
+                text: "Do this?" } }
   end
 
   context "GET questions#homepage" do
@@ -37,7 +38,7 @@ class QuestionsControllerTest < ActionController::TestCase
     should respond_with(:ok)
 
 		should "instantiate questions object" do
-      assert assigns["questions"], "should load questions"
+      assert assigns[:questions], "should load questions"
 		end
   end
 
@@ -48,21 +49,46 @@ class QuestionsControllerTest < ActionController::TestCase
 	  should respond_with(:ok)
 
 	  should "instantiate question object" do
-		  assert assigns["question"], "should load questions"
+		  assert assigns[:question], "should load questions"
 	  end
 
 	  should "instantiate load answers" do
-		  assert assigns["answers"], "should load questions"
+		  assert assigns[:answers], "should load questions"
 	  end
+  end
 
+  context "GET questions#new" do
+    context "when user is not logged in" do
+      setup { get :new }
+
+      should "redirect to login page" do
+        assert_redirected_to new_login_path
+      end
+    end
+
+    context "when logged in" do
+      setup do
+        get :new, {}, logged_in_session
+      end
+
+      should "instantiate a new question object" do
+        assert assigns[:question], "Should have a new question"
+      end
+    end
   end
 
   context "POST#create" do
+    context "when user is not logged in" do
+      setup { post :create }
+
+      should "redirect to homepage" do
+        assert_redirected_to new_login_path
+      end
+    end
+
     context "when I send invalid information" do
       setup do
-        session[:user_id] = users(:one).id
-        @controller.send(:current_user)
-        post :create, { question: invalid_question_attributes }
+        post :create, invalid_question_attributes, logged_in_session
       end
 
       should "re-render the form" do
@@ -77,24 +103,16 @@ class QuestionsControllerTest < ActionController::TestCase
 
     context "when I send valid information" do
       setup do
-        session[:user_id] = users(:one).id
-        @controller.send(:current_user)
-        @question_attributes = valid_question_attributes
-        post :create, { question: @question_attributes }
-        session[:user_id] = users(:one).id
+        post :create, valid_question_attributes, logged_in_session
       end
 
       should "create a question" do
         assert assigns["question"], "Should have a question"
         assert assigns["question"].persisted?, "Should have saved question in the DB"
-        assert_equal @question_attributes["title"], assigns["question"].title, "Should have a title"
-        assert_equal @question_attributes["text"], assigns["question"].text, "Should have text"
-        assert_equal @question_attributes["user_id"], assigns["question"].user_id, "Should have a user id"
-        assert_equal 0, assigns["question"].vote_count, "Should have a zero vote count"
       end
 
       should "show question" do
-        assert_redirected_to question_path(assigns["question"].id), "Should redirect to show question"
+        assert_redirected_to question_path(assigns["question"]), "Should redirect to show question"
       end
     end
 
@@ -102,22 +120,16 @@ class QuestionsControllerTest < ActionController::TestCase
 
   context "DELETE" do
     context "when I delete a question" do
-      setup do
-        session[:user_id] = users(:one).id
-        @controller.send(:current_user)
-      end
-
       should "user should be removed from database" do
         assert_raise ActiveRecord::RecordNotFound do
           question_id = questions(:one).id
-          delete :destroy, { id: question_id }
+          delete :destroy, { id: question_id }, logged_in_session
           Question.find(question_id)
         end
       end
 
       should "send to homepage" do
-        question_id = questions(:one).id
-        delete :destroy, { id: question_id }
+        delete :destroy, { id: questions(:one).id }, logged_in_session
         assert_redirected_to root_path, "should send to homepage"
       end
     end

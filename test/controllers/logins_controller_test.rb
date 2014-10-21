@@ -31,16 +31,7 @@ class LoginsControllerTest < ActionController::TestCase
 			setup { post :create, valid_login_attributes }
 
 			should "create new session with user id" do
-				assert_equal User.find_by(email: valid_login_attributes[:email]).id, session[:user_id]
-      end
-
-      should "set user as current user" do
-        user = @controller.send(:current_user)
-        assert_equal User.find_by(email: valid_login_attributes[:email]), user
-      end
-
-      should "know if I am logged in" do
-        assert_not_nil @controller.send(:logged_in?)
+				assert_equal users(:one).id, session[:current_user_id]
       end
 
 			should "redirect to homepage" do
@@ -52,12 +43,11 @@ class LoginsControllerTest < ActionController::TestCase
   context "DELETE logins#destroy" do
     context "when I log out" do
       setup do
-        post :create, valid_login_attributes
-        delete :destroy, id: users(:one).id
+        delete :destroy, {}, logged_in_session
       end
 
       should "set clear out session" do
-        assert_nil session[:user_id]
+        assert_nil session[:current_user_id]
       end
 
       should "send to homepage" do

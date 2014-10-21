@@ -14,8 +14,8 @@
 			  <h4><%= @question.vote_count %><br>votes</h4>
 
 			  <p>
-			    <%= link_to '<i class="fa fa-thumbs-up fa-lg"></i>'.html_safe, {:controller => "votes", :action => "create", :vote => {value: 1, voteable_id: @question.id, voteable_type: "Question", user: current_user } } %>
-			    <%= link_to '<i class="fa fa-thumbs-down fa-lg"></i>'.html_safe, {:controller => "votes", :action => "create", :vote => {value: -1, voteable_id: @question.id, voteable_type: "Question", user: current_user } } %>
+			    <%= link_to '<i class="fa fa-thumbs-up fa-lg"></i>'.html_safe, {:controller => "votes", :action => "create", :vote => { up: true, voteable_id: @question.id, voteable_type: "Question" } } %>
+			    <%= link_to '<i class="fa fa-thumbs-down fa-lg"></i>'.html_safe, {:controller => "votes", :action => "create", :vote => { up: false, voteable_id: @question.id, voteable_type: "Question" } } %>
 			  </p>
 
 				</div>
@@ -26,48 +26,54 @@
 	<div class="custom_divider"></div>
 </div>
 
-<div class="row">
-	<div class="small-10 small-offset-1 columns">
+<% if @answers %>
 
-	<h3>Answers</h3>
+  <% @answers.each do |answer| %>
 
-  <% if @answers.count == 0 %>
-    <p>
-      No answers yet.
-    </p>
-  <% end %>
+    <div class="row">
+      <div class="small-8 small-offset-1 columns">
+        <p><%= answer.text %></p>
+        <p>Answered by <%= answer.user.name %></p>
 
-	</div>
-</div>
+      </div>
+      <div class="small-2 columns end">
+        <div class="custom_center">
+          <h4><%= answer.vote_count %><br>votes</h4>
 
-<% @answers.each do |answer| %>
+          <p>
+            <% if @question.user == current_user %>
+              <% if answer.chosen? %>
+                <%= link_to '<i class="fa fa-check-circle fa-lg"></i>'.html_safe, question_path(@question), :method => :update, :controller => "answers", :class => "ans_chosen" %>
+              <% else %>
+                <%= link_to '<i class="fa fa-check-circle fa-lg"></i>'.html_safe, question_path(@question), :method => :update, :controller => "answers", :class => "not_ans_chosen" %>
+              <% end %>
+            <% end %>
+            <%= link_to '<i class="fa fa-thumbs-up fa-lg"></i>'.html_safe, {:controller => "votes", :action => "create", :vote => { up: true, voteable_id: answer.id, voteable_type: "Answer" } } %>
+            <%= link_to '<i class="fa fa-thumbs-down fa-lg"></i>'.html_safe, {:controller => "votes", :action => "create", :vote => { up: false, voteable_id: answer.id, voteable_type: "Answer" } } %>
+          </p>
+        </div>
 
-  <div class="row">
-	  <div class="small-8 small-offset-1 columns">
-      <p><%= answer.text %></p>
-		  <p>Answered by <%= answer.user.name %></p>
-
-		</div>
-    <div class="small-2 columns end">
-	    <div class="custom_center">
-	      <h4><%= answer.vote_count %><br>votes</h4>
-
-	      <p>
-		      <% if @question.user == current_user %>
-			      <% if answer.chosen? %>
-	            <%= link_to '<i class="fa fa-check-circle fa-lg"></i>'.html_safe, question_answer_path(@question, answer), :method => :update, :controller => "answers", :class => "ans_chosen" %>
-				    <% else %>
-	            <%= link_to '<i class="fa fa-check-circle fa-lg"></i>'.html_safe, question_answer_path(@question, answer), :method => :update, :controller => "answers", :class => "not_ans_chosen" %>
-				    <% end %>
-			    <% end %>
-	        <%= link_to '<i class="fa fa-thumbs-up fa-lg"></i>'.html_safe, {:controller => "votes", :action => "create", :vote => {value: 1, voteable_id: answer.id, voteable_type: "Answer", user: current_user } } %>
-	        <%= link_to '<i class="fa fa-thumbs-down fa-lg"></i>'.html_safe, {:controller => "votes", :action => "create", :vote => {value: -1, voteable_id: answer.id, voteable_type: "Answer", user: current_user } } %>
-	      </p>
-	    </div>
+      </div>
 
     </div>
+  <% end %>
 
+<% else %>
+
+	<div class="row">
+		<div class="small-10 small-offset-1 columns">
+
+		<h3>Answers</h3>
+
+	  <% if !@answers %>
+	    <p>
+	      No answers yet.
+	    </p>
+	  <% end %>
+
+		</div>
 	</div>
+
 <% end %>
 
 <div class="row">

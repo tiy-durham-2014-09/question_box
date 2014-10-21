@@ -7,11 +7,12 @@ Rails.application.routes.draw do
 
   resources :users, :only => [:new, :create]
   resources :questions, :only => [:index, :new, :create, :show, :homepage, :destroy] do
-    resources :answers, :only => [:new, :create, :show, :destroy, :update]
-    resources :votes, :only => [:new, :create, :destroy]
+    resources :answers, :only => [:new, :create, :update], :shallow => true do
+    end
   end
-
+  resources :votes, :only => [:new, :create, :destroy]
   resource :login, :only => [:new, :create, :destroy]
+
   get "questions/homepage" => 'questions#homepage'
 
 

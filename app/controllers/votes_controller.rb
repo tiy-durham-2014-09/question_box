@@ -1,23 +1,20 @@
 class VotesController < ApplicationController
+  before_action :authenticate, only: [:new, :create, :destroy]
+  before_action :set_vote
+
   def new
   end
 
   def create
-    @voteable = get_voteable(vote_params["voteable_id"],vote_params["voteable_type"])
+    @value = set_value
 
-    if @voteable
-      if check_double_vote
-        update
-      else
-        @vote = @voteable.votes.create(vote_params)
-        @vote.user_id = current_user.id
-
-        @vote.save
-
-        redirect_to :back
-      end
+    if @voteable && !check_double_vote
+      @vote = Vote.create(voteable_id: @voteable_id, voteable_type: @voteable_type, value: @value, user_id: current_user.id)
+      @vote.save
+      redirect_to :back
+    else
+      redirect_to :back
     end
-
   end
 
   def destroy
@@ -28,22 +25,15 @@ class VotesController < ApplicationController
     end
   end
 
-  def update
-    binding.pry
-    existing_vote = Vote.find_by(user_id: vote_params["user_id"], voteable_type: vote_params["voteable_type"], voteable_id: vote_params["voteable_id"])
-    updated_vote = existing_vote.update(vote_params)
-    updated_vote.update(vote_params)
-    binding.pry
-  end
-
   def vote_params
-    params.require(:vote).permit(:value, :voteable_type, :voteable_id, :user_id)
+    params.require(:vote).permit(:up, :voteable_type, :voteable_id)
   end
 
   private
 
-  # Need test?
-  def get_voteable(model_id,model_type)
+  def set_vote
+    model_type = vote_params["voteable_type"]
+    model_id = vote_params["voteable_id"]
 
     if model_type == "Question"
       @voteable = Question.find(model_id)
@@ -51,9 +41,20 @@ class VotesController < ApplicationController
       @voteable = Answer.find(model_id)
     end
 
+    @voteable_id = model_id.to_i
+    @voteable_type = model_type
+
   end
 
   def check_double_vote
     existing_vote = Vote.find_by(user_id: vote_params["user_id"], voteable_type: vote_params["voteable_type"], voteable_id: vote_params["voteable_id"])
+  end
+
+  def set_value
+    if vote_params[:up] == "true"
+      1
+    elsif vote_params[:up] == "false"
+      -1
+    end
   end
 end

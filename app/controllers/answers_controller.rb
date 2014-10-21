@@ -1,16 +1,17 @@
 class AnswersController < ApplicationController
+  before_action :authenticate
 
   def new
   end
 
   def create
     @question = Question.find(params[:question_id])
-    @answer = @question.answers.create(answer_params)
+    @answer = @question.answers.build(answer_params)
     @answer.user_id = current_user.id
     if @answer.save
       redirect_to question_path(@question)
     else
-      redirect_to :back
+      render "questions/show"
     end
   end
 
@@ -33,7 +34,7 @@ class AnswersController < ApplicationController
   private
 
   def answer_params
-    params.require(:answer).permit(:text, :chosen)
+    params.require(:answer).permit(:text)
   end
 
 end

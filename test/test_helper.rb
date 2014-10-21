@@ -15,8 +15,6 @@ class ActiveSupport::TestCase
   end
 
 	def logged_in_session
-
-
-
+    { current_user_id: users(:one).id }
 	end
 end
