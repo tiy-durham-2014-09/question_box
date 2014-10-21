@@ -17,6 +17,9 @@
   <strong>Date:</strong>
   <%= @question.created_at %>
 </p>
+<td><%= pluralize(@question.votes.count, "vote") %></td>
+    <td><%= button_to 'Vote Up', vote_question_path(@question), method: :post %>
+      <%= button_to 'Vote Down', vote_question_path(@question), method: :post %></td>
 
 <h2>Answers</h2>
 <% @question.answers.each do |answer| %>
