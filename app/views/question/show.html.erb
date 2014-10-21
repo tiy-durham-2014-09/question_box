@@ -2,18 +2,30 @@
 <p><%= @question.text %></p>
 <p><%= @question.user.to_s %></p>
 
-<!--for voting-->
 <div class="vote">
-  <!--code for where the votes counter is-->
-  <h4>#</h4>
-  <p>votes</p>
-  <i class="fa fa-thumbs-up fa-2x"></i>
-    &nbsp;
-  <i class="fa fa-thumbs-down fa-2x"></i>
+  <p>
+    <h4><%= pluralize(@question.votes.count, "vote") %></h4>
+  </p>
+  <p>
+    <%= button_to '+1', vote_question_path(@question), method: :post %>
+    <%= button_to '-1', vote_question_path(@question), method: :post %>
+  </p>
 </div>
+
+
+@vote = @question.votes.build(user: current_user, value: params[:vote][:value])
+
+
+  <i class="fa fa-thumbs-up fa-2x"></i>
+  &nbsp;
+  <i class="fa fa-thumbs-down fa-2x"></i>
+
+
+<br>
 
 <div class="row">
   <div class='headings'><h4 class="large-12 columns">Answers</h4></div>
+</div>
   <% if @answers.count == 0 %>
 	<h3>This question hasn't been answered yet.</h3>
 	<% end %>
@@ -21,15 +33,9 @@
 	<% @answers.each do |answer| %>
 		<p><%= answer.text %></p>
 		<p>Answered by <%= answer.user.name %></p>
-    <!--for voting-->
-    <div class="vote">
-      <!--code for where the votes counter is-->
-      <h4>#</h4>
-      <p>votes</p>
-      <i class="fa fa-thumbs-up fa-2x"></i>
-      &nbsp;
-      <i class="fa fa-thumbs-down fa-2x"></i>
-    </div>
+
+
+    <!--answer vote code would go here-->
 	<% end %>
 	
 	<% if logged_in? %>
@@ -38,7 +44,7 @@
 		<%= f.label :text %>
 		<%= f.text_area :text %>
 		<%= button_tag 'Answer' %>
-		<% end %>
+  <% end %>
 	<% else %>
 			<%= link_to 'Login to answer this question', new_login_path %>
-	<% end %>		
+	<% end %>
