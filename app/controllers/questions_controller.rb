@@ -17,8 +17,8 @@ class QuestionsController < ApplicationController
 
   def homepage
     @question = Question.new
-		@recently_answered_questions = Question.includes(:answers).where.not( :answers => { :question_id => nil } ).order(created_at: :desc).limit(5)
-		@recently_unanswered_questions = Question.includes(:answers).where( :answers => { :question_id => nil } ).order(created_at: :desc).limit(5)
+    @recently_answered_questions = Question.includes(:answers).order('answers.created_at DESC').where.not( :answers => { :question_id => nil } )[0,5]
+    @recently_unanswered_questions = Question.includes(:answers).where( :answers => { :question_id => nil } ).order(created_at: :desc).limit(5)
   end
 
   def create
