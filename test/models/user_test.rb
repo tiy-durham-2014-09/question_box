@@ -20,4 +20,13 @@ class UserTest < ActiveSupport::TestCase
   should have_many(:questions)
   should have_many(:answers)
   should have_many(:votes)
+  should validate_presence_of(:token)
+  # should validates_have_one(:click) WILL GET TO THIS WHEN CLICKS ARE IMPLEMENTED
+  context "a new user" do
+    should "send verification email after registration" do
+      
+      new_user = User.create
+      
+     end 
+    end
 end
