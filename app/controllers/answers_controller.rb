@@ -6,14 +6,14 @@ class AnswersController < ApplicationController
   end
 
   def create
-    @answer = current_user.answers.build(answer_params)
-    question_id = params[:question_id]
-    respond_to do |format|
-      if @answer.save
-        format.html { redirect_to show_questions_path(question_id), notice: 'answer was successfully created.' }
-      else
-        format.html { redirect_to show_questions_path(question_id), notice: 'answer was NOT successfully created.'  }
-      end
+    @question = Question.find_by(id: params[:question_id])
+    question_id = @question.id
+    @answer = @question.answers.build(answer_params)
+    @answer.user = current_user
+    if @answer.save
+      redirect_to show_questions_path(question_id)
+    else
+      redirect_to show_questions_path(question_id)
     end
   end
 

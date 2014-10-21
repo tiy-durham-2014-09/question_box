@@ -4,12 +4,16 @@ Rails.application.routes.draw do
   resource :questions do
     get 'index'
     get '/:id' => 'questions#show', as: 'show'
+    resource :answers do
+      get '/:id/vote' => 'answers#vote', as: 'vote'
+      get '/:id/choose' => 'answers#choose', as: 'choose'
+    end
   end
+
+
+
   resource :homepages
-  resource :answers do
-    get '/:id/vote' => 'answers#vote', as: 'vote'
-    get '/:id/choose' => 'answers#choose', as: 'choose'
-  end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

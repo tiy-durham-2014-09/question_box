@@ -19,13 +19,13 @@
     </tbody>
   </table>
   <h3><%= answer.score %> Votes</h3>
-  <%= link_to '<i class="fa fa-thumbs-up"></i>'.html_safe, vote_answers_path(:value => 1, :user => answer.user, :answer_id => answer.id) %>
-  <%= link_to '<i class="fa fa-thumbs-down"></i>'.html_safe, vote_answers_path(:value => -1, :user => answer.user, :answer_id => answer.id) %>
-  <%= link_to '<i class="fa fa-check-circle"></i>'.html_safe, choose_answers_path(:chosen => true, :user => answer.user, :answer_id => answer.id) %>
+  <%= link_to '<i class="fa fa-thumbs-up"></i>'.html_safe, vote_questions_answers_path(:value => 1, :user => answer.user, :id => answer.id) %>
+  <%= link_to '<i class="fa fa-thumbs-down"></i>'.html_safe, vote_questions_answers_path(:value => -1, :user => answer.user, :id => answer.id) %>
+  <%= link_to '<i class="fa fa-check-circle"></i>'.html_safe, choose_questions_answers_path(:chosen => true, :user => answer.user, :id => answer.id) %>
 <% end %>
 <h3>Add your Answer</h3>
 
-<%= form_tag answers_path, :method => :post do %>
+<%= form_tag questions_answers_path, :method => :post do %>
     <%= label_tag :text %>
     <%= text_field_tag "answer[text]" %>
     <%= hidden_field_tag "answer[user_id]", current_user.id %>

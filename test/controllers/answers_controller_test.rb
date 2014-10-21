@@ -14,11 +14,15 @@ class AnswersControllerTest < ActionController::TestCase
   end
 
   context "POST :create" do
+    setup do
+      get :new, {}, logged_in_session
+    end
+
     context "when I send invalid information" do
-      setup { post :create, { answer: invalid_answer_attributes }, { 'current_user_id' => users(:one).id } }
+      setup { post :create, { question_id: questions(:one).id, answer: invalid_answer_attributes } }
 
       should "re-render the form" do
-        redirect_to(show_questions_path)
+        redirect_to (show_questions_path(questions(:one).id))
       end
 
     end
