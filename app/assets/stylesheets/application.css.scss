@@ -11,38 +11,12 @@
  * file per style scope.
  *
  *= require_self
+ //= require foundation_and_overrides
+
  */
-@import "bourbon";
-@import "base/base";
-@import "neat";
 
-$max-width: em(900);
 
-body {
-  @include outer-container;
-  border: solid 1px black;
-  padding: 20px;
-}
-
-header {
-  border-bottom: solid 2px black;
-  margin: 0 20px 0 20px;
-
-    ul {
-      display: inline;
-
-      .main_nav {
-        float: left;
-      }
-
-      .user_nav {
-        float: right;
-      }
-    }
-}
-
-.flash_error {
-  @extend %flash-error;
-}
+@import "foundation_and_overrides";
+/* Add imports of custom sass/scss files here */
 
 

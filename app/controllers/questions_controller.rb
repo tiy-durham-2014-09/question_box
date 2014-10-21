@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to questions_path(@question.id)
     else
-      flash.now[:error] = "Invalid"
+      flash.now[:notice] = "Invalid"
       redirect_to home_questions_url
     end
   end
@@ -22,8 +22,18 @@ class QuestionsController < ApplicationController
     @question = Question.new
   end
 
-  def new
+  def vote
+    @question = Question.find(params[:id])
+    @vote = @question.votes.build(user: current_user, value: params[:value])
+    if @vote.save
+      flash.now[:notice] = "You're vote has been cast."
+    else
+      flash.now[:notice] = "Something went wrong with your vote."
+    end
+    redirect_to @question
   end
+
+
 
   private
 

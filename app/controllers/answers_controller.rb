@@ -3,16 +3,30 @@ class AnswersController < ApplicationController
   def create
     @question = Question.find(params[:question_id])
     @answer = Answer.new(answer_params)
-   # @answer.user = current_user
+    @user_id = User.find(params[:id])
 
     if @answer.save
-      flash.now[:success] = "Answered!"
-      redirect_to @question
+      flash.now[:notice] = "Answered!"
     else
-      flash.now[:error] = "Your answer is invalid."
-      redirect_to @question
+      flash.now[:notice] = "Your answer is invalid."
     end
+    redirect_to @question
   end
+
+  def vote
+    @question = Question.find(params[:id])
+    @answer = Answer.find(params[:id])
+    @vote = @answer.votes.build(user: current_user, value: params[:value])
+    if @vote.save
+      flash.now[:notice] = "You're vote has been cast."
+      redirect_to question_path(@question)
+    else
+      flash.now[:notice] = "Something went wrong with your vote."
+      redirect_to root_path
+    end
+
+  end
+
 
   private
 

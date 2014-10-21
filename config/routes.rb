@@ -4,14 +4,12 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   resources :users, :only => [:new, :create]
-  resources :questions do
-    collection do
-      get 'home' => 'questions#home'
-      post 'home' => 'questions#create'
+  resources :questions, :only => [:index, :new, :create, :show] do
+    post :vote, on: :member
+    resources :answers, :only => [:create], :shallow => true do
+      post :vote, on: :member
     end
   end
-  resources :answers
-  resources :votes, :only => [:new, :create]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
