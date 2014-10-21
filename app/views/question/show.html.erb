@@ -1,6 +1,17 @@
 <h4><%= @question.title %></h4>
 <p><%= @question.text %></p>
 <p><%= @question.user.to_s %></p>
+
+<!--for voting-->
+<div class="vote">
+  <!--code for where the votes counter is-->
+  <h4>#</h4>
+  <p>votes</p>
+  <i class="fa fa-thumbs-up fa-2x"></i>
+    &nbsp;
+  <i class="fa fa-thumbs-down fa-2x"></i>
+</div>
+
 <div class="row">
   <div class='headings'><h4 class="large-12 columns">Answers</h4></div>
   <% if @answers.count == 0 %>
@@ -10,6 +21,15 @@
 	<% @answers.each do |answer| %>
 		<p><%= answer.text %></p>
 		<p>Answered by <%= answer.user.name %></p>
+    <!--for voting-->
+    <div class="vote">
+      <!--code for where the votes counter is-->
+      <h4>#</h4>
+      <p>votes</p>
+      <i class="fa fa-thumbs-up fa-2x"></i>
+      &nbsp;
+      <i class="fa fa-thumbs-down fa-2x"></i>
+    </div>
 	<% end %>
 	
 	<% if logged_in? %>
