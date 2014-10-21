@@ -1,7 +1,4 @@
 class QuestionsController < ApplicationController
-<<<<<<< HEAD
-  def new
-=======
   before_action :authenticate, only: [:new, :create, :vote]
   before_action :set_question, only: [:show, :vote]
 
@@ -50,6 +47,5 @@ class QuestionsController < ApplicationController
 
   def question_params
     params.require(:question).permit(:title, :text)
->>>>>>> bd87ac0c8e2139f88e1295e578e7e0b98c9e4838
   end
 end

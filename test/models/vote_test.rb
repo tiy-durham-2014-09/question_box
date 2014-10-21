@@ -86,7 +86,4 @@ class VoteTest < ActiveSupport::TestCase
     end
   end
 end
-<<<<<<< HEAD
 
-=======
->>>>>>> bd87ac0c8e2139f88e1295e578e7e0b98c9e4838

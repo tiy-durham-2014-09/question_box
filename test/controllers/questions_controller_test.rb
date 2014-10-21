@@ -1,48 +1,7 @@
 require 'test_helper'
 
 class QuestionsControllerTest < ActionController::TestCase
-<<<<<<< HEAD
-  def valid_question_attributes
-    {title: Faker::Company.catch_phrase + '?',
-     text: Faker::Company.bs,
-     user: 1}
-  end
 
-  def invalid_question_attributes
-    {title: nil,
-     text: nil,
-     user: nil}
-  end
-
-  test "should get new" do
-    get :new
-    assert_response :ok
-  end
-
-  context "POST :create" do
-    context "when I send invalid information" do
-      setup { post :create, { user: invalid_question_attributes } }
-
-      should "re-render the form" do
-        assert_template :new
-      end
-
-      should "instantiate an invalid user object" do
-        assert assigns["question"], "Should have a question"
-        assert assigns["question"].invalid?, "Should have an invalid question"
-      end
-    end
-
-    context "when I send valid information" do
-      should "create a question" do
-        question_attributes = valid_question_attributes
-        post :create, { question: question_attributes }
-
-        assert assigns["question"], "Should have a question"
-        # binding.pry
-        assert assigns["question"].persisted?, "Should have saved question in the DB"
-        assert_equal question_attributes[:name], assigns["question"].name
-=======
   def valid_question_data
     { question: { title: "How do I #{Faker::Hacker.verb} #{Faker::Hacker.noun}?",
                   text:  Faker::Lorem.paragraph } }
@@ -155,13 +114,11 @@ class QuestionsControllerTest < ActionController::TestCase
         should "redirect to question" do
           assert_redirected_to question_path(assigns[:question])
         end
->>>>>>> bd87ac0c8e2139f88e1295e578e7e0b98c9e4838
       end
     end
   end
 
-<<<<<<< HEAD
-=======
+
   context "POST questions#vote" do
     context "when not logged in" do
       setup { post :vote, id: questions(:one) }
@@ -201,5 +158,4 @@ class QuestionsControllerTest < ActionController::TestCase
       end
     end
   end
->>>>>>> bd87ac0c8e2139f88e1295e578e7e0b98c9e4838
 end

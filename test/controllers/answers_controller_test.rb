@@ -1,11 +1,7 @@
 require 'test_helper'
 
 class AnswersControllerTest < ActionController::TestCase
-<<<<<<< HEAD
-  # test "the truth" do
-  #   assert true
-  # end
-=======
+
   def invalid_answer_data
     { text: "" }
   end
@@ -91,5 +87,4 @@ class AnswersControllerTest < ActionController::TestCase
       end
     end
   end
->>>>>>> bd87ac0c8e2139f88e1295e578e7e0b98c9e4838
 end

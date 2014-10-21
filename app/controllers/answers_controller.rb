@@ -1,6 +1,5 @@
 class AnswersController < ApplicationController
-<<<<<<< HEAD
-=======
+
   before_action :authenticate
 
   def create
@@ -30,5 +29,4 @@ class AnswersController < ApplicationController
   def answer_params
     params.require(:answer).permit(:text)
   end
->>>>>>> bd87ac0c8e2139f88e1295e578e7e0b98c9e4838
 end
