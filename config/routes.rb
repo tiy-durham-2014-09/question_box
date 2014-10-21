@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
 
+  get 'answers/create'
+
   root 'questions#home'
 
   resources :users, :only => [:new, :create]
   resource :login, :only => [:new, :create, :destroy]
   resources :questions, :only => [:index, :create, :show, :home]
+  resources :answers, :only => [:create]
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,5 +1,12 @@
 <h2><%= @question.title %></h2>
 <h3>Asked by <%= @question.user.name %></h3>
 <p><%= @question.text %></p>
-<p>Answer this question</p>
-<p>Answers</p>
+<% @question.answers.each do |a| %>
+  <%= a.text %><br>
+  Answer by <%= a.user.name %><br><br>
+<% end %>
+<% if logged_in? %>
+  <%= render 'answers/answer' %>
+<% else %>
+  <%= link_to 'Log in', new_login_path %> to answer!
+<% end %>
