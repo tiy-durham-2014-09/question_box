@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
-  def show
-    @user = User.find(params[:token])
-  end
   
+  def show
+    @user = User.find_by(params[:token])
+  end 
   def new
     @user = User.new
   end
@@ -14,7 +13,7 @@ class UsersController < ApplicationController
 
     if @user.save
       UserMailer.registration_confirmation(@user).deliver
-      redirect_to user_path, notice: 'User was successfully created.'
+      redirect_to user_path(@user), notice: 'User was successfully created.'
       # render nothing: true, status: :created
     else
       render :new
