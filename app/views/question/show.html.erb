@@ -6,20 +6,10 @@
   <p>
     <h4><%= pluralize(@question.votes.count, "vote") %></h4>
   </p>
-  <p>
-    <%= button_to '+1', vote_question_path(@question), method: :post %>
-    <%= button_to '-1', vote_question_path(@question), method: :post %>
-  </p>
-</div>
-
-
-@vote = @question.votes.build(user: current_user, value: params[:vote][:value])
-
-
-  <i class="fa fa-thumbs-up fa-2x"></i>
+  <%= link_to '<i class="fa fa-thumbs-up fa-2x"></i>'.html_safe, vote_question_path(:value => 1, :user => @question.user, :question_id => @question.id) %>
   &nbsp;
-  <i class="fa fa-thumbs-down fa-2x"></i>
-
+  <%= link_to '<i class="fa fa-thumbs-down fa-2x"></i>'.html_safe, vote_question_path(:value => -1, :user => @question.user, :question_id => @question.id) %>
+</div>
 
 <br>
 
@@ -33,9 +23,6 @@
 	<% @answers.each do |answer| %>
 		<p><%= answer.text %></p>
 		<p>Answered by <%= answer.user.name %></p>
-
-
-    <!--answer vote code would go here-->
 	<% end %>
 	
 	<% if logged_in? %>
