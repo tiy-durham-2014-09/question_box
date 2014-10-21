@@ -41,3 +41,15 @@ end
     @questions << question
   end
 end
+
+@answers = []
+@questions.each do |q|
+  rand(0..5).times do
+    answer = Answer.create!(
+        text: ["Obviously you didn't ", "Duh, just ", "Don't forget to "].sample + Faker::Company.bs + ".",
+        user_id: @users.sample.id,
+        question_id: q.id
+    )
+    @answers << answer
+  end
+end
