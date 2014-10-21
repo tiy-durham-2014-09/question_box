@@ -28,7 +28,7 @@ class QuestionsControllerTest < ActionController::TestCase
     assert_response :found
   end
 
-  test "should submit question with valid data" do
+  test "should submit question with valid data" do # Fails right now
     get :new
     post :new, { title: 'Wassup', text: 'nothing', user:{user: :one} }
     assert_not_nil Question

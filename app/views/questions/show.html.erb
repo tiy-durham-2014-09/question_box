@@ -12,20 +12,7 @@
 
 <p>
   <strong>Answer:</strong>
-  <%= @answer.text %>
+  <%= @question.answer.text %>
 </p>
-
-<%= form_for(@answer) do |f| %>
-  <p>
-    <%= f.hidden_field :user, :value => @current_user %>
-  </p>
-  <p>
-    <%= f.label :text %>
-    <%= f.text_area :text %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-  <% end %>
 
 <%= link_to 'Back', root_path %>

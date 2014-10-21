@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :users, :only => [:new, :create]
   resource :login, :only => [:new, :create]
-  resources :questions
+  resources :questions do
+        resources :answers
+      end
   resources :answers
 
   # The priority is based upon order of creation: first created -> highest priority.

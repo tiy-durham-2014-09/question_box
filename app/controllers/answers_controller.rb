@@ -1,5 +1,6 @@
 class AnswersController < ApplicationController
 before_action :authenticate
+before_action :set_question
 	# def create
 	# 	@question = Question.find(params[:question])
 	# 	@answer = @question.answers.build(answer_params)
@@ -39,6 +40,10 @@ before_action :authenticate
 	end
 
 	private
+
+	def set_question
+		@question = Question.find(params[:id])
+	end
 
 	def answer_params
 		params.require(:answer).permit(:text)
