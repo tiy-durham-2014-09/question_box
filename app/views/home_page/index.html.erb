@@ -46,7 +46,7 @@
         <h4><%= question.title %></h4>
         <p><%= question.text %></p>
         <p><%= link_to 'Show more', question %></p>
-        <p><%= link_to 'Answer', new_answer_path	 %></td>
+        <p><%= link_to 'Answer', new_question_answer_path(question)	 %></td>
       </tr>
     <% end %>
   </div>
@@ -61,7 +61,7 @@
         <h4><%= question.title %></h4>
         <p><%= question.text %></p>
         <p><%= link_to 'Show more', question %></p>
-        <p><%= link_to 'Answer', new_answer_path	 %></td>
+        <p><%= link_to 'Answer', new_question_answer_path(question)	 %></td>
       </tr>
     <% end %>
   </div>

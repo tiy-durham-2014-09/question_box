@@ -39,6 +39,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'debugger', group: [:development, :test]
 
 gem "quiet_assets", group: :development
+gem "i18n", '>= 0.7.0.beta1'
 
 group :development, :test do
   gem "better_errors"

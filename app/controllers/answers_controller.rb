@@ -30,7 +30,7 @@ before_action :set_question
 	end
 
 	def vote
-		@answer = Answer.find(params[:id])
+		@answer = Answer.find(params[:answer_id])
 		@vote = @answer.votes.build(user: current_user, value: params[:vote][:value])
 		if @vote.save
 			redirect_to @answer.question, success: "Your vote was recorded."
@@ -42,7 +42,7 @@ before_action :set_question
 	private
 
 	def set_question
-		@question = Question.find(params[:id])
+		@question = Question.find(params[:question_id])
 	end
 
 	def answer_params
