@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>QuestionBox</title>
+  <title>Question Box</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="/posts">Home</a></h1>
+    </li>
+  </ul>
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <% if @current_user %>
+        <li class="active"><%= link_to @current_user, posts_path %></li>
+      <% else %>
+        <li class="active"><a href="/users/new">Sign Up</a></li>
+        <li class="active"><a href="/log_in">Log In</a></li>
+      <% end %>
+    </ul>
+    <% if @current_user %>
+      <ul class="left">
+        <li> <%= link_to 'Logout', logout_path %></li>
+      </ul>
+      <% end %>
+    </section>
+</nav>
 <%= yield %>
 
 </body>

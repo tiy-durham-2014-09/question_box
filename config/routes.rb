@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
 
+  get 'answers/create'
+
+  get 'answers/vote'
+
+  get 'questions/home'
+
+  get 'questions/index'
+
+  get 'questions/new'
+
+  get 'questions/create'
+
+  get 'questions/show'
+
+  get 'questions/vote'
+
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "user#new", :as => "sign_up"

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  before_save :encrypt_password
+  before_save :has_secure_password
 #last added down
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def encrypt_password
+  def has_secure_password
     if password.present?
       self.password_salt = BCrypt::Engine.generate_salt
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
