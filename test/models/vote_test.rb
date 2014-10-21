@@ -27,7 +27,7 @@ class VoteTest < ActiveSupport::TestCase
         receiver = question.user
 
         assert_difference "receiver.score", 10 do
-          question.votes.create!(:value => 1, :user => @voter)
+          question.votes.create!(value: 1, user: @voter)
           receiver.reload
         end
       end
@@ -37,7 +37,7 @@ class VoteTest < ActiveSupport::TestCase
         receiver = answer.user
 
         assert_difference "receiver.score", 10 do
-          answer.votes.create!(:value => 1, :user => @voter)
+          answer.votes.create!(value: 1, user: @voter)
           receiver.reload
         end
       end
@@ -49,7 +49,7 @@ class VoteTest < ActiveSupport::TestCase
         receiver = question.user
 
         assert_difference "receiver.score", -5 do
-          question.votes.create!(:value => -1, :user => @voter)
+          question.votes.create!(value: -1, user: @voter)
           receiver.reload
         end
       end
@@ -60,7 +60,7 @@ class VoteTest < ActiveSupport::TestCase
         receiver.update(score: 10)
 
         assert_difference "receiver.score", -5 do
-          answer.votes.create!(:value => -1, :user => @voter)
+          answer.votes.create!(value: -1, user: @voter)
           receiver.reload
         end
       end
@@ -70,7 +70,7 @@ class VoteTest < ActiveSupport::TestCase
         receiver = answer.user
         receiver.update(score: 2)
 
-        answer.votes.create!(:value => -1, :user => @voter)
+        answer.votes.create!(value: -1, user: @voter)
         answer.user.reload
 
         assert_equal 0, receiver.score
@@ -80,10 +80,13 @@ class VoteTest < ActiveSupport::TestCase
         question = questions(:one)
 
         assert_difference "@voter.score", -1 do
-          question.votes.create!(:value => -1, :user => @voter)
+          question.votes.create!(value: -1, user: @voter)
         end
       end
     end
   end
 end
+<<<<<<< HEAD
 
+=======
+>>>>>>> bd87ac0c8e2139f88e1295e578e7e0b98c9e4838

@@ -9,6 +9,24 @@ class Question < ActiveRecord::Base
   validates :text, presence: true
   validates :user, presence: true
 
+  scope :answered, -> { where("EXISTS (SELECT null FROM answers where answers.question_id = questions.id)") }
+  scope :unanswered, -> { where("NOT EXISTS (SELECT null FROM answers where answers.question_id = questions.id)") }
+  scope :recently_answered, -> do
+    select("questions.*, MAX(answers.created_at) AS answered_at").
+    joins("LEFT OUTER JOIN answers ON answers.question_id = questions.id").
+    group("questions.id").
+    having("count(answers.id) > 0").
+    order("answered_at DESC")
+  end
+
+  def answered?
+    answers.count > 0
+  end
+
+  def unanswered?
+    !answered?
+  end
+
   def has_chosen_answer?
     answers.where(chosen: true).count > 0
   end
@@ -16,5 +34,4 @@ class Question < ActiveRecord::Base
   def score
     votes.sum(:value)
   end
-
 end

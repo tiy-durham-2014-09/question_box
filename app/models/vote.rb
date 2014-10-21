@@ -34,5 +34,4 @@ class Vote < ActiveRecord::Base
 
     voteable.user.save
   end
-
 end
