@@ -16,7 +16,7 @@
 		<%= form_for([@question, @question.answers.build]) do |f| %>
 		<h3>Answer</h3>
 		<%= f.label :text %>
-		<%= f.text_area :text %>
+		<%= f.text_area :text, :placeholder => "add your answer here" %>
 		<%= button_tag 'Answer' %>
 		<% end %>
 	<% else %>
