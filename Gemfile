@@ -36,6 +36,9 @@ gem 'simple_form'
 
 gem 'will_paginate', '~> 3.0'
 
+gem "font-awesome-rails"
+
+
 
 group :development, :test do
   gem "better_errors"

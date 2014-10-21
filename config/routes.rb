@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     end
   end
   
+  get "question/:id/vote" => "question#vote"
+  
   delete 'login/destroy'
 
   # resources :users, only => [:create,:new]
