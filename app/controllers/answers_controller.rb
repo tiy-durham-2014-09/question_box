@@ -1,14 +1,30 @@
 class AnswersController < ApplicationController
+
+	# def create
+	# 	@question = Question.find(params[:question])
+	# 	@answer = @question.answers.build(answer_params)
+	# 	@answer.user = current_user
+	#
+	# 	if @answer.save
+	# 		redirect_to @question
+	# 	else
+	# 		render "questions/show"
+	# 	end
+	# end
 	def create
-		@question = Question.find(params[:question_id])
+		@question = Question.all.first
 		@answer = @question.answers.build(answer_params)
 		@answer.user = current_user
 
 		if @answer.save
-			redirect_to @question
+			redirect_to @answer
 		else
 			render "questions/show"
 		end
+	end
+
+	def new
+		@answer = Answer.new
 	end
 
 	def vote

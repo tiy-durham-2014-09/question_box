@@ -45,7 +45,8 @@
       <td><div class="reansw"><h2> Unanswered Questions </h2>
         <h4><%= question.title %></h4>
         <p><%= question.text %></p>
-        <p><%= link_to 'Show more', question %></p></td>
+        <p><%= link_to 'Show more', question %></p>
+        <p><%= link_to 'Answer', new_answer_path	 %></td>
       </tr>
     <% end %>
   </div>
@@ -56,10 +57,11 @@
   <tbody>
     <% @questions.order(updated_at: :desc).each do |question| %>
       <tr>
-      <td><div class="unansw"><h2> Unanswered Questions </h2>
+      <td><div class="unansw"><h2> Recently Answered </h2>
         <h4><%= question.title %></h4>
         <p><%= question.text %></p>
-        <p><%= link_to 'Show more', question %></p></td>
+        <p><%= link_to 'Show more', question %></p>
+        <p><%= link_to 'Answer', new_answer_path	 %></td>
       </tr>
     <% end %>
   </div>

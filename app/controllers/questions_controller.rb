@@ -9,15 +9,15 @@ class QuestionsController < ApplicationController
 		@questions1 = current_user.questions
 	end
 
-	def show
-		@question = Question.find(params[:id])
-	end
-
 	def new
 		@question = Question.new
 	end
 
 	def edit
+	end
+
+	def show
+		@answer = @question.answers.build
 	end
 
 	def create
