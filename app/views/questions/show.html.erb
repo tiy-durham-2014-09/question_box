@@ -1,9 +1,10 @@
 <h2><%= @question.title %></h2>
 <h3>Asked by <%= @question.user.name %></h3>
+on <%= @question.created_at.to_date %>
 <p><%= @question.text %></p>
 <% @question.answers.each do |a| %>
   <%= a.text %><br>
-  Answer by <%= a.user.name %><br><br>
+  Answer by <%= a.user.name %> on <%= a.created_at.to_date %><br><br>
 <% end %>
 <% if logged_in? %>
   <%= render 'answers/answer' %>

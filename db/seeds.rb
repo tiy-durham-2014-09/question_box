@@ -46,9 +46,11 @@ end
 @questions.each do |q|
   rand(0..5).times do
     answer = Answer.create!(
-        text: ["Obviously you didn't ", "Duh, just ", "Don't forget to "].sample + Faker::Company.bs + ".",
+        text: [["Obviously you didn't ", "Duh, just ", "Don't forget to "].sample + Faker::Company.bs + ".", "I got nothin'.", "It's all greek to me.  Or Latin, whatever."].sample,
         user_id: @users.sample.id,
-        question_id: q.id
+        question_id: q.id,
+        created_at: Faker::Time.between(q.created_at, Time.now, :all)
+
     )
     @answers << answer
   end
