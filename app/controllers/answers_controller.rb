@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-
+before_action :authenticate
 	# def create
 	# 	@question = Question.find(params[:question])
 	# 	@answer = @question.answers.build(answer_params)
@@ -11,8 +11,9 @@ class AnswersController < ApplicationController
 	# 		render "questions/show"
 	# 	end
 	# end
+
 	def create
-		@question = Question.all.first
+		@question = Question.all.first # Won't work with find(params[:question_id])
 		@answer = @question.answers.build(answer_params)
 		@answer.user = current_user
 

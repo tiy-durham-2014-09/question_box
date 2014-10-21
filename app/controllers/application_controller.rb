@@ -9,11 +9,11 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:current_user_id])
   end
 
-  def authenticate
-    current_user_id = session[:current_user_id]
-    unless current_user_id
-      redirect_to new_login_path, notice: "You must be logged in to see this"
-    end
+  def logged_in?
+    !!current_user
   end
 
+  def authenticate
+    redirect_to new_login_path unless logged_in?
+  end
 end

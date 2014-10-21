@@ -1,5 +1,5 @@
 class LoginsController < ApplicationController
-
+	
 	def create
 		@user = User.find_by(email: params[:email])
 		if @user && @user.authenticate(params[:password])
@@ -15,5 +15,7 @@ class LoginsController < ApplicationController
 		flash[:notice] = "You logged out"
 		redirect_to root_path
 	end
-
+	def login_params
+		params.require(:login).permit(:email, :password)
+	end
 end

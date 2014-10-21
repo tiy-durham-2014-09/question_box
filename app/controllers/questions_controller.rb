@@ -5,15 +5,11 @@ class QuestionsController < ApplicationController
 
 
 	def index
-		@questions = Question.all
-		@questions1 = current_user.questions
+		@questions = Question.order(created_at: :desc).page params[:page]
 	end
 
 	def new
 		@question = Question.new
-	end
-
-	def edit
 	end
 
 	def show
@@ -21,30 +17,17 @@ class QuestionsController < ApplicationController
 	end
 
 	def create
-		@question = Question.new(question_params)
-		@question.user = current_user
+		@question = current_user.questions.build(question_params)
 
-		respond_to do |format|
-			if @question.save
-				format.html { redirect_to @question, notice: 'Question was successfully created.' }
-				format.json { render :show, status: :created, location: @question }
-			else
-				format.html { render :new }
-				format.json { render json: @question.errors, status: :unprocessable_entity }
-			end
+		if @question.save
+			redirect_to @question, success: "Your question has been created."
+		else
+			render :new
 		end
 	end
 
-	def update
-		respond_to do |format|
-			if @question.update(question_params)
-				format.html { redirect_to @question, notice: 'Question was successfully updated.' }
-				format.json { render :show, status: :ok, location: @question }
-			else
-				format.html { render :edit }
-				format.json { render json: @question.errors, status: :unprocessable_entity }
-			end
-		end
+	def show
+		@answer = @question.answers.build
 	end
 
 	def vote
@@ -53,14 +36,6 @@ class QuestionsController < ApplicationController
 			redirect_to @question, success: "Your vote was recorded."
 		else
 			redirect_to @question, error: "There was a problem saving your vote."
-		end
-	end
-
-	def destroy
-		@question.destroy
-		respond_to do |format|
-			format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
-			format.json { head :no_content }
 		end
 	end
 
