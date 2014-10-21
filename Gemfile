@@ -28,16 +28,14 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'foundation-rails'
 
 gem 'country_select'
 
-
-gem 'foundation-rails'
 gem 'simple_form'
-gem 'will_paginate', '~> 3.0'
-gem "font-awesome-rails"
 
-gem "faker"
+gem 'will_paginate', '~> 3.0'
+
 
 group :development, :test do
   gem "better_errors"
@@ -46,4 +44,6 @@ group :development, :test do
   gem "shoulda"
   gem "quiet_assets"
   gem 'spring'
+  gem "faker"
+  
 end
