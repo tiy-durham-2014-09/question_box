@@ -2,6 +2,7 @@ class PasswordResetsController < ApplicationController
   before_action :set_password_reset, only: [:edit, :update]
 
   def new
+    @password_reset = PasswordReset.new
   end
 
   def create

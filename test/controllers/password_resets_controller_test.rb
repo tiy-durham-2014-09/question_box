@@ -8,6 +8,9 @@ class PasswordResetsControllerTest < ActionController::TestCase
 
     should render_template("new")
     should respond_with(:ok)
+    should "instantiate a new password reset" do
+      assert_not_nil assigns(:password_reset)
+    end
   end
 
   context "POST password_resets#create" do

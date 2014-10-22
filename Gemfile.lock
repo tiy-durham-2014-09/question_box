@@ -62,6 +62,9 @@ GEM
     colored (1.2)
     debug_inspector (0.0.2)
     docile (1.1.5)
+    email_spec (1.6.0)
+      launchy (~> 2.1)
+      mail (~> 2.2)
     erubis (2.7.0)
     execjs (2.2.2)
     faker (1.4.3)
@@ -90,6 +93,8 @@ GEM
     mime-types (2.4.3)
     mini_portile (0.6.0)
     minitest (5.4.2)
+    minitest-matchers_vaccine (1.0.2)
+      minitest (~> 5.0)
     multi_json (1.10.1)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
@@ -210,12 +215,14 @@ DEPENDENCIES
   binding_of_caller
   capybara
   coffee-rails (~> 4.0.0)
+  email_spec
   faker
   foundation-rails
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
   launchy
+  minitest-matchers_vaccine
   pg
   pry-rails
   quiet_assets

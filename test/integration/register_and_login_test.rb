@@ -55,4 +55,24 @@ class RegisterAndLoginTest < ActionDispatch::IntegrationTest
       end
     end
   end
+
+  context "password_reset" do
+    context "with a valid email" do
+      setup do
+        @email = users(:one).email
+      end
+
+      should "be able to reset password" do
+        visit login_path
+        click_on "Forgot your password?"
+        fill_in "Email", with: @email
+        click_button "Reset your password"
+
+        open_last_email_for(@email)
+        assert_must have_subject("Password reset for Question Box"), current_email
+
+        # TODO finish workflow
+      end
+    end
+  end
 end
