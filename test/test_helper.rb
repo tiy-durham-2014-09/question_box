@@ -9,6 +9,8 @@ require 'capybara/rails'
 require "email_spec"
 require_relative 'support/test_password_helper'
 
+Capybara.server_port = 31337
+
 class ActiveSupport::TestCase
   include TestPasswordHelper
 

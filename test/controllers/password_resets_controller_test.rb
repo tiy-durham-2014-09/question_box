@@ -16,7 +16,7 @@ class PasswordResetsControllerTest < ActionController::TestCase
   context "POST password_resets#create" do
     context "with invalid data" do
       setup do
-        post :create, email: "digdug"
+        post :create, password_reset: { email: "digdug" }
       end
 
       should render_template("new")
@@ -28,7 +28,7 @@ class PasswordResetsControllerTest < ActionController::TestCase
 
     context "with an email not in our system" do
       setup do
-        post :create, email: "digdug@example.org"
+        post :create, password_reset: { email: "digdug@example.org" }
       end
 
       should "take us back to the homepage" do
@@ -42,7 +42,7 @@ class PasswordResetsControllerTest < ActionController::TestCase
 
     context "with an email in our system" do
       setup do
-        post :create, email: users(:one).email
+        post :create, password_reset: { email: users(:one).email }
       end
 
       should "take us back to the homepage" do
