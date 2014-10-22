@@ -20,9 +20,10 @@ ActiveRecord::Schema.define(version: 20141021182721) do
     t.text     "text"
     t.integer  "user_id"
     t.integer  "question_id"
-    t.boolean  "chosen"
+    t.boolean  "chosen",      default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "vote_count"
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(version: 20141021182721) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "vote_count"
   end
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
