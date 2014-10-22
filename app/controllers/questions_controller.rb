@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate, only: [:new, :create, :destroy]
-  before_action :set_question, only: [:show, :edit, :destroy, :vote]
+  before_action :authenticate, only: [:new, :create, :destroy, :vote]
+  before_action :set_question, only: [:show, :destroy, :vote]
 
   def index
     @questions = Question.all
@@ -29,6 +29,16 @@ class QuestionsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def vote
+	  @vote = @question.votes.build(user: current_user, value: params[:vote][:value])
+
+	  if @vote.save
+		  redirect_to @question
+	  else
+		  redirect_to @question
+	  end
   end
 
   def destroy

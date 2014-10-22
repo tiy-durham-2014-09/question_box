@@ -5,21 +5,17 @@ Rails.application.routes.draw do
 
   get 'password_resets/update'
 
-  get 'votes/new'
-
-  get 'votes/create'
-
-  get 'votes/destroy'
-
   resources :users, :only => [:new, :create]
-  resources :questions, :only => [:index, :new, :create, :show, :homepage, :destroy] do
+  resources :questions, :only => [:index, :new, :create, :show, :destroy] do
+	  # Is it bad practice to use get vs. post here?
+	  get :vote, on: :member
     resources :answers, :only => [:new, :create, :update], :shallow => true do
+	    get :vote, on: :member
     end
   end
-  resources :votes, :only => [:new, :create, :destroy]
   resource :login, :only => [:new, :create, :destroy]
 
-  get "questions/homepage" => 'questions#homepage'
+  # get "questions/homepage" => 'questions#homepage'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

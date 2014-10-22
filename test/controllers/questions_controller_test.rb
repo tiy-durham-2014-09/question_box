@@ -118,6 +118,49 @@ class QuestionsControllerTest < ActionController::TestCase
 
   end
 
+  context "POST :VOTE" do
+		context "when user is not logged in" do
+			setup { post :vote, { id: questions(:two) } }
+
+	    should "redirect to homepage" do
+			  assert_redirected_to new_login_path
+		  end
+		end
+
+	  context "when user is logged in" do
+		  context "sends invalid information" do
+			  setup do
+				  post :vote, { id: questions(:two), vote: { value: 0 } }, logged_in_session
+			  end
+
+		    should "instantiate invalid vote object" do
+			    assert assigns["vote"], "should have a vote object"
+			    assert assigns["vote"].invalid?, "should be an invalid vote"
+		    end
+
+				should "redirect to question" do
+				  assert_redirected_to questions(:two), "should send to question"
+				end
+	    end
+
+			context "sends valid information" do
+				setup do
+					post :vote, { id: questions(:two), vote: { value: 1 } }, logged_in_session
+				end
+
+				should "instantiate valid vote object" do
+					assert assigns[:vote], "should have a vote object"
+					assert assigns[:vote].persisted?, "should be saved to db"
+				end
+
+				should "redirect to question" do
+					assert_redirected_to questions(:two), "should send to question"
+				end
+			end
+	  end
+
+	end
+
   context "DELETE" do
     context "when I delete a question" do
       should "user should be removed from database" do

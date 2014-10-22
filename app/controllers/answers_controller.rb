@@ -1,5 +1,6 @@
 class AnswersController < ApplicationController
   before_action :authenticate
+  before_action :set_answer, only: [:destroy, :update, :vote]
 
   def new
   end
@@ -16,25 +17,34 @@ class AnswersController < ApplicationController
   end
 
   def destroy
-    answer = Answer.find(params["id"])
-    question = answer.question
-    if answer.destroy
-      redirect_to question_path(question)
+    if @answer.destroy
+      redirect_to @answer.question
     end
   end
 
   def update
-    answer = Answer.find(params["id"])
-    # answer.update(answer_params)
-    answer.toggle(:chosen)
-    answer.save
-    redirect_to question_path(answer.question)
+    @answer.toggle(:chosen)
+    @answer.save
+    redirect_to @answer.question
   end
+
+	def vote
+		@vote = @answer.votes.build(user: current_user, value: params[:vote][:value])
+		if @vote.save
+			redirect_to @answer.question
+		else
+			redirect_to @answer.question
+		end
+	end
 
   private
 
   def answer_params
     params.require(:answer).permit(:text)
   end
+
+	def set_answer
+		@answer = Answer.find(params["id"])
+	end
 
 end

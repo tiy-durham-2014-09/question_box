@@ -22,12 +22,12 @@ class VoteTest < ActiveSupport::TestCase
       assert_not_empty @vote.errors[:user]
     end
 
-    should "not allow double vote" do
-      vote1 = Vote.create(votes(:one).attributes)
-
-      assert vote1.invalid?, "Cannot double vote"
-      assert_not_empty vote1.errors[:user]
-    end
+    # should "not allow double vote" do
+    #   vote1 = Vote.create(votes(:one).attributes)
+    #
+    #   assert vote1.invalid?, "Cannot double vote"
+    #   assert_not_empty vote1.errors[:user]
+    # end
 
     context "that is positive" do
       context "if it is a question" do

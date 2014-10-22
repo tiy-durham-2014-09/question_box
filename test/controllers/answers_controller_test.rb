@@ -53,16 +53,57 @@ class AnswersControllerTest < ActionController::TestCase
       end
 
     end
+  end
 
-    context "PATCH :update" do
-      context "when a question creator chooses answer" do
-        should "change chosen to true" do
-          patch :update, { id: answers(:one), chosen: true }, logged_in_session
-          assert answers(:one).reload.chosen, "should change boolean"
-        end
-      end
+  context "POST :vote" do
+    context "when a user is not logged in" do
+	    setup { post :vote, id: answers(:two) }
+
+	    should "redirect to new login - not logged in" do
+		    assert_redirected_to new_login_path, "should send to login page - voted but not logged in"
+	    end
     end
 
+    context "when a user is logged in" do
+			context "when a user sends invalid information" do
+				setup do
+					post :vote, { id: answers(:two), vote: { value: 0 } }, logged_in_session
+				end
+
+				should "instantiate invalid vote object" do
+					assert assigns["vote"], "should have a vote object"
+					assert assigns["vote"].invalid?, "should have an invalid object"
+				end
+
+				should "redirect to question" do
+					assert_redirected_to answers(:one).question, "should show question"
+				end
+			end
+
+			context "when a user sends valid information" do
+				setup do
+					post :vote, { id: answers(:two), vote: { value: 1 } }, logged_in_session
+				end
+
+				should "instantiate valid vote object" do
+					assert assigns["vote"], "should have a vote object"
+					assert assigns["vote"].persisted?, "should save to db"
+				end
+
+				should "redirect to question" do
+					assert_redirected_to answers(:one).question, "should show question"
+				end
+			end
+    end
+  end
+
+  context "PATCH :update" do
+    context "when a question creator chooses answer" do
+      should "change chosen to true" do
+        patch :update, { id: answers(:one), chosen: true }, logged_in_session
+        assert answers(:one).reload.chosen, "should change boolean"
+      end
+    end
   end
 
 end

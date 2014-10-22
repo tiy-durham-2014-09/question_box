@@ -7,9 +7,10 @@ class Vote < ActiveRecord::Base
             presence: true,
             inclusion: { in: [1, -1], message: "Vote must be 1 or -1" }
   validates :user, presence: true
+  validates_uniqueness_of :user, scope: :voteable
 
   validate :check_against_self_voting
-  validate :check_against_double_vote
+  # validate :check_against_double_vote
 
   after_save :adjust_points, :adjust_vote_count
 
@@ -22,14 +23,14 @@ class Vote < ActiveRecord::Base
   end
 
   ## need test
-  def check_against_double_vote
-    existing_vote = Vote.find_by(user_id: user_id, voteable_type: voteable_type, voteable_id: voteable_id)
-    return unless existing_vote
-
-    if existing_vote
-      errors.add(:user, "cannot vote twice")
-    end
-  end
+  # def check_against_double_vote
+  #   existing_vote = Vote.find_by(user_id: user_id, voteable_type: voteable_type, voteable_id: voteable_id)
+  #   return unless existing_vote
+  #
+  #   if existing_vote
+  #     errors.add(:user, "cannot vote twice")
+  #   end
+  # end
 
   def adjust_points
     if value > 0
