@@ -29,7 +29,11 @@
         <li class="active">  <%= link_to "Login", new_login_path %></li>
         <% end %>
         <% if logged_in? %>
-        <li> Logged in as <%= current_user.name %></li>
+        <li>
+          <div class="current_user">
+            Logged in as <%= current_user.name %>
+          </div>
+        </li>
         <li>  <%= link_to "Logout", login_destroy_path, :method => :delete %></li>
         <% end %>
       </ul>

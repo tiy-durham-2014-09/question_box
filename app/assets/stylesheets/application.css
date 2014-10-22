@@ -15,3 +15,8 @@
  *= require foundation_and_overrides
  *= require font-awesome
  */
+
+.current_user {
+    color: #ffffff;
+    margin-top: 9px;
+}

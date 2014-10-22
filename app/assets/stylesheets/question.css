@@ -26,8 +26,21 @@ float: right;
 margin: 0 auto;
 }
 
-
-/* need to fill in still */
+/* FOR USE ON SHOW PAGE */
 .vote {
-
+    float: right;
+    buf
+}
+.qa_show {
+    float: left;
+    margin-left: auto;
+}
+.question_wrapper {
+    height: 125px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+.answer_wrapper {
+    max-width: 400px;
+    margin: 0 auto;
 }
