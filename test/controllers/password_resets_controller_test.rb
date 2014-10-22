@@ -58,4 +58,74 @@ class PasswordResetsControllerTest < ActionController::TestCase
       end
     end
   end
+
+  context "GET password_resets#edit" do
+    context "with a valid key" do
+      setup do
+        @password_reset = PasswordReset.new(email: users(:one).email)
+        @password_reset.save!
+        get :edit, :id => @password_reset.key
+      end
+
+      should render_template("edit")
+      should respond_with(:ok)
+    end
+
+    context "with an invalid key" do
+      should "raise record not found" do
+        assert_raises(ActiveRecord::RecordNotFound) do
+          get :edit, :id => "BAD_KEY"
+        end
+      end
+    end
+  end
+
+  context "PATCH password_resets#update" do
+    context "with an invalid key" do
+      should "raise record not found" do
+        assert_raises(ActiveRecord::RecordNotFound) do
+          patch :update,
+                id: "BAD_KEY",
+                user: { password: "password",
+                        password_confirmation: "password" }
+        end
+      end
+    end
+
+    context "with a valid key and invalid user data" do
+      setup do
+        @password_reset = PasswordReset.new(email: users(:one).email)
+        @password_reset.save!
+        patch :update,
+              id: @password_reset.key,
+              user: { password: "password2",
+                      password_confirmation: "no-match" }
+      end
+
+      should render_template("edit")
+
+      should "have an invalid user" do
+        assert_invalid_model(:user)
+      end
+    end
+
+    context "with a valid key and user data" do
+      setup do
+        @password_reset = PasswordReset.new(email: users(:one).email)
+        @password_reset.save!
+        patch :update,
+              id: @password_reset.key,
+              user: { password: "password2",
+                      password_confirmation: "password2" }
+      end
+
+      should "redirect to home page" do
+        assert_redirected_to root_path
+      end
+
+      should "expire the password reset" do
+        assert assigns[:password_reset].expired?
+      end
+    end
+  end
 end

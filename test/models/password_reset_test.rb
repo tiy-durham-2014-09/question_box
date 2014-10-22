@@ -11,7 +11,6 @@ class PasswordResetTest < ActiveSupport::TestCase
     should_not allow_value("@").for(:email)
     should_not allow_value("  clinton@example.org").for(:email)
 
-
     should "lookup user before validation" do
       password_reset = PasswordReset.new(email: users(:one).email)
       password_reset.valid?

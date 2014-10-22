@@ -1,4 +1,6 @@
 class PasswordResetsController < ApplicationController
+  before_action :set_password_reset, only: [:edit, :update]
+
   def new
   end
 
@@ -16,5 +18,22 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
+    @user = @password_reset.user
+    if @user.update(password_params)
+      @password_reset.update(expired: true)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+  private
+
+  def set_password_reset
+    @password_reset = PasswordReset.find_by!(key: params[:id])
+  end
+
+  def password_params
+    params.require(:user).permit(:password, :password_confirmation)
   end
 end
