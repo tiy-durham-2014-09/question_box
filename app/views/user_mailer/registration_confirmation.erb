@@ -2,9 +2,8 @@
 <html>
 <head></head>
 <body>
-<h2>Hello <%= @user.name.upcase %>, thanks for registering with Question Box! Please click the link below to confirm your account.
-	<!-- <p><%= link_to "Login", #THIS SHOULD GO TO NEW LOGIN PAGE HALP %> -->
- </h2>
+<h2>Hello <%= @user.name.upcase %>, thanks for registering with Question Box! Please click the link below to confirm your account.</h2>
+	<%= link_to "Login", account_confirmation_url(token: @user.token) %>
 </body>
 
 </html>

@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   get "question/:id/vote" => "question#vote"
   
   delete 'login/destroy'
+  
+  get 'account_confirmation', to: 'users#account_confirmation'
+  
+  
 
   # resources :users, only => [:create,:new]
 

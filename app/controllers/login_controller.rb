@@ -5,7 +5,7 @@ class LoginController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:email])
-    if @user && @user.authenticate(params[:password])
+    if @user && @user.authenticate(params[:password]) && @user.activate_account
       session[:current_user_id] = @user.id
       redirect_to root_path, notice: "it worked"
     else
@@ -17,7 +17,6 @@ class LoginController < ApplicationController
   def destroy
      session[:current_user_id] = nil
     redirect_to root_path, notice: "DON'T GO AHHHH"
-
   end
 
 

@@ -19,20 +19,28 @@ class User < ActiveRecord::Base
             presence: true,
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
             
-  validates :token, presence: true
+  # validates :token, presence: true
   
 
   has_secure_password
   
-  after_create :set_token
+  before_validation :set_token
+  # after_create :send_confirmation
 
   def to_s
     name
   end
-  def vote_total
-  end
+ 
+  # def send_confirmation
+ #    self.update_column(:click, true)
+ #    UserMailer.registration_confirmation(@user).deliver
+ #  end
   
   def set_token
-   SecureRandom.urlsafe_base64
+   self.token = SecureRandom.urlsafe_base64
+  end
+  
+  def activate_account
+    self.update_attribute(:click, true)
   end
 end
