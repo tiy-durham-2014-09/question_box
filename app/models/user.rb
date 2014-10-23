@@ -1,4 +1,8 @@
+require 'securerandom'
+
 class User < ActiveRecord::Base
+	before_validation :set_key
+
   has_many :questions
   has_many :answers
 
@@ -17,4 +21,10 @@ class User < ActiveRecord::Base
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   has_secure_password
+
+	private
+
+	def set_key
+		self.key = SecureRandom.uuid
+	end
 end

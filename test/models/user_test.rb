@@ -20,4 +20,10 @@ class UserTest < ActiveSupport::TestCase
   should have_many(:questions)
   should have_many(:answers)
   should have_many(:votes)
+
+  test "should set a key before validation" do
+	  user = User.new
+	  user.valid?
+	  assert_not_nil user.key, "should have a key before validation"
+  end
 end

@@ -31,6 +31,7 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :ok
   end
 
+
   context "POST :create" do
     context "when I send invalid information" do
       setup { post :create, { user: invalid_user_attributes } }
