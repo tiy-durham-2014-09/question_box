@@ -19,15 +19,21 @@ class SessionsControllerTest < ActionController::TestCase
 
   context "POST :create" do
     context "when I send invalid information" do
-      setup { post :create, { session: invalid_login_attributes } }
+      should "not create session" do
+        setup { post :create, { session: invalid_login_attributes } }
 
-      should set_the_flash.now[:error]
-      should render_template(:new)
+        should set_the_flash.now[:error]
+        should render_template(:new)
+      end
     end
 
     context "when I send valid information" do
-      should "create current_user" do
-        post :create, { session: { email: "one@example.org", password: "password" } }
+      should "create session and assign a current user" do
+        email = user.one[:email]
+        post :create, { session: { email: email, password: "password" } }
+
+        login_user = User.where(email: email)
+
 
       
       end

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       login(user)
       redirect_to home_questions_path, flash[:notice] => "You've successfully logged in."
     else
-      flash.now[:notice] = 'Invalid email/password combination'
+      flash.now[:error] = 'Invalid email/password combination'
       render 'new'
     end
   end
