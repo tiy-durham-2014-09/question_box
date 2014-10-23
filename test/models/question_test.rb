@@ -74,4 +74,9 @@ class QuestionTest < ActiveSupport::TestCase
       assert_equal 2, @question.score
     end
   end
+
+  # not sure how to write this test
+  #test "should know its total score (determined by votes)" do
+  #end
+
 end
