@@ -14,6 +14,8 @@ end
 
     if @user.save
       flash[:success] = "Welcome to the Question Box!"
+      @user.send_activation_email
+      flash[:info] = "Please check your email to activate your account."
       # TODO redirect
        redirect_to login_new_path, notice: 'User was successfully created.'
     else

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'account_activations/edit'
+
   get 'questions/index'
   get 'homepage/index'
 
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
   end
 end
   get 'logout' => 'logins#destroy'
+  resources :account_activations, only: [:edit]
 
 
 
