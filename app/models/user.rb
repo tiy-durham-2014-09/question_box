@@ -31,5 +31,5 @@ class User < ActiveRecord::Base
 
 	def send_email
 		SecurityMailer.user_verification(id).deliver
-	end
+  end
 end

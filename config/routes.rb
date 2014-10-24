@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :users, :only => [:new, :create]
+  resources :users, :only => [:new, :create, :show]
   resources :questions, :only => [:index, :new, :create, :show, :destroy] do
 	  # Is it bad practice to use get vs. post here?
 	  get :vote, on: :member
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
   resource :login, :only => [:new, :create, :destroy]
 
-  get 'users/verify' => 'users#verify', as: :verify_user
+  get 'users/verify/:key' => 'users#verify', as: :verify_user
   patch 'users/verify' => 'users#update'
 
   # get "questions/homepage" => 'questions#homepage'

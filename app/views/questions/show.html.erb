@@ -15,6 +15,7 @@
 
 			  <p>
 			    <%= link_to '<i class="fa fa-thumbs-up fa-lg"></i>'.html_safe, vote_question_path(@question, :vote => {value: 1}) %>
+			    <%= link_to '<i class="fa fa-thumbs-down fa-lg"></i>'.html_safe, vote_question_path(@question, :vote => {value: -1}) %>
 			  </p>
 
 				</div>
@@ -48,6 +49,8 @@
               <% end %>
             <% end %>
 
+            <%= link_to '<i class="fa fa-thumbs-up fa-lg"></i>'.html_safe, vote_answer_path(answer, :vote => {value: 1}) %>
+            <%= link_to '<i class="fa fa-thumbs-down fa-lg"></i>'.html_safe, vote_answer_path(answer, :vote => {value: -1}) %>
           </p>
         </div>
 

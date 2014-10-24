@@ -31,7 +31,6 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :ok
   end
 
-
   context "POST :create" do
     context "when I send invalid information" do
       setup { post :create, { user: invalid_user_attributes } }
@@ -63,9 +62,43 @@ class UsersControllerTest < ActionController::TestCase
       end
 
       should "send to homepage after creating user" do
-        assert_redirected_to root_path, "Should redirect to root"
+        assert_template :show, "Should send to show"
       end
 		end
+  end
+
+  context "Verify" do
+    context "when I verify with an invalid key" do
+      setup do
+        @user = users(:one)
+        patch :verify, { id: @user.id, key: SecureRandom.uuid }
+      end
+
+      should "not verify the user" do
+        assert_not @user.reload.verified, "should not verify the user"
+      end
+
+      should "send user back to show" do
+        assert_template :show, "should send to show"
+      end
+    end
+  end
+
+  context "Verify" do
+    context "when I verify with a valid key" do
+      setup do
+        @user = users(:one)
+        patch :verify, { id: @user.id, key: @user.key }
+      end
+
+      should "verify the user" do
+        assert @user.reload.verified, "should verify the user"
+      end
+
+      should "send user to show page" do
+        assert_template :show, "should send to show page"
+      end
+    end
   end
 end
 

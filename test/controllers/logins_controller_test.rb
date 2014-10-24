@@ -28,15 +28,28 @@ class LoginsControllerTest < ActionController::TestCase
 		end
 
 		context "when I send valid information" do
-			setup { post :create, valid_login_attributes }
+      context "if user is validated" do
+        setup do
+          users(:one).update(verified: true)
+          post :create, valid_login_attributes
+        end
 
-			should "create new session with user id" do
-				assert_equal users(:one).id, session[:current_user_id]
+        should "create new session with user id" do
+          assert_equal users(:one).id, session[:current_user_id]
+        end
+
+        should "redirect to homepage" do
+          assert_redirected_to root_path
+        end
       end
 
-			should "redirect to homepage" do
-				assert_redirected_to root_path
-			end
+      context "if user is not validated" do
+        setup { post :create, valid_login_attributes }
+
+        should "redirect to homepage" do
+          assert_template 'show', "should show user page to suggest verification"
+        end
+      end
 		end
   end
 

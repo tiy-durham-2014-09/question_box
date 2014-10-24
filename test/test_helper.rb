@@ -15,6 +15,7 @@ class ActiveSupport::TestCase
   end
 
 	def logged_in_session
+    users(:one).update(verified: true)
     { current_user_id: users(:one).id }
 	end
 end

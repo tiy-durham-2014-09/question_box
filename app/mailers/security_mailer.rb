@@ -8,6 +8,7 @@ class SecurityMailer < ActionMailer::Base
   #
   def user_verification(id)
 		@user = User.find(id)
+    @greeting = "Hello #{@user.name}"
 	  mail to: @user.email, subject: "User verification for Question Box"
   end
 

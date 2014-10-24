@@ -1,5 +1,6 @@
-<h1>SecurityMailer#user_verification</h1>
-
 <p>
-  <%= @greeting %>, find me in app/views/security_mailer/password_reset.html.erb
+  <%= @greeting %>,
+</p>
+<p>
+	To verify your account, please <%= link_to "click here", verify_user_url(@user.key) %>.
 </p>

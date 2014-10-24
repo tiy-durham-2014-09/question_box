@@ -6,8 +6,12 @@ class LoginsController < ApplicationController
 		@user = User.find_by(email: params[:email])
 
 		if @user && @user.authenticate(params[:password])
-			session[:current_user_id] = @user.id
-			redirect_to root_path, success: "You are successfully logged in?"
+      if @user.verified
+        session[:current_user_id] = @user.id
+        redirect_to root_path, success: "You are successfully logged in?"
+      else
+        render 'users/show'
+      end
 		else
 			render :new
 		end
