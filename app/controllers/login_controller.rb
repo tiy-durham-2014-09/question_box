@@ -5,9 +5,9 @@ class LoginController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:email])
-    if @user && @user.authenticate(params[:password]) && @user.activate_account
+    if @user && @user.authenticate(params[:password])
       session[:current_user_id] = @user.id
-      redirect_to root_path, notice: "it worked"
+      redirect_to root_path, notice: "Login was successful."
     else
       flash.now[:error] = "Your email or password was WRONG."
       render :new
@@ -16,7 +16,7 @@ class LoginController < ApplicationController
 
   def destroy
      session[:current_user_id] = nil
-    redirect_to root_path, notice: "DON'T GO AHHHH"
+    redirect_to root_path, notice: "Bye!"
   end
 
 

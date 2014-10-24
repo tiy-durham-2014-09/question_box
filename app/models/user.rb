@@ -25,7 +25,6 @@ class User < ActiveRecord::Base
   has_secure_password
   
   before_validation :set_token
-  # after_create :send_confirmation
 
   def to_s
     name
@@ -42,5 +41,6 @@ class User < ActiveRecord::Base
   
   def activate_account
     self.update_attribute(:click, true)
+    self.update_attribute(:token, nil)
   end
 end

@@ -10,9 +10,7 @@ class UsersController < ApplicationController
   
   def account_confirmation
     @user = User.find_by_token(params[:token])
-    if(@user)
-      @user.update_column(:click, true)
-      @user.update_column(:token, nil)
+    if @user
       redirect_to new_login_path, notice: "Yay, your account has been confirmed!"
     else
       redirect_to new_login_path, notice: "woops, your account could not be confirmed"
@@ -36,6 +34,10 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find(params[:id])
     end
+    
+    # def set_account_confirmation
+ #      @
+ #    end
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end

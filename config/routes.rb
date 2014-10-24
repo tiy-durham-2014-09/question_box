@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'question#index'
   
 
-  resources :users, :only => [:create, :new, :show]
+  resources :users, :only => [:create, :new, :show, :account_confirmation]
   resources :login, :only => [:show,:create, :destroy, :new]
   resources :question, :only => [ :new, :show, :create, :index] do
     post :vote, on: :member
