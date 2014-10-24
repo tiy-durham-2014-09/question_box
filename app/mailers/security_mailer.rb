@@ -1,14 +1,14 @@
 class SecurityMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "no-reply@questionbox.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
   #   en.security_mailer.password_reset.subject
   #
-  def password_reset
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def user_verification(id)
+		@user = User.find(id)
+	  mail to: @user.email, subject: "User verification for Question Box"
   end
+
 end

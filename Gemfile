@@ -47,6 +47,8 @@ group :development, :test do
   gem "faker"
   gem "pry-rails"
   gem "shoulda"
+  gem "email_spec"
+  gem "minitest-matchers_vaccine"
 end
 
 gem 'foundation-rails'

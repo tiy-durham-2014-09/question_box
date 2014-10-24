@@ -2,6 +2,7 @@ require 'securerandom'
 
 class User < ActiveRecord::Base
 	before_validation :set_key
+	after_create :send_email
 
   has_many :questions
   has_many :answers
@@ -26,5 +27,9 @@ class User < ActiveRecord::Base
 
 	def set_key
 		self.key = SecureRandom.uuid
+	end
+
+	def send_email
+		SecurityMailer.user_verification(id).deliver
 	end
 end

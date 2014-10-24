@@ -5,34 +5,45 @@ one:
   score: 15
   email: one@example.org
   password_digest: <%= BCrypt::Password.create("password", cost: 10) %>
+  key: <%= SecureRandom.uuid %>
+  verified: false
 
 two:
   name: User Two
   score: 50
   email: two@example.org
   password_digest: <%= BCrypt::Password.create("password", cost: 10) %>
+  key: <%= SecureRandom.uuid %>
+  verified: false
 
 chet:
   name: Chet Corey
   score: 1000
   email: chet@example.org
   password_digest: <%= BCrypt::Password.create("password", cost: 10) %>
+  key: <%= SecureRandom.uuid %>
+  verified: false
 
 voter:
   name: Voter Person
   score: 1000
   email: voter@example.org
   password_digest: <%= BCrypt::Password.create("password", cost: 10) %>
+  key: <%= SecureRandom.uuid %>
+  verified: false
 
 voter2:
   name: Voter Person 2
   score: 1000
   email: voter2@example.org
   password_digest: <%= BCrypt::Password.create("password", cost: 10) %>
+  key: <%= SecureRandom.uuid %>
+  verified: false
 
 voter3:
   name: Voter Person 3
   score: 1000
   email: voter3@example.org
   password_digest: <%= BCrypt::Password.create("password", cost: 10) %>
-
+  key: <%= SecureRandom.uuid %>
+  verified: false

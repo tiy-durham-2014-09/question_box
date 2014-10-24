@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
     if @user.save
 			session[:user_id] = @user.id
-      redirect_to root_path
+      redirect_to root_path, success: "Thanks for registering. To begin using your account, check your email and verify your account."
     else
       render :new
     end

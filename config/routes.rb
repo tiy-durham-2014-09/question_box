@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  get 'password_resets/new'
-
-  get 'password_resets/edit'
-
-  get 'password_resets/update'
 
   resources :users, :only => [:new, :create]
   resources :questions, :only => [:index, :new, :create, :show, :destroy] do
@@ -14,6 +9,9 @@ Rails.application.routes.draw do
     end
   end
   resource :login, :only => [:new, :create, :destroy]
+
+  get 'users/verify' => 'users#verify', as: :verify_user
+  patch 'users/verify' => 'users#update'
 
   # get "questions/homepage" => 'questions#homepage'
 
