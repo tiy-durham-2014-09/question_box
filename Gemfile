@@ -20,13 +20,13 @@ gem "redcarpet"
 gem "simple_form"
 gem 'rails_12factor', group: :production
 gem 'unicorn'
+gem "faker"
 
 group :development, :test do
   gem "better_errors"
   gem "binding_of_caller"
   gem "capybara"
   gem "email_spec"
-  gem "faker"
   gem "launchy"
   gem "minitest-matchers_vaccine"
   gem "pry-rails"
