@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.1.2'
 
 gem 'rails', '4.1.6'
 gem 'pg'
@@ -15,6 +16,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem "foundation-rails"
 gem "kaminari"
 gem "simple_form"
+gem 'rails_12factor', group: :production
+gem 'unicorn'
 
 group :development, :test do
   gem "better_errors"
