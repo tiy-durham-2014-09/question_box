@@ -12,7 +12,11 @@ class LoginsController < ApplicationController
         message += "Check your email for the activation link."
         flash[:warning] = message
         render :new
-        end
+      end
+    else
+      message  = "Invalid username/password"
+      flash[:warning] = message
+      render :new
     end
   end
 
