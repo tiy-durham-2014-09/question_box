@@ -18,4 +18,21 @@ class User < ActiveRecord::Base
   validates :score,
             presence: true,
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
+  before_validation :set_key
+  # before_validation :set_user
+  after_create :send_email
+
+
+  # def  set_user
+  #   user = User.find_by(email: email)
+  # end
+
+  def set_key
+    self.key = SecureRandom.uuid
+  end
+
+  def send_email
+    ActivationMailer.validation(@user, @key).deliver
+  end
 end
