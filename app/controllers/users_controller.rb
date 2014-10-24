@@ -7,6 +7,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      @user.send_activation_email
+      flash[:info] = "Please check your email to activate your account."
       session[:current_user_id] = @user.id
       redirect_to root_path, success: "You are successfully registered."
     else

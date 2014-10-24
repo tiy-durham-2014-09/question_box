@@ -14,12 +14,16 @@ Vote.delete_all
 user = User.create!(name:                  Faker::Name.name,
                     email:                 "user@example.org",
                     password:              "password",
-                    password_confirmation: "password")
+                    password_confirmation: "password",
+                    activated:             true,
+                    activated_at:          Time.zone.now)
 
 other_users = Array.new(10).map { |_| User.create!(name:                  Faker::Name.name,
                                                    email:                 Faker::Internet.email,
                                                    password:              "password",
-                                                   password_confirmation: "password") }
+                                                   password_confirmation: "password",
+                                                   activated:             true,
+                                                   activated_at:          Time.zone.now) }
 
 20.times do
   Question.create!(title: "How do I #{Faker::Hacker.verb} #{['a', 'the'].sample} #{Faker::Hacker.noun}?",

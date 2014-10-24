@@ -5,22 +5,29 @@ one:
   score: 15
   email: one@example.org
   password_digest: MyString
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 two:
   name: User Two
   score: 50
   email: two@example.org
   password_digest: MyString
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 chet:
   name: Chet Corey
   score: 1000
   email: chet@example.org
   password_digest: whoooo
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 voter:
   name: Voter Person
   score: 1000
   email: voter@example.org
   password_digest: whoooo
-
+  activated: true
+  activated_at: <%= Time.zone.now %>
