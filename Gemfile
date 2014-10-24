@@ -41,6 +41,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem "quiet_assets", group: :development
 gem 'capybara'
 gem 'simple_form'
+gem 'unicorn'
 gem 'rails_12factor', group: :production
 gem 'foundation-rails', '~> 5.4.5'
 group :development, :test do
