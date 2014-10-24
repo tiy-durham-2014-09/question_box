@@ -25,6 +25,7 @@
         <h4 class="large-12 columns">Answers</h4>
       </div>
     </div>
+    <br>
     <% if @answers.count == 0 %>
     <h3>This question hasn't been answered yet.</h3>
     <% end %>
@@ -34,10 +35,10 @@
       <p>Answered by <%= answer.user.name %></p>
     <% end %>
   </div>
-
+<br>
   <div class="vote">
     <p>
-      <h4># Votes</h4>
+      <h4># votes</h4>
     </p>
     <i class="fa fa-thumbs-up fa-2x"></i>
     &nbsp;
