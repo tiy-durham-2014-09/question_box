@@ -6,8 +6,8 @@ class ActivationMailer < ActionMailer::Base
   #
   #   en.security_mailer.password_reset.subject
   #
-  def validation(user, key)
-    @user = User.find_by(:user_id)
+  def account_activation(user, key)
+    @user = user #User.create(name: "Noah", email: "noah@noah.com", score: 1)
     @key = key
 
     mail to: @user.email, subject: "Email Validation for Question Box"

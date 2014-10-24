@@ -1,3 +1,5 @@
+require 'SecureRandom'
+
 class User < ActiveRecord::Base
 
   has_secure_password
@@ -21,7 +23,7 @@ class User < ActiveRecord::Base
 
   before_validation :set_key
   # before_validation :set_user
-  after_create :send_email
+  # after_create :send_email
 
 
   # def  set_user
@@ -33,6 +35,6 @@ class User < ActiveRecord::Base
   end
 
   def send_email
-    ActivationMailer.validation(@user, @key).deliver
+    ActivationMailer.account_activation(@user, @key).deliver
   end
 end
