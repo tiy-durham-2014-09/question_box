@@ -30,4 +30,8 @@ class User < ActiveRecord::Base
     self.key = SecureRandom.uuid
   end
 
+  def send_email
+    VerificationMailer.email_verification(user).deliver
+  end
+
 end

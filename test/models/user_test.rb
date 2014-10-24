@@ -36,12 +36,6 @@ class UserTest < ActiveSupport::TestCase
       @user.save
     end
 
-    should "send a verification email" do
-      email = ActionMailer::Base.deliveries.last
-      assert_not_nil email
-      assert_includes email.to, @user.email
-      assert_equal "Welcome to Question Box! Please verify your account", email.subject
-    end
   end
 
 end
