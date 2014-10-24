@@ -9,6 +9,7 @@ class RegistersController < ApplicationController
       @register.update_column(click: true)
       @register.update_column(token: nil)
       redirect_to root_path, success: "Your registration is complete!"
+    end
   end
   
   private
