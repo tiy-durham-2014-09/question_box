@@ -11,16 +11,23 @@ two:
   score: 50
   email: two@example.org
   password_digest: <%= password_digest %>
+  token: stuffyoucantguess
+  verified: false
 
 chet:
   name: Chet Corey
   score: 1000
   email: chet@example.org
   password_digest: <%= password_digest %>
+  token: stuffyoucantguess
+  verified: false
+
 
 voter:
   name: Voter Person
   score: 1000
   email: voter@example.org
   password_digest: <%= password_digest %>
+  token: stuffyoucantguess
+  verified: true
 

@@ -5,7 +5,8 @@ class UsersControllerTest < ActionController::TestCase
     { name: Faker::Name.name,
       email: Faker::Internet.email,
       password: "password",
-      password_confirmation: "password" }
+      password_confirmation: "password",
+      token: "stuffyoucantguess"}
   end
 
   def invalid_user_attributes
@@ -53,6 +54,8 @@ class UsersControllerTest < ActionController::TestCase
       should "redirect to home" do
         assert_redirected_to root_path
       end
+
+  #should update state when validation clicked
     end
   end
 end

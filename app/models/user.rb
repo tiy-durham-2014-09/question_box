@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  before_create :set_validation_token
   has_many :questions
   has_many :answers
 
@@ -15,6 +16,13 @@ class User < ActiveRecord::Base
   validates :score,
             presence: true,
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :token, presence: true
 
   has_secure_password
+
+
+  def set_validation_token
+      self.token = SecureRandom.uuid
+  end
+
 end
