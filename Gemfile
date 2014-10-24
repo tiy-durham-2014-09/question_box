@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
@@ -40,6 +41,9 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'debugger', group: [:development, :test]
 
 gem "quiet_assets", group: :development
+
+gem 'rails_12factor', group: :production
+gem 'unicorn'
 
 group :development, :test do
   gem "better_errors"
