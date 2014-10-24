@@ -41,9 +41,11 @@ gem 'unicorn'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
+gem 'simple_form'
+gem 'kaminari'
 gem "quiet_assets", group: :development
 gem "i18n", '>= 0.7.0.beta1'
+gem 'foundation-rails', '~> 5.4.5'
 
 group :development, :test do
   gem "better_errors"
@@ -51,6 +53,6 @@ group :development, :test do
   gem "faker"
   gem "pry-rails"
   gem "shoulda"
-  gem 'simple_form'
-  gem 'foundation-rails', '~> 5.4.5'
+
+
 end
