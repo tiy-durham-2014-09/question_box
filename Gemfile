@@ -38,6 +38,8 @@ gem 'will_paginate', '~> 3.0'
 
 gem "font-awesome-rails"
 
+gem 'rails_12factor', group: :production
+gem 'unicorn'
 
 
 group :development, :test do
