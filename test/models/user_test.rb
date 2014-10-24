@@ -28,13 +28,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   context "On creation" do
-    setup do
-      @user = User.new(name: Faker::Name.name,
-                       email: Faker::Internet.email,
-                       password: "password",
-                       password_confirmation: "password")
-      @user.save
-    end
+    # verification email should be sent
 
   end
 

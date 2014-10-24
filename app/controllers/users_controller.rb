@@ -13,6 +13,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def verify
+    @user = User.find_by(email: params[:user.email])
+    @key = params[:key]
+    if @key == @user.each_key
+      @user.update(verified: true)
+    else
+    # untested, may not work
+
+  end
+
   private
 
   def user_params

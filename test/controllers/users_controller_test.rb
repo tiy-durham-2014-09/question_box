@@ -43,10 +43,16 @@ class UsersControllerTest < ActionController::TestCase
         assert assigns["user"].persisted?, "Should have saved user in the DB"
         assert_equal user_attributes[:name], assigns["user"].name
       end
+    end
+  end
 
-      # should "log in" do
-      # assert session[:current_user_id], "Should have a session"
-      # end
+  context "PATCH :verify" do
+    context "when user makes the verify request" do
+      context "with a non-matching key" do
+        # do nothing (?)
+      end
+      context "with a matching key"
+        # set that user's "verified" boolean to true
     end
   end
 end

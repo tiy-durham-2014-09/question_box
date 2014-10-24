@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
   get 'answers/create'
+  patch 'users/:id' => 'users#update', as: :email_verification
 
   root 'questions#home'
 
-  resources :users, :only => [:new, :create]
+  resources :users, :only => [:new, :create, :verify]
   resource :login, :only => [:new, :create, :destroy]
   resources :questions, :only => [:index, :create, :show, :home]
   resources :answers, :only => [:create]
