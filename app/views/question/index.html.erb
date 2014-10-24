@@ -11,29 +11,38 @@
 </div>
 <div class="main">
   <table>
-    <tbody><div class="unanswered_questions">Unanswered Questions</div>
+    <tbody>
+    <div class="unanswered_questions">Unanswered Questions</div>
       <% @question.each do |question| %>
       <tr>
-        <td><%= link_to question.title, question_path(question) %>&nbsp &nbsp &nbsp<%= question.votes.count %>&nbsp votes &nbsp &nbsp<%= question.answers.count %>&nbsp answers<br>
+        <td><%= link_to question.title, question_path(question) %>&nbsp &nbsp &nbsp<%= question.votes.count %>&nbsp votes &nbsp &nbsp<%= question.answers.count %>&nbsp answers
+          <br>Asked by  <%= question.user.to_s %>
+          <br>
+          <br>
+        </td>
+       </tr>
+      <% end %>
+     </tbody>
+   </table>
+</div>
 
+<div class= "main_2">
+  <table>
+    <tbody>
+    <div class="answered_questions">Recently Answered</div>
+    <% @question.each do |question| %>
+      <tr>
+        <td><%= link_to question.title, question_path(question) %>&nbsp &nbsp &nbsp<%= question.votes.count %>&nbsp votes &nbsp &nbsp<%= question.answers.count %>&nbsp answers
+          <br>Asked by  <%= question.user.to_s %>
+          <br>
+          <br>
+        </td>
+      </tr>
+     <% end %>
+    </tbody>
+  </table>
+</div>
 
-          Asked by  <%= question.user.to_s %><br><br></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table></div>
-    <div class= "main_2">
-      <table>
-        <tbody><div class="answered_questions">Recently Answered</div>
-        <div class="table_2">  <% @question.each do |question| %>
-          <tr>
-            <td><%= link_to question.title, question_path(question) %>&nbsp &nbsp &nbsp<%= question.votes.count %>&nbsp votes &nbsp &nbsp<%= question.answers.count %>&nbsp answers<br>
-
-
-              Asked by  <%= question.user.to_s %><br><br></td>
-            </tr>
-            <% end %>
-          </tbody>
-        </div></div>
-
-      </table><div class="paginate"><%= will_paginate @question %></div>
+<div class="paginate">
+  <%= will_paginate @question %>
+</div>
