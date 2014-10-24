@@ -2,6 +2,7 @@ class RegistersController < ApplicationController
   
   def new
     @register = Register.new
+  end
   def update
     @user = @register.user
     if @user.update(register_params)
