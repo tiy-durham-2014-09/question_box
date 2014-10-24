@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'account_activations/edit'
+
   root 'questions#home'
 
   resources :users, :only => [:new, :create]
+  resources :account_activations, only: [:edit]
   resource :login, :only => [:show, :create, :destroy]
 
 

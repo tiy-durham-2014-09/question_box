@@ -19,7 +19,7 @@ class LoginsControllerTest < ActionController::TestCase
       should render_template(:show)
 
       should "instantiate an invalid login object" do
-        aassert assigns["login"], "Should have a login"
+        assert assigns["login"], "Should have a login"
         assert assigns["login"].invalid?, "Should have an invalid login"
       end
     end
