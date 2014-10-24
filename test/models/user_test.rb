@@ -29,7 +29,6 @@ class UserTest < ActiveSupport::TestCase
 
   context "On creation" do
     # verification email should be sent
-
   end
 
 end
