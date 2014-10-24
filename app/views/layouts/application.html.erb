@@ -48,6 +48,9 @@
     </section>
   </nav>
 
+    <%= display_alert(:notice) %>
+    <%= display_alert(:error) %>
+
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>

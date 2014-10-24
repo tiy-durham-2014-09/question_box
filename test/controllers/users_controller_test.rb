@@ -82,9 +82,7 @@ class UsersControllerTest < ActionController::TestCase
         assert_template :show, "should send to show"
       end
     end
-  end
 
-  context "Verify" do
     context "when I verify with a valid key" do
       setup do
         @user = users(:one)
