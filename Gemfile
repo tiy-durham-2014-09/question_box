@@ -14,6 +14,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem "foundation-rails"
 gem "kaminari"
+gem "redcarpet"
 gem "simple_form"
 
 group :development, :test do
@@ -30,6 +31,7 @@ group :development, :test do
   gem "rubocop"
   gem "selenium-webdriver"
   gem "shoulda"
+  gem "timecop"
 end
 
 gem 'simplecov', :require => false, :group => :test

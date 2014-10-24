@@ -27,7 +27,8 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @answer = @question.answers.build
+    @answers = @question.answers.order_by_votes
+    @answer = Answer.new
   end
 
   def vote

@@ -1,0 +1,8 @@
+<div class="row" id="answer-<%= dom_id(answer) %>">
+  <div class="small-9 columns">
+    <%= markdown(answer.text) %>
+  </div>
+  <div class="small-3 columns text-center">
+    <%= pluralize answer.votes.count, "vote" %>
+  </div>
+</div>
