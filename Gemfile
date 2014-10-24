@@ -53,5 +53,4 @@ group :development, :test do
   gem "shoulda"
   gem 'simple_form'
   gem 'foundation-rails', '~> 5.4.5'
-  gem 'kaminari'
 end
