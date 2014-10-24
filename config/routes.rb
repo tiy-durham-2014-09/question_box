@@ -1,28 +1,18 @@
 Rails.application.routes.draw do
 
-  get 'answers/create'
-
-  get 'answers/vote'
-
-  get 'questions/home'
-
-  get 'questions/index'
-
-  get 'questions/new'
-
-  get 'questions/create'
-
-  get 'questions/show'
-
-  get 'questions/vote'
-
-  get "log_out" => "sessions#destroy", :as => "log_out"
-  get "log_in" => "sessions#new", :as => "log_in"
-  get "sign_up" => "user#new", :as => "sign_up"
+  resource :login, :only => [:new, :create, :destroy]
+  delete 'logout' => 'login#destroy'
+  resources :users, :only => [:new, :create]
+  resources :questions, :only => [:index, :new, :create, :show] do
+    post :vote, on: :member
+    resources :answers, :only => [:create], :shallow => true do
+      post :vote, on: :member
+    end
+  end
 
   root :to => "users#new"
   resources :users
-  resources :sessions
+  resources :users
 
   # get 'sessions/new'
   #
