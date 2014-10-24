@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  require 'securerandom'
+
   has_many :questions
   has_many :answers
 
@@ -18,5 +20,14 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  
+  validates :key, presence: true
+
+  before_validation :set_key
+
+  private
+
+  def set_key
+    self.key = SecureRandom.uuid
+  end
+
 end

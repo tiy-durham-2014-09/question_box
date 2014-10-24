@@ -10,8 +10,6 @@ class UserTest < ActiveSupport::TestCase
   should validate_numericality_of(:score)
          .only_integer
          .is_greater_than_or_equal_to(0)
-  should validate_presence_of(:key)
-
 
   should_not allow_value("BAD EMAIL").for(:email)
   should_not allow_value("@").for(:email)
@@ -22,4 +20,11 @@ class UserTest < ActiveSupport::TestCase
   should have_many(:questions)
   should have_many(:answers)
   should have_many(:votes)
+
+  should "set key before validation" do
+    user = User.new
+    user.valid?
+    assert_not_nil user.key
+  end
+
 end
