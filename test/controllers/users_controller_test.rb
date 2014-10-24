@@ -54,6 +54,8 @@ class UsersControllerTest < ActionController::TestCase
       should "redirect to home" do
         assert_redirected_to root_path
       end
+
+  #should update state when validation clicked
     end
   end
 end

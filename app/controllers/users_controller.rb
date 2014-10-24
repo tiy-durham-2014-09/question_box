@@ -12,6 +12,8 @@ class UsersController < ApplicationController
     else
       render :new
     end
+
+
   end
 
   # def authenticate_with_http_token

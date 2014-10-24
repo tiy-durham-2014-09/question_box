@@ -1,0 +1,8 @@
+<p>
+  Hello <%= @user.name %>,
+</p>
+
+<p>
+  <%= link_to "Verify your account now", user_verification_url(@token) %>
+  If you have trouble clicking that link, go to <%= user_verification_url(@token) %>.
+</p>
