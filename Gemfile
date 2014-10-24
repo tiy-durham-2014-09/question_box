@@ -42,6 +42,7 @@ gem 'will_paginate', '~> 3.0'
 
 gem "font-awesome-rails"
 
+gem "faker"
 
 
 group :development, :test do
@@ -51,6 +52,5 @@ group :development, :test do
   gem "shoulda"
   gem "quiet_assets"
   gem 'spring'
-  gem "faker"
   
 end
