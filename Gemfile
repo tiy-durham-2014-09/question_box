@@ -41,10 +41,11 @@ gem "rails_12factor", group: :production
 gem "unicorn"
 
 gem 'pg'
+gem "faker"
+
 group :development, :test do
   gem "better_errors"
   gem "binding_of_caller"
-  gem "faker"
   gem "pry-rails"
   gem "shoulda"
   gem "quiet_assets"
