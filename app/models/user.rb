@@ -1,4 +1,4 @@
-require 'SecureRandom'
+require 'securerandom'
 
 class User < ActiveRecord::Base
   
@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
  #  end
   
   def set_token
-   self.token = SecureRandom.urlsafe_base64
+   self.token = securerandom.urlsafe_base64
   end
   
   def activate_account
