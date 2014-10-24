@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.1.3'
+
 gem 'rails', '4.1.6'
 gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
@@ -16,6 +18,8 @@ gem "foundation-rails"
 gem "kaminari"
 gem "redcarpet"
 gem "simple_form"
+gem 'rails_12factor', group: :production
+gem 'unicorn'
 
 group :development, :test do
   gem "better_errors"
