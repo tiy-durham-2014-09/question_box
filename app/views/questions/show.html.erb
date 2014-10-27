@@ -11,7 +11,11 @@
       </div>
     </div>
     <div class="small-3 columns text-center">
-      <%= pluralize @question.votes.count, "vote" %>
+      <%= pluralize @question.votes.sum(:value), "vote" %>
+      <div>
+        <%= link_to fa_icon("thumbs-up 2x"), vote_question_path(@question, value: 1), method: :post %>
+        <%= link_to fa_icon("thumbs-down 2x"), vote_question_path(@question, value: -1), method: :post %>
+      </div>
     </div>
   </div>
   <hr/>

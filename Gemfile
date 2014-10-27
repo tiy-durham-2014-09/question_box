@@ -21,6 +21,7 @@ gem "simple_form"
 gem 'rails_12factor', group: :production
 gem 'unicorn'
 gem "faker"
+gem "font-awesome-rails"
 
 group :development, :test do
   gem "better_errors"

@@ -1,9 +1,13 @@
-<div class="row answer" id="<%= dom_id(answer) %>">
+<div class="row answer" id="<%= answer.persisted? ? dom_id(answer) : "answer-new" %>">
   <div class="small-9 columns">
     <div><%= markdown(answer.text) %></div>
     <div>Answered by <%= answer.user.name %></div>
   </div>
   <div class="small-3 columns text-center">
-    <%= pluralize answer.votes.count, "vote" %>
+    <%= pluralize answer.votes.sum(:value), "vote" %>
+    <div>
+      <%= link_to fa_icon("thumbs-up 2x"), vote_answer_path(answer, value: 1), method: :post, remote: true %>
+      <%= link_to fa_icon("thumbs-down 2x"), vote_answer_path(answer, value: -1), method: :post, remote: true %>
+    </div>
   </div>
 </div>
