@@ -32,11 +32,11 @@ class QuestionsController < ApplicationController
   end
 
   def vote
-    @vote = @question.votes.build(user: current_user, value: params[:vote][:value])
+    @vote = @question.votes.build(user: current_user, value: params[:value])
     if @vote.save
       redirect_to @question, success: "Your vote was recorded."
     else
-      redirect_to @question, error: "There was a problem saving your vote."
+      redirect_to @question, alert: "There was a problem saving your vote."
     end
   end
 
