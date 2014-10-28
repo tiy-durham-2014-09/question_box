@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="small-3 columns text-center">
-      <%= vote_panel(@question) %>
+      <%= vote_panel(@question) { |question, value| vote_question_path(question, value: value) } %>
     </div>
   </div>
   <hr/>
