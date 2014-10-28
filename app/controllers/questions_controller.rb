@@ -27,15 +27,28 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @answer = @question.answers.build
+    @answers = @question.answers.order_by_votes
+    @answer = Answer.new
   end
 
   def vote
-    @vote = @question.votes.build(user: current_user, value: params[:vote][:value])
-    if @vote.save
-      redirect_to @question, success: "Your vote was recorded."
-    else
-      redirect_to @question, error: "There was a problem saving your vote."
+    @voteable = @question
+    @vote = @voteable.votes.build(user: current_user, value: params[:value])
+    respond_to do |format|
+      format.html do
+        if @vote.save
+          redirect_to @question, success: "Your vote was recorded."
+        else
+          redirect_to @question, error: "There was a problem saving your vote."
+        end
+      end
+      format.js do
+        if @vote.save
+          render "votes/create", status: :created
+        else
+          render "votes/create", status: :accepted
+        end
+      end
     end
   end
 
