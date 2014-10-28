@@ -7,7 +7,8 @@ module ApplicationHelper
     @renderer.render(text).html_safe
   end
 
-  def vote_panel(voteable, &path)
+  def vote_panel(voteable)
+    path = method("vote_#{voteable.class.to_s.underscore}_path")
     existing_vote = voteable.votes.find_by(user: current_user)
     content_tag(:div, class: :vote) do
       String.new.tap do |out|
@@ -25,8 +26,8 @@ module ApplicationHelper
             end
           else
             out << content_tag(:div) do
-              link_to(fa_icon("thumbs-up 2x"), path.call(voteable, 1), method: :post, remote: true) +
-              link_to(fa_icon("thumbs-down 2x"), path.call(voteable, -1), method: :post, remote: true)
+              link_to(fa_icon("thumbs-up 2x"), path.call(voteable, value: 1), method: :post, remote: true, title: "upvote") +
+              link_to(fa_icon("thumbs-down 2x"), path.call(voteable, value: -1), method: :post, remote: true, title: "downvote")
             end
           end
           end

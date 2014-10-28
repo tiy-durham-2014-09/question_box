@@ -1,2 +1,2 @@
-$("#<%= dom_id(@answer) %>").replaceWith("<%= j render(@answer) %>");
+$("#answers").append("<%= j render(@answer) %>");
 $("#<%= dom_id(@answer) %>").effect("highlight", {}, 1500);

@@ -33,6 +33,7 @@ group :development, :test do
   gem "email_spec"
   gem "launchy"
   gem "minitest-matchers_vaccine"
+  gem "poltergeist"
   gem "pry-rails"
   gem "quiet_assets"
   gem "rails_best_practices"
