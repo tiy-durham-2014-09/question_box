@@ -4,10 +4,6 @@
     <div>Answered by <%= answer.user.name %></div>
   </div>
   <div class="small-3 columns text-center">
-    <%= pluralize answer.votes.sum(:value), "vote" %>
-    <div>
-      <%= link_to fa_icon("thumbs-up 2x"), vote_answer_path(answer, value: 1), method: :post, remote: true %>
-      <%= link_to fa_icon("thumbs-down 2x"), vote_answer_path(answer, value: -1), method: :post, remote: true %>
-    </div>
+    <%= vote_panel(answer) %>
   </div>
 </div>

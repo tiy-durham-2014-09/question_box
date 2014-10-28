@@ -71,6 +71,15 @@ class AnswersControllerTest < ActionController::TestCase
             assert_redirected_to question_path(assigns[:answer].question)
           end
         end
+
+        context "using JS" do
+          setup do
+            post :vote, { id: answers(:one_for_question_one), value: 0, format: "js" }, logged_in_session
+          end
+
+          should respond_with(:accepted)
+          should render_template("answers/create")
+        end
       end
 
       context "with valid data" do

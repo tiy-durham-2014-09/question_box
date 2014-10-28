@@ -28,6 +28,8 @@ class AnswersController < ApplicationController
       format.js do
         if @vote.save
           render :create, status: :created
+        else
+          render :create, status: :accepted
         end
       end
     end

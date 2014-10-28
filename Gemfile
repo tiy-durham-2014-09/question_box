@@ -14,14 +14,17 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'bcrypt', '~> 3.1.7'
 
-gem "foundation-rails"
 gem "kaminari"
 gem "redcarpet"
 gem "simple_form"
 gem 'rails_12factor', group: :production
 gem 'unicorn'
 gem "faker"
+
+# Assets
 gem "font-awesome-rails"
+gem 'jquery-ui-rails'
+gem "foundation-rails"
 
 group :development, :test do
   gem "better_errors"
