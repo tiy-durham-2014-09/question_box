@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'questions#home'
 
+  get 'proxy/bing' => "bing_proxy#get"
+
   resource :login, :only => [:show, :create, :destroy]
   resources :users, :only => [:new, :create]
   resources :questions, :only => [:index, :new, :create, :show] do

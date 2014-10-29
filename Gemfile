@@ -30,6 +30,7 @@ group :development, :test do
   gem "better_errors"
   gem "binding_of_caller"
   gem "capybara"
+  gem "dotenv-rails"
   gem "email_spec"
   gem "launchy"
   gem "minitest-matchers_vaccine"
@@ -42,6 +43,8 @@ group :development, :test do
   gem "selenium-webdriver"
   gem "shoulda"
   gem "timecop"
+  gem "vcr"
+  gem "webmock"
 end
 
 gem 'simplecov', :require => false, :group => :test
