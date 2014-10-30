@@ -1,29 +1,31 @@
 class ProfilesController < ApplicationController
+    before_action :authenticate, only: [:new, :create, :vote]
+    before_action :set_profile, only: [:show, :vote]
+
   def new
     @profile = Profile.new
   end
 
   def create
-    @profile = Profile.new(profile_params)
 
   end
 
   def show
-  end
-
-  def update
-  end
-
-  def delete
+    @current_user.profile
   end
 
   def edit
   end
 
+  def update
+  end
+
+  def destroy
+    session[:current_user_id] = nil
+    redirect_to root_path, success: "You successfully eliminated your profile."
+  end
+
+
   private
 
-  def login_params
-    params.require(:login).permit(:email, :password)
-  end
-  
 end
