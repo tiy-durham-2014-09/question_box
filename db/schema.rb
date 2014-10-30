@@ -66,6 +66,11 @@ ActiveRecord::Schema.define(version: 20141021153210) do
     t.string "name"
   end
 
+  create_table "tags_users", id: false, force: true do |t|
+    t.integer "user_id", null: false
+    t.integer "tag_id",  null: false
+  end
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.integer  "score",           default: 1

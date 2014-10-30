@@ -42,3 +42,8 @@ answers = Answer.all
               user:     other_users.sample,
               value:    [1, 1, 1, 1, 1, -1].sample)
 end
+
+20.times do
+
+
+end
