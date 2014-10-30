@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'tags/show'
-
   root 'questions#home'
 
   get 'proxy/bing.json' => "bing_proxy#get"
@@ -14,6 +12,7 @@ Rails.application.routes.draw do
       post :vote, on: :member
     end
   end
+  resources :tags, :only => [:show]
 
   get 'password_reset' => 'password_resets#new', as: :password_reset
   post 'password_reset' => 'password_resets#create'

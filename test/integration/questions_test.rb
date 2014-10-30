@@ -43,6 +43,7 @@ class QuestionsTest < ActionDispatch::IntegrationTest
 
         assert page.has_content?(tag)
       end
+      
     end
   end
 end
