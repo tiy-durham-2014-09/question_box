@@ -15,10 +15,7 @@
 //= require jquery-ui/effect-highlight
 //= require jquery.tagsinput
 //= require foundation
+//= require functions
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
-
-var onPage = function (controller, action) {
-  return $("body." + controller + "-" + action).length
-}
