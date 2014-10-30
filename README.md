@@ -42,3 +42,5 @@ This Rails application provides much of the same functionality as Stack Overflow
 * Tag
     * has a name
     * has and belongs to many questions
+
+
