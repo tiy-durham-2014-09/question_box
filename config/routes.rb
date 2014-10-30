@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'profiles/new'
+
+  get 'profiles/show'
+
+  get 'profiles/create'
+
+  get 'profiles/update'
+
+  get 'profiles/delete'
+
+  get 'profiles/edit'
+
   root 'questions#home'
 
   get 'proxy/bing.json' => "bing_proxy#get"
