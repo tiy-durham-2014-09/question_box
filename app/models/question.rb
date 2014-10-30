@@ -4,6 +4,7 @@ class Question < ActiveRecord::Base
   has_and_belongs_to_many :tags
   has_many :votes, as: :voteable
 
+
   validates :title, presence: true
   validates :text, presence: true
   validates :user, presence: true
@@ -52,7 +53,7 @@ class Question < ActiveRecord::Base
 
   def tag_list=(names)
     self.tags = names.split(",").map do |n|
-      Tag.where(name: n.strip).first_or_create!
+      Tag.where(name: n.strip.downcase).first_or_create!
     end
   end
 end
