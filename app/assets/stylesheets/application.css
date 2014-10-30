@@ -20,3 +20,17 @@
 .main {
   margin-top: 20px;
 }
+
+.header{
+    background-color: #CC4B09;
+    height: 450px;
+    font-style: 
+}
+
+body {
+    background-color: #FFBAAA;
+}
+
+.panel.radius {
+    margin-top: 50px;
+}
