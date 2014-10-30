@@ -9,9 +9,17 @@ require 'capybara/rails'
 require 'capybara/poltergeist'
 require "email_spec"
 require_relative 'support/test_password_helper'
+require 'pry-rescue/minitest' if ENV['DEBUG']
 
 Capybara.server_port = 31337
 Capybara.current_driver = :poltergeist
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'test/vcr_cassettes'
+  # c.allow_http_connections_when_no_cassette = true
+  c.ignore_localhost = true
+  c.hook_into :webmock
+end
 
 class ActiveSupport::TestCase
   include TestPasswordHelper
