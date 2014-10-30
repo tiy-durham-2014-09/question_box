@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'tags/show'
+
   root 'questions#home'
 
   get 'proxy/bing.json' => "bing_proxy#get"

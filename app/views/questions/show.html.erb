@@ -2,7 +2,11 @@
   <div id="<%= dom_id(@question) %>" class="row">
     <div class="small-9 columns">
       <h1 class="question-title"><%= @question.title %></h1>
-
+      <div>
+        Tags: <% @question.tags.each do |tag| %>
+                <%= link_to tag.name, root_path %>
+              <% end %>
+      </div>
       <div>
         <%= markdown(@question.text) %>
       </div>
