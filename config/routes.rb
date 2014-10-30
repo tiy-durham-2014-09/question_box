@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get 'profiles/update'
 
-  get 'profiles/delete'
+  get 'profiles/destroy'
 
   get 'profiles/edit'
 
