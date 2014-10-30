@@ -1,15 +1,4 @@
 Rails.application.routes.draw do
-  get 'profiles/new'
-
-  get 'profiles/show'
-
-  get 'profiles/create'
-
-  get 'profiles/update'
-
-  get 'profiles/destroy'
-
-  get 'profiles/edit'
 
   root 'questions#home'
 
