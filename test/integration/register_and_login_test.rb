@@ -7,6 +7,7 @@ class RegisterAndLoginTest < ActionDispatch::IntegrationTest
         @name = Faker::Name.name
         @email = Faker::Internet.email
         @password = default_password
+        @phone = "5555554567"
       end
 
       should "be able to register as a user" do
@@ -16,6 +17,7 @@ class RegisterAndLoginTest < ActionDispatch::IntegrationTest
           fill_in "Email", with: @email
           fill_in "Password", with: @password
           fill_in "Password confirmation", with: @password
+          fill_in "Phone", with: @phone
           click_on "Register"
         end
 
