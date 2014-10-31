@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'proxy/bing.json' => "bing_proxy#get"
 
   resource :login, :only => [:show, :create, :destroy]
-  resources :users, :only => [:new, :create]
+  resources :users, :only => [:new, :create, :update, :show]
   resources :questions, :only => [:index, :new, :create, :show] do
     post :vote, on: :member
     resources :answers, :only => [:create], :shallow => true do
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
   end
 
+  patch 'users/:id' => 'user#update', as: 'update'
   get 'password_reset' => 'password_resets#new', as: :password_reset
   post 'password_reset' => 'password_resets#create'
   get 'password_reset/:id' => 'password_resets#edit', as: :change_password
