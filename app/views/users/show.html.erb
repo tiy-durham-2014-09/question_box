@@ -1,0 +1,13 @@
+<div class="panel radius">
+	<div class="row">
+		<div class="large-10 large-offset-1 columns">
+			<h3 class="text-center">What are your favorite tags?</h3>
+				<%= simple_form_for @current_user, :method => :PUT do |f| %>
+				<%= f.input :tag_list, label: false, placeholder: "tags" %>
+				<div class="text-center">
+					<%= f.button :submit, "submit", :class => "radius" %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>

@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+
   # FIXME the following is copied and pasted from models/users_controller.rb
   # TODO look into Concerns to avoid this redundant code
   def self.tagged_with(name)

@@ -1,6 +1,22 @@
 class UsersController < ApplicationController
+  before_action :current_user
   def new
     @user = User.new
+  end
+
+  def index
+    @user = @current_user
+  end
+
+  def show
+    @user = User.new
+  end
+
+  def update
+    binding.pry
+    @current_user.update(user_params)
+    flash[:notice] = 'Your tag list was successfully created.'
+    redirect_to root_path
   end
 
   def create
@@ -17,6 +33,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :tag_list)
   end
 end
