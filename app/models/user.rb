@@ -12,9 +12,9 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
 
-  validates :phone,
-            presence: true,
-            format: {with: /\A(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\z/, message: "must be a valid phone number"}
+  # validates :phone
+            # presence: true,
+            # format: {with: /\A(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\z/ , message: "must be a valid phone number"}
 
 
   validates :score,
