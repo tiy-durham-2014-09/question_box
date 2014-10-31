@@ -10,7 +10,7 @@ class TagsController < ApplicationController
       format.html
 
       format.json do
-        render json: [{ label: @tags.first.name, value: @tags.first.name}]
+        render json: @tags.to_json
       end
     end
   end
