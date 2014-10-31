@@ -23,7 +23,9 @@ gem "faker"
 # Assets
 gem "font-awesome-rails"
 gem 'jquery-ui-rails'
-gem "foundation-rails"
+gem 'bourbon'
+gem 'neat'
+
 
 group :development, :test do
   gem "better_errors"
