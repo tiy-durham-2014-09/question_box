@@ -1,31 +1,65 @@
 class ProfilesController < ApplicationController
-    before_action :authenticate, only: [:new, :create, :vote]
-    before_action :set_profile, only: [:show, :vote]
+	before_action :authenticate, except: [:new, :create]
+	before_action :set_profile, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @profiles = Profile.all
+  end
+
+  def show
+    @profile = Profile.find(params[:id])
+  end
 
   def new
     @profile = Profile.new
   end
 
-  def create
-
-  end
-
-  def show
-    @current_user.profile
-  end
-
   def edit
   end
 
-  def update
+  def create
+
+    @profile = current_user.build_profile(profile_params)
+
+    respond_to do |format|
+      if @profile.save
+        format.html { redirect_to root_path, notice: 'Welcome to ' + site_name }
+      else
+        format.html { render :new }
+      end
+    end
   end
 
-  def destroy
-    session[:current_user_id] = nil
-    redirect_to root_path, success: "You successfully eliminated your profile."
+  def update
+
+	  respond_to do |format|
+      if @profile.update(profile_params)
+        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
   end
 
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_profile
+      if logged_in?
+        @profile = current_user.profile
+      else
+        @profile = Profile.find(params[:id])
+      end
+    end
 
+	def ensure_user_owns_profile
+		if @profile.user != current_user
+			redirect_to root_path, flash: {alert: "You tried to access a profile that doesn't belong to you."}
+		end
+	end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def profile_params
+      params.require(:profile).permit(:bio, :location, :website)
+    end
 end
