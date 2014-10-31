@@ -1,0 +1,5 @@
+<ul class="button-group">
+  <% @question.tags.each do |tag| %>
+    <li class="button tiny"><%= link_to tag.name, tag_path(tag) %></li>
+  <% end %>
+</ul>

@@ -3,13 +3,13 @@
     <div class="small-9 columns">
       <h1 class="question-title"><%= @question.title %></h1>
       <div>
-        Tags: <% @question.tags.each do |tag| %>
-                <%= link_to tag.name, root_path %>
-              <% end %>
-      </div>
-      <div>
         <%= markdown(@question.text) %>
       </div>
+      <ul class="button-group round">
+        <% question.tags.each do |tag| %>
+          <li class="button secondary"><%= link_to tag.name, tag_path(tag) %></li>
+        <% end %>
+      </ul>
       <div>
         Asked by <%= @question.user.name %>
       </div>
