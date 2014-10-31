@@ -73,15 +73,11 @@ ActiveRecord::Schema.define(version: 20141030183625) do
 
   create_table "users", force: true do |t|
     t.string   "name"
-    t.integer  "score",             default: 1
+    t.integer  "score",           default: 1
     t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "key"
-    t.string   "activation_digest"
-    t.datetime "activated_at"
-    t.boolean  "activated",         default: false
   end
 
   create_table "votes", force: true do |t|
