@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   def tag_list
     tag_names.join(", ")
   end
-  
+
   def tag_list=(names)
     self.tags = names.split(",").map do |n|
       # FIXME strip out non-permitted characters at this point? elsewhere?
