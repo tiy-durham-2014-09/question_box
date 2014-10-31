@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_and_belongs_to_many :tags
   has_many :questions
   has_many :answers
   has_and_belongs_to_many :tags
@@ -19,8 +20,11 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+
+  # FIXME the following is copied and pasted from models/users_controller.rb
+  # TODO look into Concerns to avoid this redundant code
   def self.tagged_with(name)
-    Tag.find_by!(name: name).users
+    Tag.find_by!(name: name).questions
   end
 
   def self.tag_counts
@@ -35,10 +39,13 @@ class User < ActiveRecord::Base
   def tag_list
     tag_names.join(", ")
   end
-
-  # def tag_list=(names)
-  #   self.tags = names.split(",").map do |n|
-  #     Tag.where(name: n.strip.downcase).first_or_create!
-  #   end
-  # end
+  
+  def tag_list=(names)
+    self.tags = names.split(",").map do |n|
+      # FIXME strip out non-permitted characters at this point? elsewhere?
+      # TODO Stack Overflow says must be shorter than 25 characters; must use the character set a-z 0-9 + # - .
+      # TODO Make sure these tags are findable by downcasing searches as well
+      Tag.where(name: n.strip.downcase).first_or_create!
+    end
+  end
 end

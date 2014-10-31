@@ -53,6 +53,9 @@ class Question < ActiveRecord::Base
 
   def tag_list=(names)
     self.tags = names.split(",").map do |n|
+        # FIXME strip out non-permitted characters at this point? elsewhere?
+        # TODO Stack Overflow says must be shorter than 25 characters; must use the character set a-z 0-9 + # - .
+        # TODO Make sure these tags are findable by downcasing searches as well
       Tag.where(name: n.strip.downcase).first_or_create!
     end
   end
