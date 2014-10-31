@@ -13,7 +13,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    binding.pry
     @current_user.update(user_params)
     flash[:notice] = 'Your tag list was successfully created.'
     redirect_to root_path

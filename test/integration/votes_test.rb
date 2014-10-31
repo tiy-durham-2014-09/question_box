@@ -16,7 +16,7 @@ class VotesTest < ActionDispatch::IntegrationTest
         visit question_path(@question)
         within("#question_#{@question.id}") do
           click_on "upvote"
-          assert find(".vote-count").has_content?("1")
+          assert find(".vote .count").has_content?("1")
           assert page.has_css?(".fa-thumbs-o-up")
         end
       end
@@ -25,7 +25,7 @@ class VotesTest < ActionDispatch::IntegrationTest
         visit question_path(@question)
         within("#answer_#{@answer.id}") do
           click_on "upvote"
-          assert find(".vote-count").has_content?("1")
+          assert find(".vote .count").has_content?("1")
           assert page.has_css?(".fa-thumbs-o-up")
         end
       end
