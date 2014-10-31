@@ -39,9 +39,9 @@ $(document).on('ready', function () {
   $("#question_tag_list").tagsInput({
       width: '100%',
       height: '1rem',
-      autocomplete_url: 'http://localhost:3000/tags/index.html'
-
+      autocomplete_url: 'http://localhost:3000/tags'
   });
+
 
 
   if (onPage("questions", "show")) {

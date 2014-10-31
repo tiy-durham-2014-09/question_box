@@ -5,16 +5,13 @@ class TagsController < ApplicationController
   end
 
   def index
-
     @tags = Tag.where("name ILIKE ?", "%#{params[:term]}%")
-
     respond_to do |format|
       format.html
-      format.json {
-        render json: @tags.to_json
-      }
+
+      format.json do
+        render json: [{ label: @tags.first.name, value: @tags.first.name}]
+      end
     end
   end
-
-
 end
