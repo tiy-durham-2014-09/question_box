@@ -5,6 +5,145 @@
 @import "bourbon";
 @import "neat";
 
-.body {
-  font-family: helvetica;
+
+body{
+  font-family: $helvetica;
+
+  .wrapper {
+    @include margin(4% 10% null 10%);
+  }
+
+  a {
+    text-decoration: none;
+    color: #4183C4;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  h2{
+    font-size: 16pt;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+aside {
+  float: left;
+
+  img {
+    height: 250px;
+    width: 250px;
+    border-radius: 4%;
+  }
+
+  .profile_head {
+    border-bottom: solid 1px #CCCCCC;
+    @include padding(null null 20px null);
+    #name {
+      @include margin(0 null 0 null);
+      font-size: 20pt;
+    }
+    #login {
+      font-size: 16pt;
+      color: #6F6A66;
+      font-weight: 300;
+    }
+  }
+
+  .profile_info {
+    border-bottom: solid 1px #CCCCCC;
+    font-size: 11pt;
+
+    #map{
+      font-size: 15pt;
+      padding-left: 3px;
+    }
+
+    i {
+      color: #CCCCCC;
+      padding-right: 15px;
+    }
+
+    ul {
+      padding:0;
+      line-height: 20px;
+    }
+  }
+
+  .profile_follows {
+    border-bottom: solid 1px #CCCCCC;
+    font-size: 9pt;
+    font-weight: 400;
+
+    li {
+      display: inline-block;
+      list-style-type: none;
+      @include padding(null 15px 10px 0);
+    }
+
+    .big_num {
+      color: #4183C4;
+      font-size: 20pt;
+      font-weight: bold;
+      padding-left: 18px;
+    }
+
+    #starred {
+      padding-left: 12px;
+    }
+  }
+
+  .profile_follows li:hover {
+    text-decoration: none;
+    color: #4183C4;
+
+    a:hover{
+      text-decoration: none;
+    }
+  }
+}
+
+main {
+  margin-left: 25%;
+  width: 700px;
+  height: 23px;
+  border-bottom: solid 1px #CCCCCC;
+  padding-bottom: 0;
+  color: #6F6A66;
+
+  .main_nav li {
+    display: inline;
+    list-style-type: none;
+    @include padding(10px 10px 3px 7px);
+    font-size: 11pt;
+  }
+
+  .selected {
+    border: solid 1px #CCCCCC;
+    border-bottom: solid 5px #FFFFFF;
+  }
+}
+
+#repos li {
+  border-bottom: solid 1px #CCCCCC;
+  @include padding(25px null 25px 0);
+
+  a {
+    font-size: 16pt;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 10pt;
+  }
+
+  .repo_list_stats {
+    float: right;
+    font-size: 10pt;
+    font-weight: bold;
+  }
 }

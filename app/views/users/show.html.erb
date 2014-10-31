@@ -1,0 +1,34 @@
+<div class="wrapper">
+  <aside>
+
+    <div class="profile_head">
+      <div id="profile_pic">
+        <%= image_tag @user.gravatar_url(size: 180) %>
+      </div>
+      <h1 id="name"><%=@user.name%></h1>
+    </div>
+    <div class="profile_info">
+      <ul style="column-width:100px;">
+        <li><i id="map" class="fa fa-map-marker"></i><span id="location">Location, STATE</span></li>
+        <li><i class="fa fa-envelope-o"></i><span id="email"><%=@user.email%></span></li>
+        <li><i class="fa fa-github"></i><span id="blog"><%=@user.github_url%></span></li>
+        <li><i class="fa fa-clock-o"></i><span id="created_at">Joined on<%=@user.created_at%></span></li>
+      </ul>
+    </div>
+
+    <div>
+      <% if logged_in? && @user == current_user %>
+          <%#show link to edit and delete profile%>
+      <% end %>
+    </div>
+
+  </aside>
+  <main>
+    <div class="main_nav">
+    </div>
+
+    <ul id="repos">
+    </ul>
+  </main>
+
+</div>
