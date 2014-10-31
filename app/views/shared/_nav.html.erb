@@ -1,4 +1,4 @@
-<!--<nav class="top-bar" data-topbar role="navigation">-->
+<nav class="top-bar" data-topbar role="navigation">
   <!--<ul class="title-area">-->
     <!--<li class="name">-->
       <!--<h1><%= link_to "Question Box", root_path, class: "left" %></h1>-->
@@ -24,25 +24,32 @@
     <!--</ul>-->
   <!--</section>-->
 
-  <div class="container">
-    <div class="dropdown">
-      <label>
-      <span class="entypo-home">
-        Home
-      </span>
-        <input type="checkbox">
-        <ul>
-          <li>
-            <a class="entypo-docs" href="#">
-              About
-            </a>
-          </li>
-          <li>
-            <a class="entypo-user" href="#">
-              Users
-            </a>
-          </li>
-        </ul>
-      </label>
-    </div>
-  </div>
+  <!--<div class="container">-->
+    <!--<div class="dropdown">-->
+      <!--<label>-->
+      <!--<span class="entypo-home">-->
+        <!--Home-->
+      <!--</span>-->
+        <!--<input type="checkbox">-->
+        <!--<ul>-->
+          <!--<li>-->
+            <!--<a class="entypo-docs" href="#">-->
+              <!--About-->
+            <!--</a>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<a class="entypo-user" href="#">-->
+              <!--Users-->
+            <!--</a>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</label>-->
+    <!--</div>-->
+  <!--</div>-->
+<button data-dropdown="drop" aria-controls="drop", aria-expanded="false" class="large alert round button dropdown">Dropdown Button</button><br>
+<ul id="drop" data-dropdown-content class="f-dropdown" role="menu", aria-hidden="false" tabindex="-1">
+<li><a href="#">This is a link</a></li>
+<li><a href="#">This is another</a></li>
+<li><a href="#">Yet another</a></li>
+</ul>
+    </nav>
