@@ -455,11 +455,18 @@ p {
 
 }
 .coin {
-    height: 20px;
+    height: 15px;
     text-align:center;
-    padding-right: 50px;
-    margin-bottom: -15px;
+    margin-bottom: -13px;
+    padding-right: 3px;
     z-index: 3;
     position: relative;
+}
+.coin-two {
+    height: 15px;
+    text-align:center;
+    padding-left: 73px;
+    margin-bottom: -13px;
+    z-index: 3;
 }
 
