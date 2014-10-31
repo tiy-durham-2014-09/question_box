@@ -14,7 +14,7 @@ class UserTest < ActiveSupport::TestCase
 
   # should allow_value(nil).for(:phone)
 
-  # should_not allow_value("12").for(:phone)
+  should_not allow_value("12").for(:phone)
 
   should_not allow_value("BAD EMAIL").for(:email)
   should_not allow_value("@").for(:email)
