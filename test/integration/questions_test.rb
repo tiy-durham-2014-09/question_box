@@ -43,7 +43,7 @@ class QuestionsTest < ActionDispatch::IntegrationTest
         fill_in "question_text", with: text
         fill_in "question_tag_list_tag", with: tag
         click_on "Ask"
-        
+
         assert page.has_content?("tag1")
       end
       

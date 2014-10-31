@@ -1,9 +1,9 @@
 <div class="row question">
   <div class="small-8 columns">
     <h4><%= link_to question.title, question %></h4>
-    <ul class="button-group">
+    <ul class="tag_list">
       <% question.tags.each do |tag| %>
-        <li class="button tiny secondary"><%= link_to tag.name, tag_path(tag) %></li>
+        <li class="label secondary radius"><%= link_to tag.name, tag_path(tag) %></li>
       <% end %>
     </ul>
     <p>Asked by <%= question.user.name %></p>

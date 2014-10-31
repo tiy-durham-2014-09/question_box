@@ -5,9 +5,9 @@
       <div>
         <%= markdown(@question.text) %>
       </div>
-      <ul class="button-group radius">
+      <ul class="tag_list">
         <% @question.tags.each do |tag| %>
-          <li class="button tiny secondary"><%= link_to tag.name, tag_path(tag) %></li>
+          <li class="label secondary radius"><%= link_to tag.name, tag_path(tag) %></li>
         <% end %>
       </ul>
       <div>

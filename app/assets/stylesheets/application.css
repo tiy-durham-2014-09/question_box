@@ -22,6 +22,10 @@
   margin-top: 20px;
 }
 
-ul {
-  list-style: none;
+.label {
+  border: solid 1px #008CBA;
+}
+
+.tag_list {
+  margin: 0 0 0 5px;
 }
