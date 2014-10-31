@@ -19,6 +19,7 @@ gem "simple_form"
 gem 'rails_12factor', group: :production
 gem 'unicorn'
 gem "faker"
+gem 'friendly_id', '~> 5.0.0'
 
 # Assets
 gem "font-awesome-rails"
