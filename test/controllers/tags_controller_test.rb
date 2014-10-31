@@ -16,4 +16,14 @@ class TagsControllerTest < ActionController::TestCase
     end
   end
 
+  context "GET tags#index" do
+    setup do
+      get :index, :format => :json, :term => "tago"
+    end
+    should "Assign a tags variable" do
+      assert assigns[:tags]
+    end
+
+  end
+
 end

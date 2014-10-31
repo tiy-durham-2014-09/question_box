@@ -18,5 +18,12 @@ class TagsTest < ActionDispatch::IntegrationTest
 
       assert_equal current_path, question_path(@questions.first.id)
     end
+
+    should "include that question's tags" do
+      assert page.has_content?(@questions.last.title)
+      click_on @questions.last.title
+
+      assert_equal current_path, question_path(@questions.last.id)
+    end
   end
 end

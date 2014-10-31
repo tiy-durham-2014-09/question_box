@@ -37,8 +37,12 @@ var hideNegativeAnswers = function () {
 
 $(document).on('ready', function () {
   $("#question_tag_list").tagsInput({
-    width: '100%',
-    height: '1rem'});
+      width: '100%',
+      height: '1rem',
+      autocomplete_url: 'http://localhost:3000/tags/index.html'
+
+  });
+
 
   if (onPage("questions", "show")) {
     var question = $(".question-title").text();
@@ -63,4 +67,5 @@ $(document).on('ready', function () {
     hideNegativeAnswers();
   }
 });
+
 
