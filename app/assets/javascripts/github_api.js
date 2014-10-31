@@ -1,15 +1,15 @@
 var username = "josechirivella14"
 
 $.getJSON( "https://api.github.com/users/josechirivella14" + username, function( user ) {
-  $("#profile_pic").html("<img src='" + user.avatar_url +"' id='pic'>")
-  $("#name").html(user.name);
-  $("#login").html(user.login);
-  $("#location").html(user.location);
-  $("#email").html("<a href='mailto:" + user.email + "'>" + user.email + "</a>");
-  $("#blog").html("<a href='" + user.blog + "'>" + user.blog + "</a>");
-  $("#created_at").html("Joined on " + moment(user.created_at).format('ll'));
-  $("#followers").html("<a href='" + user.followers_url + "'>" + user.followers + "</a>");
-  $("#following").html("<a href='" + user.following_url + "'>" + user.following + "</a>");
+  // $("#profile_pic").html("<img src='" + user.avatar_url +"' id='pic'>")
+  $("#github_name").html(user.name);
+  $("#github_login").html(user.login);
+  // $("#github_location").html(user.location);
+  // $("#email").html("<a href='mailto:" + user.email + "'>" + user.email + "</a>");
+  // $("#blog").html("<a href='" + user.blog + "'>" + user.blog + "</a>");
+  // $("#created_at").html("Joined on " + moment(user.created_at).format('ll'));
+  // $("#followers").html("<a href='" + user.followers_url + "'>" + user.followers + "</a>");
+  // $("#following").html("<a href='" + user.following_url + "'>" + user.following + "</a>");
  });
 
  $.ajax({
