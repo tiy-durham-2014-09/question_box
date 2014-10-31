@@ -1,6 +1,8 @@
 $(document).on('ready', function () {
   $("#question_tag_list").tagsInput({width: '100%',
     height: '1rem'});
+    $("#user_tag_list").tagsInput({width: '100%',
+      height: '1rem'});
 
 
   if (onPage("questions", "show")) {
@@ -27,4 +29,3 @@ $(document).on('ready', function () {
     console.log("made ajax request");
   }
 });
-
