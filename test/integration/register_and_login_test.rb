@@ -17,7 +17,7 @@ class RegisterAndLoginTest < ActionDispatch::IntegrationTest
           fill_in "Email", with: @email
           fill_in "Password", with: @password
           fill_in "Password confirmation", with: @password
-          fill_in "Phone", with: @phone
+          fill_in "Phone", with: @phone, unless: "phone.nil?"
           click_on "Register"
         end
 

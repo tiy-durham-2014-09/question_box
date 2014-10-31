@@ -5,22 +5,25 @@ one:
   score: 15
   email: one@example.org
   password_digest: <%= password_digest %>
+  phone: nil
 
 two:
   name: User Two
   score: 50
   email: two@example.org
   password_digest: <%= password_digest %>
+  phone: 5555555555
 
 chet:
   name: Chet Corey
   score: 1000
   email: chet@example.org
   password_digest: <%= password_digest %>
+  phone: nil
 
 voter:
   name: Voter Person
   score: 1000
   email: voter@example.org
   password_digest: <%= password_digest %>
-
+  phone: 5555555555

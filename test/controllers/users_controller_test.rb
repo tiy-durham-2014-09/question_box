@@ -6,15 +6,18 @@ class UsersControllerTest < ActionController::TestCase
       email: Faker::Internet.email,
       password: "password",
       password_confirmation: "password",
-      phone: "1234567890"
+      # phone: "1234567890"
     }
+
   end
 
   def invalid_user_attributes
     { name: "",
       email: "",
       password: "",
-      password_confirmation: "" }
+      # phone: "12",
+      password_confirmation: ""
+    }
   end
 
   context "GET users#new" do
