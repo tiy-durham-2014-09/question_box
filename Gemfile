@@ -25,6 +25,8 @@ gem "faker"
 gem "font-awesome-rails"
 gem 'jquery-ui-rails'
 gem "foundation-rails"
+gem 'bourbon'
+gem 'neat'
 
 group :development, :test do
   gem "better_errors"
@@ -49,4 +51,4 @@ group :test do
   gem "vcr"
   gem "webmock"
   gem 'simplecov', :require => false
-  end
+end
