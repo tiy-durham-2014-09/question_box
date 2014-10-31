@@ -46,24 +46,24 @@ class ProfilesController < ApplicationController
 	end
 
 
-	private
-	# Use callbacks to share common setup or constraints between actions.
-	# def set_profile
-	# 	if logged_in?
-	# 		@profile = current_user.profile
-	# 	else
-	# 		@profile = Profile.find(params[:id])
-	# 	end
-	# end
-
-	def ensure_user_owns_profile
-		if @profile.user != current_user
-			redirect_to root_path, flash: {alert: "You tried to access a profile that doesn't belong to you."}
-		end
-	end
-
-	# Never trust parameters from the scary internet, only allow the white list through.
-	def profile_params
-		params.require(:profile).permit(:bio, :location, :website)
-	end
-end
+# 	private
+# 	# Use callbacks to share common setup or constraints between actions.
+# 	# def set_profile
+# 	# 	if logged_in?
+# 	# 		@profile = current_user.profile
+# 	# 	else
+# 	# 		@profile = Profile.find(params[:id])
+# 	# 	end
+# 	# end
+#
+# 	def ensure_user_owns_profile
+# 		if @profile.user != current_user
+# 			redirect_to root_path, flash: {alert: "You tried to access a profile that doesn't belong to you."}
+# 		end
+# 	end
+#
+# 	# Never trust parameters from the scary internet, only allow the white list through.
+# 	def profile_params
+# 		params.require(:profile).permit(:bio, :location, :website)
+# 	end
+# end
