@@ -44,6 +44,7 @@
 .top-bar {
     background-color:#5D94FB !important;
 }
+
  .right a, .left a {
     background-color:#5D94FB !important;
      font-size: 25px;
@@ -91,7 +92,7 @@
 }
 
 body {
-    background-color: #FFBAAA;
+    background-color: #f0d5bc;
 }
 
 .panel.radius {
@@ -109,7 +110,7 @@ body {
     position: relative;
     display: inline-block;
     padding: 0 14px;
-    background: #2195de;
+    background: #CC4B09;
     -webkit-transition: -webkit-transform 0.3s;
     -moz-transition: -moz-transform 0.3s;
     transition: transform 0.3s;
@@ -241,14 +242,13 @@ body {
 }
 
 .footer-2 {
+  background-color: #5D94FB;
   @include span-columns(12);
   margin-top: 20px;
-  $footer-background: #2195de;
   $footer-color: white;
   $footer-link-color: transparentize($footer-color, .6);
   $footer-disclaimer-color: transparentize($footer-color, .6);
 
-  background: $footer-background;
   padding: $base-spacing;
 
   .footer-logo {
