@@ -266,7 +266,10 @@ DEPENDENCIES
   kaminari
   launchy
   minitest-matchers_vaccine
+<<<<<<< HEAD
   modernizr-rails
+=======
+>>>>>>> iss24
   neat
   pg
   poltergeist

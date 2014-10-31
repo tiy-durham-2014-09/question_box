@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title><%= content_for?(:title) ? yield(:title) : "Question Box" %></title>
+=======
+  <head>
+    <link rel="stylesheet" href="animate.min.css">
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+>>>>>>> iss24
 
 
   <%= stylesheet_link_tag    "application" %>
@@ -43,6 +51,7 @@
   </header>
   <%= yield %>
 
+<<<<<<< HEAD
 
   <footer class="footer-2">
     <div class="footer-logo">
@@ -52,6 +61,22 @@
       <li><a href="javascript:void(0)">About</a></li>
       <li><a href="javascript:void(0)">Contact</a></li>
     </ul>
+=======
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+
+  </head>
+
+  <body class="<%= body_classes %>">
+    <%= render "shared/nav" %>
+    <header class ="header">
+
+      <img class="img" src="http://www.videogameobsession.com/videogame/ani_1firemario300-vgo.gif"/>
+      <h1 class="headerText animated">QUESTION BOX</h1>
+
+    </header>
+>>>>>>> iss24
 
     <div class="footer-secondary-links">
       <ul>
