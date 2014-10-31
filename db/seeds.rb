@@ -24,7 +24,9 @@ other_users = Array.new(10).map { |_| User.create!(name:                  Faker:
 20.times do
   Question.create!(title: "How do I #{Faker::Hacker.verb} #{['a', 'the'].sample} #{Faker::Hacker.noun}?",
                    text:  Faker::Hacker.say_something_smart,
-                   user:  user)
+                   user:  user,
+                   tag_list: Faker::Lorem.words(4).join(",")
+  )
 end
 
 questions = Question.all
@@ -41,9 +43,4 @@ answers = Answer.all
   Vote.create(voteable: (questions + answers).sample,
               user:     other_users.sample,
               value:    [1, 1, 1, 1, 1, -1].sample)
-end
-
-20.times do
-
-
 end
