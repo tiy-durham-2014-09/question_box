@@ -48,7 +48,7 @@ class Question < ActiveRecord::Base
 
   def tag_list
     tag_names.join(", ")
-  end 
+  end
 
   def tag_list=(names)
     self.tags = names.split(",").map do |n|
