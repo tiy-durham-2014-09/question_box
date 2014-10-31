@@ -14,6 +14,7 @@ gem 'spring',        group: :development
 gem 'bcrypt', '~> 3.1.7'
 gem 'phantomjs'
 gem 'httparty'
+gem 'table_print'
 
 
 gem "kaminari"
