@@ -5,7 +5,9 @@ class UsersControllerTest < ActionController::TestCase
     { name: Faker::Name.name,
       email: Faker::Internet.email,
       password: "password",
-      password_confirmation: "password" }
+      password_confirmation: "password",
+      phone: "1234567890"
+    }
   end
 
   def invalid_user_attributes
