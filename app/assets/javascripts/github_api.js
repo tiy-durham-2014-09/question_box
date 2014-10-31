@@ -1,8 +1,8 @@
 var username = "josechirivella14"
 
-$.getJSON( "https://api.github.com/users/josechirivella14" + username, function( user ) {
+$.getJSON( "https://api.github.com/users/" + username, function( user ) {
   // $("#profile_pic").html("<img src='" + user.avatar_url +"' id='pic'>")
-  $("#github_name").html(user.name);
+  // $("#github_name").html(user.name);
   $("#github_login").html(user.login);
   // $("#github_location").html(user.location);
   // $("#email").html("<a href='mailto:" + user.email + "'>" + user.email + "</a>");
@@ -14,7 +14,7 @@ $.getJSON( "https://api.github.com/users/josechirivella14" + username, function(
 
  $.ajax({
       dataType: "json",
-      url: "https://api.github.com/users/josechirivella14" + username + "/repos",
+      url: "https://api.github.com/users/" + username + "/repos",
       success: function (data) {
         var repos_data = data;
 
@@ -29,7 +29,7 @@ $.getJSON( "https://api.github.com/users/josechirivella14" + username, function(
                  + " <i class='fa fa-code-fork''></i> " + repo.forks_count + "</div><a href='"
                  + repo.url + "'>" + repo.name + "</a>" + "<br>"
                  + repo.description + "<p> Updated "
-                 + moment(repo.updated_at).fromNow()
+                //  + moment(repo.updated_at).fromNow()
                  + "</p></li>";
          });
 
