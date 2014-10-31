@@ -4,6 +4,16 @@ Rails.application.routes.draw do
 
   get 'proxy/bing.json' => "bing_proxy#get"
 
+  resources :profiles
+  # resources :profiles do
+  #   collection do
+  #     get 'archived', to: 'archived_profiles#index'
+  #   end
+  #   member do
+  #     post 'archive', to: 'archived_profiles#create'
+  #   end
+  # end
+
   resource :login, :only => [:show, :create, :destroy]
   resources :users, :only => [:new, :create]
 	resources :profiles, :only => [:show, :update, :destroy]
