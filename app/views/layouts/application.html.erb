@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="animate.min.css">
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -10,12 +12,16 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
+
   </head>
 
   <body class="<%= body_classes %>">
     <%= render "shared/nav" %>
     <header class ="header">
-      <h1 class="headerText">QUESTION BOX</h1>
+
+      <img class="img" src="http://www.videogameobsession.com/videogame/ani_1firemario300-vgo.gif"/>
+      <h1 class="headerText animated">QUESTION BOX</h1>
+
     </header>
 
     <div class="main row">

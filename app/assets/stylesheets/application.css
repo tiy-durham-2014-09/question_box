@@ -52,6 +52,8 @@
     position: relative;
     overflow: hidden;
 }
+
+
 .headerText {
     font-family: 'super_plumber_brothersregular', arial, sans-serif;
     font-size: 140px;
@@ -61,6 +63,24 @@
     margin-top: 120px;
     color: #CC4B09;
     text-shadow: 5px 2px  #127C22;
+
+
+}
+@-webkit-keyframes imgRun {
+    from { -webkit-transform: translateX(0px); }
+    to { -webkit-transform: translateX(1500px); }
+}
+@keyframes imgRun {
+    from { transform: translateX(0px); }
+    to { transform: translateX(1500px); }
+}
+
+.img {
+    position: absolute;
+    top: 40px;
+    left: -40px;
+    -webkit-animation: imgRun linear infinite;
+    -webkit-animation-duration: 10s;
 }
 
 body {
