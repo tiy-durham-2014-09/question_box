@@ -1,12 +1,14 @@
 <h1><%= @tag.name %></h1>
 
-<% @questions.each do |question| %>
-  <ul>
-    <li><%= link_to question.title, question_path(question) %></li>
-    <% if question.text.length < 30 %>
-      <li><%= question.text %></li>
-    <% else %>
-      <li> <%= question.text.split.first(10).join(' ') %>...</li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render @questions %>
+
+<%# @questions.each do |question| %>
+  <!--<ul>-->
+    <!--<li><%#= link_to question.title, question_path(question) %></li>-->
+    <%# if question.text.length < 30 %>
+      <!--<li><%#= question.text %></li>-->
+    <%# else %>
+      <!--<li> <%#= question.text.split.first(10).join(' ') %>...</li>-->
+    <%# end %>
+  <!--</ul>-->
+<%# end %>
