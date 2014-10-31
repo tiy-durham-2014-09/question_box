@@ -1,42 +1,42 @@
 <%= form_for(@profile) do |f| %>
-    <% if @profile.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+<% if @profile.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
 
-          <ul>
-            <% @profile.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
+  <ul>
+    <% @profile.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
     <% end %>
+  </ul>
+</div>
+<% end %>
 
-    <div class="field">
-      <%= f.label :bio %>
-      <%= f.text_area :bio %>
-    </div>
+<div class="field">
+  <%= f.label :bio %>
+  <%= f.text_area :bio %>
+</div>
 
-    <div class="field">
-      <%= f.label :location %>
-      <%= f.text_field :location %>
-    </div>
+<div class="field">
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+</div>
 
-    <div class="field">
-      <%= f.label :"Github User Name" %>
-      <%= f.text_field :github_url %>
-    </div>
+<div class="field">
+  <%= f.label :"Github User Name" %>
+  <%= f.text_field :github_url %>
+</div>
 
-    <div class="field">
-      <%= f.label :"Stack Overflow User Name" %>
-      <%= f.text_field :so_url %>
-    </div>
+<div class="field">
+  <%= f.label :"Stack Overflow User Name" %>
+  <%= f.text_field :so_url %>
+</div>
 
-    <div class="field">
-      <%= f.label :"Twitter User Name" %>
-      <%= f.text_field :twitter_url %>
-    </div>
+<div class="field">
+  <%= f.label :"Twitter User Name" %>
+  <%= f.text_field :twitter_url %>
+</div>
 
-    <div class="actions">
-      <%= button_tag "Save Profile", :class => "form-button-lg" %>
-    </div>
+<div class="actions">
+  <%= button_tag "Save Profile", :class => "form-button-lg" %>
+</div>
 <% end %>
