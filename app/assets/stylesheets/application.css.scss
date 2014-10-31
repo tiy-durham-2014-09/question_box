@@ -1,4 +1,4 @@
- @import "bourbon";
+@import "bourbon";
 @import "neat";
 @import "base/base";
 
@@ -97,6 +97,7 @@ body {
 .panel.radius {
     margin-top: 50px;
 }
+
 .cl-effect-2 a {
   color: white;
     line-height: 44px;
@@ -262,6 +263,7 @@ body {
 
   .footer-logo img {
     height: 1.6em;
+    float: left;
   }
 
   ul {
