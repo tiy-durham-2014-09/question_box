@@ -27,4 +27,3 @@ $(document).on('ready', function () {
     console.log("made ajax request");
   }
 });
-
