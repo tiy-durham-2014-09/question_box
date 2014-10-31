@@ -16,6 +16,20 @@
   </div>
   <hr/>
 
+ <div id="sms">
+   <% if current_user == @question.user %>
+     <p>
+       <h6>
+         <!--this line of code needs to be modified to agree with the proper variables and functionality
+         <#= link_to  solved_problem_path(problem),  method: :put, remote: true do %>
+         -->
+         <i class="fa fa-phone-square fa-2x"></i>
+         <% end %>
+         I would like to receive text message (SMS) notifications whenever an answer to my question is posted.
+       </h6>
+     </p>
+ </div>
+
   <div id="bing-links" class="row">
     <div class="small-12 columns">
       <h2>Links from Bing</h2>
