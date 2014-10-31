@@ -76,7 +76,7 @@
     color: #CC4B09;
     text-shadow: 5px 2px  #127C22;
     z-index: 1;
-
+    letter-spacing: 4px;
 
 }
 @-webkit-keyframes imgRun {
@@ -469,4 +469,37 @@ p {
     margin-bottom: -13px;
     z-index: 3;
 }
-
+div.large-9.columns {
+     font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+  font-size: 18px;
+  border-radius: 5px;
+  line-height: 22px;
+  background-color: #b2deb8 !important;
+  border:2px solid #CC6666 !important;
+  transition: all 0.3s;
+  padding: 13px;
+  margin-bottom: 15px;
+  width:100%;
+  box-sizing: border-box;
+  outline:0;
+}
+a{
+    color: $green; 
+}
+div.row{
+    width: 100%;
+    text-align: center;
+}
+h4 {
+    font-family: Montserrat, sans-serif !important;
+    font-size: 20px;
+}
+.unanswered {
+     @include span-columns(6);
+}
+.answered {
+    position:relative;
+    display:inline;
+     @include span-columns(6);
+}
