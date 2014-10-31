@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141021153210) do
+ActiveRecord::Schema.define(version: 20141031031828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,11 @@ ActiveRecord::Schema.define(version: 20141021153210) do
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
   add_index "answers", ["user_id"], name: "index_answers_on_user_id", using: :btree
+
+  create_table "logins", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "password_resets", force: true do |t|
     t.integer  "user_id"
@@ -64,6 +69,10 @@ ActiveRecord::Schema.define(version: 20141021153210) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "bio"
+    t.string   "github_url"
+    t.string   "so_url"
+    t.string   "twitter_url"
   end
 
   create_table "votes", force: true do |t|
@@ -76,5 +85,3 @@ ActiveRecord::Schema.define(version: 20141021153210) do
   end
 
 end
-
-

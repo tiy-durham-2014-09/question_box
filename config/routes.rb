@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resource :login, :only => [:show, :create, :destroy]
   resources :users, :only => [:new, :create]
+	resources :profiles, :only => [:show, :update, :destroy]
   resources :questions, :only => [:index, :new, :create, :show] do
     post :vote, on: :member
     resources :answers, :only => [:create], :shallow => true do
