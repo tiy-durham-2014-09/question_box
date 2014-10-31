@@ -19,5 +19,22 @@ class User < ActiveRecord::Base
             presence: true,
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
+	def so_reputation
+		if !so_url.blank?
+			response = RubyStackoverflow.users({ inname: so_username })
+			response.data.first.reputation
+		end
+	end
+
+	def so_username
+		so_url.split("/").last
+	end
+
+	def github_repos
+		if !github_url.blank?
+			response = github.repos.list user: github_url, sort: 'updated', direction: 'asc'
+		end
+	end
+
   has_secure_password
 end

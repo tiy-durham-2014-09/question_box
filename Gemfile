@@ -27,6 +27,8 @@ gem 'jquery-ui-rails'
 gem "foundation-rails"
 gem 'bourbon'
 gem 'neat'
+gem 'ruby-stackoverflow'
+gem "github_api"
 
 group :development, :test do
   gem "better_errors"
