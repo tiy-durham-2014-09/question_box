@@ -1,28 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= content_for?(:title) ? yield(:title) : "Question Box" %></title>
 
-    <title><%= content_for?(:title) ? yield(:title) : "Question Box" %></title>
 
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "vendor/modernizr" %>
+  <%= javascript_include_tag :modernizr %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header>
+    <nav class="cl-effect-2">
+      <a href="/">
+        <span data-hover="Question Box">
+          Question Box
+        </span>
+      </a>
+      <a href="/questions/new">
+        <span data-hover="New Question">
+          New Question
+        </span>
+      </a>
+      <a href="/questions">
+        <span data-hover="All Questions">
+          All Questions
+        </span>
+      </a>
+    </nav>
 
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= csrf_meta_tags %>
-  </head>
-
-  <body class="<%= body_classes %>">
-    <%= render "shared/nav" %>
-    <header class ="header">
-      <h1 class="headerText">QUESTION BOX</h1>
-    </header>
-
-    <div class="main row">
-      <%= render "shared/flash" %>
-
-      <%= yield %>
-      <%= javascript_include_tag "application" %>
+    <div class="nvhead">
+      <% if current_user %>
+      <%= current_user.email %>
+      <%= link_to "Log Out", login_path, :method => :delete %>
+      <% else %>
+      <%= link_to "Sign Up", new_user_path %>
+      <%= link_to "Log In", login_path %>
+      <% end %>
     </div>
-  </body>
+  </header>
+  <%= yield %>
+
+
+  <footer class="footer-2">
+    <div class="footer-logo">
+      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo image">
+    </div>
+    <ul>
+      <li><a href="javascript:void(0)">About</a></li>
+      <li><a href="javascript:void(0)">Contact</a></li>
+    </ul>
+
+    <div class="footer-secondary-links">
+      <ul>
+        <li><a href="javascript:void(0)">Terms and Conditions</a></li>
+        <li><a href="javascript:void(0)">Privacy Policy</a></li>
+      </ul>
+
+      <ul class="footer-social">
+        <li><a href="javascript:void(0)">
+          <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/facebook-logo-circle.png" alt="Facebook">
+        </a></li>
+        <li><a href="javascript:void(0)">
+          <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/twitter-logo-circle.png" alt="Twitter">
+        </a></li>
+        <li><a href="javascript:void(0)">
+          <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/youtube-logo-circle.png" alt="YouTube">
+        </a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
 </html>
