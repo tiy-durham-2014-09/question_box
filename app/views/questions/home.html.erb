@@ -1,10 +1,8 @@
 <% provide(:title, "Sign in") %>
 <div class="row">
-    <form>  
-      <h1 class="large-12 columns">Sign In</h1>
-
-      <p>Not a member? <%= link_to "Sign up now!", new_user_path %></p>
-    
+<form>
+  <h1 class="large-12 columns">Sign In</h1>
+  <p>Not a member? <%= link_to "Sign up now!", new_user_path %></p>      
   <input name="name" type="text" class="feedback-input" placeholder="Name" />   
   <input name="email" type="text" class="feedback-input" placeholder="Email" />
   <textarea name="text" class="feedback-input" placeholder="Comment"></textarea>
@@ -12,3 +10,4 @@
 </form>
   </div>
 </div>
+
