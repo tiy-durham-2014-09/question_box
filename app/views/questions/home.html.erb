@@ -1,20 +1,35 @@
-<% provide(:title, "Sign in") %>
-<div class="row">
-  <h1 class="large-12 columns">Sign In</h1>
+<div class="panel radius">
+  <div class="row">
+    <div class="large-10 large-offset-1 columns">
+      <% if logged_in? %>
+        <h1 class="headings">What's your question?</h1>
+          <%= simple_form_for @question do |f| %>
+            <%= f.input :title, label: false, placeholder: "How do I ... ?" %>
+            <%= f.input :text, label: false, placeholder: "Your question text" %>
+            <%= f.input :tag_list, label: false, placeholder: "tags" %>
+            <div class="text-center">
+              <%= f.button :submit, "Ask", :class => "radius" %>
+            </div>
 
-  <p>Not a member? <%= link_to "Sign up now!", new_user_path %></p>
-
-    <div class="span6 offset3">
-      <%= form_for(:session, url: login_path) do |f| %>
-
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-
-      <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+          <% end %>
+      <% else %>
+        <h1 class="headings"><%= link_to "Log in to ask a question.", login_path %></h1>
       <% end %>
     </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="unanswered">
+    <div class="large-6 columns">
+      <h4 class>Unanswered questions</h4>
+      <%= render @unanswered_questions %>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="answered">
+      <h4 class>Recently answered questions</h4>
+      <%= render @answered_questions %>
+      </div>
   </div>
 </div>
