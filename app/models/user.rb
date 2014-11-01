@@ -32,7 +32,8 @@ class User < ActiveRecord::Base
 
 	def github_repos
 		if !github_url.blank?
-			response = github.repos.list user: github_url, sort: 'updated', direction: 'asc'
+			response = Github.repos.list user: github_url, sort: 'updated', direction: 'asc', url: 'only'
+			response
 		end
 	end
 

@@ -11,7 +11,7 @@
       <ul style="column-width:100px;">
         <li><i id="map" class="fa fa-map-marker"></i><span id="location">Location, STATE</span></li>
         <li><i class="fa fa-envelope-o"></i><span id="email"><%=@user.email%></span></li>
-        <li><i class="fa fa-github"></i><span id="blog"><%=@user.github_url%></span></li>
+        <!-- <li><i class="fa fa-github"></i><span id="blog"><%=@user.github_url%></span></li> -->
         <li><i class="fa fa-clock-o"></i><span id="created_at">Joined on<%=@user.created_at%></span></li>
       </ul>
     </div>
@@ -21,14 +21,15 @@
           <%#show link to edit and delete profile%>
       <% end %>
     </div>
-
+    <%= @user.so_reputation %>
+    <%= @user.github_repos %>
   </aside>
   <main>
     <div class="main_nav">
     </div>
 
-    <ul id="repos">
-    </ul>
+    <!-- <ul id="repos"> -->
+    <!-- </ul> -->
   </main>
 
 </div>
