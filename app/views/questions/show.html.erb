@@ -3,11 +3,11 @@
     <div class="small-9 columns">
       <h1 class="question-title"><%= @question.title %></h1>
 
-      <div>
+      <div class="text">
         <%= markdown(@question.text) %>
       </div>
-      <div>
-        Asked by <%= @question.user.name %>
+      <div class="asked">
+        Asked by <div class="name"><%= @question.user.name %></div>
       </div>
     </div>
     <div class="small-3 columns text-center">

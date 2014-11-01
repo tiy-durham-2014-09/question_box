@@ -271,12 +271,12 @@ body {
 
 
 .footer-2 {
-  background-color: #5D94FB;
+  background: url('http://i.imgur.com/54V39Rz.png');
   @include span-columns(12);
   $footer-color: white;
   $footer-link-color: transparentize($footer-color, .6);
   $footer-disclaimer-color: transparentize($footer-color, .6);
-  padding: 1em;
+  padding: 1.5em;
   position: absolute;
   z-index: 5;
   margin-top: -10px;
@@ -324,6 +324,9 @@ body {
   .footer-secondary-links {
     @include media($large-screen) {
       float: right;
+      background-color: $green;
+      padding: 10px;
+      padding-left: 0px;
     }
 
     li {
@@ -671,3 +674,45 @@ h4 {
     margin: 0 auto;
     
 }
+.question-title {
+    color: $green;
+    font-family: Montserrat, sans-serif !important;
+    font-weight: 700;
+    font-size: 35px;
+    margin-top: 10px;
+    text-transform: lowercase;
+
+}
+.text {
+    color: #3a3129;
+    font-family: Montserrat, sans-serif !important;
+}
+.asked {
+    color: $orange;
+    font-family: Montserrat, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+.name {
+    font-family: 'super_plumber_brothersregular';
+    color: $green;
+    text-transform: uppercase;
+    font-size: 30px;
+    letter-spacing: 2px;
+    font-weight: normal;
+}
+.count {
+    padding-top: 5px;
+}
+.row-question {
+    background-image: url('http://i.imgur.com/PsQC9oH.png');
+}
+   button {
+      @include button(simple, $base-background-color);
+      font-size: $base-font-size;
+      outline: none;
+      position: relative;
+      display: block;
+      margin: 0 auto;
+      margin-top: 180px;
+    }
