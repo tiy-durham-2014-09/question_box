@@ -25,6 +25,7 @@ class Question < ActiveRecord::Base
     !answered?
   end
 
+
   def has_chosen_answer?
     answers.where(chosen: true).count > 0
   end
@@ -32,6 +33,7 @@ class Question < ActiveRecord::Base
   def score
     votes.sum(:value)
   end
+
 
   def self.tagged_with(name)
     Tag.find_by!(name: name).questions

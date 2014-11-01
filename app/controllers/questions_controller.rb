@@ -52,6 +52,19 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def SMS
+    @question.toggle(:SMS)
+    @question.save
+    respond_to do |format|
+      format.html do
+        redirect_to @question, notice: "You will now receive SMS notifications when your question receives a new answer."
+        end
+        format.js do
+          render :SMS, status: :ok
+        end
+    end
+  end
+
   private
 
   def set_question
