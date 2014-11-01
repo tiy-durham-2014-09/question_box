@@ -18,7 +18,19 @@
 
     <div>
       <% if logged_in? && @user == current_user %>
-          <%#show link to edit and delete profile%>
+
+          <div class="profile-option">
+            <% current_user %>
+            <% if current_user? displayed_user %>
+                <div class="profile-button">
+                  <%= link_to 'Edit Profile', edit_profile_path(displayed_user) %>
+                </div>
+            <% else %>
+                <%= render 'shared/follow_form'%>
+            <% end %>
+
+          </div>
+
       <% end %>
     </div>
     <%= @user.so_reputation %>
