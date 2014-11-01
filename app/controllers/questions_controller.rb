@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.order(created_at: :desc).page params[:page]
+      @questions = Question.order(created_at: :desc).page params[:page]
   end
 
   def new
@@ -29,7 +29,6 @@ class QuestionsController < ApplicationController
   def show
     @answers = @question.answers.order_by_votes
     @answer = Answer.new
-    # render json: @answers
   end
 
   def vote
