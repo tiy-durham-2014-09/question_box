@@ -53,6 +53,7 @@ class QuestionsController < ApplicationController
   end
 
   def SMS
+    binding.pry
     @question.toggle(:SMS)
     @question.save
     respond_to do |format|
