@@ -7,7 +7,11 @@
       </div>
       <ul class="tag_list">
         <% @question.tags.each do |tag| %>
-          <li class="label secondary radius"><%= link_to tag.name, tag_path(tag) %></li>
+          <li class="label secondary radius">
+             <span class="hoverbox" id="<%= tag.name %>">
+               <%= link_to tag.name, tag_path(tag) %>
+             </span>
+          </li>
         <% end %>
       </ul>
       <div>

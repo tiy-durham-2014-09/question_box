@@ -3,7 +3,11 @@
     <h4><%= link_to question.title, question %></h4>
     <ul class="tag_list">
       <% question.tags.each do |tag| %>
-        <li class="label secondary radius"><%= link_to tag.name, tag_path(tag) %></li>
+        <li class="label secondary radius">
+          <%= link_to tag.name, tag_path(tag) %>
+            <span class="hoverbox" id="<%= tag.name %>">
+            </span>
+        </li>
       <% end %>
     </ul>
     <p>Asked by <%= question.user.name %></p>
