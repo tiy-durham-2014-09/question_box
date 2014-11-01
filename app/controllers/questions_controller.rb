@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
-
+  before_action :authenticate, only: [:new, :create, :vote]
+  before_action :set_question, only: [:show, :vote]
 
   def home
     @question = Question.new
