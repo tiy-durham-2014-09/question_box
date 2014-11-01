@@ -35,12 +35,12 @@ class Question < ActiveRecord::Base
   end
 
   def self.tagged_with(name)
-    Tag.find_by!(name: name).questions
+      Tag.find_by!(name: name).questions
   end
 
   def self.tag_counts
     Tag.select("tags.*, count(questions_tags.tag_id) as count").
-        joins(:questions).group("tags.id").order("count(questions_tags.tag_id) DESC")
+    joins(:questions).group("tags.id").order("count(questions_tags.tag_id) DESC")
   end
 
   def tag_names
@@ -53,9 +53,9 @@ class Question < ActiveRecord::Base
 
   def tag_list=(names)
     self.tags = names.split(",").map do |n|
-        # FIXME strip out non-permitted characters at this point? elsewhere?
-        # TODO Stack Overflow says must be shorter than 25 characters; must use the character set a-z 0-9 + # - .
-        # TODO Make sure these tags are findable by downcasing searches as well
+      # FIXME strip out non-permitted characters at this point? elsewhere?
+      # TODO Stack Overflow says must be shorter than 25 characters; must use the character set a-z 0-9 + # - .
+      # TODO Make sure these tags are findable by downcasing searches as well
       Tag.where(name: n.truncate(255).strip.downcase).first_or_create!
     end
   end

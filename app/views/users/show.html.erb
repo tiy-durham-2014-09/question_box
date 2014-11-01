@@ -14,6 +14,6 @@
 
 Related Questions
 
-<% Question.tagged_with(@current_user.tag_list).each do |q| %>
+<% Question.tagged_with(@current_user.tag_names).each do |q| %>
 <ul><%= link_to q.title, q %></ul>
 <% end %>
