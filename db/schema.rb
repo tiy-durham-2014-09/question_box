@@ -28,9 +28,9 @@ ActiveRecord::Schema.define(version: 20141021201955) do
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
   add_index "answers", ["user_id"], name: "index_answers_on_user_id", using: :btree
 
-create_table "logins", force: true do |t|		
--    t.datetime "created_at"		
--    t.datetime "updated_at"		
+create_table "logins", force: true do |t|
+-   t.datetime "created_at"
+-   t.datetime "updated_at"
 -  end
 
   create_table "password_resets", force: true do |t|
