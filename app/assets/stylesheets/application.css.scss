@@ -91,7 +91,6 @@
 }
 
 .img {
-    position: absolute;
     top: 40px;
     left: -40px;
     -webkit-animation: imgRun linear infinite;
@@ -101,6 +100,7 @@
 body {
     background-color: #f0d5bc;
     background-image: url('http://i.imgur.com/8AHzpHy.png');
+
 }
 
 .panel.radius {
@@ -128,7 +128,6 @@ body {
     position: relative;
     display: inline-block;
     padding: 0 14px;
-    background: #CC4B09;
     -webkit-transition: -webkit-transform 0.3s;
     -moz-transition: -moz-transform 0.3s;
     transition: transform 0.3s;
@@ -471,6 +470,11 @@ p {
     margin: 0 auto;
     margin-top: 70px;
     padding-right: 40px;
+    -webkit-animation: jump 1s infinite;
+    -moz-animation: jump 1s infinite;
+    -o-animation: jump 1s infinite;
+    -ms-animation: jump 1s infinite;
+    animation: jump 1s infinite;
 }
 .coin-two {
     height: 15px;
@@ -516,7 +520,7 @@ h4 {
 .bar {
     font-family: Montserrat, sans-serif !important;
     font-weight: 700;
-    color: $tan;
+    color: $orange;
     text-transform: uppercase;
 }
 
@@ -525,10 +529,9 @@ h4 {
     bottom: 0;
     left: 0;
     padding-top: 50px;
-    position: fixed;
+    position: absolute;
     right: 0;
     top: 0;
-    z-index: -1;
 }
 
 /* KEYFRAMES */
@@ -570,6 +573,7 @@ h4 {
     -webkit-transform: scale(0.65);
     -moz-transform: scale(0.65);
     transform: scale(0.65);
+
 }
 
 .x2 {
@@ -670,7 +674,6 @@ h4 {
     text-align:center;
     z-index: 3;
     position: relative;
-    display:block;
     margin: 0 auto;
     
 }
@@ -704,8 +707,12 @@ h4 {
 .count {
     padding-top: 5px;
 }
-.row-question {
-    background-image: url('http://i.imgur.com/PsQC9oH.png');
+div.row.question {
+    background: rgba(204,75,9, .5);
+    display: block;
+    width: 20%;
+    margin: 0 auto;
+    margin-bottom: 10px;
 }
    button {
       @include button(simple, $base-background-color);
@@ -715,4 +722,11 @@ h4 {
       display: block;
       margin: 0 auto;
       margin-top: 180px;
+    }
+.shroom {
+    height: 100px;
+    text-align:center;
+    z-index: 3;
+    position: relative;
+    margin: 0 auto;
     }
