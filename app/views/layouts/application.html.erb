@@ -12,8 +12,8 @@
 </head>
 
 <body>
- <header class ="header">
-  <nav class="cl-effect-2">
+  <header class ="header">
+    <nav class="cl-effect-2">
       <a href="/">
         <span class= "bar" data-hover="Home">
           Home
@@ -29,15 +29,23 @@
           All Questions
         </span>
       </a>
+      <% if logged_in? %>
       <a href="/questions">
+        <span data-hover="Logout">
+          current_user.name
+        </span>
+      </a>
+      <% else %>
+      <a href="/login">
         <span data-hover="Login">
           Login
         </span>
       </a>
-  </nav>
-  <img class="img" src="http://www.videogameobsession.com/videogame/ani_1firemario300-vgo.gif"/>
-  <h1 class="headerText animated">QUESTION BOX</h1>
-</header>
+      <% end %>
+    </nav>
+    <img class="img" src="http://www.videogameobsession.com/videogame/ani_1firemario300-vgo.gif"/>
+    <h1 class="headerText animated">QUESTION BOX</h1>
+  </header>
 
 
 
