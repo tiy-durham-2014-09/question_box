@@ -47,8 +47,6 @@ class UsersControllerTest < ActionController::TestCase
       assert_equal "MyString", json_response["questions"][0]["title"]
       assert_equal "MyText", json_response["questions"][0]["text"]
     end
-
-
   end
 
   context "POST users#create" do
