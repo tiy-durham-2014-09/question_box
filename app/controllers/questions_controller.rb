@@ -9,7 +9,14 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.order(created_at: :desc).page params[:page]
+    respond_to do |format|
+      format.html do
+        @questions = Question.order(created_at: :desc).page params[:page]
+      end
+      format.json do
+        render json: @questions
+      end
+    end
   end
 
   def new
@@ -29,6 +36,15 @@ class QuestionsController < ApplicationController
   def show
     @answers = @question.answers.order_by_votes
     @answer = Answer.new
+    # respond_to do |format|
+    #   format.html do
+    #     @answers = @question.answers.order_by_votes
+    #     @answer = Answer.new
+    #   end
+    #   format.json do
+    #     render json: @question
+    #   end
+    # end
   end
 
   def vote
