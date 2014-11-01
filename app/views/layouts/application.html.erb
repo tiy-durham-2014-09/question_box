@@ -4,11 +4,15 @@
 <head>
   <link rel="stylesheet" href="animate.min.css">
   <meta charset="utf-8" />
+  <title>Question Box</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "vendor/modernizr" %>
   <%= javascript_include_tag :modernizr %>
   <%= csrf_meta_tags %>
+
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
 </head>
 
@@ -21,7 +25,7 @@
       </div>
       <div class="x2">
         <div class="cloud"></div>
-      </div>  
+      </div>
       <div class="x3">
         <div class="cloud"></div>
       </div>
@@ -32,46 +36,60 @@
         <div class="cloud"></div>
       </div>
     </div>
-  <nav class="cl-effect-2">
+    <nav class="cl-effect-2">
       <a href="/">
         <span class= "bar" data-hover="Home">
           Home
         </span>
       </a>
+
       <a href="/questions">
         <span class = "bar" data-hover="All Questions">
           All Questions
         </span>
       </a>
-      <a href="/login">
-        <span class = "bar" data-hover="Login">
-          <%= button_to "logged in as #{current_user.name}", "#", class: "bar" %>
-        </span>
-      </a>
-  </nav>      
-  <h1 class="headerText animated">QUESTION BOX</h1>
+      <% if logged_in? %>
+      <a href="/questions">
+      <span class= "barr" data-hover="Logout">
+         <%= button_to "Logged in as #{current_user.name}" %>
+      </span>
+    </a>
+    <% else %>
+    <a href="/login">
+      <span class= "bar" data-hover="Login">
+        Login
+      </span>
+    </a>
+    <% end %>
+    </nav>
+
+    <tog class="toghead"><img src="http://themushroomkingdom.net/images/ani/aniqblock.gif"></tog>
+
+
+
 
   <a href="#" onclick="javascript: window.open('http://funny-pictures-blog.com/wp-content/uploads/2012/04/GIF-Realistic-Mario.gif','width=1000,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');">
 
 
 
-  <img class="coin" src="http://icons.iconarchive.com/icons/ph03nyx/super-mario/256/Retro-Coin-icon.png"></a>
+  <h1 class="headerText animated">QUESTION BOX</h1>
+  <img class="coin" src="http://icons.iconarchive.com/icons/ph03nyx/super-mario/256/Retro-Coin-icon.png">
+
 </header>
 <%= yield %>
  <img class="img" src="http://www.videogameobsession.com/videogame/ani_1firemario300-vgo.gif"/>
 
   <img class="pipe" src="http://www.clker.com/cliparts/f/5/a/a/13419482061264734846Green%20Cartoon%20Pipe.svg.hi.png">
-  <img class="shroom" src="http://icons.iconarchive.com/icons/ph03nyx/super-mario/256/Retro-Mushroom-Super-3-icon.png
-">
+  <img class="shroom" src="http://icons.iconarchive.com/icons/ph03nyx/super-mario/256/Retro-Mushroom-Super-3-icon.png">
   <footer class="footer-2">
 
     <div class="footer-secondary-links">
       <ul>
+
       <div class="footer-logo">
       <img src="http://themushroomkingdom.net/images/ani/aniqblock.gif" alt="Logo image">
     </div>
-  
-       
+
       </ul>
 
       <ul class="footer-social">
@@ -84,5 +102,12 @@
       </ul>
     </div>
   </footer>
+
+<script>
+$( "tog" ).click(function() {
+  $( "nav" ).toggle( "blind", 1000 );
+});
+</script>
+
 </body>
 </html>
