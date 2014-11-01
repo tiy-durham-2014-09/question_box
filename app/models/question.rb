@@ -35,7 +35,15 @@ class Question < ActiveRecord::Base
   end
 
   def self.tagged_with(name)
+<<<<<<< HEAD
       Tag.find_by!(name: name).questions
+=======
+    begin
+      Tag.find_by!(name: name).questions
+    rescue Exception => e
+      []
+    end
+>>>>>>> 900116fd8cace9d5ae4b763c91935164747c0588
   end
 
   def self.tag_counts

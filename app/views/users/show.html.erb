@@ -12,8 +12,8 @@
 	</div>
 </div>
 
-Related Questions
-
-<% Question.tagged_with(@current_user.tag_names).each do |q| %>
-<ul><%= link_to q.title, q %></ul>
+<% @current_user.tag_names.each do |t_name| %>
+  <% Question.tagged_with(t_name).each do |q| %>
+    <ul><%= link_to q.title, q %></ul>
+  <% end %>
 <% end %>
