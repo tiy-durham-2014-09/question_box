@@ -47,7 +47,6 @@
           All Questions
         </span>
       </a>
-<<<<<<< HEAD
       <% if logged_in? %>
       <a href="/questions">
       <span class= "barr" data-hover="Logout">
@@ -66,28 +65,8 @@
     <tog class="toghead"><img src="http://themushroomkingdom.net/images/ani/aniqblock.gif"></tog>
 
     <h1 class="headerText animated">QUESTION BOX</h1>
-    <img class="coin" src="http://icons.iconarchive.com/icons/ph03nyx/super-mario/256/Retro-Coin-icon.png">
-  </header>
-  <%= yield %>
-  <img class="img" src="http://www.videogameobsession.com/videogame/ani_1firemario300-vgo.gif"/>
-  <img class="pipe" src="http://www.clker.com/cliparts/f/5/a/a/13419482061264734846Green%20Cartoon%20Pipe.svg.hi.png">
 
 
-  <script>
-$( "tog" ).click(function() {
-  $( "nav" ).toggle( "bounce", 1000 );
-});
-
-
-</script>
-
-      <a href="/login">
-        <span class = "bar" data-hover="Login">
-          <%= button_to "logged in as #{current_user.name}", "#", class: "bar" %>
-        </span>
-      </a>
-  </nav>
-  <h1 class="headerText animated">QUESTION BOX</h1>
 
   <a href="#" onclick="javascript: window.open('http://funny-pictures-blog.com/wp-content/uploads/2012/04/GIF-Realistic-Mario.gif','width=1000,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');">
 
@@ -99,8 +78,7 @@ $( "tog" ).click(function() {
  <img class="img" src="http://www.videogameobsession.com/videogame/ani_1firemario300-vgo.gif"/>
 
   <img class="pipe" src="http://www.clker.com/cliparts/f/5/a/a/13419482061264734846Green%20Cartoon%20Pipe.svg.hi.png">
-  <img class="shroom" src="http://icons.iconarchive.com/icons/ph03nyx/super-mario/256/Retro-Mushroom-Super-3-icon.png
-">
+  <img class="shroom" src="http://icons.iconarchive.com/icons/ph03nyx/super-mario/256/Retro-Mushroom-Super-3-icon.png">
   <footer class="footer-2">
 
     <div class="footer-secondary-links">
@@ -122,5 +100,12 @@ $( "tog" ).click(function() {
       </ul>
     </div>
   </footer>
+
+<script>
+$( "tog" ).click(function() {
+  $( "nav" ).toggle( "blind", 1000 );
+});
+</script>
+
 </body>
 </html>
