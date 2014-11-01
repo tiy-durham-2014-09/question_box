@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @questions = Question.order(created_at: :desc).page params[:page]
     @user = User.new
   end
 
