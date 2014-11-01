@@ -1,6 +1,13 @@
 require 'test_helper'
 
+
 class UsersControllerTest < ActionController::TestCase
+
+
+  def json_response
+    ActiveSupport::JSON.decode @response.body
+  end
+
   def valid_user_attributes
     { name: Faker::Name.name,
       email: Faker::Internet.email,
@@ -24,6 +31,24 @@ class UsersControllerTest < ActionController::TestCase
     should "instantiate a user object" do
       assert assigns[:user], "Should have a user"
     end
+  end
+
+
+  context "GET users#show" do
+    setup do 
+      get :show, id: users(:chet), format:"json" 
+      @user = users(:one)
+    end
+
+    should respond_with(:ok)
+
+    should "display json object w/accurate user info" do
+      assert_equal "Chet Corey", json_response["name"]
+      assert_equal "MyString", json_response["questions"][0]["title"]
+      assert_equal "MyText", json_response["questions"][0]["text"]
+    end
+
+
   end
 
   context "POST users#create" do
