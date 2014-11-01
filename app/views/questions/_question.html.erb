@@ -1,5 +1,7 @@
 <div class="row question">
   <div class="small-8 columns">
+  <ul>
+  <li>
     <h4><%= link_to question.title, question %></h4>
     <p>Asked by <%= question.user.name %></p>
   </div>
@@ -10,5 +12,7 @@
   <div class="small-2 columns text-center counter">
     <div class="count"><%= question.answers.count %></div>
     <div><%= question.answers.count == 1 ? "answer" : "answers" %></div>
+    </li>
+    </ul>
   </div>
 </div>
