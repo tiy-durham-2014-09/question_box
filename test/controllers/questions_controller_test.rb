@@ -49,7 +49,18 @@ class QuestionsControllerTest < ActionController::TestCase
 
     should respond_with(:ok)
     should "serve json object with correct content" do
-      assert_equal "MyString", json_response['title']
+      assert_equal "MyString", json_response["questions"][0]["title"]
+      assert_equal "MyText", json_response["questions"][0]["text"]
+
+
+      assert_equal "Chet Corey", json_response["questions"][0]["user"]["name"]
+      assert_equal "chet@example.org", json_response["questions"][0]["user"]["email"]
+      assert_equal 1000, json_response["questions"][0]["user"]["score"]
+
+      assert_equal "MyText", json_response["questions"][0]["answers"][1]["text"]
+      assert_equal false, json_response["questions"][0]["answers"][1]["chosen"]
+
+
     end
   end
 end
