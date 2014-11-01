@@ -1,6 +1,6 @@
 <%= simple_form_for @login, url: login_path, wrapper: :inline do |form| %>
   <div class="row">
-    <h2 class="large-9 large-offset-3 columns">Login or <%= link_to "register", new_user_path %></h2>
+    <h1 class="headings">Login</h1><br> <p>or <%= link_to "register", new_user_path %></p>
   </div>
   <%= form.input :email, label_html: {class: "inline right"} %>
   <%= form.input :password, label_html: {class: "inline right"} %>
@@ -11,3 +11,4 @@
     </div>
   </div>
 <% end %>
+
