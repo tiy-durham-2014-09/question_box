@@ -30,6 +30,7 @@ class QuestionsController < ApplicationController
   def show
     @answers = @question.answers.order_by_votes
     @answer = Answer.new
+    # render json: @answers
   end
 
   def vote
