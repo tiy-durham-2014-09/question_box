@@ -14,7 +14,6 @@
       <%= vote_panel(@question) %>
     </div>
   </div>
-  <hr/>
 
   <div id="bing-links" class="row">
     <div class="small-12 columns">
@@ -38,7 +37,7 @@
   <a name="your-answer"></a>
   <div class="row">
     <div class="small-9 columns">
-      <h2>Add your answer</h2>
+      <h1 class="headings">Add your answer</h1>
       <% if logged_in? %>
         <%= simple_form_for [@question, @answer], remote: true do |form| %>
           <%= form.input :text, :label => false %>
