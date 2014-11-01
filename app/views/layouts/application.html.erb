@@ -13,52 +13,58 @@
 
 <body>
  <header class ="header">
+  <div id="background-wrap">
+    <div class="x1">
+        <div class="cloud"></div>
+    </div>
+
+    <div class="x2">
+        <div class="cloud"></div>
+    </div>
+
+    <div class="x3">
+        <div class="cloud"></div>
+    </div>
+
+    <div class="x4">
+        <div class="cloud"></div>
+    </div>
+
+    <div class="x5">
+        <div class="cloud"></div>
+    </div>
+</div>
   <nav class="cl-effect-2">
       <a href="/">
         <span class= "bar" data-hover="Home">
           Home
         </span>
       </a>
-      <a href="/questions/new">
-        <span data-hover="New Question">
-          New Question
-        </span>
-      </a>
+      
       <a href="/questions">
-        <span data-hover="All Questions">
+        <span class = "bar" data-hover="All Questions">
           All Questions
         </span>
       </a>
-      <a href="/questions">
-        <span data-hover="Login">
+      <a href="/login">
+        <span class = "bar" data-hover="Login">
           Login
         </span>
       </a>
   </nav>
   <img class="img" src="http://www.videogameobsession.com/videogame/ani_1firemario300-vgo.gif"/>
   <h1 class="headerText animated">QUESTION BOX</h1>
+  <img class="coin" src="http://icons.iconarchive.com/icons/ph03nyx/super-mario/256/Retro-Coin-icon.png">
+
 </header>
-
-
-
-  <%= yield %>
-
-
+<%= yield %>
   <footer class="footer-2">
-    <div class="footer-logo">
-      <img src="http://themushroomkingdom.net/images/ani/aniqblock.gif" alt="Logo image">
-    </div>
-    <ul>
-      <li><a href="javascript:void(0)">About</a></li>
-      <li><a href="javascript:void(0)">Contact</a></li>
-    </ul>
-
-
-
     <div class="footer-secondary-links">
       <ul>
-        <li><a href="javascript:void(0)">Terms and Conditions</a></li>
-        <li><a href="javascript:void(0)">Privacy Policy</a></li>
+      <div class="footer-logo">
+      <img src="http://themushroomkingdom.net/images/ani/aniqblock.gif" alt="Logo image">
+    </div>
+       
       </ul>
 
       <ul class="footer-social">
