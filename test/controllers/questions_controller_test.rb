@@ -10,6 +10,9 @@ class QuestionsControllerTest < ActionController::TestCase
     { question: { title: "",
                   text:  "" } }
   end
+  def json_response
+    ActiveSupport::JSON.decode @response.body
+  end
 
   context "GET questions#home" do
     setup { get :home }
@@ -31,6 +34,7 @@ class QuestionsControllerTest < ActionController::TestCase
   end
 
   context "GET questions#index" do
+  context "as html" do
     setup { get :index }
 
     should render_template("index")
@@ -40,6 +44,15 @@ class QuestionsControllerTest < ActionController::TestCase
       assert assigns[:questions], "Should load questions"
     end
   end
+  context "as json" do
+    setup { get :index, format: "json"}
+
+    should respond_with(:ok)
+    should "serve json object with correct content" do
+      assert_equal "MyString", json_response['title']
+    end
+  end
+end
 
   context "GET questions#show" do
     setup { get :show, id: questions(:one) }
@@ -155,34 +168,5 @@ class QuestionsControllerTest < ActionController::TestCase
         end
       end
     end
-  end
-    def json_response
-      ActiveSupport::JSON.decode @response.body
-    end
-    context "GET questions#index" do
-    context "as html" do
-      setup { get :index, id: questions(:one), format: "html"}
-
-      should render_template("show")
-      should respond_with(:success)
-
-      should "load question" do
-        assert_equal questions(:one), assigns[:question]
-      end
-
-      should "instantiate answer" do
-        assert assigns[:answer], "Should have a blank answer"
-      end
-    end
-
-    context "as json" do
-      setup { get :index, format: "json"}
-
-      should respond_with(:ok)
-      should "serve json object with correct content" do
-        assert_equal "MyString", json_response['title']
-      end
-    end
-  end
-
+ end
 end
