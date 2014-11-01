@@ -25,6 +25,18 @@
     </div>
   </div>
 
+  <div id="related-links" class="row">
+    <div class="small-12 columns">
+      <h2>Related Questions</h2>
+      <div class="related_questions">
+        <% @related_questions.each do |question| %>
+          <p><%= link_to question.title, question_path(question) %></p>
+          <p><%= question.text %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
   <div class="row">
     <h2 class="small-12 columns">
       <%= pluralize(@question.answers.count, "answer") %>

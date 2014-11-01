@@ -1,6 +1,9 @@
+require 'classifier-reborn'
+
 class QuestionsController < ApplicationController
   before_action :authenticate, only: [:new, :create, :vote]
-  before_action :set_question, only: [:show, :vote]
+  before_action :set_question, only: [:vote]
+  before_action :set_index, only: [:show]
 
   def home
     @question = Question.new
@@ -61,4 +64,21 @@ class QuestionsController < ApplicationController
   def question_params
     params.require(:question).permit(:title, :text, :tag_list)
   end
+
+	def set_index
+		@question = Question.find(params[:id])
+		questions = Question.all
+		lsi = ClassifierReborn::LSI.new
+
+		questions.each do |question|
+			lsi.add_item(question.text)
+		end
+
+		@related_questions = Array.new
+
+		lsi.find_related(@question.text,3).each do |question_text|
+			@related_questions << Question.find_by(text: question_text)
+		end
+	end
+
 end

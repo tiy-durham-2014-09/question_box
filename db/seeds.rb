@@ -21,7 +21,8 @@ other_users = Array.new(10).map { |_| User.create!(name:                  Faker:
                                                    password:              "password",
                                                    password_confirmation: "password") }
 
-20.times do
+# Original was 20
+10.times do
   Question.create!(title: "How do I #{Faker::Hacker.verb} #{['a', 'the'].sample} #{Faker::Hacker.noun}?",
                    text:  Faker::Hacker.say_something_smart,
                    user:  user)
