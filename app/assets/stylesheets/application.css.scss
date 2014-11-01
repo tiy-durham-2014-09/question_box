@@ -98,8 +98,9 @@
 }
 
 body {
-    background-color: #f0d5bc;
+
     background-image: url('http://i.imgur.com/8AHzpHy.png');
+
 
 }
 
@@ -192,6 +193,7 @@ body {
 .footer-2 {
   background: url('http://i.imgur.com/54V39Rz.png');
   @include span-columns(12);
+  margin-top: 20px;
   $footer-color: white;
   $footer-link-color: transparentize($footer-color, .6);
   $footer-disclaimer-color: transparentize($footer-color, .6);
@@ -199,6 +201,9 @@ body {
   position: absolute;
   z-index: 5;
   margin-top: -10px;
+
+  padding: $base-spacing;
+
   .footer-logo {
     margin-right: 1em;
     margin-bottom: 1em;
@@ -372,6 +377,7 @@ textarea {
   margin-top:-4px;
   font-weight:700;
 }
+
 [type="submit"]:hover { background-color:$orange; }
 
 p {
@@ -565,7 +571,7 @@ h4 {
     background: #fff;
     content: '';
     position: absolute;
-    z-indeX: -1;
+    z-index: -1;
 }
 
 .cloud:after {
