@@ -20,11 +20,11 @@
    <% if current_user == @question.user %>
      <p>
        <h6>
-         <!--this line of code needs to be modified to agree with the proper variables and functionality
-         <#= link_to  solved_question_path(question),  method: :patch, remote: true do %>
-         -->
+         <!--this line of code needs to be modified to agree with the proper variables and functionality-->
+         <%= link_to  sms_path(@question),  method: :patch, remote: true do %>
          <i class="fa fa-phone-square fa-2x"></i>
          <% end %>
+   <% end %>
          &nbsp;I would like to receive text message (SMS) notifications whenever an answer to my question is posted.
        </h6>
      </p>

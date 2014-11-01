@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   get 'password_reset' => 'password_resets#new', as: :password_reset
   post 'password_reset' => 'password_resets#create'
   get 'password_reset/:id' => 'password_resets#edit', as: :change_password
-  patch 'password_reset/:id' => 'password_resets#update', as: 'SMS'
+  patch 'password_reset/:id' => 'password_resets#update'
 
-  patch 'questions/:id' => 'questions#SMS'
+  patch 'questions/:id' => 'questions#SMS', as: 'sms'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
