@@ -26,13 +26,44 @@
           </ul>
         </div>
       </div>
-
       <div class="right_footer">
         <li><i class="fa fa-github"></i> Github 10 lasts repos updated: <%= @user.github_repos %></li>
 
       </div>
+      <h1 id="name"><%=@user.name%></h1>
+    </div>
+    <div class="profile_info">
+      <ul style="column-width:100px;">
+        <li><i id="map" class="fa fa-map-marker"></i><span id="location">Location, STATE</span></li>
+        <li><i class="fa fa-envelope-o"></i><span id="email"><%=@user.email%></span></li>
+        <li><i class="fa fa-github"></i><span id="blog"><%=@user.github_url%></span></li>
+        <li><i class="fa fa-clock-o"></i><span id="created_at">Joined on<%=@user.created_at%></span></li>
+      </ul>
+    </div>
+
+    <div>
+      <% if logged_in? && @user == current_user %>
+          <div class="edit-delete">
+                <div class="links-edit-delete">
+                  <%= link_to 'Edit Profile', edit_user_path(@user) %>
+                  <%= link_to 'Delete Profile', user_path(@user), method: :delete, data: { confirm: "Are you sure?" } %>
+                </div>
+          </div>
+      <% end %>
+    </div>
+
+    <%= render 'user_questions', :questions => @user.questions %>
+
+    <% if @user.questions.count == 0 %>
+        <div class="panel">
+          <%= @user %> has not posted yet!
+        </div>
+    <% end %>
 
 
+  </aside>
+  <main>
+    <div class="main_nav">
     </div>
 
   </body>
