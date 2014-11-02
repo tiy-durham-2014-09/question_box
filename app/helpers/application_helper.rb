@@ -4,6 +4,8 @@ module ApplicationHelper
      "#{controller.controller_name}-#{controller.action_name}"].join(" ")
   end
 
+
+
   def markdown(text)
     return if text.nil?
     @renderer ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML.new,

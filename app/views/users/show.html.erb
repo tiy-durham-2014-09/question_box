@@ -41,6 +41,7 @@
           <%= @user %> has not posted yet!
         </div>
         <% end %>
+        <%= render 'user_answers', :answers => @user.answers %>
     <li><i class="fa fa-github"></i> Github 10 lasts repos updated: <%= @user.github_repos %></li>
 
   </div>
