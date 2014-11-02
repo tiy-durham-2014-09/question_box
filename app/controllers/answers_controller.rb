@@ -24,6 +24,9 @@ class AnswersController < ApplicationController
         end
       end
     end
+
+    res=HTTParty.post("https://api.sendhub.com/v1/messages/?username=9194486757&api_key=4639f9b62be4b60ce70dfb54d30c11214f86f8e9", body: { "contacts" => [@question.user.contact], "text" => "You've got answers"}.to_json, headers: {"Content-Type" => "application/json"})
+
   end
 
   def vote
