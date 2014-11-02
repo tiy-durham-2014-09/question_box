@@ -47,9 +47,9 @@
         </div>
         <% end %>
         <p>Questions answer by this user:</p>
-        <%= render 'user_questions', :questions => @user.questions %>
+        <%= render 'user_questions', :questions => @user.questions.limit(5) %>
       </div>
-      <%= render 'user_answers', :answers => @user.answers %>
+      <%= render 'user_answers', :answers => @user.answers.limit(5) %>
 
     <li><i class="fa fa-github"></i> Github 10 lasts repos updated: </li>
       <div class="github_repos">
