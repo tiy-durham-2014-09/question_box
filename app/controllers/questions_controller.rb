@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.order(created_at: :desc).page params[:page]
+      @questions = Question.order(created_at: :desc).page params[:page]
   end
 
   def new

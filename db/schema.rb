@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141021153210) do
+ActiveRecord::Schema.define(version: 20141021201955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,55 +29,55 @@ ActiveRecord::Schema.define(version: 20141021153210) do
   add_index "answers", ["user_id"], name: "index_answers_on_user_id", using: :btree
 
   create_table "logins", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+   t.datetime "created_at"
+   t.datetime "updated_at"
+ end
 
-  create_table "password_resets", force: true do |t|
-    t.integer  "user_id"
-    t.string   "key"
-    t.boolean  "expired",    default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ create_table "password_resets", force: true do |t|
+  t.integer  "user_id"
+  t.string   "key"
+  t.boolean  "expired",    default: false
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
 
-  add_index "password_resets", ["user_id"], name: "index_password_resets_on_user_id", using: :btree
+add_index "password_resets", ["user_id"], name: "index_password_resets_on_user_id", using: :btree
 
-  create_table "questions", force: true do |t|
-    t.string   "title"
-    t.text     "text"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+create_table "questions", force: true do |t|
+  t.string   "title"
+  t.text     "text"
+  t.integer  "user_id"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
 
-  add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
+add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
 
-  create_table "questions_tags", id: false, force: true do |t|
-    t.integer "question_id", null: false
-    t.integer "tag_id",      null: false
-  end
+create_table "questions_tags", id: false, force: true do |t|
+  t.integer "question_id", null: false
+  t.integer "tag_id",      null: false
+end
 
-  create_table "tags", force: true do |t|
-    t.string "name"
-  end
+create_table "tags", force: true do |t|
+  t.string "name"
+end
 
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.integer  "score",           default: 1
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+create_table "users", force: true do |t|
+  t.string   "name"
+  t.integer  "score",           default: 1
+  t.string   "email"
+  t.string   "password_digest"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
 
-  create_table "votes", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "value"
-    t.integer  "voteable_id"
-    t.string   "voteable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+create_table "votes", force: true do |t|
+  t.integer  "user_id"
+  t.integer  "value"
+  t.integer  "voteable_id"
+  t.string   "voteable_type"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
 
 end
