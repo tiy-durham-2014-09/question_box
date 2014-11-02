@@ -16,12 +16,13 @@
     </div>
     <div class="profile_info">
       <ul style="column-width:100px;">
-        <li><i id="map" class="fa fa-map-marker"></i><span id="location"> <%= @user.location %></span></li>
+        <li><i class="fa fa-map-marker"></i><span id="location"> <%= @user.location %></span></li>
         <li><i class="fa fa-envelope-o"></i> <span id="email" > <%=@user.email%>  </span></li>
         <li><i class="fa fa-clock-o"></i><span id="created_at"> Joined on <%=@user.created_at%></span></li>
         <li><i class="fa fa-stack-overflow"></i> User StackOverflow Reputation is: <%= @user.so_reputation %></li>
         <li><i class="fa fa-github"></i><span id="blog"> <%= @user.github_url%></span></li>
         <li><i class="fa fa-twitter"></i><span id="twitter"> <%= @user.twitter_url%></li>
+        </ul>
         <div class="edit-delete">
           <div class="links-edit-delete">
             <% if logged_in? && @user == current_user %>
@@ -29,37 +30,36 @@
               <%= link_to 'Edit Profile', edit_user_path(@user) %>
             </div>
             <div class="delete_profile_button">
-            <%= link_to 'Delete Profile', user_path(@user), method: :delete, data: { confirm: "Are you sure?" } %>
+              <%= link_to 'Delete Profile', user_path(@user), method: :delete, data: { confirm: "Are you sure?" } %>
             </div>
             <% end %>
           </div>
         </div>
-      </ul>
+      </div>
     </div>
-  </div>
 
-  <!-- right_footer -->
-  <div class="right_footer">
-        <%= render 'user_questions', :questions => @user.questions %>
+    <!-- right_footer -->
+    <div class="right_footer">
+      <div class="user_questions">
         <% if @user.questions.count == 0 %>
         <div class="panel">
           <%= @user.name %> has not posted yet!
         </div>
         <% end %>
-    <div class="panel">
+        <p>Questions answer by this user:</p>
+        <%= render 'user_questions', :questions => @user.questions %>
+      </div>
+      <%= render 'user_answers', :answers => @user.answers %>
 
-    <%= render 'user_answers', :answers => @user.answers %>
-
-    </div>
     <li><i class="fa fa-github"></i> Github 10 lasts repos updated: </li>
-
-    <ul>
-      <% @user.github_repos.each do |repo| %>
-        <li><%= link_to repo[:name], repo[:html_url] %></li>
-        <li>Updated <%= repo[:updated_at] %></li>
-      <% end %>
-    </ul>
-  </div>
-
-</body>
-</html>
+      <div class="github_repos">
+        <ul>
+          <% @user.github_repos.each do |repo| %>
+              <li><%= link_to repo[:name], repo[:html_url] %></li>
+              <li>Updated <%= repo[:updated_at] %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </body>
+  </html>
