@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     else
       render :new
     end
-    binding.pry
+
   end
 
 

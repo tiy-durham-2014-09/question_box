@@ -6,7 +6,7 @@ class UsersControllerTest < ActionController::TestCase
       email: Faker::Internet.email,
       password: "password",
       password_confirmation: "password",
-      # phone: "1234567890"
+      phone: "1234567890"
     }
 
   end
