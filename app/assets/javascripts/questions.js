@@ -37,9 +37,9 @@ var hideNegativeAnswers = function () {
 
 $(document).on('ready', function () {
   $("#question_tag_list").tagsInput({
-      width: '100%',
-      height: '1rem',
-      autocomplete_url: 'http://localhost:3000/tags'
+    width: '100%',
+    height: '1rem',
+    autocomplete_url: 'http://localhost:3000/tags'
   });
 
 

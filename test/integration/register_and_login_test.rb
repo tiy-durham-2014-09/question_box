@@ -67,25 +67,25 @@ class RegisterAndLoginTest < ActionDispatch::IntegrationTest
         @email = @user.email
       end
 
-      # should "be able to reset password" do
-      #   visit login_path
-      #   click_on "Forgot your password?"
-      #   fill_in "Email", with: @email
-      #   click_on "Reset your password"
-      #
-      #   assert_equal 1, unread_emails_for(@email).size
-      #   open_last_email_for(@email)
-      #   assert_must have_subject("Password reset for Question Box"), current_email
-      #   click_email_link_matching /reset/
-      #
-      #   fill_in "Password", with: "new_password"
-      #   fill_in "Password confirmation", with: "new_password"
-      #   click_on "Change your password"
-      #
-      #   assert page.has_content?("password has been changed")
-      #
-      #   assert_can_login(@user, "new_password")
-      # end
+      should "be able to reset password" do
+        visit login_path
+        click_on "Forgot your password?"
+        fill_in "Email", with: @email
+        click_on "Reset your password"
+
+        assert_equal 1, unread_emails_for(@email).size
+        open_last_email_for(@email)
+        assert_must have_subject("Password reset for Question Box"), current_email
+        click_email_link_matching /reset/
+
+        fill_in "Password", with: "new_password"
+        fill_in "Password confirmation", with: "new_password"
+        click_on "Change your password"
+
+        assert page.has_content?("password has been changed")
+
+        assert_can_login(@user, "new_password")
+      end
     end
   end
 end
