@@ -1,47 +1,39 @@
-<div class="wrapper">
-  <aside>
-
-    <div class="profile_head">
-      <div id="profile_pic">
-        <%= image_tag @user.gravatar_url(size: 180) %>
-      </div>
-      <h1 id="name"><%=@user.name%></h1>
-    </div>
-    <div class="profile_info">
-      <ul style="column-width:100px;">
-        <li><i id="map" class="fa fa-map-marker"></i><span id="location">Location, STATE</span></li>
-        <li><i class="fa fa-envelope-o"></i><span id="email"><%=@user.email%></span></li>
-        <!-- <li><i class="fa fa-github"></i><span id="blog"><%=@user.github_url%></span></li> -->
-        <li><i class="fa fa-clock-o"></i><span id="created_at">Joined on<%=@user.created_at%></span></li>
-      </ul>
-    </div>
-
-    <div>
-      <% if logged_in? && @user == current_user %>
-
-          <div class="profile-option">
-            <% current_user %>
-            <% if current_user? displayed_user %>
-                <div class="profile-button">
-                  <%= link_to 'Edit Profile', edit_profile_path(displayed_user) %>
-                </div>
-            <% else %>
-                <%= render 'shared/follow_form'%>
-            <% end %>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Question Box</title>
+  <!-- <link rel="stylesheet" type="text/css" href="/stylesheet/user_profile.scss"> -->
+  <%= stylesheet_link_tag    "user_profile.css" %>
+</head>
+<body>
+  <div class="wrapper">
+    <aside>
+      <div class="left_footer">
+        <div class="profile_head">
+          <div id="profile_pic">
+            <%= image_tag @user.gravatar_url(size: 180) %>
           </div>
+          <h1 id="name"><%=@user.name%></h1>
+        </div>
+        <div class="profile_info">
+          <ul style="column-width:100px;">
+            <li><i id="map" class="fa fa-map-marker"></i><span id="location"> Location </span></li>
+            <li><i class="fa fa-envelope-o"></i> <span id="email" > <%=@user.email%>  </span></li>
+            <li><i class="fa fa-clock-o"></i><span id="created_at"> Joined on <%=@user.created_at%></span></li>
+            <li><i class="fa fa-stack-overflow"></i> StackOverflow User Reputation is: <%= @user.so_reputation %></li>
+            <li><i class="fa fa-github"></i><span id="blog"> <%= @user.github_url%></span></li>
+          </ul>
+        </div>
+      </div>
 
-      <% end %>
+      <div class="right_footer">
+        <li><i class="fa fa-github"></i> Github 10 lasts repos updated: <%= @user.github_repos %></li>
+
+      </div>
+
+
     </div>
-    <%= @user.so_reputation %>
-    <%= @user.github_repos %>
-  </aside>
-  <main>
-    <div class="main_nav">
-    </div>
 
-    <!-- <ul id="repos"> -->
-    <!-- </ul> -->
-  </main>
-
-</div>
+  </body>
+  </html>
