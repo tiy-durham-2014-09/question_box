@@ -20,26 +20,13 @@ ActiveRecord::Schema.define(version: 20141101221354) do
     t.text     "text"
     t.integer  "user_id"
     t.integer  "question_id"
-    t.boolean  "chosen",      default: false
+    t.boolean  "chosen"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "vote_count"
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
   add_index "answers", ["user_id"], name: "index_answers_on_user_id", using: :btree
-
-  create_table "comments", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
-    t.text     "text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "password_resets", force: true do |t|
     t.integer  "user_id"
@@ -57,7 +44,7 @@ ActiveRecord::Schema.define(version: 20141101221354) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "vote_count"
+    t.boolean  "SMS",        default: false
     t.boolean  "sms",        default: false
   end
 
@@ -79,22 +66,17 @@ ActiveRecord::Schema.define(version: 20141101221354) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "click",           default: false
-    t.string   "token"
     t.string   "phone"
     t.string   "contact"
   end
 
   create_table "votes", force: true do |t|
     t.integer  "user_id"
+    t.integer  "value"
     t.integer  "voteable_id"
     t.string   "voteable_type"
-    t.integer  "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
-  add_index "votes", ["voteable_id", "voteable_type"], name: "index_votes_on_voteable_id_and_voteable_type", using: :btree
 
 end
