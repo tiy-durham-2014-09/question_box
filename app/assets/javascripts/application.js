@@ -21,27 +21,26 @@
 $(function(){ $(document).foundation(); });
 
 $(document).on('ready', function () {
-    var search_terms = [];
-    $(".hoverbox").each(function(){
-        search_terms.push(this.id);
+  var search_terms = [];
+  $(".hoverbox").each(function(){
+    search_terms.push(this.id);
+});
+
+  search_terms.forEach( function(search_term) {
+
+    $.ajax({
+      url: "https://api.stackexchange.com/2.2/tags/" + search_term + "/wikis",
+      data: {"site": "stackoverflow"},
+      success: function (data) {
+        if (data.items[0]) {
+          $(".hoverbox#" + search_term)
+          .append(data.items[0].excerpt);
+        } else {
+          $(".hoverbox#" + search_term).hide();
+        }
+      }
     });
 
-    search_terms.forEach( function(search_term) {
-
-        $.ajax({
-            url: "https://api.stackexchange.com/2.2/tags/" + search_term + "/wikis",
-            data: {"site": "stackoverflow"},
-            success: function (data) {
-                if (data.items[0]) {
-                  $(".hoverbox#" + search_term)
-                  .append(data.items[0].excerpt);
-                } else {
-                    $(".hoverbox#" + search_term).hide();
-                  }
-
-            }
-        });
-
-    })
+  })
 
 });
