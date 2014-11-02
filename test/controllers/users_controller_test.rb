@@ -15,8 +15,8 @@ class UsersControllerTest < ActionController::TestCase
     { name: "",
       email: "",
       password: "",
-      # phone: "12",
-      password_confirmation: ""
+      phone: "12",
+      # password_confirmation: ""
     }
   end
 

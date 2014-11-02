@@ -10,6 +10,7 @@ class AnswersController < ApplicationController
     respond_to do |format|
       format.html do
         if @answer.save
+          send_text
           redirect_to @question
         else
           render "questions/show"
