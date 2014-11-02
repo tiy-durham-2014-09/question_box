@@ -40,7 +40,11 @@
     font-style: normal;
 
 }
-
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 .main {
   margin-top: 10px;
@@ -181,7 +185,7 @@ body {
 .headings {
     font-size: 60px;
     font-family: Montserrat, sans-serif;
-
+    text-shadow: rgba(0,0,0,0.9) -1px 0, rgba(0,0,0,0.4) 0 -1px, rgba(255,255,255,0.7) 0 1px, rgba(0,0,0,0.3) -1px -2px;
     font-weight:700;
     color: $green;
     width: 100%;
@@ -410,21 +414,21 @@ p {
     z-index: 3;
 }
 div.large-9.columns {
-     font-family: Helvetica, Arial, sans-serif;
-  font-weight:500;
-  font-size: 18px;
-  border-radius: 5px;
-  line-height: 22px;
-  background-color: #b2deb8 !important;
-  border:2px solid #CC6666 !important;
-  transition: all 0.3s;
-  padding: 13px;
-  margin-bottom: 15px;
-  width:100%;
-  box-sizing: border-box;
-  outline:0;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight:500;
+    font-size: 18px;
+    border-radius: 5px;
+    line-height: 22px;
+    border:2px solid #CC6666 !important;
+    transition: all 0.3s;
+    padding: 13px;
+    padding-top: 25px;
+    margin-bottom: 15px;
+    width:100%;
+    box-sizing: border-box;
+    outline:0;
 }
-a{
+a {
     color: $green;
 }
 div.row{
@@ -606,7 +610,6 @@ h4 {
 }
 
 .toghead {
-  position: fixed;
   @include shift(11);
 
   img {
@@ -628,9 +631,11 @@ span.barr {
     text-transform: lowercase;
 
 }
-.text {
+.text p {
     color: #3a3129;
     font-family: Montserrat, sans-serif !important;
+    width: 50%;
+    margin: 0 auto;
 }
 .asked {
     color: $orange;
@@ -639,23 +644,36 @@ span.barr {
     font-weight: bold;
 }
 .name {
-    font-family: 'super_plumber_brothersregular';
+    font-family: Monterrat, sans-serif;
     color: $green;
-    text-transform: uppercase;
-    font-size: 30px;
+    text-transform: lowercase;
+    font-size: 20px;
     letter-spacing: 2px;
-    font-weight: normal;
+    font-weight: bold;
 }
 .count {
     padding-top: 5px;
 }
 div.row.question {
-    background: rgba(204,75,9, .5);
+    
     display: block;
     width: 40%;
     margin: 0 auto;
     margin-bottom: 10px;
+    padding: 10px;
+    text-align: left;
+    border: 3px solid black;
+    box-shadow: inset 1px 1px 1px #FFF, 3px 3px 3px $blue;
 }
+
+p.row.question {
+    text-align: left;
+    margin-bottom: 0px;
+    width: 40%;
+    margin: 0 auto;
+    color: #484747;
+    }
+
    button {
       @include button(simple, $base-background-color);
       font-size: $base-font-size;
@@ -667,7 +685,7 @@ div.row.question {
     }
 .shroom {
     height: 100px;
-    text-align:center;
+    text-align: center;
     z-index: 3;
     position: relative;
     margin: 0 auto;
@@ -682,4 +700,35 @@ div.row.question {
 }
 .simple_form {
     margin-top: 0px;
+}
+div.question {
+    width: 80%;
+    margin: 0 auto;
+}
+a.title {
+    color: $orange;
+}
+.text-show {
+    width: 100%;
+    border: 4px solid black;
+    padding: 10px;
+    box-shadow: inset 1px 1px 1px #FFF, 3px 3px 3px $blue;
+}
+div.row.answer {
+    border: 4px solid black;
+    padding: 10px;
+    box-shadow: inset 3px 3px 3px $orange, 1px 1px 1px #FFF;
+    width: 50%;
+    margin: 0 auto;
+}
+div.about {
+    text-align: right;
+}
+span.asker {
+    color: $orange;
+    font-size: 25px;
+}
+.fa-flag-o {
+    color: $blue;
+    font-weight: bold;
 }
