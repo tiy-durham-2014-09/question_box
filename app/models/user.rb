@@ -32,9 +32,21 @@ class User < ActiveRecord::Base
 
 	def github_repos
 		if !github_url.blank?
-			response = github.repos.list user: github_url, sort: 'updated', direction: 'asc'
+			response = Github.repos.list user: github_url, sort: 'updated', direction: 'asc', scope: 'html_url'
+			response
 		end
 	end
+	# def showing_github
+	# 	if !github_url.blank?
+	# 		# repos = Github::Client::Repos.new
+	# 		# response = repos.list user: github_url, per_page: 10, page: 5
+	# 		# github = Github.new auto_pagination: true
+	# 		github = Github.new basic_auth: 'jrchg1403@gmail.com:a4851dd56fa45b74362e41ebe281f1dc8117b5bc'
+	# 		github.oauth.create scopes: ['repo']
+	# 		repos = Github::Client::Repos.new
+	# 		response = repos.list user: github_url, per_page: 10
+	# 	end
+	# end
 
   has_secure_password
 end

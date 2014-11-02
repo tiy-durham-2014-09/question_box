@@ -88,11 +88,8 @@ GEM
     foundation-rails (5.4.5.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
-<<<<<<< HEAD
-=======
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
->>>>>>> 1672de10979ccf944c457243bf20c674faf52487
     github_api (0.12.2)
       addressable (~> 2.3)
       descendants_tracker (~> 0.0.4)
@@ -297,13 +294,7 @@ DEPENDENCIES
   faker
   font-awesome-rails
   foundation-rails
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
   friendly_id (~> 5.0.0)
->>>>>>> deedee
->>>>>>> 1672de10979ccf944c457243bf20c674faf52487
   github_api
   gravtastic
   jbuilder (~> 2.0)

@@ -1,0 +1,28 @@
+// Place all the styles related to the Profiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@charset "utf-8";
+@import "bourbon";
+@import "neat";
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.left_footer {
+  float: left;
+  top: 70px;
+  position: absolute;
+  width: 400px;
+}
+
+.right_footer {
+  float: left;
+  position: absolute;
+  top: 50px;
+  right: 270px;
+  width: 550px;
+  margin: 24px;
+}
