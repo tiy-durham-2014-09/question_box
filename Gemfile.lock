@@ -294,16 +294,7 @@ DEPENDENCIES
   faker
   font-awesome-rails
   foundation-rails
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
   friendly_id (~> 5.0.0)
->>>>>>> deedee
->>>>>>> 1672de10979ccf944c457243bf20c674faf52487
->>>>>>> 71f51082d040acfd8e45c8441f586a463b9b7151
   github_api
   gravtastic
   jbuilder (~> 2.0)
