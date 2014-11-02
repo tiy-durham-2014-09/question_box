@@ -7,14 +7,11 @@ Rails.application.routes.draw do
   resources :users, :only => [:new, :create]
   resources :questions, :only => [:index, :new, :create, :show] do
     post :vote, on: :member
+    member do
+      put 'sms'
+    end
     resources :answers, :only => [:create], :shallow => true do
       post :vote, on: :member
-    end
-  end
-
-  resources :questions do
-    member do
-      post 'toggle'
     end
   end
 

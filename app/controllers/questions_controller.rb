@@ -52,36 +52,18 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def toggle
+  def sms
     @question = Question.find(params[:id])
-    @question.update_attributes(:sms => params[:sms])
-    render :nothing => true
+    @question.update_attributes(sms: true)
+    respond_to do |format|
+      format.html do
+        redirect_to question_path
+      end
+      format.js do
+        render :sms, status: 200
+      end
+    end
   end
-
-  # OLD CODE FOR SMS BUTTON THAT DOESN'T WORK
-  # def toggle
-  #   @question = Question.find(params[:id])
-  #   if @question.update_attributes(:completed => params[:completed])
-  #     # ... update successful
-  #   else
-  #     # ... update failed
-  #   end
-  # end
-  #
-  # def SMS
-  #   @question.toggle(:SMS)
-  #   @question.save
-  #   respond_to do |format|
-  #     format.html do
-  #       redirect_to @question, notice: "You will now receive SMS notifications when your question receives a new answer."
-  #       end
-  #       format.js do
-  #         render :SMS, status: :ok
-  #       end
-  #   end
-  # end
-  #
-  # binding.pry
 
   private
 

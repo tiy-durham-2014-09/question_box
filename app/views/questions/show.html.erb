@@ -13,41 +13,19 @@
     <div class="small-3 columns text-center">
       <%= vote_panel(@question) %>
     </div>
-  </div>
-  <hr/>
 
-
-
-
-  <div class="question-check">
     <% if current_user == @question.user %>
-    <p>
+      <p>
       <h6>
-         <%= check_box_tag 'sms', @question.id , @question.sms, :class => "question-check" %>
-        &nbsp;I would like to receive text message (SMS) notifications whenever an answer to my question is posted.
+        <%= link_to  sms_question_path(@question),  method: :put, remote: true do%>
+          <i class="fa fa-phone-square fa-2x"></i>
+        <% end %>
+        &nbsp;I would like to receive text message (SMS) notifications.
       </h6>
-    </p>
+      </p>
     <% end %>
   </div>
-
-
-  <!--this is the old SMS button code that doesn't work
-  <div id="sms">
-    <# if current_user == @question.user %>
-      <p>
-        <h6>
-          >
-          <#= link_to sms_path(@question),  method: :patch, remote: true do %>
-          <i class="fa fa-phone-square fa-2x"></i>
-          <# end %>
-    <# end %>
-          &nbsp;I would like to receive text message (SMS) notifications whenever an answer to my question is posted.
-        </h6>
-      </p>
-  </div>
-  -->
-
-
+  <hr/>
 
 
   <div id="bing-links" class="row">
