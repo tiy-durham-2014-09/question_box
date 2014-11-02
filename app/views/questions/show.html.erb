@@ -9,21 +9,32 @@
       <div>
         Asked by <%= @question.user.name %>
       </div>
+
+      <% if current_user == @question.user %>
+        <% if @question.sms == false %>
+          <p>
+          <h6>
+            <%= link_to  sms_question_path(@question),  method: :put, remote: true do%>
+              <i class="fa fa-phone-square fa-2x"></i>
+            <% end %>
+            &nbsp;I would like to receive text message (SMS) notifications.
+          </h6>
+          </p>
+        <% else %>
+          <p>
+          <h6>
+            You told us to text you, so don't be hatin' when we do!
+          </h6>
+          </p>
+        <% end %>
+      <% end %>
+
     </div>
     <div class="small-3 columns text-center">
       <%= vote_panel(@question) %>
     </div>
 
-    <% if current_user == @question.user %>
-      <p>
-      <h6>
-        <%= link_to  sms_question_path(@question),  method: :put, remote: true do%>
-          <i class="fa fa-phone-square fa-2x"></i>
-        <% end %>
-        &nbsp;I would like to receive text message (SMS) notifications.
-      </h6>
-      </p>
-    <% end %>
+
   </div>
   <hr/>
 
