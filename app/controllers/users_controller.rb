@@ -23,12 +23,6 @@ class UsersController < ApplicationController
   end
 
 
-  def send_text
-    HTTParty.post("https://api.sendhub.com/v1/messages/?username=9194486757&api_key=4639f9b62be4b60ce70dfb54d30c11214f86f8e9", body: { "contacts" => [@user.contact], "text" => "You've got answers"}.to_json, headers: {"Content-Type" => "application/json"})
-  end
-
-
-
   private
 
   def user_params
