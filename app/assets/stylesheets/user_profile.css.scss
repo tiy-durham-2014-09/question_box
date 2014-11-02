@@ -26,3 +26,11 @@
   width: 550px;
   margin: 24px;
 }
+
+.edit_profile_button {
+  @include button;
+  font-color: white;
+}
+.delete_profile_button{
+  @include button;
+}
