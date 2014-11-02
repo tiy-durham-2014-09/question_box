@@ -38,7 +38,7 @@
         <%= render 'user_questions', :questions => @user.questions %>
         <% if @user.questions.count == 0 %>
         <div class="panel">
-          <%= @user %> has not posted yet!
+          <%= @user.name %> has not posted yet!
         </div>
         <% end %>
         <%= render 'user_answers', :answers => @user.answers %>
