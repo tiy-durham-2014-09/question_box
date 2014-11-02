@@ -18,6 +18,7 @@ gem "redcarpet"
 gem "simple_form"
 gem 'rails_12factor', group: :production
 gem 'unicorn'
+gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 
 gem "faker"
 
