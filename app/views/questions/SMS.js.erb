@@ -1,5 +1,13 @@
 $("#<%= dom_id(@question) %>").effect("highlight", {color: '#AAA68B'}, 900);
-$("#notice").val("")
+$.ajax({
+  url: "",
+  context: document.body,
+  success: function(s,x){
+    $(this).html(s);
+  }
+});
+
+//$("#<%= dom_id(@question) %>").val("");
 
 //$("#<%= dom_id(@question) %>").update();
 
