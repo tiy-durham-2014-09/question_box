@@ -9,26 +9,34 @@
       <div>
         Asked by <%= @question.user.name %>
       </div>
+
+      <% if current_user == @question.user %>
+        <% if @question.sms == false %>
+          <p>
+          <h6>
+            <%= link_to  sms_question_path(@question),  method: :put, remote: true do%>
+              <i class="fa fa-phone-square fa-2x"></i>
+            <% end %>
+            &nbsp;Click on the phone to subscribe to text message (SMS) notifications.
+          </h6>
+          </p>
+        <% else %>
+          <p>
+            <div id="notice">
+              <h6>You are subscribed to text message notifications.</h6>
+            </div>
+          </p>
+        <% end %>
+      <% end %>
+
     </div>
     <div class="small-3 columns text-center">
       <%= vote_panel(@question) %>
     </div>
+
   </div>
   <hr/>
 
- <div id="sms">
-   <% if current_user == @question.user %>
-     <p>
-       <h6>
-         <!--this line of code needs to be modified to agree with the proper variables and functionality
-         <#= link_to  solved_problem_path(problem),  method: :put, remote: true do %>
-         -->
-         <i class="fa fa-phone-square fa-2x"></i>
-         <% end %>
-         I would like to receive text message (SMS) notifications whenever an answer to my question is posted.
-       </h6>
-     </p>
- </div>
 
   <div id="bing-links" class="row">
     <div class="small-12 columns">

@@ -13,6 +13,8 @@ default: &default
 development:
   <<: *default
   database: question_box_development
+  SENDHUB_KEY: <%= ENV["SENDHUB_KEY"] %>
+  SENDHUB_NUMBER: <%= ENV["SENDHUB_NUMBER"] %>
 
 
 # Warning: The database defined as "test" will be erased and
