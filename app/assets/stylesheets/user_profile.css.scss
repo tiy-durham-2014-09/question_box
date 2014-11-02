@@ -22,12 +22,12 @@
     width: 675px;
     height: 360px;
   }
-  .user_answers {
-    @include position(absolute, 300px 0 0 0);
+  .answers {
+    @include position(absolute, 500px 0 0 0);
   }
 }
 .github_repos {
-  @include position(absolute, 500px 0 0 0);
+  @include position(absolute, 715px 0 0 0);
 }
 
 .edit_profile_button {

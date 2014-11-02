@@ -49,15 +49,17 @@
         <p>Questions answer by this user:</p>
         <%= render 'user_questions', :questions => @user.questions.limit(5) %>
       </div>
-      <%= render 'user_answers', :answers => @user.answers.limit(5) %>
+      <div class="answers">
+        <%= render 'user_answers', :answers => @user.answers.limit(5) %>
+      </div>
 
 
       <div class="github_repos">
         <i class="fa fa-github"></i> Github 10 lasts repos updated:
         <ul>
           <% @user.github_repos.each do |repo| %>
-              <li><%= link_to repo[:name], repo[:html_url] %></li>
-              <li>Updated <%= repo[:updated_at] %></li>
+              <p><%= link_to repo[:name], repo[:html_url] %></p>
+              <p>Updated <%= repo[:updated_at] %></p>
           <% end %>
         </ul>
       </div>
