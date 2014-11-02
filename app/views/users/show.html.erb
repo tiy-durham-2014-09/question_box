@@ -51,8 +51,9 @@
       </div>
       <%= render 'user_answers', :answers => @user.answers %>
 
-    <li><i class="fa fa-github"></i> Github 10 lasts repos updated: </li>
+
       <div class="github_repos">
+        <i class="fa fa-github"></i> Github 10 lasts repos updated:
         <ul>
           <% @user.github_repos.each do |repo| %>
               <li><%= link_to repo[:name], repo[:html_url] %></li>
