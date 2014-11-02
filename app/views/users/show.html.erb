@@ -46,9 +46,19 @@
           <%= @user.name %> has not posted yet!
         </div>
         <% end %>
-        <%= render 'user_answers', :answers => @user.answers %>
-    <li><i class="fa fa-github"></i> Github 10 lasts repos updated: <%= @user.github_repos %></li>
+    <div class="panel">
 
+    <%= render 'user_answers', :answers => @user.answers %>
+
+    </div>
+    <li><i class="fa fa-github"></i> Github 10 lasts repos updated: </li>
+
+    <ul>
+      <% @user.github_repos.each do |repo| %>
+        <li><%= link_to repo[:name], repo[:html_url] %></li>
+        <li>Updated <%= repo[:updated_at] %></li>
+      <% end %>
+    </ul>
   </div>
 
 </body>

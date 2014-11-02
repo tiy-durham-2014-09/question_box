@@ -31,11 +31,14 @@ class User < ActiveRecord::Base
 	end
 
 	def github_repos
-		# if !github_url.blank?
-		# 	Github.repos.list.each user: github_url, sort: 'updated', direction: 'asc', scope: 'name' do |repo|
-		# 		return repo.name repo.updated
-		# 	end
-		# end
+		if !github_url.blank?
+			Github.repos.list(user: github_url, sort: updated_at, direction: 'desc').to_a.map do |repo|
+				{name: repo[:name],
+				 html_url: repo[:html_url],
+				 updated_at: repo[:updated_at]
+				}
+			end
+		end
 	end
 
 	# def showing_github
