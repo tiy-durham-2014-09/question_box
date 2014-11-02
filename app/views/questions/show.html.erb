@@ -7,7 +7,7 @@
         <%= markdown(@question.text) %>
       </div>
       <div>
-        Asked by <%= @question.user.name %>
+        Asked by <%= link_to @question.user.name, user_path(@question.user) %>
       </div>
     </div>
     <div class="small-3 columns text-center">

@@ -22,6 +22,12 @@ class UsersController < ApplicationController
 	  @user = User.find(params[:id])
   end
 
+  def destroy
+	  @user = User.find(params[:id])
+		@user.destroy
+		redirect_to root_path, success: "You have successfully deleted your account."
+  end
+
   def update
 	  respond_to do |format|
 		  if @user.update(user_params)
