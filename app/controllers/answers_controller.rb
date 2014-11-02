@@ -24,9 +24,9 @@ class AnswersController < ApplicationController
         end
       end
     end
-
-    res=HTTParty.post("https://api.sendhub.com/v1/messages/?username=9194486757&api_key=4639f9b62be4b60ce70dfb54d30c11214f86f8e9", body: { "contacts" => [@question.user.contact], "text" => "You've got answers"}.to_json, headers: {"Content-Type" => "application/json"})
-
+    res=HTTParty.post("https://api.sendhub.com/v1/messages/?username=9194486757&api_key=4639f9b62be4b60ce70dfb54d30c11214f86f8e9}", body: { "contacts" => [@question.user.contact], "text" => "You've got answers"}.to_json, headers: {"Content-Type" => "application/json"})
+    # res=HTTParty.post("https://api.sendhub.com/v1/messages/?#{ENV["SENDHUB_NUMBER"]}&api_key=#{ENV["SENDHUB_KEY"]}", body: { "contacts" => [@question.user.contact], "text" => "You've got answers"}.to_json, headers: {"Content-Type" => "application/json"})
+    #need to store key in env variables. put them in .env file but not working
   end
 
   def vote
