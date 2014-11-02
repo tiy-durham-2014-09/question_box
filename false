@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20141101210632_add_sms_to_questions.rb

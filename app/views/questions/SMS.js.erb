@@ -1,5 +1,16 @@
-$("#<%= dom_id(@question) %>").slideUp("slow", function() {
-  $("#<%= dom_id(@question) %>").remove();
+$(".question-check").bind('change', function(){
+  $.ajax({
+    url: '/questions/'+this.value+'/toggle',
+    type: 'POST',
+    data: {"sms": this.checked}
+  });
 });
 
-/*not sure about this remove */
+
+
+/*old code that doesn't work
+
+$("#<= dom_id(@question) %>").slideUp("slow", function() {
+  $("#<= dom_id(@question) %>").remove();
+});
+    */
