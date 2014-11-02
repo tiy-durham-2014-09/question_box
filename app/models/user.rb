@@ -3,21 +3,21 @@ class User < ActiveRecord::Base
 	gravtastic :default => 'identicon'
 
 	has_many :questions
-  has_many :answers
+	has_many :answers
 
-  has_many :comments
-  has_many :votes
+	has_many :comments
+	has_many :votes
 
-  validates :email,
-            presence: true,
-            uniqueness: { case_sensitive: false },
-            format: { with: /\A[\w\-\.]+@[\w\-\.]+\Z/, message: "must be a valid email address" }
+	validates :email,
+	presence: true,
+	uniqueness: { case_sensitive: false },
+	format: { with: /\A[\w\-\.]+@[\w\-\.]+\Z/, message: "must be a valid email address" }
 
-  validates :name, presence: true
+	validates :name, presence: true
 
-  validates :score,
-            presence: true,
-            numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+	validates :score,
+	presence: true,
+	numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
 	def so_reputation
 		if !so_url.blank?
@@ -32,24 +32,21 @@ class User < ActiveRecord::Base
 
 	def github_repos
 		if !github_url.blank?
-			# github = Github.new basic_auth: 'login:password'
-			# github.repos.list.each user: github_url, sort: 'updated', direction: 'asc', scope: 'name' do |repo|
-			# 	return repo.name repo.updated
-			# end
+			response = Github.repos.list user: github_url, sort: 'updated', direction: 'asc', scope: 'url'
+			response
 		end
 	end
+# def showing_github
+# 	if !github_url.blank?
+# 		# repos = Github::Client::Repos.new
+# 		# response = repos.list user: github_url, per_page: 10, page: 5
+# 		# github = Github.new auto_pagination: true
+# 		github = Github.new basic_auth: 'jrchg1403@gmail.com:a4851dd56fa45b74362e41ebe281f1dc8117b5bc'
+# 		github.oauth.create scopes: ['repo']
+# 		repos = Github::Client::Repos.new
+# 		response = repos.list user: github_url, per_page: 10
+# 	end
+# end
 
-	# def showing_github
-	# 	if !github_url.blank?
-	# 		# repos = Github::Client::Repos.new
-	# 		# response = repos.list user: github_url, per_page: 10, page: 5
-	# 		# github = Github.new auto_pagination: true
-	# 		github = Github.new basic_auth: 'jrchg1403@gmail.com:a4851dd56fa45b74362e41ebe281f1dc8117b5bc'
-	# 		github.oauth.create scopes: ['repo']
-	# 		repos = Github::Client::Repos.new
-	# 		response = repos.list user: github_url, per_page: 10
-	# 	end
-	# end
-
-  has_secure_password
+has_secure_password
 end

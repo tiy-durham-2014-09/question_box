@@ -5,11 +5,6 @@
 @import "bourbon";
 @import "neat";
 
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
 
 .left_footer {
   float: left;
@@ -20,17 +15,24 @@
 
 .right_footer {
   float: left;
-  position: absolute;
-  top: 50px;
-  right: 270px;
-  width: 550px;
+  @include position (absolute, 50px 270px 0 550px);
   margin: 24px;
+  .user_questions {
+    @include position(absolute, 50px 0 0 0);
+    width: 675px;
+    height: 360px;
+  }
+  .user_answers {
+    @include position(absolute, 300px 0 0 0);
+  }
+}
+.github_repos {
+  @include position(absolute, 500px 0 0 0);
 }
 
 .edit_profile_button {
-  @include button;
-  font-color: white;
+  @include button(rgb(51,51,51));
 }
 .delete_profile_button{
-  @include button;
+  @include button(rgb(51,51,51));
 }
