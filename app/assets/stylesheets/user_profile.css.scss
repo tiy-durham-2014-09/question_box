@@ -5,27 +5,24 @@
 @import "bourbon";
 @import "neat";
 
-left_footer {
-  float: left;
-  position: absolute;
-  top: 200px;
-  left: 100px;
-  padding-left: 105px;
-  font-size: 12px;
-  padding-top: 8px;
-  vertical-align: top;
-  width: 100px;
-  margin: 24px;
-  padding: 0;
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-right_footer {
-  float: right;
+.left_footer {
+  float: left;
+  top: 70px;
   position: absolute;
-  top: 500px;
-  left: 100px;
-  padding-left: 105px;
-  padding-top: 8px;
-  vertical-align: top;
-  width: 100px;
+  width: 400px;
+}
+
+.right_footer {
+  float: left;
+  position: absolute;
+  top: 50px;
+  right: 270px;
+  width: 550px;
+  margin: 24px;
 }
