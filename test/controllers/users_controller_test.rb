@@ -6,7 +6,7 @@ class UsersControllerTest < ActionController::TestCase
       email: Faker::Internet.email,
       password: "password",
       password_confirmation: "password",
-      # phone: "1234567890"
+      phone: "1234567890"
     }
 
   end
@@ -15,8 +15,8 @@ class UsersControllerTest < ActionController::TestCase
     { name: "",
       email: "",
       password: "",
-      # phone: "12",
-      password_confirmation: ""
+      phone: "12",
+      # password_confirmation: ""
     }
   end
 

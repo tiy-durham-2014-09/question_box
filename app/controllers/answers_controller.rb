@@ -24,6 +24,12 @@ class AnswersController < ApplicationController
         end
       end
     end
+    if @question.sms == true
+    # res=HTTParty.post("https://api.sendhub.com/v1/messages/?#{ENV["SENDHUB_NUMBER"]}&api_key=#{ENV["SENDHUB_KEY"]}", body: { "contacts" => [@question.user.contact], "text" => "You've got answers"}.to_json, headers: {"Content-Type" => "application/json"})
+
+      #need to store key in env variables. put them in .env file but not working
+    end
+    binding.pry
   end
 
   def vote

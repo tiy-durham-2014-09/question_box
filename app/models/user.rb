@@ -12,13 +12,15 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
 
-  validates :phone,
-            format: { with: /\A(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\z/, unless: "phone.nil?", message: "if you have a phone # it must be valid"}
-
+  # validates :phone,
+  #           format: { with: /\A(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\z/, unless: "phone.nil?", message: "if you have a phone # it must be valid"}
 
   validates :score,
             presence: true,
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
+
+
   has_secure_password
+
 end

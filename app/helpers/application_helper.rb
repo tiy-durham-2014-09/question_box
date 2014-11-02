@@ -12,6 +12,11 @@ module ApplicationHelper
     @renderer.render(text).html_safe
   end
 
+  # def send_text
+  #   @user = @question.user
+  #   res=HTTParty.post("https://api.sendhub.com/v1/messages/?username=9194486757&api_key=4639f9b62be4b60ce70dfb54d30c11214f86f8e9", body: { "contacts" => [@user.contact], "text" => "You've got answers"}.to_json, headers: {"Content-Type" => "application/json"})
+  # end
+
   def vote_panel(voteable)
     path = method("vote_#{voteable.class.to_s.underscore}_path")
     existing_vote = voteable.votes.find_by(user: current_user)
