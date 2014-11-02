@@ -20,6 +20,7 @@ gem 'rails_12factor', group: :production
 gem 'unicorn'
 gem 'gravtastic'
 gem "faker"
+gem 'friendly_id', '~> 5.0.0'
 
 # Assets
 gem "font-awesome-rails"

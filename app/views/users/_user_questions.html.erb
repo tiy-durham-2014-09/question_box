@@ -1,0 +1,15 @@
+<div class="user_questions">
+  <% questions.each do |question| %>
+      <div class="small-8 columns">
+        <h6><%= link_to question.title, question %></h6>
+      </div>
+      <div class="small-2 columns text-center counter">
+        <div class="count"><%= question.score %></div>
+        <div>score</div>
+      </div>
+      <div class="small-2 columns text-center counter">
+        <div class="count"><%= question.answers.count %></div>
+        <div><%= question.answers.count == 1 ? "answer" : "answers" %></div>
+      </div>
+  <% end %>
+</div>
