@@ -13,14 +13,6 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:current_user_id])
   end
 
-  # def displayed_user
-	 #  if @profile
-		#   @profile.user
-	 #  else
-		#   current_user
-	 #  end
-  # end
-
   def logged_in?
     !!current_user
   end

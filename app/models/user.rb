@@ -32,10 +32,13 @@ class User < ActiveRecord::Base
 
 	def github_repos
 		if !github_url.blank?
-			response = Github.repos.list user: github_url, sort: 'updated', direction: 'asc', scope: 'html_url'
-			response
+			# github = Github.new basic_auth: 'login:password'
+			# github.repos.list.each user: github_url, sort: 'updated', direction: 'asc', scope: 'name' do |repo|
+			# 	return repo.name repo.updated
+			# end
 		end
 	end
+
 	# def showing_github
 	# 	if !github_url.blank?
 	# 		# repos = Github::Client::Repos.new
