@@ -1,82 +1,26 @@
-
-  <!-- ul class="title-area">
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
     <li class="name">
-      <h1>
-        <img src="http://fc05.deviantart.net/fs4/i/2004/191/c/5/Mario.gif">
-        <%= link_to "Question Box", root_path, class: "left" %>
-      </h1>
+      <h1><%= link_to "Question Box", root_path %></h1>
     </li>
-  </ul> -->
+  </ul>
 
-<!--   <section class="top-bar-section">
+  <section class="top-bar-section">
     <!-- Right Nav Section -->
-    <!-- <ul class="right">
+    <ul class="right">
       <% if logged_in? %>
-        <li><%= link_to "Logged in as #{current_user.name}", "#" , class: "right" %></li>
-        <li><%= link_to "Logout", login_path, method: :delete, class: "right" %></li>
+        <li><%= link_to "Logged in as #{current_user.name}", "#" %></li>
+        <li><%= link_to "Logout", login_path, method: :delete %></li>
       <% else %>
-        <li><%= link_to "Login", login_path, class: "right" %></li>
-      <% end %>
-    </ul> -->
-    <!-- Left Nav Section -->
-   <!--  <ul class="left">
-      <li><%= link_to "All questions", questions_path, class: "left" %></li>
-      <% if logged_in? %>
-        <li><%= link_to "New question", new_question_path, class:"left" %></li>
+        <li><%= link_to "Login", login_path %></li>
       <% end %>
     </ul>
-  </section> -->
-
-  <!--<ul class="title-area">-->
-    <!--<li class="name">-->
-      <!--<h1><%= link_to "Question Box", root_path, class: "left" %></h1>-->
-    <!--</li>-->
-  <!--</ul>-->
-
-  <!--<section class="top-bar-section">-->
-    <!--<!-- Right Nav Section -->
-    <!--<ul class="right">-->
-      <!--<% if logged_in? %>-->
-        <!--<li><%= link_to "Logged in as #{current_user.name}", "#" , class: "right" %></li>-->
-        <!--<li><%= link_to "Logout", login_path, method: :delete, class: "right" %></li>-->
-      <!--<% else %>-->
-        <!--<li><%= link_to "Login", login_path, class: "right" %></li>-->
-      <!--<% end %>-->
-    <!--</ul>-->
-    <!--<!-- Left Nav Section -->
-    <!--<ul class="left">-->
-      <!--<li><%= link_to "All questions", questions_path, class: "left" %></li>-->
-      <!--<% if logged_in? %>-->
-        <!--<li><%= link_to "New question", new_question_path, class:"left" %></li>-->
-      <!--<% end %>-->
-    <!--</ul>-->
-  <!--</section>-->
-
-  <!--<div class="container">-->
-    <!--<div class="dropdown">-->
-      <!--<label>-->
-      <!--<span class="entypo-home">-->
-        <!--Home-->
-      <!--</span>-->
-        <!--<input type="checkbox">-->
-        <!--<ul>-->
-          <!--<li>-->
-            <!--<a class="entypo-docs" href="#">-->
-              <!--About-->
-            <!--</a>-->
-          <!--</li>-->
-          <!--<li>-->
-            <!--<a class="entypo-user" href="#">-->
-              <!--Users-->
-            <!--</a>-->
-          <!--</li>-->
-        <!--</ul>-->
-      <!--</label>-->
-    <!--</div>-->
-  <!--</div>-->
-<!-- <button data-dropdown="drop" aria-controls="drop", aria-expanded="false" class="large alert round button dropdown">HOP AROUND</button><br>
-<ul id="drop" data-dropdown-content class="f-dropdown" role="menu", aria-hidden="false" tabindex="-1">
-  <li><%= link_to "Home", root_path%></li>
-  <li><%= link_to "All questions", questions_path %></li>
-</ul>
-    </nav> -->
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <li><%= link_to "All questions", questions_path %></li>
+      <% if logged_in? %>
+        <li><%= link_to "New question", new_question_path %></li>
+      <% end %>
+    </ul>
+  </section>
+</nav>

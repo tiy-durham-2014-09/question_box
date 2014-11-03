@@ -1,18 +1,20 @@
 <div class="question">
   <div id="<%= dom_id(@question) %>" class="row">
     <div class="small-9 columns">
-      <div class="about">
-      <h1 class="question-title"><%= @question.title %> <i class="fa fa-flag-o"></i>
-<span class="asker">Asked by <%= @question.user.name %></span></h1>
-      </div>
-      <div class="text-show">
+      <h1 class="question-title"><%= @question.title %></h1>
+
+      <div>
         <%= markdown(@question.text) %>
+      </div>
+      <div>
+        Asked by <%= @question.user.name %>
       </div>
     </div>
     <div class="small-3 columns text-center">
       <%= vote_panel(@question) %>
     </div>
   </div>
+  <hr/>
 
   <div id="bing-links" class="row">
     <div class="small-12 columns">
@@ -45,14 +47,14 @@
   <a name="your-answer"></a>
   <div class="row">
     <div class="small-9 columns">
-      <h1 class="headings">Add your answer</h1>
+      <h2>Add your answer</h2>
       <% if logged_in? %>
         <%= simple_form_for [@question, @answer], remote: true do |form| %>
           <%= form.input :text, :label => false %>
           <%= form.button :submit, "Answer", class: "radius" %>
         <% end %>
       <% else %>
-        <p><%= link_to "Log in to answer", login_path, class: "answer_login" %></p>
+        <p><%= link_to "Log in to answer", login_path %></p>
       <% end %>
     </div>
   </div>

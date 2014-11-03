@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
+ruby '2.1.3'
+
 gem 'rails', '4.1.6'
 gem 'pg'
-gem 'modernizr-rails'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -25,9 +26,7 @@ gem 'classifier-reborn', '~> 2.0.1'
 # Assets
 gem "font-awesome-rails"
 gem 'jquery-ui-rails'
-gem "bourbon"
-gem 'neat'
-
+gem "foundation-rails"
 
 group :development, :test do
   gem "better_errors"

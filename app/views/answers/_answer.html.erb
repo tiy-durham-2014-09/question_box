@@ -1,11 +1,11 @@
-<div class="row answer" id="<%= answer.persisted? ? dom_id(answer) : "answer-new" %>">
-  <div id="answerer">Answered by <%= answer.user.name %></div>
-  <div class="answer">
-  	<div class="small-9 columns">
-	<div><%= markdown(answer.text) %></div>
-  	<div class="small-3 columns text-center">
-    	<%= vote_panel(answer) { |answer, value| vote_answer_path(answer, value: value) } %>Votes
-  	</div>
+<div class="row answer"
+     id="<%= answer.persisted? ? dom_id(answer) : "answer-new" %>"
+     data-negative="<%= answer.score < 0 ? "true" : "false" %>">
+  <div class="small-9 columns">
+    <div><%= markdown(answer.text) %></div>
+    <div>Answered by <%= answer.user.name %></div>
   </div>
- </div>
+  <div class="small-3 columns text-center">
+    <%= vote_panel(answer) { |answer, value| vote_answer_path(answer, value: value) } %>
+  </div>
 </div>
