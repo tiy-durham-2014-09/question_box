@@ -184,8 +184,6 @@
       autocomplete: {selectFirst: false },
       'hide':true,
       'delimiter':',',
-      'delimiter':' ',
-      'delimiter':'\n',
       'unique':true,
       removeWithBackspace:true,
       placeholderColor:'#A9A9A9',
