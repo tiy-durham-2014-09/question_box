@@ -31,10 +31,11 @@ class QuestionsTest < ActionDispatch::IntegrationTest
       end
 
       should  "be able to see a question's tags" do
+        Capybara.current_driver = :selenium
         login
         title = "Where do I go?"
         text = "Not sure"
-        tag = "tag,"
+        tag = "tag1,"
 
         visit root_path
 
@@ -43,7 +44,7 @@ class QuestionsTest < ActionDispatch::IntegrationTest
         fill_in "question_tag_list_tag", with: tag
         click_on "Ask"
 
-        assert page.has_content?("tag")
+        assert page.has_content?("tag1")
       end
       
     end
