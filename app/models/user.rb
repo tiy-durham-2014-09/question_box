@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
 
 	def github_repos
 		if !github_url.blank?
-			Github.repos.list(user: github_url, sort: updated_at, direction: 'desc').to_a.map do |repo|
+			Github.repos.list(user: github_url, sort: updated_at, direction: 'desc', per_page: 10 ).to_a.map do |repo|
 				{name: repo[:name],
 				 html_url: repo[:html_url],
 				 updated_at: repo[:updated_at]
