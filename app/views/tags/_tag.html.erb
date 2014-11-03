@@ -1,8 +1,0 @@
-<div class="row" id="<%= tag.persisted? ? dom_id(tag) : "tag-new" %>">
-<% @current_user.tag_names.each do |t_name| %>
-<ul><%= "Question(s) related to the tag #{t_name}" %></ul>
-	<% Question.tagged_with(t_name).each do |q| %>
-		<ul></br> <%= link_to q.title, q %> </ul>
-	<% end %>
-<% end %>
-</div>

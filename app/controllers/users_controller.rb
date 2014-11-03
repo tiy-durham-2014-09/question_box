@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       end
       format.js do
         @current_user.update(user_params)
-        render 'tags/create', status: :success
+        render 'users/create', status: :success
       end
     end
   end
