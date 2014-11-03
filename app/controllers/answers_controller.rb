@@ -24,10 +24,13 @@ class AnswersController < ApplicationController
         end
       end
     end
+
+    #need to store key in env variables. put them in .env file but not working
+
     # if @question.sms == true
     # res=HTTParty.post("https://api.sendhub.com/v1/messages/?#{ENV["SENDHUB_NUMBER"]}&api_key=#{ENV["SENDHUB_KEY"]}", body: { "contacts" => [@question.user.contact], "text" => "You have a new answer to your question '#{@question.title}' : '#{@answer.text.truncate(25)}'"}.to_json, headers: {"Content-Type" => "application/json"})
 
-      #need to store key in env variables. put them in .env file but not working
+
     # end
 
     #unsuccessful attempt to get VCR working

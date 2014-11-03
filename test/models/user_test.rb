@@ -10,12 +10,12 @@ class UserTest < ActiveSupport::TestCase
   should validate_numericality_of(:score)
          .only_integer
          .is_greater_than_or_equal_to(0)
-  # should validate_presence_of(:phone)
 
-  # should allow_value(nil).for(:phone)
+  should allow_value("5555555555").for(:phone)
+  should allow_value("").for(:phone)
+  # shouldn't have to validate_presence_of(:phone), since it's an optional field
 
   should_not allow_value("12").for(:phone)
-
   should_not allow_value("BAD EMAIL").for(:email)
   should_not allow_value("@").for(:email)
   should_not allow_value("  clinton@example.org").for(:email)
