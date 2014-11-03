@@ -60,4 +60,11 @@ class UsersControllerTest < ActionController::TestCase
       end
     end
   end
+  # Part of unsuccessful attempt to get VCR working
+  # context "POST :post" do
+  #   setup do
+  #     VCR.use_cassette("sendhub") do
+  #       post :post, :query => "test"
+  #     end
+  #   end
 end

@@ -24,12 +24,28 @@ class AnswersController < ApplicationController
         end
       end
     end
-    if @question.sms == true
-    # res=HTTParty.post("https://api.sendhub.com/v1/messages/?#{ENV["SENDHUB_NUMBER"]}&api_key=#{ENV["SENDHUB_KEY"]}", body: { "contacts" => [@question.user.contact], "text" => "You've got answers"}.to_json, headers: {"Content-Type" => "application/json"})
+    # if @question.sms == true
+    # res=HTTParty.post("https://api.sendhub.com/v1/messages/?#{ENV["SENDHUB_NUMBER"]}&api_key=#{ENV["SENDHUB_KEY"]}", body: { "contacts" => [@question.user.contact], "text" => "You have a new answer to your question '#{@question.title}' : '#{@answer.text.truncate(25)}'"}.to_json, headers: {"Content-Type" => "application/json"})
 
       #need to store key in env variables. put them in .env file but not working
-    end
-    binding.pry
+    # end
+
+    #unsuccessful attempt to get VCR working
+    # context "POST :post" do
+    #   setup do
+    #     @question = :one
+    #     @question.sms = true
+    #     VCR.use_cassette("sendhub") do
+    #       post :post, :query => "test"
+    #     end
+    #   end
+    #
+    #   should respond_with(:ok)
+    #
+    #   should "return JSON" do
+    #     assert_includes response.header['Content-Type'], 'application/json'
+    #   end
+    # end
   end
 
   def vote

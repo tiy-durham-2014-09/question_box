@@ -9,12 +9,12 @@ class UsersController < ApplicationController
       session[:current_user_id] = @user.id
       # res = HTTParty.post("https://api.sendhub.com/v1/contacts/?username=#{ENV['SENDHUB_NUMBER']}&api_key=#{ENV['SENDHUB_KEY']}", body: { "name" => @user.name, "number" => @user.phone}.to_json, headers: {"Content-Type" => "application/json"})
       #need to access env variables in .env, but not working
-      user_data = JSON.parse(res.body)
-      u = @user
-      contact_array = user_data.find{|key, _| key["id"]}
-      u.contact = "#{contact_array.second}"
-      u.save
-      u
+      # user_data = JSON.parse(res.body)
+      # u = @user
+      # contact_array = user_data.find{|key, _| key["id"]}
+      # u.contact = "#{contact_array.second}"
+      # u.save
+      # u
       redirect_to root_path, success: "You are successfully registered."
     else
       render :new
