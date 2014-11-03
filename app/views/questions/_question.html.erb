@@ -1,14 +1,11 @@
+<p class="row question">Asked by <%= question.user.name %></p>
 <div class="row question">
   <div class="small-8 columns">
-    <h4><%= link_to question.title, question %></h4>
-    <p>Asked by <%= question.user.name %></p>
+    <h4 ><%= link_to question.title, question, class: "title" %></h4>
   </div>
-  <div class="small-2 columns text-center counter">
-    <div class="count"><%= question.score %></div>
-    <div>score</div>
-  </div>
-  <div class="small-2 columns text-center counter">
-    <div class="count"><%= question.answers.count %></div>
-    <div><%= question.answers.count == 1 ? "answer" : "answers" %></div>
-  </div>
+  <ul class="small-2 columns text-center counter">
+    
+    <li class="count"><%= question.score %> score
+    <%= question.answers.count %> <%= question.answers.count == 1 ? "answer" : "answers" %></li>
+  </ul>
 </div>

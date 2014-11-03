@@ -14,7 +14,24 @@
 //= require jquery_ujs
 //= require jquery-ui/effect-highlight
 //= require jquery.tagsinput
-//= require foundation
-//= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(function(){ $(document).bourbon(); });
+
+var onPage = function (controller, action) {
+  return $("body." + controller + "-" + action).length
+}
+
+$(document).ready(function(){
+  $(".dropdown-button").click(function(){
+    $(".menu").toggleClass("show-menu");
+    $(".menu > li").click(function(){
+      $(".dropdown-button").html($(this).html());
+      $(".menu").removeClass("show-menu");
+    });
+  });
+});
+
+$(document).ready(function() {
+$('.q h1').on('click', function() {
+$(this).parent().children('.content-box').slideToggle(500);
+});

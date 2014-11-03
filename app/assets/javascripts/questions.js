@@ -63,4 +63,3 @@ $(document).on('ready', function () {
     hideNegativeAnswers();
   }
 });
-
