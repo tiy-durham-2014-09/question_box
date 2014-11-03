@@ -40,19 +40,20 @@
 
     <!-- right_footer -->
     <div class="right_footer">
-      <div class="user_questions">
+      <div class="user_questions_empty">
         <% if @user.questions.count == 0 %>
         <div class="panel">
           <%= @user.name %> has not posted yet!
         </div>
         <% end %>
-      <div class="answers">
-        <p>Questions by this user:</p>
-        <%= render 'user_questions', :questions => @user.questions.limit(5) %>
-      </div>
-      <div class="answers">
-        <p>Answered by this user:</p>
-        <%= render 'user_answers', :answers => @user.answers.limit(5) %>
+        <div class="user_questions">
+          <p>Questions by this user:</p>
+          <%= render 'user_questions', :questions => @user.questions.limit(5) %>
+        </div>
+        <div class="answers">
+          <p>Answered by this user:</p>
+          <%= render 'user_answers', :answers => @user.answers.limit(5) %>
+        </div>
       </div>
 
 
@@ -60,8 +61,8 @@
         <i class="fa fa-github"></i> Github 10 lasts repos updated:
         <ul>
           <% @user.github_repos.each do |repo| %>
-              <p><%= link_to repo[:name], repo[:html_url] %></p>
-              <p>Updated <%= repo[:updated_at] %></p>
+          <p><%= link_to repo[:name], repo[:html_url] %></p>
+          <p>Updated <%= repo[:updated_at] %></p>
           <% end %>
         </ul>
       </div>

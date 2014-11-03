@@ -17,19 +17,21 @@
 
 .right_footer {
   float: left;
+  @include border-image(url(/images/simple-border.png) 27 repeat );
   @include position (absolute, 50px 270px 0 550px);
   margin: 24px;
   .user_questions {
-    @include position(absolute, 50px 0 0 0);
-    width: 675px;
-    height: 360px;
-  }
-  .answers {
-    @include position(absolute, 350px 0 0 0);
+    @include position(absolute, 30px 0 0 0);
+    width: 300px;
+    height: 400px;
   }
 }
+.answers {
+  @include position(absolute, 30px 230px 0 384px);
+  width: 300px;
+}
 .github_repos {
-  @include position(absolute, 715px 0 0 0);
+  @include position(absolute, 380px 0 0 0);
 }
 
 .edit_profile_button {
