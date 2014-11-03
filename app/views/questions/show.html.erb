@@ -2,10 +2,18 @@
   <div id="<%= dom_id(@question) %>" class="row">
     <div class="small-9 columns">
       <h1 class="question-title"><%= @question.title %></h1>
-
       <div>
         <%= markdown(@question.text) %>
       </div>
+      <ul class="tag_list">
+        <% @question.tags.each do |tag| %>
+          <li class="label secondary radius">
+            <%= link_to tag.name, tag_path(tag) %>
+            <span class="hoverbox" id="<%= tag.name %>">
+            </span>
+          </li>
+        <% end %>
+      </ul>
       <div>
         Asked by <%= @question.user.name %>
       </div>

@@ -99,7 +99,6 @@ class QuestionTest < ActiveSupport::TestCase
     end
 
     should "be able to set tags" do
-      assert_empty @question.tags
       @question.tag_list = "ruby, activerecord"
       assert_equal 2, @question.tags.count
       assert_includes @question.tags.map(&:name), "ruby"

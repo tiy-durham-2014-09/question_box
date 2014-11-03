@@ -4,6 +4,7 @@ one:
   title: MyString
   text: MyText
   user: chet
+  tags: one, two
 
 two:
   title: MyString
