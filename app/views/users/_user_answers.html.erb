@@ -1,7 +1,6 @@
 <div class="user_answers">
   <% answers.each do |answer| %>
       <div class="small-4 columns">
-        <p>Answers made by this user:
         <%= answer.text.truncate(100) %> for <%= link_to answer.question.title, answer.question %>
       </div>
   <% end %>

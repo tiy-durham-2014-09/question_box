@@ -46,10 +46,11 @@
           <%= @user.name %> has not posted yet!
         </div>
         <% end %>
-        <p>Questions answer by this user:</p>
+        <p>Questions made byt this user:</p>
         <%= render 'user_questions', :questions => @user.questions.limit(5) %>
       </div>
       <div class="answers">
+        <p>Questions answered by this user:</p>
         <%= render 'user_answers', :answers => @user.answers.limit(5) %>
       </div>
 
