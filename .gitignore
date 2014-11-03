@@ -20,3 +20,4 @@ rails_best_practices_output.html
 test/vcr_cassettes
 .idea
 .env
+vendor/bundle
