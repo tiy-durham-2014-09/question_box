@@ -1,21 +1,10 @@
 Rails.application.routes.draw do
-
   root 'questions#home'
 
   get 'proxy/bing.json' => "bing_proxy#get"
 
-  # resources :profiles
-  # resources :profiles do
-  #   collection do
-  #     get 'archived', to: 'archived_profiles#index'
-  #   end
-  #   member do
-  #     post 'archive', to: 'archived_profiles#create'
-  #   end
-  # end
-
   resource :login, :only => [:show, :create, :destroy]
-  resources :users, :only => [:new, :create, :show, :edit, :update, :destroy]
+  resources :users, :only => [:new, :create]
   resources :questions, :only => [:index, :new, :create, :show] do
     post :vote, on: :member
     resources :answers, :only => [:create], :shallow => true do

@@ -22,24 +22,23 @@ other_users = Array.new(10).map { |_| User.create!(name:                  Faker:
                                                    password_confirmation: "password") }
 
 20.times do
-	Question.create!(title: "How do I #{Faker::Hacker.verb} #{['a', 'the'].sample} #{Faker::Hacker.noun}?",
-	                 text:  Faker::Hacker.say_something_smart,
-	                 user:  user)
+  Question.create!(title: "How do I #{Faker::Hacker.verb} #{['a', 'the'].sample} #{Faker::Hacker.noun}?",
+                   text:  Faker::Hacker.say_something_smart,
+                   user:  user)
 end
 
 questions = Question.all
 
 20.times do
-	Answer.create!(question: questions.sample,
-	               text:     Faker::Hacker.say_something_smart,
-	               user:     other_users.sample)
+  Answer.create!(question: questions.sample,
+                 text:     Faker::Hacker.say_something_smart,
+                 user:     other_users.sample)
 end
 
 answers = Answer.all
 
 50.times do
-	Vote.create(voteable: (questions + answers).sample,
-	            user:     other_users.sample,
-	            value:    [1, 1, 1, 1, 1, -1].sample)
+  Vote.create(voteable: (questions + answers).sample,
+              user:     other_users.sample,
+              value:    [1, 1, 1, 1, 1, -1].sample)
 end
-
