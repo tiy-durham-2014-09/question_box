@@ -3,7 +3,7 @@ class AnswersController < ApplicationController
   before_action :authenticate
 
   def create
-    @question = Question.find(params[:question_id])
+    @question = Question.friendly.find(params[:question_id])
     @answers = @question.answers.order_by_votes
     @answer = @question.answers.build(answer_params)
     @answer.user = current_user

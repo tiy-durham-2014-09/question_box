@@ -40,7 +40,7 @@ class Question < ActiveRecord::Base
   def self.tagged_with(name)
     begin
       Tag.find_by!(name: name).questions
-    rescue Exception => e
+    rescue Exception => e # FIXME change to ActiveRecord::RecordNotFound
       []
     end
   end
