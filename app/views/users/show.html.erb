@@ -1,8 +1,8 @@
 <div class="panel radius">
 	<div class="row">
 		<div class="large-10 large-offset-1 columns">
-			<h3 class="text-center">What are your favorite tags?</h3>
-			<%= simple_form_for @current_user, :method => :PUT do |f| %>
+			<h3 class="text-center">List your favorite tags!</h3>
+			<%= simple_form_for @current_user, :method => :PUT, remote: true do |f| %>
 			<%= f.input :tag_list, label: false, placeholder: "tags" %>
 			<div class="text-center">
 				<%= f.button :submit, "submit", :class => "radius" %>
@@ -11,11 +11,13 @@
 		</div>
 	</div>
 </div>
-
-Related Questions
-
-<% @current_user.tag_names.each do |t_name| %>
-  <% Question.tagged_with(t_name).each do |q| %>
-    <ul><%= link_to q.title, q %></ul>
-  <% end %>
-<% end %>
+<div id="tags">
+	<% @current_user.tag_names.each do |t_name| %>
+	<% unless Question.tagged_with(t_name).empty? %>
+	<ul class="qtag"><%= "Question(s) related to the tag '#{t_name}'" %></ul>
+	<% Question.tagged_with(t_name).each do |q| %>
+	<ul><%= link_to q.title, q %></ul>
+	<% end %>
+	<% end %>
+	<% end %>
+</div>
