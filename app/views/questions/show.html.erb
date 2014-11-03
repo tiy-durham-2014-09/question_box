@@ -43,7 +43,7 @@
           <%= form.button :submit, "Answer", class: "radius" %>
         <% end %>
       <% else %>
-        <p><%= link_to "Log in to answer", login_path %></p>
+        <p><%= link_to "Log in to answer", login_path, class: "answer_login" %></p>
       <% end %>
     </div>
   </div>

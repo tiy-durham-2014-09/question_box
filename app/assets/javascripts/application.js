@@ -30,3 +30,8 @@ $(document).ready(function(){
     });
   });
 });
+
+$(document).ready(function() {
+$('.q h1').on('click', function() {
+$(this).parent().children('.content-box').slideToggle(500);
+});

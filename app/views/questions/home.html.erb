@@ -10,10 +10,9 @@
             <div class="text-center">
               <%= f.button :submit, "Ask", :class => "radius" %>
             </div>
-
           <% end %>
       <% else %>
-        <h1 class="headings"><%= link_to "Log in to ask a question.", login_path %></h1>
+        <h1><%= link_to "Log in to ask a question.", login_path, class: "login" %></h1>
       <% end %>
     </div>
   </div>

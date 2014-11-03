@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   root 'questions#home'
 
   get 'proxy/bing.json' => "bing_proxy#get"
+  get 'logins/destroy'
 
-  resource :login, :only => [:show, :create, :destroy]
+  resource :login, :only => [:show, :create, :destroy] 
   resources :users, :only => [:new, :create]
   resources :questions, :only => [:index, :new, :create, :show] do
     post :vote, on: :member
