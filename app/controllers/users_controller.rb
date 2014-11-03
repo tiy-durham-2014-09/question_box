@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :current_user
+  before_action :authenticate, only: [:show]
+
   def new
     @user = User.new
   end
@@ -17,7 +19,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html do
         @current_user.update(user_params)
-        flash[:notice] = 'Your tag list was successfully created.'
+        flash.now[:notice] = 'Your tag list was successfully created.'
         redirect_to root_path
       end
       format.js do

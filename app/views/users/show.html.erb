@@ -11,12 +11,12 @@
 		</div>
 	</div>
 </div>
-<div class="tags">
+<div id="tags">
 	<% @current_user.tag_names.each do |t_name| %>
 	<% unless Question.tagged_with(t_name).empty? %>
-	<ul><%= "Question(s) related to the tag #{t_name}" %></ul>
+	<ul class="qtag"><%= "Question(s) related to the tag '#{t_name}'" %></ul>
 	<% Question.tagged_with(t_name).each do |q| %>
-	<ul></br> <%= link_to q.title, q %> </ul>
+	<ul><%= link_to q.title, q %></ul>
 	<% end %>
 	<% end %>
 	<% end %>
