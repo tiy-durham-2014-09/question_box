@@ -18,18 +18,12 @@ gem "redcarpet"
 gem "simple_form"
 gem 'rails_12factor', group: :production
 gem 'unicorn'
-gem 'gravtastic'
 gem "faker"
-gem 'friendly_id', '~> 5.0.0'
 
 # Assets
 gem "font-awesome-rails"
 gem 'jquery-ui-rails'
 gem "foundation-rails"
-gem 'bourbon'
-gem 'neat'
-gem 'ruby-stackoverflow'
-gem "github_api"
 
 group :development, :test do
   gem "better_errors"
@@ -54,4 +48,4 @@ group :test do
   gem "vcr"
   gem "webmock"
   gem 'simplecov', :require => false
-end
+  end

@@ -20,8 +20,4 @@ class ApplicationController < ActionController::Base
   def authenticate
     redirect_to login_path unless logged_in?
   end
-
-  def site_name
-	  "Question Box"
-  end
 end
