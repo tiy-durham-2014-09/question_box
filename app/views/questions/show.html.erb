@@ -7,7 +7,7 @@
         <%= markdown(@question.text) %>
       </div>
       <div>
-        Asked by <%= link_to @question.user.name, user_path(@question.user) %>
+        Asked by <%= image_tag @question.user.gravatar_url(size: 20) %> <%= link_to @question.user.name, user_path(@question.user) %>
       </div>
     </div>
     <div class="small-3 columns text-center">
