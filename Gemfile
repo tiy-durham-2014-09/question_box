@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-
-
 gem 'rails', '4.1.6'
 gem 'pg'
 gem 'modernizr-rails'
@@ -20,6 +18,9 @@ gem "simple_form"
 gem 'rails_12factor', group: :production
 gem 'unicorn'
 gem "faker"
+gem "rb-gsl"
+gem 'fast-stemmer', '~> 1.0.2'
+gem 'classifier-reborn', '~> 2.0.1'
 
 # Assets
 gem "font-awesome-rails"

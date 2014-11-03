@@ -43,20 +43,38 @@ $(document).on('ready', function () {
   if (onPage("questions", "show")) {
     var question = $(".question-title").text();
 
+//    $.ajax({
+//      dataType: "json",
+//      url: "/proxy/bing.json",
+//      data: {"query": question},
+//      success: function (data) {
+//        var links = $.map(data.d.results, function (result) {
+//          return "<li><a href='" + result.Url + "'>" + result.Title + "</a></li>";
+//        });
+//
+//        $("#bing-links")
+//          .find(".results")
+//          .html("<ul></ul>")
+//          .children("ul")
+//          .append(links);
+//      }
+//    });
+
     $.ajax({
       dataType: "json",
-      url: "/proxy/bing.json",
-      data: {"query": question},
+      url: window.location.href + "/related.json",
+      data: {},
       success: function (data) {
-        var links = $.map(data.d.results, function (result) {
-          return "<li><a href='" + result.Url + "'>" + result.Title + "</a></li>";
+        var related_questions = $.makeArray(data);
+        var related_links = $.map(related_questions, function (question) {
+          return "<li><a href='" + question.url + "'>" + question.title + "</a></li>";
         });
 
-        $("#bing-links")
-          .find(".results")
+        $("#related-links")
+          .find(".related_results")
           .html("<ul></ul>")
           .children("ul")
-          .append(links);
+          .append(related_links);
       }
     });
 

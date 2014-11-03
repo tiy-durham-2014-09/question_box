@@ -4,91 +4,88 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="animate.min.css">
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <%= stylesheet_link_tag    "application" %>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "vendor/modernizr" %>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <%= csrf_meta_tags %>
 </head>
-<div class="container">
-<body>
-<script>
-$(document).ready(function() {
-$('.q h1').on('click', function() {
-$(this).parent().children('.content-box').slideToggle(500);
-});</script>
-  <header class ="header">
-    <div id="background-wrap">
-      <div class="x1">
-        <div class="cloud"></div>
+<body class="<%= body_classes %>">
+  <div class="container">
+    <header class="header">
+      <div id="background-wrap">
+        <div class="x1">
+          <div class="cloud"></div>
+        </div>
+        <div class="x2">
+          <div class="cloud"></div>
+        </div>
+        <div class="x3">
+          <div class="cloud"></div>
+        </div>
+        <div class="x4">
+          <div class="cloud"></div>
+        </div>
+        <div class="x5">
+          <div class="cloud"></div>
+        </div>
       </div>
-      <div class="x2">
-        <div class="cloud"></div>
-      </div>  
-      <div class="x3">
-        <div class="cloud"></div>
-      </div>
-      <div class="x4">
-        <div class="cloud"></div>
-      </div>
-      <div class="x5">
-        <div class="cloud"></div>
-      </div>
-    </div>
-  <nav class="cl-effect-2">
-       <a href="/">
-        <span class= "bar" data-hover="Home">
+      <nav class="cl-effect-2">
+        <a href="/">
+        <span class="bar" data-hover="Home">
           Home
         </span>
-      </a>
-      <a href="/questions">
-        <span class= "bar" data-hover="All Questions">
+        </a>
+        <a href="/questions">
+        <span class="bar" data-hover="All Questions">
           All Questions
         </span>
-      </a>
-      <% if logged_in? %>
+        </a>
+        <% if logged_in? %>
         <span class="bar" data-hover="Current User">
-          <%= link_to "logged in as #{current_user.name}", "#", :class => "current" %>&nbsp&nbsp&nbsp
+          <%= link_to "logged in as #{current_user.name}", "#", :class => "current" %>
+          &nbsp&nbsp&nbsp
         </span>
         <span class="bar" data-hover="Logout">
-          <%= link_to "Logout", logins_destroy_path, :class => "bar"%>
+          <%= link_to "Logout", logins_destroy_path, :class => "bar" %>
         </span>
-      <% else %>
+        <% else %>
         <span class="bar" data-hover="Login">
           <%= link_to "Login", login_path, :class => "bar" %>
         </span>
-     <% end %>
-  </nav>      
-  <h1 class="headerText animated">QUESTION BOX</h1>
-  <a href="#" onclick="javascript: window.open('http://funny-pictures-blog.com/wp-content/uploads/2012/04/GIF-Realistic-Mario.gif','width=1000,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');">
-  <img class="coin" src="http://icons.iconarchive.com/icons/ph03nyx/super-mario/256/Retro-Coin-icon.png"></a>
-  </header>
-<%= yield %>
-<!-- <img class="img" src="http://www.videogameobsession.com/videogame/ani_1firemario300-vgo.gif"/> -->
-  <img class="pipe" src="http://www.clker.com/cliparts/f/5/a/a/13419482061264734846Green%20Cartoon%20Pipe.svg.hi.png">
-  <img class="shroom" src="http://icons.iconarchive.com/icons/ph03nyx/super-mario/256/Retro-Mushroom-Super-3-icon.png">
-  <footer class="footer-2">
-    <div class="footer-secondary-links">
-      <ul>
-        <div class="footer-logo">
-          <img src="http://themushroomkingdom.net/images/ani/aniqblock.gif" alt="Logo image">
-        </div>
-      </ul>
-      <ul class="footer-social">
-        <li>
-          <a href="https://www.facebook.com/TheIronYard">
-          <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/facebook-logo-circle.png" alt="Facebook">
-          </a>
-        </li>
-        <li>
-          <a href="https://twitter.com/TheIronYard">
-          <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/twitter-logo-circle.png" alt="Twitter">
-          </a>
-        </li>
-      </ul>
-    </div>
-  </footer>
+        <% end %>
+      </nav>
+      <h1 class="headerText animated">QUESTION BOX</h1>
+      <a href="#" onclick="javascript: window.open('http://funny-pictures-blog.com/wp-content/uploads/2012/04/GIF-Realistic-Mario.gif','width=1000,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');">
+        <img class="coin" src="http://icons.iconarchive.com/icons/ph03nyx/super-mario/256/Retro-Coin-icon.png"></a>
+    </header>
+    <%= yield %>
+    <!-- <img class="img" src="http://www.videogameobsession.com/videogame/ani_1firemario300-vgo.gif"/> -->
+    <img class="pipe" src="http://www.clker.com/cliparts/f/5/a/a/13419482061264734846Green%20Cartoon%20Pipe.svg.hi.png">
+    <img class="shroom" src="http://icons.iconarchive.com/icons/ph03nyx/super-mario/256/Retro-Mushroom-Super-3-icon.png">
+    <footer class="footer-2">
+      <div class="footer-secondary-links">
+        <ul>
+          <div class="footer-logo">
+            <img src="http://themushroomkingdom.net/images/ani/aniqblock.gif" alt="Logo image">
+          </div>
+        </ul>
+        <ul class="footer-social">
+          <li>
+            <a href="https://www.facebook.com/TheIronYard">
+              <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/facebook-logo-circle.png" alt="Facebook">
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/TheIronYard">
+              <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/twitter-logo-circle.png" alt="Twitter">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+  <%= javascript_include_tag :application %>
 </body>
-</div>
 </html>

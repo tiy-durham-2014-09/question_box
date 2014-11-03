@@ -14,12 +14,11 @@
 //= require jquery_ujs
 //= require jquery-ui/effect-highlight
 //= require jquery.tagsinput
-
-$(function(){ $(document).bourbon(); });
+//= require questions
 
 var onPage = function (controller, action) {
   return $("body." + controller + "-" + action).length
-}
+};
 
 $(document).ready(function(){
   $(".dropdown-button").click(function(){
@@ -32,6 +31,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function() {
-$('.q h1').on('click', function() {
-$(this).parent().children('.content-box').slideToggle(500);
+  $('.q h1').on('click', function () {
+    $(this).parent().children('.content-box').slideToggle(500);
+  })
 });
