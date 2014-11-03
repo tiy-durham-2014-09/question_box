@@ -17,7 +17,6 @@
 
 .right_footer {
   float: left;
-  @include border-image(url(/images/simple-border.png) 27 repeat );
   @include position (absolute, 50px 270px 0 550px);
   margin: 24px;
   .user_questions {
