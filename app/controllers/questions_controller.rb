@@ -1,3 +1,5 @@
+require 'classifier-reborn'
+
 class QuestionsController < ApplicationController
   before_action :authenticate, only: [:new, :create, :vote]
   before_action :set_question, only: [:show, :vote]
@@ -50,6 +52,32 @@ class QuestionsController < ApplicationController
         end
       end
     end
+  end
+
+  def related
+	  @question = Question.find(params[:id])
+	  questions = Question.all
+	  lsi = ClassifierReborn::LSI.new
+	  joined_questions_hash = Hash.new
+
+	  questions.each do |question|
+		  joined_question_text = question.title + " " + question.text
+		  lsi.add_item(joined_question_text)
+		  joined_questions_hash[question.id] = joined_question_text
+	  end
+
+	  @related_questions = Array.new
+
+	  search_text = @question.title + " " + @question.text
+
+	  lsi.find_related(search_text,4).each do |question_text|
+		  key = joined_questions_hash.key(question_text)
+		  if key != @question.id
+		    @related_questions << Question.find(key)
+			end
+	  end
+
+		@related_questions = @related_questions.take(3)
   end
 
   private
