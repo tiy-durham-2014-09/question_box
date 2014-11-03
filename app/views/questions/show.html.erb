@@ -12,6 +12,7 @@
 
       <% if current_user == @question.user %>
         <% if @question.sms == false %>
+        <!-- trying to make it so that SMS button option does not appear on question if user did not specify a phone number when they signed up<# if @user.contact != "" %>-->
           <p>
           <h6>
             <%= link_to  sms_question_path(@question),  method: :put, remote: true do%>
