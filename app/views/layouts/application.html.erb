@@ -9,11 +9,15 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "vendor/modernizr" %>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-  <%= javascript_include_tag :modernizr %>
   <%= csrf_meta_tags %>
 </head>
 <div class="container">
 <body>
+<script>
+$(document).ready(function() {
+$('.q h1').on('click', function() {
+$(this).parent().children('.content-box').slideToggle(500);
+});</script>
   <header class ="header">
     <div id="background-wrap">
       <div class="x1">
@@ -33,31 +37,36 @@
       </div>
     </div>
   <nav class="cl-effect-2">
-      <a href="/">
+       <a href="/">
         <span class= "bar" data-hover="Home">
           Home
         </span>
       </a>
       <a href="/questions">
-        <span class = "bar" data-hover="All Questions">
+        <span class= "bar" data-hover="All Questions">
           All Questions
         </span>
       </a>
       <% if logged_in? %>
-      <a href="/login">
-        <span class = "bar" data-hover="Login">
-          <%= button_to "logged in as #{current_user.name}", "#", class: "bar" %>
+        <span class="bar" data-hover="Current User">
+          <%= link_to "logged in as #{current_user.name}", "#", :class => "current" %>&nbsp&nbsp&nbsp
         </span>
-      </a>
-      <% end %>
+        <span class="bar" data-hover="Logout">
+          <%= link_to "Logout", logins_destroy_path, :class => "bar"%>
+        </span>
+      <% else %>
+        <span class="bar" data-hover="Login">
+          <%= link_to "Login", login_path, :class => "bar" %>
+        </span>
+     <% end %>
   </nav>      
   <h1 class="headerText animated">QUESTION BOX</h1>
   <a href="#" onclick="javascript: window.open('http://funny-pictures-blog.com/wp-content/uploads/2012/04/GIF-Realistic-Mario.gif','width=1000,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');">
   <img class="coin" src="http://icons.iconarchive.com/icons/ph03nyx/super-mario/256/Retro-Coin-icon.png"></a>
   </header>
 <%= yield %>
-<!--  <img class="img" src="http://www.videogameobsession.com/videogame/ani_1firemario300-vgo.gif"/>
- -->  <img class="pipe" src="http://www.clker.com/cliparts/f/5/a/a/13419482061264734846Green%20Cartoon%20Pipe.svg.hi.png">
+<!-- <img class="img" src="http://www.videogameobsession.com/videogame/ani_1firemario300-vgo.gif"/> -->
+  <img class="pipe" src="http://www.clker.com/cliparts/f/5/a/a/13419482061264734846Green%20Cartoon%20Pipe.svg.hi.png">
   <img class="shroom" src="http://icons.iconarchive.com/icons/ph03nyx/super-mario/256/Retro-Mushroom-Super-3-icon.png">
   <footer class="footer-2">
     <div class="footer-secondary-links">
