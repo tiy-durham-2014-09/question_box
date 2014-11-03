@@ -21,6 +21,7 @@ class UsersController < ApplicationController
         redirect_to root_path
       end
       format.js do
+        @current_user.update(user_params)
         render 'tags/create', status: :success
       end
     end
