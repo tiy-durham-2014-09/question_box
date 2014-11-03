@@ -77,7 +77,7 @@ class QuestionsController < ApplicationController
 			end
 	  end
 
-		@related_questions[0,2]
+		@related_questions = @related_questions.take(3)
   end
 
   private
