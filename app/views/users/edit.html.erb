@@ -1,6 +1,6 @@
 <%= simple_form_for @user, wrapper: :inline do |form| %>
     <div class="row">
-      <h2 class="large-9 large-offset-3 columns">Register or <%= link_to "login", login_path %></h2>
+      <h2 class="large-9 large-offset-3 columns">Update your Information</h2>
     </div>
     <%= form.input :name, label_html: {class: "inline right"} %>
     <%= form.input :email, label_html: {class: "inline right"} %>
@@ -9,11 +9,9 @@
     <%= form.input :github_username, label_html: {class: "inline right"} %>
     <%= form.input :stack_overflow_url, label_html: {class: "inline right"} %>
     <%= form.input :twitter_username, label_html: {class: "inline right"} %>
-    <%= form.input :password, label_html: {class: "inline right"} %>
-    <%= form.input :password_confirmation, label_html: {class: "inline right"} %>
     <div class="row">
       <div class="large-9 large-offset-3 columns">
-        <%= form.button :submit, "Register" %>
+        <%= form.button :submit, "Update" %>
       </div>
     </div>
 
