@@ -22,6 +22,7 @@ gem "faker"
 gem "rb-gsl"
 gem 'fast-stemmer', '~> 1.0.2'
 gem 'classifier-reborn', '~> 2.0.1'
+gem 'friendly_id', '~> 5.0.0'
 
 # Assets
 gem "font-awesome-rails"
