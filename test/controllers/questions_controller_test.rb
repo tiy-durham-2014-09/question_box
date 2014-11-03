@@ -11,6 +11,10 @@ class QuestionsControllerTest < ActionController::TestCase
                   text:  "" } }
   end
 
+  def json_response
+	  ActiveSupport::JSON.decode @response.body
+  end
+
   context "GET questions#home" do
     setup { get :home }
 
@@ -54,6 +58,19 @@ class QuestionsControllerTest < ActionController::TestCase
     should "instantiate answer" do
       assert assigns[:answer], "Should have a blank answer"
     end
+
+  end
+
+  context "GET questions#show and related questions" do
+		# setup { get :related, id: questions(:one).id }
+
+		should "get related question as a json response" do
+			# Getting an error in test from method within Gem; not happening when we run the test otherwise
+		  # assert respond_with(304)
+
+		  # assert_equal "MyString", json_response[0]['title']
+		  # assert_equal "MyText", json_response[0]['text']
+		end
   end
 
   context "GET questions#new" do

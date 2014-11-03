@@ -60,6 +60,24 @@ $(document).on('ready', function () {
       }
     });
 
+      $.ajax({
+          dataType: "json",
+          url: window.location.href + "/related.json",
+          data: {},
+          success: function (data) {
+              var related_questions = $.makeArray(data);
+              var related_links = $.map(related_questions, function (question) {
+                  return "<li><a href='" + question.url + "'>" + question.title + "</a></li>";
+              });
+
+          $("#related-links")
+              .find(".related_results")
+              .html("<ul></ul>")
+              .children("ul")
+              .append(related_links);
+          }
+      });
+
     hideNegativeAnswers();
   }
 });
