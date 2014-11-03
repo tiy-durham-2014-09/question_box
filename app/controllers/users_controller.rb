@@ -5,7 +5,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     if @user.save
       session[:current_user_id] = @user.id
       redirect_to root_path, success: "You are successfully registered."
@@ -17,6 +16,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :phone, :contact)
   end
 end
+

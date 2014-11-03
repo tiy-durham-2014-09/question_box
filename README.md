@@ -2,6 +2,15 @@
 
 This Rails application provides much of the same functionality as Stack Overflow.
 
+### Using
+
+This application uses environment variables for configuration. The following variables are used:
+
+* `SENDHUB_KEY`: A valid SendHub API Key.
+* `SENDHUB_NUMBER`: The number you used to sign up for SendHub.
+
+We use the [dotenv](https://github.com/bkeepers/dotenv) gem, so you can put these in the `.env` file in development.
+
 ### Models
 
 * User
@@ -42,3 +51,5 @@ This Rails application provides much of the same functionality as Stack Overflow
 * Tag
     * has a name
     * has and belongs to many questions
+
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141031182850) do
+ActiveRecord::Schema.define(version: 20141103032921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,11 @@ ActiveRecord::Schema.define(version: 20141031182850) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "logins", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "password_resets", force: true do |t|
     t.integer  "user_id"
     t.string   "key"
@@ -57,6 +62,7 @@ ActiveRecord::Schema.define(version: 20141031182850) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "sms",        default: false
   end
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
@@ -75,11 +81,18 @@ ActiveRecord::Schema.define(version: 20141031182850) do
 
   create_table "users", force: true do |t|
     t.string   "name"
-    t.integer  "score",           default: 1
+    t.integer  "score",              default: 1
     t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "bio"
+    t.string   "github_username"
+    t.string   "stack_overflow_url"
+    t.string   "twitter_username"
+    t.string   "location"
+    t.string   "phone"
+    t.string   "contact"
   end
 
   create_table "votes", force: true do |t|

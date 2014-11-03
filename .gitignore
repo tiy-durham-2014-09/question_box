@@ -18,5 +18,6 @@ coverage/
 rails_best_practices_output.html
 .env
 test/vcr_cassettes
-.idea/*
-.DS_Store
+.idea
+.env
+vendor/bundle

@@ -7,23 +7,20 @@ class AnswersController < ApplicationController
     @answer = @question.answers.build(answer_params)
     @answer.user = current_user
 
-    respond_to do |format|
-      format.html do
-        if @answer.save
-          redirect_to @question
-        else
-          render "questions/show"
-        end
-      end
-
-      format.js do
-        if @answer.save
-          render :create, status: :created
-        else
-          render nothing: true, status: :bad_request
-        end
-      end
+    if @answer.save
+      send_sms
+      redirect_to @question
+    else
+      render "questions/show"
     end
+  end
+
+  private
+
+  def send_sms
+    return unless @question.sms
+
+    SendHub.new.send_answer_sms(@answer)
   end
 
   def vote
