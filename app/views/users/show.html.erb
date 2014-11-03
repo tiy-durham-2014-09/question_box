@@ -19,9 +19,9 @@
         <li><i class="fa fa-map-marker"></i><span id="location"> <%= @user.location %></span></li>
         <li><i class="fa fa-envelope-o"></i> <span id="email" > <%=@user.email%>  </span></li>
         <li><i class="fa fa-clock-o"></i><span id="created_at"> Joined on <%=@user.created_at%></span></li>
-        <li><i class="fa fa-stack-overflow"></i> User StackOverflow Reputation is: <%= @user.so_reputation %></li>
-        <li><i class="fa fa-github"></i><span id="blog"> <%= @user.github_url%></span></li>
-        <li><i class="fa fa-twitter"></i><span id="twitter"> <%= @user.twitter_url%></li>
+        <li><i class="fa fa-stack-overflow"></i> StackOverflow Reputation: <%= @user.so_reputation %></li>
+        <li><i class="fa fa-github"></i><span id="blog"> <%= @user.github_username%></span></li>
+        <li><i class="fa fa-twitter"></i><span id="twitter"> <%= @user.twitter_username%></li>
         </ul>
         <div class="edit-delete">
           <div class="links-edit-delete">
@@ -46,7 +46,7 @@
           <%= @user.name %> has not posted yet!
         </div>
         <% end %>
-      <div class="answers">
+      <div class="user_questions">
         <p>Questions by this user:</p>
         <%= render 'user_questions', :questions => @user.questions.limit(5) %>
       </div>
@@ -66,5 +66,5 @@
         </ul>
       </div>
     </div>
-  </body>
-  </html>
+ </body>
+ </html>

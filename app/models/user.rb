@@ -20,19 +20,19 @@ class User < ActiveRecord::Base
 	numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
 	def so_reputation
-		if !so_url.blank?
+		if !stack_overflow_url.blank?
 			response = RubyStackoverflow.users({ inname: so_username })
 			response.data.first.reputation
 		end
 	end
 
 	def so_username
-		so_url.split("/").last
+		stack_overflow_url.split("/").last
 	end
 
 	def github_repos
-		if !github_url.blank?
-			Github.repos.list(user: github_url, sort: updated_at, direction: 'desc', per_page: 10 ).to_a.map do |repo|
+		if !github_username.blank?
+			Github.repos.list(user: github_username, sort: updated_at, direction: 'desc', per_page: 10 ).to_a.map do |repo|
 				{name: repo[:name],
 				 html_url: repo[:html_url],
 				 updated_at: repo[:updated_at]
