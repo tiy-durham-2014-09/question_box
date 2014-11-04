@@ -5,5 +5,6 @@ class CreateTags < ActiveRecord::Migration
     end
 
     create_join_table :questions, :tags
+    create_join_table :users, :tags
   end
 end

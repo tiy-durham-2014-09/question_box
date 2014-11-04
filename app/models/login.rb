@@ -9,7 +9,7 @@ class Login
 
   def initialize(attrs = {})
     super(attrs)
-    @user = User.find_by(email: email)
+    @user = User.friendly.find_by(email: email)
   end
 
   def authenticated?

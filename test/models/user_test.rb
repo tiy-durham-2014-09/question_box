@@ -20,4 +20,36 @@ class UserTest < ActiveSupport::TestCase
   should have_many(:questions)
   should have_many(:answers)
   should have_many(:votes)
+
+  context "a user" do
+    subject { users(:one) }
+    setup do
+      @user = users(:one)
+      @question = questions(:one)
+    end
+
+    should "be able to set tags" do
+      assert_empty @user.tags
+      @user.tag_list = "ruby, activerecord"
+      assert_equal 2, @user.tags.count
+      assert_includes @user.tags.map(&:name), "ruby"
+      assert_includes @user.tags.map(&:name), "activerecord"
+    end
+
+    should "know its tags' names" do
+      @user.tag_list = "ruby, activerecord"
+      assert_same_elements @user.tag_names, %w(ruby activerecord)
+    end
+
+    should "know its tag list" do
+      @user.tag_list = "ruby, activerecord"
+      assert_equal "ruby, activerecord", @user.tag_list
+    end
+
+    should "know questions related to favorited tags" do
+      @user.tag_list     = "495027a5-f1d1-447b-aa1d-97471b780fed"
+      @question.tag_list = "495027a5-f1d1-447b-aa1d-97471b780fed"
+      assert_equal @user.tags.first.questions.first.title, @question.title
+    end
+  end
 end

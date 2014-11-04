@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class AnswersControllerTest < ActionController::TestCase
+
   def invalid_answer_data
     { text: "" }
   end
