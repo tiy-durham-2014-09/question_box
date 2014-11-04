@@ -1,7 +1,11 @@
 class Question < ActiveRecord::Base
+  include Taggable
+
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   belongs_to :user
   has_many :answers
-  has_and_belongs_to_many :tags
   has_many :votes, as: :voteable
 
   validates :title, presence: true
@@ -33,26 +37,8 @@ class Question < ActiveRecord::Base
     votes.sum(:value)
   end
 
-  def self.tagged_with(name)
-    Tag.find_by!(name: name).questions
-  end
-
   def self.tag_counts
     Tag.select("tags.*, count(questions_tags.tag_id) as count").
         joins(:questions).group("tags.id").order("count(questions_tags.tag_id) DESC")
-  end
-
-  def tag_names
-    tags.map(&:name)
-  end
-
-  def tag_list
-    tag_names.join(", ")
-  end
-
-  def tag_list=(names)
-    self.tags = names.split(",").map do |n|
-      Tag.where(name: n.strip.downcase).first_or_create!
-    end
   end
 end

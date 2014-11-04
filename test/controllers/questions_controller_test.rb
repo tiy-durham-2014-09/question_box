@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class QuestionsControllerTest < ActionController::TestCase
+
   def valid_question_data
     { question: { title: "How do I #{Faker::Hacker.verb} #{Faker::Hacker.noun}?",
                   text:  Faker::Lorem.paragraph } }
@@ -133,6 +134,7 @@ class QuestionsControllerTest < ActionController::TestCase
       end
     end
   end
+
 
   context "POST questions#vote" do
     context "when not logged in" do

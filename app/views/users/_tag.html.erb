@@ -1,0 +1,10 @@
+<div class="row" id="<%= @current_user.persisted? ? dom_id(@current_user) : "@current_user-new" %>">
+<% @current_user.tag_names.each do |t_name| %>
+<% unless Question.tagged_with(t_name).empty? %>
+<ul class="qtag"><%= "Question(s) related to the tag '#{t_name}'" %></ul>
+<% Question.tagged_with(t_name).each do |q| %>
+<ul><%= link_to q.title, q %></ul>
+<% end %>
+<% end %>
+<% end %>
+</div>

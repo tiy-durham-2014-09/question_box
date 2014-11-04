@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-ruby '2.1.3'
 
 gem 'rails', '4.1.6'
 gem 'pg'
@@ -18,16 +17,18 @@ gem "redcarpet"
 gem "simple_form"
 gem 'rails_12factor', group: :production
 gem 'unicorn'
+gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
+
 gem "faker"
 gem "rb-gsl"
 gem 'fast-stemmer', '~> 1.0.2'
 gem 'classifier-reborn', '~> 2.0.1'
-gem 'friendly_id', '~> 5.0.0'
 
 # Assets
 gem "font-awesome-rails"
 gem 'jquery-ui-rails'
 gem "foundation-rails"
+
 
 group :development, :test do
   gem "better_errors"
