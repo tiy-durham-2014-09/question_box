@@ -22,6 +22,9 @@ gem 'will_paginate', '~> 3.0'
 gem 'unicorn'
 gem 'spring',        group: :development
 gem 'bcrypt', '~> 3.1.7'
+gem 'phantomjs'
+gem 'httparty'
+gem 'table_print'
 gem "kaminari"
 gem "redcarpet"
 gem "simple_form"

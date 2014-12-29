@@ -12,10 +12,14 @@
 # It's strongly recommended that you check this file into your version control system.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20141021182721) do
 =======
 ActiveRecord::Schema.define(version: 20141021153210) do
 >>>>>>> 66bf726a78e18dafded69c8dc07dc8b10c383a19
+=======
+ActiveRecord::Schema.define(version: 20141101221354) do
+>>>>>>> 59839e087fc3048ea2dfd5a33afbd2fe00cca80c
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,16 +38,25 @@ ActiveRecord::Schema.define(version: 20141021153210) do
   add_index "answers", ["user_id"], name: "index_answers_on_user_id", using: :btree
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 59839e087fc3048ea2dfd5a33afbd2fe00cca80c
   create_table "comments", force: true do |t|
     t.integer  "user_id"
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.text     "text"
+<<<<<<< HEAD
 =======
   create_table "logins", force: true do |t|
+=======
+>>>>>>> 59839e087fc3048ea2dfd5a33afbd2fe00cca80c
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "password_resets", force: true do |t|
     t.integer  "user_id"
@@ -68,6 +81,10 @@ ActiveRecord::Schema.define(version: 20141021153210) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "vote_count"
+<<<<<<< HEAD
+=======
+    t.boolean  "sms",        default: false
+>>>>>>> 59839e087fc3048ea2dfd5a33afbd2fe00cca80c
   end
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
@@ -90,6 +107,11 @@ ActiveRecord::Schema.define(version: 20141021153210) do
     t.datetime "updated_at"
     t.boolean  "click",           default: false
     t.string   "token"
+<<<<<<< HEAD
+=======
+    t.string   "phone"
+    t.string   "contact"
+>>>>>>> 59839e087fc3048ea2dfd5a33afbd2fe00cca80c
   end
 
   create_table "votes", force: true do |t|

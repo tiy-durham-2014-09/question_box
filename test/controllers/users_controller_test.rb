@@ -5,14 +5,19 @@ class UsersControllerTest < ActionController::TestCase
     { name: Faker::Name.name,
       email: Faker::Internet.email,
       password: "password",
-      password_confirmation: "password" }
+      password_confirmation: "password",
+      phone: "5555555555"
+    }
+
   end
 
   def invalid_user_attributes
     { name: "",
       email: "",
       password: "",
-      password_confirmation: "" }
+      password_confirmation: "", #this was commented out at one point. Phone number can either be blank or can be a ten-digit string. This is supposed to indicate that it can't be something in the middle.
+      phone: "12"
+    }
   end
 
   context "GET users#new" do
@@ -55,4 +60,15 @@ class UsersControllerTest < ActionController::TestCase
       end
     end
   end
+
+  # How would I write test that if user provides phone number that this will be sent to SendHub API and then sent back
+
+
+  # Part of unsuccessful attempt to get VCR working
+  # context "POST :post" do
+  #   setup do
+  #     VCR.use_cassette("sendhub") do
+  #       post :post, :query => "test"
+  #     end
+  #   end
 end

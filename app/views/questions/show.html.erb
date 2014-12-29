@@ -9,12 +9,35 @@
       <div>
         Asked by <%= @question.user.name %>
       </div>
+
+      <% if current_user == @question.user %>
+        <% if @question.sms == false %>
+        <!-- trying to make it so that SMS button option does not appear on question if user did not specify a phone number when they signed up<# if @user.contact != "" %>-->
+          <p>
+          <h6>
+            <%= link_to  sms_question_path(@question),  method: :put, remote: true do%>
+              <i class="fa fa-phone-square fa-2x"></i>
+            <% end %>
+            &nbsp;Click on the phone to subscribe to text message (SMS) notifications.
+          </h6>
+          </p>
+        <% else %>
+          <p>
+            <div id="notice">
+              <h6>You are subscribed to text message notifications.</h6>
+            </div>
+          </p>
+        <% end %>
+      <% end %>
+
     </div>
     <div class="small-3 columns text-center">
       <%= vote_panel(@question) %>
     </div>
+
   </div>
   <hr/>
+
 
   <div id="bing-links" class="row">
     <div class="small-12 columns">

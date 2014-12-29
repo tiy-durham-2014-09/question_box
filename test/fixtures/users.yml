@@ -10,7 +10,11 @@ one:
   click : false
 =======
   password_digest: <%= password_digest %>
+<<<<<<< HEAD
 >>>>>>> 66bf726a78e18dafded69c8dc07dc8b10c383a19
+=======
+  phone: nil
+>>>>>>> 59839e087fc3048ea2dfd5a33afbd2fe00cca80c
 
 two:
   name: User Two
@@ -22,7 +26,11 @@ two:
   click : false
 =======
   password_digest: <%= password_digest %>
+<<<<<<< HEAD
 >>>>>>> 66bf726a78e18dafded69c8dc07dc8b10c383a19
+=======
+  phone: 5555555555
+>>>>>>> 59839e087fc3048ea2dfd5a33afbd2fe00cca80c
 
 chet:
   name: Chet Corey
@@ -34,7 +42,11 @@ chet:
   click : false
 =======
   password_digest: <%= password_digest %>
+<<<<<<< HEAD
 >>>>>>> 66bf726a78e18dafded69c8dc07dc8b10c383a19
+=======
+  phone: nil
+>>>>>>> 59839e087fc3048ea2dfd5a33afbd2fe00cca80c
 
 voter:
   name: Voter Person
@@ -46,5 +58,9 @@ voter:
   click : false
 =======
   password_digest: <%= password_digest %>
+<<<<<<< HEAD
 >>>>>>> 66bf726a78e18dafded69c8dc07dc8b10c383a19
 
+=======
+  phone: 5555555555
+>>>>>>> 59839e087fc3048ea2dfd5a33afbd2fe00cca80c

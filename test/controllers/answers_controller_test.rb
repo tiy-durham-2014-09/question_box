@@ -96,6 +96,16 @@ class AnswersControllerTest < ActionController::TestCase
     end
   end
 
+  # context "send SMS to creator of question when their question is answered" do
+  #   context "if creator provided phone number when they signed up" do
+  #     context "if creator clicked on SMS opt-in button on question" do
+  #      setup do
+  #        {}
+  #      end
+  #     end
+  #   end
+  # end
+
   context "POST answers#vote" do
     context "when not logged in" do
       setup { post :vote, id: answers(:one_for_question_one) }

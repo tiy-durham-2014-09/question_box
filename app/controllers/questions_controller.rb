@@ -52,6 +52,19 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def sms
+    @question = Question.find(params[:id])
+    @question.update_attributes(sms: true)
+    respond_to do |format|
+      format.html do
+        redirect_to question_path
+      end
+      format.js do
+        render :sms, status: 200
+      end
+    end
+  end
+
   private
 
   def set_question

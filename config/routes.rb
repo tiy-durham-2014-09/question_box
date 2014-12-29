@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   resources :questions, :only => [:index, :new, :create, :show] do
 >>>>>>> 66bf726a78e18dafded69c8dc07dc8b10c383a19
     post :vote, on: :member
+    member do
+      put 'sms'
+    end
     resources :answers, :only => [:create], :shallow => true do
       post :vote, on: :member
     end
@@ -42,6 +45,9 @@ Rails.application.routes.draw do
   get 'password_reset/:id' => 'password_resets#edit', as: :change_password
   patch 'password_reset/:id' => 'password_resets#update'
 >>>>>>> 66bf726a78e18dafded69c8dc07dc8b10c383a19
+
+  #OLD CODE THAT DOESN'T WORK FOR SMS BUTTON
+  #patch 'questions/:id' => 'questions#SMS', as: 'sms'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

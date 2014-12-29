@@ -30,6 +30,14 @@ class UsersController < ApplicationController
       # render nothing: true, status: :created
 =======
       session[:current_user_id] = @user.id
+      # res = HTTParty.post("https://api.sendhub.com/v1/contacts/?username=#{ENV['SENDHUB_NUMBER']}&api_key=#{ENV['SENDHUB_KEY']}", body: { "name" => @user.name, "number" => @user.phone}.to_json, headers: {"Content-Type" => "application/json"})
+      #need to access env variables in .env, but not working
+      # user_data = JSON.parse(res.body)
+      # u = @user
+      # contact_array = user_data.find{|key, _| key["id"]}
+      # u.contact = "#{contact_array.second}"
+      # u.save
+      # u
       redirect_to root_path, success: "You are successfully registered."
 >>>>>>> 66bf726a78e18dafded69c8dc07dc8b10c383a19
     else
@@ -39,6 +47,7 @@ class UsersController < ApplicationController
 
   private
 
+<<<<<<< HEAD
     def set_user
       @user = User.find(params[:id])
     end
@@ -49,4 +58,10 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
+=======
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :phone, :contact)
+  end
+>>>>>>> 59839e087fc3048ea2dfd5a33afbd2fe00cca80c
 end
+
