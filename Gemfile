@@ -6,7 +6,6 @@ gem 'rails', '4.1.6'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
-gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -17,30 +16,16 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
-
-gem 'foundation-rails'
 
 gem 'country_select'
-
-gem 'simple_form'
-
 gem 'will_paginate', '~> 3.0'
-
-gem "font-awesome-rails"
-
-gem 'rails_12factor', group: :production
 gem 'unicorn'
-
 gem 'spring',        group: :development
 gem 'bcrypt', '~> 3.1.7'
-
 gem "kaminari"
 gem "redcarpet"
 gem "simple_form"
 gem 'rails_12factor', group: :production
-gem 'unicorn'
-gem "faker"
 
 # Assets
 gem "font-awesome-rails"
@@ -63,8 +48,6 @@ group :development, :test do
   gem "rubocop"
   gem "selenium-webdriver"
   gem "shoulda"
-  gem "quiet_assets"
-  gem 'spring'
   gem "faker"
   gem "timecop"
 end
