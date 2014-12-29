@@ -11,12 +11,21 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require foundation_and_overrides
+ *= require font-awesome
+ *= require jquery.tagsinput
  *= require_self
  *= require foundation_and_overrides
  *= require font-awesome
  */
 
+<<<<<<< HEAD
 .current_user {
     color: #ffffff;
     margin-top: 9px;
 }
+=======
+.main {
+  margin-top: 20px;
+}
+>>>>>>> 66bf726a78e18dafded69c8dc07dc8b10c383a19

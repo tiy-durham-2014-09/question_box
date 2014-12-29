@@ -15,6 +15,26 @@ SimpleForm.setup do |config|
     # b.use :hint,  wrap_with: { tag: :span, class: :hint }
   end
 
+<<<<<<< HEAD
+=======
+  config.wrappers :inline, class: :input, hint_class: :field_with_hint, error_class: :error do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+
+    b.wrapper tag: :div, class: 'row' do |c|
+      c.use :label, wrap_with: {tag: :div, class: 'large-3 columns'}
+      c.wrapper tag: :div, class: 'large-9 columns' do |d|
+        d.use :input, wrap_with: {tag: :div}
+        d.use :error, wrap_with: {tag: :small}
+      end
+    end
+  end
+
+>>>>>>> 66bf726a78e18dafded69c8dc07dc8b10c383a19
   # CSS class for buttons
   config.button_class = 'button'
 

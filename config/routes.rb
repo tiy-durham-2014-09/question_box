@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   get 'registers/new'
 
   root 'question#index'
@@ -7,11 +8,21 @@ Rails.application.routes.draw do
   resources :users, :only => [:create, :new, :show, :account_confirmation]
   resources :login, :only => [:show,:create, :destroy, :new]
   resources :question, :only => [ :new, :show, :create, :index] do
+=======
+  root 'questions#home'
+
+  get 'proxy/bing.json' => "bing_proxy#get"
+
+  resource :login, :only => [:show, :create, :destroy]
+  resources :users, :only => [:new, :create]
+  resources :questions, :only => [:index, :new, :create, :show] do
+>>>>>>> 66bf726a78e18dafded69c8dc07dc8b10c383a19
     post :vote, on: :member
     resources :answers, :only => [:create], :shallow => true do
       post :vote, on: :member
     end
   end
+<<<<<<< HEAD
   
   get "question/:id/vote" => "question#vote"
   
@@ -24,6 +35,13 @@ Rails.application.routes.draw do
   # resources :users, only => [:create,:new]
 
 
+=======
+
+  get 'password_reset' => 'password_resets#new', as: :password_reset
+  post 'password_reset' => 'password_resets#create'
+  get 'password_reset/:id' => 'password_resets#edit', as: :change_password
+  patch 'password_reset/:id' => 'password_resets#update'
+>>>>>>> 66bf726a78e18dafded69c8dc07dc8b10c383a19
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

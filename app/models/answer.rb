@@ -11,6 +11,13 @@ class Answer < ActiveRecord::Base
 
   after_save :award_user_points
 
+  scope :order_by_votes, -> {
+    select("answers.*")
+    joins("LEFT OUTER JOIN votes ON answers.id = votes.voteable_id AND votes.voteable_type = 'Answer'").
+    group("answers.id").
+    order("SUM(COALESCE(votes.value, 0)) DESC, created_at")
+  }
+
   def check_one_chosen_answer_per_question
     return unless question.present?
 
@@ -29,5 +36,4 @@ class Answer < ActiveRecord::Base
   def score
     votes.sum(:value)
   end
-
 end

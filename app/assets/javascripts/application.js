@@ -12,8 +12,21 @@
 //
 //= require jquery
 //= require jquery_ujs
+<<<<<<< HEAD
 //= require foundation
 //= require turbolinks
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+=======
+//= require jquery-ui/effect-highlight
+//= require jquery.tagsinput
+//= require foundation
+//= require_tree .
+
+$(function(){ $(document).foundation(); });
+
+var onPage = function (controller, action) {
+  return $("body." + controller + "-" + action).length
+}
+>>>>>>> 66bf726a78e18dafded69c8dc07dc8b10c383a19

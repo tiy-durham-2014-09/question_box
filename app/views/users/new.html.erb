@@ -1,3 +1,21 @@
+<<<<<<< HEAD
 <h1> Create New User </h1>
 <%= render 'form' %>
 
+=======
+<%= simple_form_for @user, wrapper: :inline do |form| %>
+  <div class="row">
+    <h2 class="large-9 large-offset-3 columns">Register or <%= link_to "login", login_path %></h2>
+  </div>
+  <%= form.input :name, label_html: {class: "inline right"} %>
+  <%= form.input :email, label_html: {class: "inline right"} %>
+  <%= form.input :password, label_html: {class: "inline right"} %>
+  <%= form.input :password_confirmation, label_html: {class: "inline right"} %>
+  <div class="row">
+    <div class="large-9 large-offset-3 columns">
+      <%= form.button :submit, "Register" %>
+    </div>
+  </div>
+
+<% end %>
+>>>>>>> 66bf726a78e18dafded69c8dc07dc8b10c383a19

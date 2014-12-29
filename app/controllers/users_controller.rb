@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end 
   def new
     @user = User.new
+<<<<<<< HEAD
   end
   
   def account_confirmation
@@ -15,15 +16,22 @@ class UsersController < ApplicationController
     else
       redirect_to new_login_path, notice: "woops, your account could not be confirmed"
     end
+=======
+>>>>>>> 66bf726a78e18dafded69c8dc07dc8b10c383a19
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
+<<<<<<< HEAD
       # @user.send_confirmation
       UserMailer.registration_confirmation(@user).deliver
       redirect_to user_path(@user), notice: 'User was successfully created.'
       # render nothing: true, status: :created
+=======
+      session[:current_user_id] = @user.id
+      redirect_to root_path, success: "You are successfully registered."
+>>>>>>> 66bf726a78e18dafded69c8dc07dc8b10c383a19
     else
       render :new
     end

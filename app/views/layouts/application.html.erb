@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -48,3 +49,27 @@
   <%= javascript_include_tag "application" %>
 </body>
 </html>
+=======
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "Question Box" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body class="<%= body_classes %>">
+    <%= render "shared/nav" %>
+
+    <div class="main row">
+      <%= render "shared/flash" %>
+
+      <%= yield %>
+      <%= javascript_include_tag "application" %>
+    </div>
+  </body>
+</html>
+>>>>>>> 66bf726a78e18dafded69c8dc07dc8b10c383a19

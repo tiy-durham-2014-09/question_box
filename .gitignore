@@ -14,3 +14,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+coverage/
+rails_best_practices_output.html
+.env
+test/vcr_cassettes
